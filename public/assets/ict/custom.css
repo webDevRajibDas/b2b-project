@@ -1,0 +1,41 @@
+/* Add here all your CSS customizations */
+/* Video container styling */
+.video-container {
+    height: 60vh;
+    overflow: hidden;
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: rgb(255 255 255 / 67%) 0px 14px 55px, rgb(255 255 255 / 91%) 0px 10px 10px;
+    transition: box-shadow 0.3s ease;
+}
+
+.video-container:hover {
+    box-shadow: 0 14px 28px rgba(255, 255, 255, 0.92),
+    0 10px 10px rgba(255, 255, 255, 0.96);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px; /* Match the container's border radius */
+    border: none; /* Remove default iframe border */
+}
+
+.bgblue {
+
+    background: linear-gradient(135deg, #fffffff5, #3a4b8a, #ffffff98);
+    padding: 8px;
+    border-radius: 1.2rem;
+    box-shadow: 0px 1rem 1.5rem -0.9rem #000000e1;
+}
+
+.promo-card {
+    font-size: 1rem;
+    color: #ffffff;
+    background: linear-gradient(135deg, #0d1120 0%, #3a4b8a 43%, #0d1120 100%);
+    padding: 4.6rem;
+    border-radius: 1.2rem;
+    height: 60vh;
+}
