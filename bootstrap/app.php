@@ -22,7 +22,6 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->appendToGroup('isAdmin', [
             \App\Http\Middleware\IsAdmin::class,
-            \App\Http\Middleware\MoveCartToSession::class,
         ]);
 
     })

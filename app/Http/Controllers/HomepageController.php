@@ -120,7 +120,8 @@ class HomepageController extends Controller
 
     public function aboutUs()
     {
-        return view('frontend.about-us');
+
+        return view('frontend.about');
     }
 
 }

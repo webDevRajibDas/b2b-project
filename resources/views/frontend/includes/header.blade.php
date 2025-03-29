@@ -61,77 +61,34 @@
                             <div class="dropdown-cart-header">Shopping Cart</div>
                             <!-- End .dropdown-cart-header -->
 
-                            <div class="dropdown-cart-products">
-                                <div class="product">
-                                    <div class="product-details">
-                                        <h4 class="product-title">
-                                            <a href="#">Ultimate 3D Bluetooth Speaker</a>
-                                        </h4>
+{{--                            <div class="dropdown-cart-products">--}}
+{{--                                <div class="product">--}}
+{{--                                    <div class="product-details">--}}
+{{--                                        <h4 class="product-title">--}}
+{{--                                            <a href="#"></a>--}}
+{{--                                        </h4>--}}
 
-                                        <span class="cart-product-info">
-                                                    <span class="cart-product-qty">1</span>
-                                                    × $99.00
-                                                </span>
-                                    </div><!-- End .product-details -->
+{{--                                        <span class="cart-product-info">--}}
+{{--                                                    <span class="cart-product-qty">1</span>--}}
+{{--                                                    × 00--}}
+{{--                                                </span>--}}
+{{--                                    </div><!-- End .product-details -->--}}
 
-                                    <figure class="product-image-container">
-                                        <a href="#" class="product-image">
-                                            <img src="assets/images/products/product-1.jpg" alt="product"
-                                                 width="80" height="80">
-                                        </a>
+{{--                                    <figure class="product-image-container">--}}
+{{--                                        <a href="#" class="product-image">--}}
+{{--                                            <img src="{{asset('assets/images/products/product-1.jpg')}}" alt="product"--}}
+{{--                                                 width="80" height="80">--}}
+{{--                                        </a>--}}
 
-                                        <a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>
-                                    </figure>
-                                </div><!-- End .product -->
-
-                                <div class="product">
-                                    <div class="product-details">
-                                        <h4 class="product-title">
-                                            <a href="#">Brown Women Casual HandBag</a>
-                                        </h4>
-
-                                        <span class="cart-product-info">
-                                                    <span class="cart-product-qty">1</span>
-                                                    × $35.00
-                                                </span>
-                                    </div><!-- End .product-details -->
-
-                                    <figure class="product-image-container">
-                                        <a href="#" class="product-image">
-                                            <img src="{{asset('assets/images/products/product-2.jpg')}}" alt="product"
-                                                 width="80" height="80">
-                                        </a>
-
-                                        <a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>
-                                    </figure>
-                                </div><!-- End .product -->
-
-                                <div class="product">
-                                    <div class="product-details">
-                                        <h4 class="product-title">
-                                            <a href="#">Circled Ultimate 3D Speaker</a>
-                                        </h4>
-
-                                        <span class="cart-product-info">
-                                                    <span class="cart-product-qty">1</span>
-                                                    × $35.00
-                                                </span>
-                                    </div><!-- End .product-details -->
-
-                                    <figure class="product-image-container">
-                                        <a href="#" class="product-image">
-                                            <img src="{{asset('assets/images/products/product-3.jpg')}}" alt="product"
-                                                 width="80" height="80">
-                                        </a>
-                                        <a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>
-                                    </figure>
-                                </div><!-- End .product -->
-                            </div><!-- End .cart-product -->
+{{--                                        <a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>--}}
+{{--                                    </figure>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
                             <div class="dropdown-cart-total">
                                 <span>SUBTOTAL:</span>
 
-                                <span class="cart-total-price float-right">$134.00</span>
+                                <span class="cart-total-price float-right">0</span>
                             </div><!-- End .dropdown-cart-total -->
 
                             <div class="dropdown-cart-action">
@@ -219,18 +176,6 @@
                                     </div><!-- End .col-lg-4 -->
                                 </div><!-- End .row -->
                             </div><!-- End .megamenu -->
-                        </li>
-                        <li class="d-none d-xl-block">
-                            <a href="#">Pages</a>
-                            <ul>
-                                <li><a href="#">Wishlist</a></li>
-                                <li><a href="#">Shopping Cart</a></li>
-                                <li><a href="#">Checkout</a></li>
-                                <li><a href="#">Dashboard</a></li>
-                                <li><a href="#">Contact Us</a></li>
-                                <li><a href="#">Login</a></li>
-                                <li><a href="#">Forgot Password</a></li>
-                            </ul>
                         </li>
                         <li><a href="#">Merchant (Join Us)</a></li>
                     </ul>
