@@ -19,6 +19,8 @@ class SubCategorie extends Model
                 $category->slug = $count > 0 ? "{$slug}-{$count}" : $slug;
             }
         });
+
+
     }
 
     public function parentCategory()

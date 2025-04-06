@@ -6,10 +6,3 @@
     @include('admin.vendor-section.sub-categories.form')
 @endsection
 
-@push('styles')
-
-@endpush
-
-@push('scripts')
-
-@endpush

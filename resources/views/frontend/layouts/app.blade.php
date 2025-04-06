@@ -8,7 +8,7 @@
     <title>@yield('title', 'B2B Platform')</title>
     <meta name="keywords" content="B2B Platform BD"/>
     <meta name="description" content="B2B Market Place Bangladesh ,B2B Platform">
-    <meta name="author" content="B2B Market Place">
+    <meta name="author" content="B2B Market Place , b2b platform">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/icons/favicon.png') }}">
@@ -18,7 +18,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href=" {{asset('favicon/apple-touch-icon.png')}}">
     <link rel="icon" type="image/png" sizes="32x32" href=" {{asset('favicon/favicon-32x32.png')}}">
     <link rel="icon" type="image/png" sizes="16x16" href=" {{asset('favicon/favicon-16x16.png')}}">
-    <link rel="manifest" href=" {{asset('favicon/site.webmanifest')}}">
+{{--    <link rel="manifest" href=" {{asset('favicon/site.webmanifest')}}">--}}
 
     <!-- Google Fonts -->
     <script>

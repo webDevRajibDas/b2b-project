@@ -28,11 +28,20 @@
                             <td>{{$cat->title}}</td>
                             <td>{{$cat->description}}</td>
                             <td>
-                                <img src="{{ asset('storage/' . $cat->image) }}" alt="Category Image" width="150">
+                                <img src="{{ asset('storage/' . $cat->image) }}" alt="Category Image" width="100">
                             </td>
                             <td class="actions">
                                 <a href="{{ route('admin.vendor-categories.edit', $cat->id) }}"><i class="fas fa-pencil-alt"></i></a>
-                                <a href="" class="delete-row"><i class="far fa-trash-alt"></i></a>
+                                <a href="#"
+                                   class="delete-row"
+                                   data-url="{{ route('admin.vendor-categories.destroy', $cat->id) }}"
+                                   title="Delete Category">
+                                    <i class="far fa-trash-alt" style="color: red"></i>
+                                </a>
+                                <form id="delete-data" method="POST" style="display:none;">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
                             </td>
                         </tr>
                     @endforeach
@@ -56,12 +65,22 @@
         });
 
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const deleteButtons = document.querySelectorAll('.delete-row');
-            deleteButtons.forEach(button => {
-                button.addEventListener('click', function (event) {
-                    if (!confirm('Are you sure you want to delete this category?')) {
-                        event.preventDefault();
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle delete links
+            document.querySelectorAll('.delete-row').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    const deleteUrl = this.getAttribute('data-url');
+                    const form = document.getElementById('delete-data');
+
+                    if (confirm('Are you sure you want to delete this category? This action cannot be undone.')) {
+                        // Update form action and submit
+                        form.action = deleteUrl;
+                        form.submit();
+
+                        // Optional: Show loading state
+                        this.innerHTML = '<i class="fas fa-spinner fa-spin" style="color: red"></i>';
                     }
                 });
             });

@@ -41,7 +41,7 @@ class ProductController extends Controller
             'vendor_id' => 'required',
             'price' => 'required|numeric',
             'sale_price' => 'nullable|numeric',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // 2MB max
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
 
@@ -51,9 +51,8 @@ class ProductController extends Controller
 
         // Decode attributes JSON
         //$attributes = json_decode($request->input('atts'), true);
+        //Save product to the database
 
-
-        // Save product to the database
         $product = Product::create([
             'name' => $validatedData['name'],
             'description' => $validatedData['description'],
@@ -82,6 +81,12 @@ class ProductController extends Controller
 
     }
 
+
+
+    public function edit($id)
+    {
+        dd($id);
+    }
 
 
 }

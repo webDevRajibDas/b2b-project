@@ -305,33 +305,36 @@
         </div>
     </section>
 
-    <div class="banner-container">
+    <div class="banner-container position-relative"> <!-- Added position-relative -->
         <div class="row no-gutters">
-            <div class="col-md-6">
-                <img style="height: 450px;" src="{{asset('assets/images/b2b-handshake.jpg')}}" class="card-img-top img-thumbnail"
+            <div class="col-12">
+                <img style="height: 450px; object-fit: cover; width: 100%;"
+                     src="{{asset('assets/images/b2b-handshake.jpg')}}"
+                     class="card-img-top img-thumbnail"
                      alt="Business Image">
 
-            </div>
-            <div class="col-md-6">
-                <div class="right-content">
-                    <div class="orange-top"></div>
-                    <div class="orange-right"></div>
-                    <div class="navy-bottom"></div>
-                    <div class="content-wrapper">
+                <!-- Enhanced Overlay -->
+                <div class="overlay overlay-lighter d-flex align-items-center justify-content-center">
+                    <div class="overlay-content-wrapper text-center p-4">
                         <!-- B2B Platform Logo -->
-                        <div class="b2b-logo">
-                            <div class="b2b-text">
-                                <span class="b-letter">B</span>
-                                <span class="number-2">2</span>
-                                <span class="b-letter">B</span>
+                        <div class="b2b-logo mb-3">
+                            <div class="b2b-text display-3 font-weight-bold">
+                                <span class="b-letter" style="color: cyan;">B</span>
+                                <span class="number-2 text-white">2</span>
+                                <span class="b-letter" style="color: cyan;">B</span>
                             </div>
-                            <div class="platform-text">PLATFORM</div>
+                            <div class="platform-text h4 text-uppercase text-white">PLATFORM</div>
                         </div>
 
                         <!-- Bengali text -->
-                        <div class="bengali-text">
+                        <div class="bengali-text h5 mt-3 text-white">
                             আমাদের সাথে যোগাযোগ করুন
                         </div>
+
+                        <!-- Optional CTA Button -->
+                        <a href="#" class="btn btn-primary mt-4 px-4 py-2">
+                            Contact Us
+                        </a>
                     </div>
                 </div>
             </div>

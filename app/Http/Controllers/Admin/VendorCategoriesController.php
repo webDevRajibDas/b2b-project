@@ -29,7 +29,7 @@ class VendorCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-// Validate input
+
         $validated = $request->validate([
             'title' => 'required|string|max:191|unique:vendor_categories,title',
             'slug' => 'nullable|string|max:191|unique:vendor_categories,slug',
@@ -44,7 +44,7 @@ class VendorCategoriesController extends Controller
         }
         $filePath = $this->uploadImage($request->file('image'), 'category');
 
-        $vendorCategory = VendorCategorie::create([
+       VendorCategorie::create([
             'title' => $validated['title'],
             'slug' => $slug,
             'image' => $filePath,
@@ -66,13 +66,63 @@ class VendorCategoriesController extends Controller
 
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, VendorCategorie $vendorCategory)
     {
+        $validated = $request->validate([
+            'title' => 'required|string',
+            'slug' => 'nullable|string|max:191|unique:vendor_categories,slug,'.$vendorCategory->id,
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'description' => 'nullable|string',
+        ]);
 
+        $slug = $validated['slug'] ?? Str::slug($validated['title']);
+        if ($vendorCategory->title !== $validated['title'] && empty($validated['slug'])) {
+            $count = VendorCategorie::where('slug', 'like', $slug . '%')
+                ->where('id', '!=', $vendorCategory->id)
+                ->count();
+            if ($count > 0) {
+                $slug .= '-' . ($count + 1);
+            }
+        }
+
+        // Handle image upload if new image provided
+
+
+        $filePath = $vendorCategory->image;
+        if ($request->hasFile('image')) {
+            // Delete old image if exists
+            if ($vendorCategory->image) {
+                $this->deleteImage($vendorCategory->image);
+            }
+            $filePath = $this->uploadImage($request->file('image'), 'category');
+        }
+
+        $vendorCategory->update([
+            'title' => $validated['title'],
+            'slug' => $slug,
+            'image' => $filePath,
+            'description' => $validated['description'] ?? null,
+        ]);
+
+        return redirect()->route('admin.vendor-categories.index')
+            ->with('success', 'Category updated successfully!');
     }
 
-    public function destroy($id)
+    public function destroy(VendorCategorie $vendorCategory)
     {
+        try {
+            if ($vendorCategory->image) {
+                $this->deleteImage($vendorCategory->image);
+            }
+            $vendorCategory->delete();
+
+            return redirect()->route('admin.vendor-categories.index')
+                ->with('success', 'Category deleted successfully!');
+
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->with('error', 'Error deleting category: ' . $e->getMessage());
+        }
     }
 
 }

@@ -7,6 +7,7 @@ use App\Models\VendorCategorie;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class SubCategoriesController extends Controller
 {
@@ -21,8 +22,8 @@ class SubCategoriesController extends Controller
 
     public function create()
     {
-        $categories = VendorCategorie::all();
-        return view('admin.vendor-section.sub-categories.create', compact('categories'));
+        $vendorCategories = VendorCategorie::all();
+        return view('admin.vendor-section.sub-categories.create', compact('vendorCategories'));
     }
 
     /**
@@ -56,17 +57,87 @@ class SubCategoriesController extends Controller
         return redirect()->route('admin.sub-categories.index')->with('success', 'Sub Category created successfully!');
     }
 
+
+    public function edit($id)
+    {
+        $subCategory = SubCategorie::with('parentCategory')->findOrFail($id);
+        $vendorCategories = VendorCategorie::all();
+        return view('admin.vendor-section.sub-categories.edit', compact('subCategory','vendorCategories'));
+    }
+
     public function show($id)
     {
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, SubCategorie $subCategory)
     {
+        $validated = $request->validate([
+            'title' => [
+                'required',
+                'string',
+                'max:191',
+                Rule::unique('sub_categories', 'title')->ignore($subCategory->id),
+            ],
+            'parent_id' => [
+                'required',
+                Rule::exists('vendor_categories', 'id')
+            ],
+            'slug' => [
+                'nullable', 'string', 'max:191',
+                Rule::unique('sub_categories')->ignore($subCategory->id)
+            ],
+            'image' => [
+                'sometimes', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'
+            ],
+            'description' => 'required|string',
+        ]);
 
+        // Slug generation logic
+        $slug = $validated['slug'] ?? Str::slug($validated['title']);
+        if ($subCategory->title !== $validated['title'] && empty($validated['slug'])) {
+            $slugCount = SubCategorie::where('slug', 'like', $slug . '%')
+                ->where('id', '!=', $subCategory->id)
+                ->count();
+            $slug = $slugCount > 0 ? "{$slug}-" . ($slugCount + 1) : $slug;
+        }
+
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            if ($subCategory->image) {
+                $this->deleteImage($subCategory->image);
+            }
+            $filePath = $this->uploadImage($request->file('image'), 'sub_category');
+        } else {
+            $filePath = $subCategory->image;
+        }
+
+        $subCategory->title = $validated['title'];
+        $subCategory->slug = $slug;
+        $subCategory->parent_id = $validated['parent_id'];
+        $subCategory->image = $filePath;
+        $subCategory->description = $validated['description'] ?? null;
+        $subCategory->save();
+
+        return redirect()->route('admin.sub-categories.index')
+            ->with('success', 'Sub Category updated successfully!');
     }
 
-    public function destroy($id)
+
+    public function destroy(SubCategorie $subCategory)
     {
+        try {
+            if ($subCategory->image) {
+                $this->deleteImage($subCategory->image);
+            }
+            $subCategory->delete();
+
+            return redirect()->route('admin.sub-categories.index')
+                ->with('success', 'Data deleted successfully!');
+
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->with('error', 'Error deleting category: ' . $e->getMessage());
+        }
     }
 
 }

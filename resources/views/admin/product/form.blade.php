@@ -1,9 +1,6 @@
 
-<form class="ecommerce-form action-buttons-fixed" action="{{ route("admin.products.store") }}" method="POST" enctype="multipart/form-data">
+<form class="ecommerce-form action-buttons-fixed" action="#" method="POST" enctype="multipart/form-data">
     @csrf
-    @if (isset($product))
-        @method('PUT')
-    @endif
 
     <div class="row mt-2">
         <div class="col">
@@ -17,22 +14,22 @@
                         </div>
                         <div class="col-lg-3-5 col-xl-4-5">
                             <div class="form-group row align-items-center pb-3">
-                                <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Name</label>
-                                <div class="col-lg-7 col-xl-6">
+                                <label class="col-lg-4 col-xl-4 control-label text-lg-end mb-0">Name</label>
+                                <div class="col-lg-8 col-xl-8">
                                     <input type="text" class="form-control form-control-modern" name="name" value="" required />
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-lg-5 col-xl-3 control-label text-lg-end pt-2 mt-1 mb-0">Short Description</label>
-                                <div class="col-lg-7 col-xl-6">
+                                <label class="col-lg-5 col-xl-4 control-label text-lg-end pt-2 mt-1 mb-0">Short Description</label>
+                                <div class="col-lg-7 col-xl-8">
                                     <textarea class="form-control form-control-modern" name="description" rows="3"></textarea>
                                 </div>
                             </div>
 
 
                             <div class="form-group row pb-3">
-                                <label class="col-lg-3 control-label text-lg-end pt-2">Product Details Content </label>
-                                <div class="col-lg-9">
+                                <label class="col-lg-4 control-label text-lg-end pt-2">Product Details Content </label>
+                                <div class="col-lg-8">
                                     <textarea class="summernote" name="content" data-plugin-summernote data-plugin-options='{ "height": 180 }'><p></p></textarea>
                                 </div>
                             </div>
@@ -164,8 +161,8 @@
 
                                 <div class="tab-pane fade" id="metatab" role="tabpanel" aria-labelledby="meta-tab">
                                     <div class="form-group row align-items-center pb-3">
-                                        <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Meta Title</label>
-                                        <div class="col-lg-7 col-xl-6">
+                                        <label class="col-lg-5 col-xl-4 control-label text-lg-end mb-0">Meta Title</label>
+                                        <div class="col-lg-8 col-xl-6">
                                             <input type="text" class="form-control form-control-modern" name="meta_title" value="" required />
                                         </div>
                                     </div>

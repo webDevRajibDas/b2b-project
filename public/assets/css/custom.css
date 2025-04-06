@@ -520,115 +520,40 @@ label {
 
 /******** Footer banner  **********/
 /* Custom styles */
-.banner-container {
-    margin: 0 auto;
-    position: relative;
-}
 
-.banner-image {
-    height: 400px;
-    width: 100%;
-    object-fit: cover;
-}
 
-.right-content {
-    height: 100%;
-    background-color: white;
-    position: relative;
-}
+     /* Custom CSS */
+ .banner-container {
+     overflow: hidden;
+ }
 
-.orange-top {
+.overlay {
     position: absolute;
     top: 0;
     left: 0;
-    width: 33%;
-    height: 80px;
-    background-color: #F9A826;
-    z-index: 1;
-}
-
-.orange-right {
-    position: absolute;
-    top: 0;
     right: 0;
-    width: 100%;
-    height: 80px;
-    background-color: #F9A826;
-    z-index: 1;
-}
-
-.navy-bottom {
-    position: absolute;
     bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 60px;
-    background-color: #1A2B47;
-    z-index: 1;
+    background: rgba(255, 255, 255, 0.7); /* Lighter overlay */
 }
 
-.content-wrapper {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-}
-
-.b2b-logo {
-    margin-bottom: 2rem;
-    text-align: center;
+.overlay-lighter {
+    background: rgb(71 71 71 / 42%);
 }
 
 .b2b-text {
-    display: inline-block;
+    letter-spacing: 5px;
 }
 
-.b-letter {
-    font-size: 4.5rem;
-    font-weight: bold;
-    color: #1A4A5E;
-}
+.b-letter, .number-2 {
 
-.number-2 {
-    font-size: 4.5rem;
-    font-weight: bold;
-    color: #2A8CB8;
 }
 
 .platform-text {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #E01E2B;
-    letter-spacing: 2px;
+    letter-spacing: 8px;
+    margin-top: -10px;
 }
 
-.bengali-text {
-    font-size: 1.8rem;
-    color: #1A2B47;
-    margin-top: 1rem;
-}
-
-@media (max-width: 767.98px) {
-    .orange-top, .orange-right, .navy-bottom {
-        width: 100%;
-    }
-
-    .b-letter, .number-2 {
-        font-size: 3.5rem;
-    }
-
-    .platform-text {
-        font-size: 1.2rem;
-    }
-
-    .bengali-text {
-        font-size: 1.5rem;
-    }
-}
-
+/* For Bengali text */
 
 
 
