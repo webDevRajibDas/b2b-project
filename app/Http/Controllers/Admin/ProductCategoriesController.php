@@ -66,6 +66,7 @@ class ProductCategoriesController extends Controller
      */
     public function edit(ProductCategory $productCategory)
     {
+        dd($productCategory);
         return view('admin.product.product-categories.edit', compact('productCategory'));
     }
 

@@ -42,16 +42,19 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'sale_price' => 'nullable|numeric',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'atts' => 'required|string', // Incoming JSON string
         ]);
 
 
-        if ($request->hasFile('image')) {
-            $validatedData['image'] = $this->uploadImage($request->file('image'), 'products');
-        }
 
-        // Decode attributes JSON
-        //$attributes = json_decode($request->input('atts'), true);
-        //Save product to the database
+        $atts = json_decode($validatedData['atts'], true);
+        $validatedAtts = collect($atts)->map(function ($att) {
+            return [
+                'attName' => $att['attName'] ?? '',
+                'attVisible' => filter_var($att['attVisible'], FILTER_VALIDATE_BOOLEAN),
+                'attValue' => $att['attValue'] ?? '',
+            ];
+        })->toArray();
 
         $product = Product::create([
             'name' => $validatedData['name'],
@@ -63,6 +66,7 @@ class ProductController extends Controller
             'price' => $validatedData['price'],
             'sale_price' => $validatedData['sale_price'],
             'image' => $validatedData['image'],
+            'atts' => $validatedAtts,
         ]);
 
         // Handle additional images upload
@@ -83,9 +87,12 @@ class ProductController extends Controller
 
 
 
-    public function edit($id)
+    public function edit(Product $product)
     {
-        dd($id);
+
+        $brands = Brand::where('status', 1) ->orderBy('id', 'desc')->get();
+        $categories =  ProductCategory::where('status', 'active') ->orderBy('id', 'desc')->get();
+        return view('admin.product.edit', compact('product','categories','brands'));
     }
 
 

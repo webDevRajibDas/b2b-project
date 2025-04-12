@@ -6,7 +6,7 @@
     <section class="card">
         <div class="card-header d-flex justify-content-between align-items-center gap-3">
             <h2 class="card-title m-0">Vendors List</h2>
-            <a class="btn btn-primary" href="{{url('admin/vendors/create')}}">Create Vendor</a>
+            <a class="btn btn-primary" href="{{url('admin/vendors/create')}}">Create Vendor / Shops</a>
         </div>
         <div class="card-body">
             <table id="vendorsTable" class="display table table-bordered table-striped mb-0 dataTable no-footer"
@@ -34,7 +34,7 @@
                         <tr>
                             <td>{{ $index + 1 }}</td>
                             <td>
-                                <img src="{{ asset('storage/' . $vendor->file_path) }}" alt="Vendor Image" width="150">
+                                <img src="{{ asset('storage/' . $vendor->file_path) }}" alt="Vendor Image" width="100">
                             </td>
                             <td>{{$vendor->title}}</td>
                             <td>{{$vendor->vendor_id}}</td>
@@ -48,7 +48,8 @@
                             <td>{{$vendor->email }}</td>
                             <td>{{$vendor->status}}</td>
                             <td class="actions">
-                                <a href=""><i class="fas fa-pencil-alt"></i></a>
+                                <a href="{{ route('admin.vendors.edit', $vendor->id) }}"><i
+                                            class="fas fa-pencil-alt"></i></a>
                                 <a href="" class="delete-row"><i class="far fa-trash-alt"></i></a>
                             </td>
                         </tr>

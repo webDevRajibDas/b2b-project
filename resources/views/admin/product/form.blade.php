@@ -84,9 +84,9 @@
                             <div class="nav flex-column tabs" id="tab" role="tablist" aria-orientation="vertical">
                                 <a class="nav-link active" id="linked-products-tab" data-bs-toggle="pill" data-bs-target="#linked-products" role="tab" aria-controls="linked-products" aria-selected="true">Category, Brand</a>
                                 <a class="nav-link" id="price-tab" data-bs-toggle="pill" data-bs-target="#price" role="tab" aria-controls="price" aria-selected="false">Price</a>
+                                <a class="nav-link" id="attributes-tab" data-bs-toggle="pill" data-bs-target="#attributes" role="tab" aria-controls="attributes">Attributes</a>
 {{--                                <a class="nav-link" id="inventory-tab" data-bs-toggle="pill" data-bs-target="#inventory" role="tab" aria-controls="inventory" aria-selected="false">Inventory</a>--}}
 {{--                                <a class="nav-link" id="shipping-tab" data-bs-toggle="pill" data-bs-target="#shipping" role="tab" aria-controls="shipping" aria-selected="false">Shipping</a>--}}
-{{--                                <a class="nav-link" id="attributes-tab" data-bs-toggle="pill" data-bs-target="#attributes" role="tab" aria-controls="attributes">Attributes</a>--}}
 {{--                                <a class="nav-link" id="advanced-tab" data-bs-toggle="pill" data-bs-target="#advanced" role="tab" aria-controls="advanced">Advanced</a>--}}
                                 <a class="nav-link" id="meta-tab" data-bs-toggle="pill" data-bs-target="#metatab" role="tab" aria-controls="metatab">Search engine optimisation (SEO)</a>
                             </div>
@@ -158,12 +158,55 @@
                                     </div>
                                 </div>
 
+                                <div class="tab-pane fade" id="attributes" role="tabpanel" aria-labelledby="attributes-tab">
+                                    <div class="ecommerce-attributes-wrapper">
+                                        <div class="form-group row justify-content-center ecommerce-attribute-row pb-3">
+                                            <div class="col-xl-3">
+                                                <label class="control-label">Name</label>
+                                                <input type="text" class="form-control form-control-modern" name="attName" value="Size" />
+                                                <div class="checkbox mt-3 mb-3 mb-lg-0">
+                                                    <label class="my-2">
+                                                        <input type="checkbox" name="attVisible" value="1" checked>
+                                                        Visible on the product page
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <a href="#" class="ecommerce-attribute-remove text-color-danger float-end">Remove</a>
+                                                <label class="control-label">Value(s)</label>
+                                                <textarea class="form-control form-control-modern" name="attValue" rows="4" placeholder="Enter some text, or some attributes by | separating values">Small|Medium|Big</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row justify-content-center ecommerce-attribute-row">
+                                            <div class="col-xl-3">
+                                                <label class="control-label">Name</label>
+                                                <input type="text" class="form-control form-control-modern" name="attName" value="Color" />
+                                                <div class="checkbox mt-3 mb-3 mb-lg-0">
+                                                    <label class="my-2">
+                                                        <input type="checkbox" name="attVisible" value="1" checked>
+                                                        Visible on the product page
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <a href="#" class="ecommerce-attribute-remove text-color-danger float-end">Remove</a>
+                                                <label class="control-label">Value(s)</label>
+                                                <textarea class="form-control form-control-modern" name="attValue" rows="4" placeholder="Enter some text, or some attributes by | separating values">Blue|Red|Green</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center mt-4">
+                                        <div class="col-xl-9 text-end">
+                                            <a href="#" class="ecommerce-attribute-add-new btn btn-primary btn-px-4 btn-py-2">+ Add New</a>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <div class="tab-pane fade" id="metatab" role="tabpanel" aria-labelledby="meta-tab">
                                     <div class="form-group row align-items-center pb-3">
                                         <label class="col-lg-5 col-xl-4 control-label text-lg-end mb-0">Meta Title</label>
                                         <div class="col-lg-8 col-xl-6">
-                                            <input type="text" class="form-control form-control-modern" name="meta_title" value="" required />
+                                            <input type="text" class="form-control form-control-modern" name="meta_title" value="" />
                                         </div>
                                     </div>
                                     <div class="form-group row align-items-center">

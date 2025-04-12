@@ -56,12 +56,23 @@
                             <tbody>
                             @foreach($categories as $data )
                                 <tr>
-                                    <td width="30"><input type="checkbox" name="checkboxRow1" class="checkbox-style-1 p-relative top-2" value="" /></td>
+                                    <td width="30">
+                                        <input type="checkbox" name="checkboxRow1" class="checkbox-style-1 p-relative top-2" value="" />
+                                    </td>
                                     <td><strong>{{$data->id}}</strong></td>
                                     <td><strong>{{$data->title}}</strong></td>
                                     <td class="actions">
-                                        <a href=""><i class="fas fa-pencil-alt"></i></a>
-                                        <a href="" class="delete-row"><i class="far fa-trash-alt"></i></a>
+                                        <a href="{{ route('admin.product-categories.edit', $data->id) }}"><i class="fas fa-pencil-alt"></i></a>
+                                        <a href="#"
+                                           class="delete-row"
+                                           data-url="{{ route('admin.product-categories.destroy', $data->id) }}"
+                                           title="Delete Category">
+                                            <i class="far fa-trash-alt" style="color: red"></i>
+                                        </a>
+                                        <form id="delete-data" method="POST" style="display:none;">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

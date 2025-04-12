@@ -88,13 +88,8 @@
 
                         </ul>
                     </li>
-                    <li>
-                        <a class="nav-link" href="#">
-                            <i class="bx bx-envelope" aria-hidden="true"></i>
-                            <span>Mailbox</span>
-                        </a>
-                    </li>
-                    <li class="nav-group-label">Frontend</li>
+
+                    <li class="nav-group-label">Home Page</li>
                     <li class="nav-parent">
                         <a class="nav-link" href="#">
                             <i class="bx bx-layout" aria-hidden="true"></i>
@@ -107,59 +102,29 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link" href="layouts-default.html">
-                                    - Default
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="layouts-modern.html">
+                                <a class="nav-link" href="#">
                                     - Modern
                                 </a>
                             </li>
-                            <li class="nav-parent">
-                                <a>
-                                    - Boxed
-                                </a>
-                                <ul class="nav nav-children">
-                                    <li>
-                                        <a class="nav-link" href="layouts-boxed.html">
-                                            - Static Header
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="nav-link" href="layouts-boxed-fixed-header.html">
-                                            - Fixed Header
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a class="nav-link" href="layouts-dark.html">
-                                    - Dark
-                                </a>
-                            </li>
-
-
-
-                            <li>
-                                <a class="nav-link" href="layouts-light-sidebar.html">
-                                    - Light Sidebar
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="layouts-left-sidebar-collapsed.html">
-                                    - Left Sidebar Collapsed
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="layouts-left-sidebar-scroll.html">
-                                    - Left Sidebar Scroll
-                                </a>
-                            </li>
-
                         </ul>
                     </li>
+
+
+                    <li class="nav-group-label">B2B Cards</li>
+                    <li class="nav-parent">
+                        <a class="nav-link" href="#">
+                            <i class="bx bx-layout" aria-hidden="true"></i>
+                            <span>Smart Cards</span>
+                        </a>
+                        <ul class="nav nav-children">
+                            <li>
+                                <a class="nav-link" href="{{url('admin/cards')}}">
+                                    - Cards
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li class="nav-group-label">Content</li>
                     <li class="nav-parent">
                         <a class="nav-link" href="#">
@@ -168,67 +133,16 @@
                         </a>
                         <ul class="nav nav-children">
                             <li>
-                                <a class="nav-link" href="pages-signup.html">
+                                <a class="nav-link" href="#">
                                     - Sign Up
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link" href="pages-signin.html">
+                                <a class="nav-link" href="#">
                                     - Sign In
                                 </a>
                             </li>
-                            <li>
-                                <a class="nav-link" href="pages-recover-password.html">
-                                    - Recover Password
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="pages-lock-screen.html">
-                                    - Locked Screen
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="pages-user-profile.html">
-                                    - User Profile
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="pages-session-timeout.html">
-                                    - Session Timeout
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="pages-calendar.html">
-                                    - Calendar
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="pages-timeline.html">
-                                    - Timeline
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="pages-media-gallery.html">
-                                    - Media Gallery
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="pages-invoice.html">
-                                    - Invoice
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="pages-blank.html">
-                                    - Blank Page
-                                </a>
-                            </li>
 
-
-                            <li>
-                                <a class="nav-link" href="pages-search-results.html">
-                                    - Search Results
-                                </a>
-                            </li>
                         </ul>
                     </li>
 
@@ -262,34 +176,7 @@
                         </a>
                     </li>
                     <li class="nav-group-label">CRUD</li>
-                    <li class="nav-parent">
-                        <a class="nav-link" href="#">
-                            <i class="bx bx-detail" aria-hidden="true"></i>
-                            <span>Forms</span>
-                        </a>
-                        <ul class="nav nav-children">
-                            <li>
-                                <a class="nav-link" href="forms-basic.html">
-                                    - Basic
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="forms-advanced.html">
-                                    - Advanced
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="forms-validation.html">
-                                    - Validation
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="forms-layouts.html">
-                                    - Layouts
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+
                     <li class="nav-parent">
                         <a class="nav-link" href="#">
                             <i class="bx bx-table" aria-hidden="true"></i>
@@ -297,35 +184,11 @@
                         </a>
                         <ul class="nav nav-children">
                             <li>
-                                <a class="nav-link" href="tables-basic.html">
+                                <a class="nav-link" href="#">
                                     - Basic
                                 </a>
                             </li>
-                            <li>
-                                <a class="nav-link" href="tables-advanced.html">
-                                    - Advanced
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="tables-responsive.html">
-                                    - Responsive
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="tables-editable.html">
-                                    - Editable
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="tables-ajax.html">
-                                    - Ajax
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="tables-pricing.html">
-                                    - Pricing
-                                </a>
-                            </li>
+
                         </ul>
                     </li>
                     <li class="nav-group-label">Extra</li>
@@ -334,17 +197,6 @@
                 </ul>
             </nav>
             <hr class="separator"/>
-            <div class="sidebar-widget widget-tasks">
-                <div class="widget-header">
-                    <h6>Projects</h6>
-                </div>
-                <div class="widget-content">
-                    <ul class="list-unstyled m-0">
-                        <li><a href="#">HTML5 Template</a></li>
-                        <li><a href="#">Tucson Template</a></li>
-                    </ul>
-                </div>
-            </div>
         </div>
         <script>
             // Maintain Scroll Position

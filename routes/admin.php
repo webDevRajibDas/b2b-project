@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\CardController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MasterSettingController;
 use App\Http\Controllers\Admin\ProductCategoriesController;
@@ -19,7 +20,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'isAdmin'])->group(f
 
     Route::get('/get-subcategories', [VendorsController::class, 'getSubcategories'])->name('get.subcategories');
     Route::resource('vendors', VendorsController::class);
-
     Route::resource('vendor-categories', VendorCategoriesController::class);
     Route::resource('sub-categories', SubCategoriesController::class);
 
@@ -31,6 +31,16 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'isAdmin'])->group(f
         Route::post('/store', [ProductController::class, 'store'])->name('store');
         Route::get('/{product}/edit', [ProductController::class, 'edit'])->name('edit');
         Route::put('/{product}', [ProductController::class, 'update'])->name('update');
+
+    });
+
+
+    Route::prefix('cards')->name('cards.')->group(function () {
+        Route::get('/', [CardController::class, 'index'])->name('list');
+        Route::get('/create', [CardController::class, 'create'])->name('create');
+        Route::post('/store', [CardController::class, 'store'])->name('store');
+        Route::get('/{product}/edit', [CardController::class, 'edit'])->name('edit');
+        Route::put('/{product}', [CardController::class, 'update'])->name('update');
 
     });
 

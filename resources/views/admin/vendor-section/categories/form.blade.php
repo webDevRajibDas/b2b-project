@@ -1,4 +1,4 @@
-<h3>{{ isset($category) ? 'Edit Category' : 'Add New Category' }}</h3>
+<h3>{{ isset($category) ? 'Update Category' : 'Add New Category' }}</h3>
 
 <form class="action-buttons-fixed" action="{{ isset($category) ? route('admin.vendor-categories.update', $category->id) : route('admin.vendor-categories.store') }}" method="post" novalidate="novalidate" enctype="multipart/form-data">
     @csrf

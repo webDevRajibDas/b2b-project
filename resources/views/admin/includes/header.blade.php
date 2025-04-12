@@ -186,17 +186,17 @@
         <span class="separator"></span>
         <div id="userbox" class="userbox">
             <a href="#" data-bs-toggle="dropdown">
-                <span class="profile-picture profile-picture-as-text">JD</span>
+                <span class="profile-picture profile-picture-as-text">AD</span>
                 <div class="profile-info profile-info-no-role" data-lock-name="John Doe"
-                     data-lock-email="johndoe@okler.com">
-                    <span class="name">Hi, <strong class="font-weight-semibold">John Doe</strong></span>
+                     data-lock-email="#">
+                    <span class="name">Hi, <strong class="font-weight-semibold">{{auth()->user()->name}}</strong></span>
                 </div>
                 <i class="fas fa-chevron-down text-color-dark"></i>
             </a>
             <div class="dropdown-menu">
                 <ul class="list-unstyled">
                     <li>
-                        <a role="menuitem" tabindex="-1" href="pages-user-profile.html"><i class="bx bx-user"></i>
+                        <a role="menuitem" tabindex="-1" href="#"><i class="bx bx-user"></i>
                             My Profile</a>
                     </li>
                     <li>
@@ -204,7 +204,7 @@
                                     class="bx bx-lock-open-alt"></i> Lock Screen</a>
                     </li>
                     <li>
-                        <a role="menuitem" tabindex="-1" href="pages-signin.html"><i class="bx bx-log-out"></i>
+                        <a role="menuitem" tabindex="-1" href="#"><i class="bx bx-log-out"></i>
                             Logout</a>
                     </li>
                 </ul>

@@ -93,7 +93,7 @@
                                 TAGs:
                                 <strong>
                                     <a href="#" class="product-category"></a>
-                                </strong>,
+                                </strong>
 
                             </li>
                         </ul>

@@ -120,8 +120,16 @@ class HomepageController extends Controller
 
     public function aboutUs()
     {
-
         return view('frontend.about');
+    }
+    public function termsAndConditions()
+    {
+        return view('frontend.terms-condition');
+    }
+
+    public function privacyPolicy()
+    {
+        return view('frontend.privacy_policy');
     }
 
 }

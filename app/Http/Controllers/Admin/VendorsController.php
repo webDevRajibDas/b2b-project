@@ -55,10 +55,8 @@ class VendorsController extends Controller
         ], [
             // Custom messages for each rule
             'title.required' => 'The Vendor Name field is required.',
-            'title.string' => 'The title must be a string.',
 
             'phone.required' => 'The phone number field is required.',
-            'phone.string' => 'The phone number must be a string.',
             'phone.max' => 'The phone number may not be greater than 20 characters.',
 
             'email.required' => 'The email field is required.',
@@ -78,11 +76,7 @@ class VendorsController extends Controller
             'business_registration_number.string' => 'The business registration number must be a string.',
             'business_registration_number.unique' => 'The business registration number has already been taken.',
 
-            'status.string' => 'The status must be a string.',
-
             'join_date.date' => 'The join date must be a valid date.',
-
-            'references.string' => 'The references must be a string.',
 
             'file_path.file' => 'The file must be a valid file.',
             'file_path.mimes' => 'The file must be a PDF, DOC, or DOCX file.',
@@ -116,11 +110,51 @@ class VendorsController extends Controller
 
     }
 
-    public function update(Request $request, $id)
+
+    public function edit(Vendor $vendor)
     {
+        //dd($vendor);
+        $categories = VendorCategorie::all();
+        $sub_cat = SubCategorie::all();
+        return view('admin.vendor-section.vendors.edit', compact('categories','sub_cat','vendor'));
+    }
 
+    public function update(Request $request, Vendor $vendor)
+    {
+        // Validate the request data
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'contact_person' => 'required|string|max:255',
+            'phone' => 'required|string|max:20',
+            'email' => 'required|email|max:255',
+            'website_link' => 'nullable|url|max:255',
+            'page_link' => 'nullable|url|max:255',
+            'address' => 'required|string',
+            'business_type' => 'required|string|max:255',
+            'business_registration_number' => 'required|string|max:255',
+            'payment_terms' => 'nullable|string',
+            'status' => 'nullable|in:active,inactive',
+            'references' => 'nullable|string',
+            'vendor_category_id' => 'required|exists:vendor_categories,id',
+            'sub_categories_id' => 'required|exists:sub_categories,id',
+            'file' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
+        // Handle file upload if present
+        if ($request->hasFile('file')) {
+            if ($vendor->file_path) {
+                $this->deleteImage($vendor->file_path);
+            }
 
+            $filePath = $this->uploadImage($request->file('file_path'), 'vendors');
+            $validatedData['file_path'] = $filePath;
+        }
+
+        $vendor->update($validatedData);
+
+        return redirect()->route('admin.vendors.index')
+            ->with('success', 'Vendor updated successfully');
     }
 
     public function destroy($id)

@@ -9,7 +9,11 @@ use Illuminate\Support\Str;
 class Product extends Model
 {
 
-    protected $fillable = ['name','brand_id', 'description', 'image','content','product_categorie_id', 'brand_id','vendor_id','price', 'sale_price','image',];
+    protected $fillable = ['name','brand_id', 'description', 'image','content','product_categorie_id', 'brand_id','vendor_id','price', 'sale_price','image','atts'];
+
+    protected $casts = [
+        'atts' => 'array',
+    ];
 
     protected static function boot()
     {

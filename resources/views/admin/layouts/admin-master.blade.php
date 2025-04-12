@@ -9,6 +9,7 @@
     <meta name="keywords" content="B2B Market Place"/>
     <meta name="description" content="B2B Market Place Admin">
     <meta name="author" content="https://b2bplatformbd.com">
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/icons/favicon.png') }}">
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">

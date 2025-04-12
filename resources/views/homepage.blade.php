@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('title')
-    Home - {{ app_name() }}
+    Home
 @endsection
 @section('content')
 
@@ -211,63 +211,73 @@
     <div class="products-container appear-animate" data-animation-name="fadeIn" data-animation-delay="200">
         <div class="container-lg container">
             <h2 class="section-title text-center text-uppercase appear-animate mb-4"
-                data-animation-name="fadeInUpShorter" data-animation-delay="200">Popular Products</h2>
+                data-animation-name="fadeInUpShorter" data-animation-delay="200">Our Products (Smart Card)</h2>
 
         </div>
-
 
         <div class="container">
             <div class="row">
-                @foreach($products as $index => $item)
-                    @if($index % 4 == 0 && $index != 0)
-            </div>
-            <div class="row">
-                @endif
-                <div class="col-6 col-md-4 col-xl-3">
-                    <div class="product-default inner-quickview inner-icon">
-                        <figure>
-                            <a href="{{ route('product.show', $item->slug) }}">
-                                <img src="{{asset('storage/'.$item->image) }}" width="217"
-                                     height="217" alt="product">
-                            </a>
-
-                            <div class="btn-icon-group">
-                                <a href="#" title="Add To Cart"
-                                   class="btn-icon btn-add-cart product-type-simple"><i
-                                            class="icon-shopping-cart"></i></a>
+                <div class="product-card">
+                    <div class="badge">Hot</div>
+                    <div class="product-tumb">
+                        <img alt="B2B Smart Card" src="{{asset('assets/ict/images/cards/business-card-front.jpg')}}"/>
+                    </div>
+                    <div class="product-details">
+                        <span class="product-catagory">B2B Smart Unity Card</span>
+                        <h4><a href="">B2B Smart Unity Card</a></h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
+                        <div class="product-bottom-details">
+                            <div class="product-price"><small>300.00</small>300</div>
+                            <div class="product-links">
+                                <a href=""><i class="fa fa-heart"></i></a>
+                                <a href=""><i class="fa fa-shopping-cart"></i></a>
                             </div>
-                            <a href="#" class="btn-quickview"
-                               title="Quick View">Quick
-                                View</a>
-                        </figure>
-                        <div class="product-details">
-                            <div class="category-wrap">
-                                <div class="category-list">
-                                    {{ $item->category?->title ?? '' }}
-                                </div>
-                                <a href="#" title="Add to Wishlist" class="btn-icon-wish"><i
-                                            class="icon-heart"></i></a>
-                            </div>
-                            <h3 class="product-title">
-                                <a href="#">{{$item->name}}</a>
-                            </h3>
-                            <div class="ratings-container">
-                                <div class="product-ratings">
-                                    <span class="ratings" style="width:0%"></span><!-- End .ratings -->
-                                    <span class="tooltiptext tooltip-top"></span>
-                                </div><!-- End .product-ratings -->
-                            </div><!-- End .product-container -->
-                            <div class="price-box">
-                                <span class="old-price">{{$item->price}}</span>
-                                <span class="product-price">{{$item->sale_price}}</span>
-                            </div><!-- End .price-box -->
-                        </div><!-- End .product-details -->
+                        </div>
                     </div>
                 </div>
-                @endforeach
+                <div class="product-card">
+                    <div class="badge">Hot</div>
+                    <div class="product-tumb">
+                        <img alt="B2B Smart Card" src="{{asset('assets/ict/images/cards/business-card-front.jpg')}}"/>
+                    </div>
+                    <div class="product-details">
+                        <span class="product-catagory">Smart NFC CARD</span>
+                        <h4><a href="">B2B Smart Digital QR & NFC Card</a></h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
+                        <div class="product-bottom-details">
+                            <div class="product-price"><small>300.00</small>300</div>
+                            <div class="product-links">
+                                <a href=""><i class="fa fa-heart"></i></a>
+                                <a href=""><i class="fa fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="badge">Hot</div>
+                    <div class="product-tumb">
+                        <img alt="B2B Smart Card" src="{{asset('assets/ict/images/cards/business-card-front.jpg')}}"/>
+                    </div>
+                    <div class="product-details">
+                        <span class="product-catagory">Smart Card</span>
+                        <h4><a href="">B2B Freelancer Card</a></h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
+                        <div class="product-bottom-details">
+                            <div class="product-price"><small>300.00</small>300</div>
+                            <div class="product-links">
+                                <a href=""><i class="fa fa-heart"></i></a>
+                                <a href=""><i class="fa fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+
+
+
 
     <section id="top-rated-shops">
         <div class="container mt-4">
@@ -306,39 +316,41 @@
     </section>
 
     <div class="banner-container position-relative"> <!-- Added position-relative -->
-        <div class="row no-gutters">
-            <div class="col-12">
-                <img style="height: 450px; object-fit: cover; width: 100%;"
-                     src="{{asset('assets/images/b2b-handshake.jpg')}}"
-                     class="card-img-top img-thumbnail"
-                     alt="Business Image">
+       <div class="container-lg container-fluid">
+           <div class="row no-gutters">
+               <div class="col-12">
+                   <img style="height: 450px; object-fit: cover; width: 100%;"
+                        src="{{asset('assets/images/b2b-handshake.jpg')}}"
+                        class="card-img-top img-thumbnail"
+                        alt="Business Image">
 
-                <!-- Enhanced Overlay -->
-                <div class="overlay overlay-lighter d-flex align-items-center justify-content-center">
-                    <div class="overlay-content-wrapper text-center p-4">
-                        <!-- B2B Platform Logo -->
-                        <div class="b2b-logo mb-3">
-                            <div class="b2b-text display-3 font-weight-bold">
-                                <span class="b-letter" style="color: cyan;">B</span>
-                                <span class="number-2 text-white">2</span>
-                                <span class="b-letter" style="color: cyan;">B</span>
-                            </div>
-                            <div class="platform-text h4 text-uppercase text-white">PLATFORM</div>
-                        </div>
+                   <!-- Enhanced Overlay -->
+                   <div class="overlay overlay-lighter d-flex align-items-center justify-content-center">
+                       <div class="overlay-content-wrapper text-center p-4">
+                           <!-- B2B Platform Logo -->
+                           <div class="b2b-logo mb-3">
+                               <div class="b2b-text display-3 font-weight-bold">
+                                   <span class="b-letter" style="color: cyan;">B</span>
+                                   <span class="number-2 text-white">2</span>
+                                   <span class="b-letter" style="color: cyan;">B</span>
+                               </div>
+                               <div class="platform-text h4 text-uppercase text-white">PLATFORM</div>
+                           </div>
 
-                        <!-- Bengali text -->
-                        <div class="bengali-text h5 mt-3 text-white">
-                            আমাদের সাথে যোগাযোগ করুন
-                        </div>
+                           <!-- Bengali text -->
+                           <div class="bengali-text h5 mt-3 text-white">
+                               আমাদের সাথে যোগাযোগ করুন
+                           </div>
 
-                        <!-- Optional CTA Button -->
-                        <a href="#" class="btn btn-primary mt-4 px-4 py-2">
-                            Contact Us
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+                           <!-- Optional CTA Button -->
+                           <a href="#" class="btn btn-primary mt-4 px-4 py-2">
+                               Contact Us
+                           </a>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
     </div>
 
 @endsection
