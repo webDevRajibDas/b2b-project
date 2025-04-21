@@ -1,7 +1,5 @@
-/* Add here all your CSS customizations */
-/* Video container styling */
+
 .video-container {
-    height: 60vh;
     overflow: hidden;
     border-radius: 12px; /* Rounded corners */
     box-shadow: rgb(255 255 255 / 67%) 0px 14px 55px, rgb(255 255 255 / 91%) 0px 10px 10px;
@@ -23,19 +21,214 @@
     border: none; /* Remove default iframe border */
 }
 
-.bgblue {
 
-    background: linear-gradient(135deg, #fffffff5, #3a4b8a, #ffffff98);
-    padding: 8px;
-    border-radius: 1.2rem;
-    box-shadow: 0px 1rem 1.5rem -0.9rem #000000e1;
-}
 
 .promo-card {
     font-size: 1rem;
     color: #ffffff;
-    background: linear-gradient(135deg, #0d1120 0%, #3a4b8a 43%, #0d1120 100%);
-    padding: 4.6rem;
     border-radius: 1.2rem;
-    height: 60vh;
+}
+
+/******************* b2b Smart Card ****************/
+.product-card {
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin: 20px auto;
+    background: #fafafa;
+}
+
+.card-badge {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    background: red;
+    color: #fff;
+    padding: 3px 10px;
+}
+
+.product-tumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 260px;
+    padding: 5px;
+    background: #f0f0f0;
+}
+
+.product-tumb img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.product-details {
+    padding: 30px;
+}
+
+.product-catagory {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ccc;
+    margin-bottom: 18px;
+}
+
+.product-details h4 a {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+    color: #363636;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.product-details h4 a:hover {
+    color: #fbb72c;
+}
+
+.product-details p {
+    font-size: 15px;
+    line-height: 22px;
+    margin-bottom: 18px;
+    color: #000000;
+}
+
+.product-bottom-details {
+    overflow: hidden;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.product-bottom-details div {
+    float: left;
+    width: 50%;
+}
+
+.product-price {
+    font-size: 18px;
+    color: #f53b57;
+    font-weight: 600;
+}
+
+.product-price small {
+    font-size: 80%;
+    font-weight: 400;
+    text-decoration: line-through;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.product-links {
+    text-align: right;
+}
+
+.product-links a {
+    display: inline-block;
+    margin-left: 5px;
+    color: #ffffff;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+.product-links a:hover {
+    color: #fbb72c;
+}
+
+
+
+/* From card buy now button */
+.card-buy-button {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    padding-block: 0.5rem;
+    padding-inline: 1.25rem;
+    background-color: rgb(0 107 179);
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #ffff;
+    gap: 10px;
+    font-weight: bold;
+    border: 3px solid #ffffff4d;
+    outline: none;
+    overflow: hidden;
+    font-size: 15px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    transition: all 0.3s ease-in-out;
+}
+
+.card-buy-button:hover {
+    transform: scale(1.05);
+    border-color: #fff9;
+}
+
+.card-buy-button:hover .icon {
+    transform: translate(4px);
+}
+
+.card-buy-button:hover::before {
+    animation: shine 1.5s ease-out infinite;
+}
+
+.card-buy-button::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    background-image: linear-gradient(
+            120deg,
+            rgba(255, 255, 255, 0) 30%,
+            rgba(255, 255, 255, 0.8),
+            rgba(255, 255, 255, 0) 70%
+    );
+    top: 0;
+    left: -100px;
+    opacity: 0.6;
+}
+
+@keyframes shine {
+    0% {
+        left: -100px;
+    }
+
+    60% {
+        left: 100%;
+    }
+
+    to {
+        left: 100%;
+    }
+}
+
+
+.messenger-button {
+    background-color: #0084FF;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.messenger-button:hover {
+    background-color: #0069D9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.messenger-button img {
+    margin-right: 10px;
 }

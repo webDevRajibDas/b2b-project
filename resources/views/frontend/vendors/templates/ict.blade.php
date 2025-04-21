@@ -2,24 +2,15 @@
 @section('title', 'B2B ICT Products')
 @section('content')
 
-    <div class="slider-container rev_slider_wrapper" style="height: 100vh;">
-        <div id="revolutionSlider" class="slider rev_slider" data-version="5.4.8" data-plugin-revolution-slider
-             data-plugin-options="{'sliderLayout': 'fullscreen', 'delay': 9000, 'gridwidth': 1170, 'gridheight': 600, 'disableProgressBar': 'on', 'responsiveLevels': [4096,1200,992,500], 'parallax': { 'type': 'scroll', 'origo': 'enterpoint', 'speed': 1000, 'levels': [2,3,4,5,6,7,8,9,12,50], 'disable_onmobile': 'on' }}">
+    <div class="slider-container rev_slider_wrapper" style="height: 570px;">
+        <div id="revolutionSlider" class="slider rev_slider" data-version="5.4.8" data-plugin-revolution-slider data-plugin-options="{'delay': 9000, 'gridwidth': 1170, 'gridheight': 670, 'disableProgressBar': 'on', 'responsiveLevels': [4096,1200,992,500], 'parallax': { 'type': 'scroll', 'origo': 'enterpoint', 'speed': 1000, 'levels': [2,3,4,5,6,7,8,9,12,50], 'disable_onmobile': 'on' }, 'navigation' : {'arrows': { 'enable': false }, 'bullets': {'enable': true, 'style': 'bullets-style-1', 'h_align': 'center', 'v_align': 'bottom', 'space': 7, 'v_offset': 70, 'h_offset': 0}}}">
             <ul>
-                <li class="slide-overlay" data-transition="fade">
-
-                    <img src="{{asset('assets/images/blank.gif')}}"
-                         alt=""
-                         data-bgposition="center center"
-                         data-bgfit="cover"
-                         data-bgrepeat="no-repeat"
-                         class="rev-slidebg">
-
+                <li class="slide-overlay slide-overlay-primary" data-transition="fade">
                     <div class="rs-background-video-layer"
                          data-forcerewind="on"
                          data-volume="mute"
                          data-videowidth="100%"
-                         data-videoheight="100%"
+                         data-videoheight="70%"
                          data-videomp4="{{asset('assets/ict/smart-card.mp4')}}"
                          data-videopreload="preload"
                          data-videoloop="loop"
@@ -30,14 +21,6 @@
                          data-nextslideatend="false">
                     </div>
 
-                    <h1 class="tp-caption font-weight-extra-bold text-color-light negative-ls-2"
-                        data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"sX:1.5;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
-                        data-x="center"
-                        data-y="center" data-voffset="['-60','-60','-60','-85']"
-                        data-fontsize="['50','50','50','90']"
-                        data-lineheight="['55','55','55','95']"></h1>
-
-
                 </li>
 
             </ul>
@@ -47,45 +30,87 @@
 
 
     <!-- Full Width Section -->
-    <section class="full-width-section" style="margin: 50px 0px">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-6 col-sm-12">
-                    <div class="video-container">
-                        <iframe width="560" height="315"
-                                src="https://www.youtube-nocookie.com/embed/GhKoIL_44nI?si=tzE6Diwge9zojC0X"
-                                title="B2B Smart Card" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12 text-center-vertical">
-                    <div class="bgblue">
-                        <div class="promo-card">
-                            <h4 class="text-white font-weight-bold text-4">B2B Smart Uddokta Card হলো অনুমোদিত B2B
-                                এজেন্টদের পরিচয়পত্র, যা কমিশন সুবিধা ও স্বীকৃতি নিশ্চিত করে। এটি ফিজিক্যাল বা ডিজিটাল
-                                হতে পারে । প্রয়োজনীয়তা:</h4>
-                            <ul class="list list-icons list-icons-style-3 list-primary">
-                                <li><i class="fas fa-check"></i> ফ্রি অনলাইন ও অফলাইন ট্রেনিং – দক্ষতা বৃদ্ধির জন্য
-                                    বিনামূল্যে প্রশিক্ষণ।
-                                </li>
-                                <li><i class="fas fa-check"></i> পার্ট টাইম ও ফুল টাইম কাজের সুযোগ – আকর্ষণীয় বেতন,
-                                    কমিশন ও ইনসেনটিভ
-                                </li>
-                                <li><i class="fas fa-check"></i> ২৪/৭ গাইডলাইন ও সাপোর্ট – ব্যবসায়িক সহায়তা সার্বক্ষণিক।
-                                </li>
-                                <li><i class="fas fa-check"></i> ফ্রিল্যান্সিং ক্যারিয়ারের সুযোগ – স্বাধীনভাবে উপার্জন ও
-                                    ক্যারিয়ার গড়ার সুযোগ।
-                                </li>
-                            </ul>
-
-                        </div>
-                    </div>
-
+    <section class="section section-default border-0"
+             style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 match-height p-0 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="400">
+                <div class="video-container">
+                    <iframe width="560" height="315"
+                            src="https://www.youtube-nocookie.com/embed/GhKoIL_44nI?si=tzE6Diwge9zojC0X"
+                            title="B2B Smart Card" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
+            <div class="col-lg-6 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="400">
+                <section class="card">
+                    <div class="card-header text-6">B2B Smart Card</div>
+                    <div class="card-body">
+                        <h4 class="text-dark font-weight-bold text-4">B2B Smart Uddokta Card হলো অনুমোদিত B2B
+                            এজেন্টদের পরিচয়পত্র, যা কমিশন সুবিধা ও স্বীকৃতি নিশ্চিত করে। এটি ফিজিক্যাল বা ডিজিটাল
+                            হতে পারে । প্রয়োজনীয়তা:</h4>
+                        <ul class="list list-icons list-icons-style-3 list-primary">
+                            <li><i class="fas fa-check"></i> ফ্রি অনলাইন ও অফলাইন ট্রেনিং – দক্ষতা বৃদ্ধির জন্য
+                                বিনামূল্যে প্রশিক্ষণ।
+                            </li>
+                            <li><i class="fas fa-check"></i> পার্ট টাইম ও ফুল টাইম কাজের সুযোগ – আকর্ষণীয় বেতন,
+                                কমিশন ও ইনসেনটিভ
+                            </li>
+                            <li><i class="fas fa-check"></i> ২৪/৭ গাইডলাইন ও সাপোর্ট – ব্যবসায়িক সহায়তা সার্বক্ষণিক।
+                            </li>
+                            <li><i class="fas fa-check"></i> ফ্রিল্যান্সিং ক্যারিয়ারের সুযোগ – স্বাধীনভাবে উপার্জন ও
+                                ক্যারিয়ার গড়ার সুযোগ।
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
         </div>
+    </div>
     </section>
+
+
+    <div class="products-container appear-animate" data-animation-name="fadeIn" data-animation-delay="200">
+        <div class="container-lg container">
+            <h2 class="section-title text-center text-uppercase appear-animate mb-4"
+                data-animation-name="fadeInUpShorter" data-animation-delay="200">Our Products (Smart Card)</h2>
+
+        </div>
+
+        <div class="container">
+            <div class="row">
+                @forelse($cards as $data)
+                    <div class="col-md-4">
+                        <a href="{{ route('card.show', $data->slug) }}">
+                            <div class="product-card">
+                                <div class="card-badge">Hot</div>
+                                <div class="product-tumb">
+                                    <img src="{{ asset('storage/' . $data->image) }}" alt="B2B Smart Card">
+                                </div>
+                                <div class="product-details">
+                                    <span class="product-catagory">B2B Smart Card</span>
+                                    <h5><a href="{{ route('card.show', $data->slug) }}">{{$data->title}}</a></h5>
+                                    <div class="product-bottom-details">
+                                        <div class="product-price">Price : <small>{{$data->price}}</small>{{$data->sale_price}}</div>
+                                        <div class="product-links">
+                                            <a href="{{ route('card.show', $data->slug) }}" class="btn card-buy-button">Buy Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                @empty
+                    <div class="text-center w-100">
+                        <p class="text-muted">No Data Available !!</p>
+                    </div>
+                @endforelse
+
+            </div>
+        </div>
+    </div>
+
 
 
     <section class="section section-default border-0"
@@ -143,83 +168,6 @@
     </section>
 
 
-        <section class="section border-0 py-0 m-0 appear-animation glass-effect" data-appear-animation="fadeIn" style="height: auto; padding: 80px 0 !important;">
-            <div class="container">
-                <div class="row align-items-center justify-content-center justify-content-lg-between pb-5 pb-lg-0">
-                    <h2 class="font-weight-bold  text-7 mb-2 mt-4">Our Smart Cards</h2>
-                </div>
-                <div class="row mb-5 pb-3">
-                    <div class="col-md-6 col-lg-6 mb-2 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
-                        <div class="card flip-card text-center rounded-0">
-                            <div class="flip-front p-2">
-                                <img width="450" src="{{asset('assets/ict/images/cards/business-card-front.jpg')}}" alt="">
-                            </div>
-                            <div class="flip-back d-flex align-items-center p-1">
-                                <div class="flip-content my-2">
-                                    <img width="450" src="{{asset('assets/ict/images/cards/business-card-back.jpg')}}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 mb-2 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
-                        <div class="card flip-card text-center rounded-0">
-                            <div class="flip-front p-2">
-                                <img width="450" src="{{asset('assets/ict/images/cards/freelancer-card-front.jpg')}}" alt="">
-                            </div>
-                            <div class="flip-back d-flex align-items-center p-1">
-                                <div class="flip-content my-2">
-                                    <img width="450" src="{{asset('assets/ict/images/cards/freelancer-card-back.jpg')}}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="row mb-5 pb-3">
-                    <div class="col-md-6 col-lg-6 mb-2 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
-                        <div class="card flip-card text-center rounded-0">
-                            <div class="flip-front p-2">
-                                <img width="450" src="{{asset('assets/ict/images/cards/smart-agent-card-front.jpg')}}" alt="">
-                            </div>
-                            <div class="flip-back d-flex align-items-center p-1">
-                                <div class="flip-content my-2">
-                                    <img width="450" src="{{asset('assets/ict/images/cards/smart-agent-card-back.jpg')}}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 mb-2 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
-                        <div class="card flip-card text-center rounded-0">
-                            <div class="flip-front p-2">
-                                <img width="450" src="{{asset('assets/ict/images/cards/unity-card-front.jpg')}}" alt="">
-                            </div>
-                            <div class="flip-back d-flex align-items-center p-1">
-                                <div class="flip-content my-2">
-                                    <img width="450" src="{{asset('assets/ict/images/cards/unity-card-back.jpg')}}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mb-5 pb-3">
-                    <div class="col-md-6 col-lg-6 mb-2 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
-                        <div class="card flip-card text-center rounded-0">
-                            <div class="flip-front p-2">
-                                <img width="450" src="{{asset('assets/ict/images/cards/smart-edu-card-front.jpg')}}" alt="">
-                            </div>
-                            <div class="flip-back d-flex align-items-center p-1">
-                                <div class="flip-content my-2">
-                                    <img width="450" src="{{asset('assets/ict/images/cards/smart-edu-card-back.jpg')}}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
 
     <div class="container">
         <div class="row py-5 my-5">
@@ -264,7 +212,6 @@
 
     <style>
         .glass-effect {
-
             -webkit-backdrop-filter: blur(12px);
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);

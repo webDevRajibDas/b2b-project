@@ -56,6 +56,11 @@ class ProductController extends Controller
             ];
         })->toArray();
 
+
+        if ($request->hasFile('image')) {
+            $singleImage = $this->uploadImage($validatedData['image'], 'products');
+        }
+
         $product = Product::create([
             'name' => $validatedData['name'],
             'description' => $validatedData['description'],
@@ -65,7 +70,7 @@ class ProductController extends Controller
             'vendor_id' => $validatedData['vendor_id'],
             'price' => $validatedData['price'],
             'sale_price' => $validatedData['sale_price'],
-            'image' => $validatedData['image'],
+            'image' => $singleImage,
             'atts' => $validatedAtts,
         ]);
 

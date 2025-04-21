@@ -1,6 +1,10 @@
+<h3>{{ isset($cardData) ? 'Update Info' : 'Add New' }}</h3>
 
-<form class="smart-card-form action-buttons-fixed" action="#" method="POST" enctype="multipart/form-data">
+<form class="action-buttons-fixed" action="{{ isset($cardData) ? route('admin.cards.update', $cardData->id) : route('admin.cards.store') }}" method="post" novalidate="novalidate" enctype="multipart/form-data">
     @csrf
+    @if (isset($cardData))
+        @method('PUT')
+    @endif
     <div class="row mt-2">
         <div class="col">
             <section class="card card-modern card-big-info">
@@ -16,38 +20,42 @@
                             <div class="form-group row align-items-center pb-3">
                                 <label class="col-lg-4 col-xl-4 control-label text-lg-end mb-0">Title</label>
                                 <div class="col-lg-8 col-xl-8">
-                                    <input type="text" class="form-control form-control-modern" name="name" value="" required />
+                                    <input type="text" class="form-control form-control-modern" name="title" value="{{ isset($card) ? $card->title : old('title') }}" required />
+                                    @error('title')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group row align-items-center pb-3">
                                 <label class="col-lg-4 col-xl-4 control-label text-lg-end mb-0">Regular Price</label>
                                 <div class="col-lg-8 col-xl-8">
-                                    <input type="text" class="form-control form-control-modern" name="price" value="" required />
+                                    <input type="text" class="form-control form-control-modern" name="price" value="{{ isset($card) ? $card->price : old('price') }}" required />
                                 </div>
                             </div>
 
                             <div class="form-group row align-items-center pb-3">
                                 <label class="col-lg-4 col-xl-4 control-label text-lg-end mb-0">Sale Price</label>
                                 <div class="col-lg-8 col-xl-8">
-                                    <input type="text" class="form-control form-control-modern" name="sale_price" value="" required />
+                                    <input type="text" class="form-control form-control-modern" name="sale_price" value="{{ isset($card) ? $card->sale_price : old('sale_price') }}" required />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-5 col-xl-4 control-label text-lg-end pt-2 mt-1 mb-0">Short Description</label>
                                 <div class="col-lg-7 col-xl-8">
-                                    <textarea class="form-control form-control-modern" name="description" rows="3"></textarea>
+                                   <textarea class="form-control form-control-modern"
+                                           name="description"
+                                           rows="3"
+                                   >{{ old('description', $card->description ?? '') }}</textarea>
                                 </div>
                             </div>
 
 
                             <div class="form-group row pb-3">
-                                <label class="col-lg-4 control-label text-lg-end pt-2"> Details Description </label>
+                                <label class="col-lg-4 control-label text-lg-end pt-2">Details Description</label>
                                 <div class="col-lg-8">
-                                    <textarea class="summernote" name="content" data-plugin-summernote data-plugin-options='{ "height": 180 }'><p></p></textarea>
+                                <textarea class="summernote" name="content" data-plugin-summernote data-plugin-options='{ "height": 200 }'>{!! old('content', $card->content ?? '') !!}</textarea>
                                 </div>
                             </div>
-
-
 
                         </div>
                     </div>
@@ -63,14 +71,14 @@
                     <div class="row">
                         <div class="col-lg-2-5 col-xl-1-5">
                             <i class="card-big-info-icon bx bx-camera"></i>
-                            <h2 class="card-big-info-title">Product Image</h2>
+                            <h2 class="card-big-info-title">Card Image</h2>
                             <p class="card-big-info-desc">Upload your Product image. You can add multiple images</p>
                         </div>
                         <div class="col-lg-3-5 col-xl-4-5">
                             <div class="form-group row align-items-center">
                                 <div class="col">
                                     <div>
-                                        <label for="formFileLg" class="form-label">Product Main Image</label>
+                                        <label for="formFileLg" class="form-label">Card Main Image</label>
                                         <input class="form-control form-control-lg" id="formFileLg" type="file" name="image">
                                     </div>
                                 </div>
@@ -89,9 +97,9 @@
                                 <div class="col">
                                     <div class="mb-3">
                                         <label for="status" class="form-label">Status</label>
-                                        <select class="form-control mb-3" id="status">
+                                        <select class="form-control mb-3" id="status" name="status">
                                             <option value="active">Active</option>
-                                            <option >InActive</option>
+                                            <option value="inactive">InActive</option>
                                         </select>
                                     </div>
                                 </div>

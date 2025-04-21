@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreCardRequest;
 use App\Http\Requests\UpdateCardRequest;
 use App\Models\Card;
+use App\Models\CardCategory;
+use App\Traits\ImageUploadTrait;
+use Illuminate\Http\Request;
 
 
 class CardController extends Controller
 {
+    use ImageUploadTrait;
     /**
      * Display a listing of the resource.
      */
@@ -30,9 +33,47 @@ class CardController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCardRequest $request)
+    public function store(Request $request)
     {
-        //
+        //dd($request->all());
+
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'content' => 'nullable|string',
+            'price' => 'required|numeric',
+            'sale_price' => 'nullable|numeric',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'status' => 'required',
+        ]);
+
+
+        if ($request->hasFile('image')) {
+            $singleImage = $this->uploadImage($validatedData['image'], 'cards');
+        }
+
+        $product = Card::create([
+            'title' => $validatedData['name'],
+            'description' => $validatedData['description'],
+            'content' => $validatedData['content'],
+            'price' => $validatedData['price'],
+            'sale_price' => $validatedData['sale_price'],
+            'image' => $singleImage,
+            'status' => $validatedData['status'],
+        ]);
+
+        // Handle additional images upload
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $imagePath = $this->uploadImage($image, 'cards');
+                $product->gallery()->create(['image' => $imagePath]);
+            }
+        }
+
+        return to_route('admin.cards.index')->with('success', 'Card Created successfully.');
+
+
+
     }
 
     /**
@@ -48,13 +89,14 @@ class CardController extends Controller
      */
     public function edit(Card $card)
     {
-        //
+        $categories = CardCategory::all();
+        return view('admin.cards.edit', compact('card','categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCardRequest $request, Card $card)
+    public function update(Request $request, Card $card)
     {
         //
     }

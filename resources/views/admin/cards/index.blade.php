@@ -5,6 +5,13 @@
 @section('content')
     <section class="card">
 
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Well done!</strong> {{ session('success') }}.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-hidden="true" aria-label="Close"></button>
+            </div>
+        @endif
+
         <div class="card-header d-flex justify-content-between align-items-center gap-3">
             <h2 class="card-title">Smart Card List</h2>
             <a class="mb-1 mt-1 mr-1 btn btn-primary" href="{{url('admin/cards/create')}}">Create</a>
@@ -18,7 +25,6 @@
                         <th>ID</th>
                         <th>Title</th>
                         <th>Description</th>
-                        <th>Content</th>
                         <th>Image</th>
                         <th>Regular Price</th>
                         <th>Sale Price</th>
@@ -30,13 +36,14 @@
                 @foreach($cards as $cat)
                     <tr>
                         <td>{{$cat->id}}</td>
+                        <td>{{$cat->title}}</td>
                         <td>{{$cat->description}}</td>
-                        <td>{{$cat->content}}</td>
-                        <td>{{$cat->price}}</td>
-                        <td>{{$cat->sale_price}}</td>
                         <td>
                             <img src="{{ asset('storage/' . $cat->image) }}" alt="Card Image" width="100">
                         </td>
+                        <td>{{$cat->price}}</td>
+                        <td>{{$cat->sale_price}}</td>
+
                         <td>{{$cat->status}}</td>
                         <td class="actions">
                             <a href="{{ route('admin.cards.edit', $cat->id) }}"><i class="fas fa-pencil-alt"></i></a>

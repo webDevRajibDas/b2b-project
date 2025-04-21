@@ -25,7 +25,7 @@ Route::get('/about-us', [HomepageController::class, 'aboutUs'])->name('about.us'
 Route::get('/terms-and-conditions', [HomepageController::class, 'termsAndConditions'])->name('terms.conditions');
 Route::get('/privacy-policy', [HomepageController::class, 'privacyPolicy'])->name('privacy_policy');
 
-//Cart
+//CartController function
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('addToCart');
 Route::get('/carts', [CartController::class, 'viewCart'])->name('view.cart');
 Route::get('/checkouts', [CartController::class, 'checkOuts'])->name('checkouts');
@@ -34,10 +34,18 @@ Route::post('/cart/remove', [CartController::class, 'removeCartItem'])->name('ca
 Route::get('/cart/items', [CartController::class, 'getCartItems'])->name('cart.items');
 Route::post('/update-subtotal', [CartController::class, 'updateCartPage'])->name('update.cart');
 
+
+Route::get('/cards/{slug}', [HomepageController::class, 'cardShowDetail'])->name('card.show');
+
+
+Route::get('/members/entry-form', [HomepageController::class, 'eventEntryForm'])->name('event.form');
+Route::post('/members/form/save', [HomepageController::class, 'eventEntryFormPost'])->name('event_entry.form');
+Route::get('/members/entry/list', [HomepageController::class, 'eventEntryList'])->name('event_entry.list');
+
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile')->middleware('auth');
+
 
 Route::get('/clear-cache', function() {
     Artisan::call('config:cache');

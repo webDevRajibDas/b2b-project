@@ -66,7 +66,7 @@
 </div>
 
 <div class="body">
-    @include('frontend.ict.includes.header')
+@include('frontend.ict.includes.header')
     <main role="main" class="main">
         @yield('content')
     </main>
@@ -81,8 +81,6 @@
 <script src="{{asset('assets/vendor/popper/umd/popper.min.js')}}"></script>
 <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('assets/vendor/common/common.min.js')}}"></script>
-<script src="{{asset('assets/vendor/jquery.validation/jquery.validate.min.js')}}"></script>
-<script src="{{asset('assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js')}}"></script>
 <script src="{{asset('assets/vendor/jquery.gmap/jquery.gmap.min.js')}}"></script>
 <script src="{{asset('assets/vendor/jquery.lazyload/jquery.lazyload.min.js')}}"></script>
 <script src="{{asset('assets/vendor/isotope/jquery.isotope.min.js')}}"></script>
@@ -98,13 +96,15 @@
 <script src="{{asset('assets/vendor/rs-plugin/js/jquery.themepunch.tools.min.js')}}"></script>
 <script src="{{asset('assets/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js')}}"></script>
 
+<!-- Current Page Vendor and Views -->
+<script src="{{asset('assets/ict/view.shop.js')}}"></script>
 <!-- Theme Custom -->
 <script src="{{asset('assets/ict/custom.js')}}"></script>
 
 <!-- Theme Initialization Files -->
 <script src="{{asset('assets/ict/theme.init.js')}}"></script>
 
-
+@stack('custom-script')
 
 </body>
 </html>

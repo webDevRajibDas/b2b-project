@@ -217,65 +217,36 @@
 
         <div class="container">
             <div class="row">
-                <div class="product-card">
-                    <div class="badge">Hot</div>
-                    <div class="product-tumb">
-                        <img alt="B2B Smart Card" src="{{asset('assets/ict/images/cards/business-card-front.jpg')}}"/>
-                    </div>
-                    <div class="product-details">
-                        <span class="product-catagory">B2B Smart Unity Card</span>
-                        <h4><a href="">B2B Smart Unity Card</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
-                        <div class="product-bottom-details">
-                            <div class="product-price"><small>300.00</small>300</div>
-                            <div class="product-links">
-                                <a href=""><i class="fa fa-heart"></i></a>
-                                <a href=""><i class="fa fa-shopping-cart"></i></a>
+                @forelse($cards as $data)
+                    <div class="col-md-4">
+                        <a href="{{ route('card.show', $data->slug) }}">
+                            <div class="product-card">
+                                <div class="card-badge">Hot</div>
+                                <div class="product-tumb">
+                                    <img src="{{ asset('storage/' . $data->image) }}" alt="B2B Smart Card">
+                                </div>
+                                <div class="product-details">
+                                    <span class="product-catagory">B2B Smart Card</span>
+                                    <h5><a href="{{ route('card.show', $data->slug) }}">{{$data->title}}</a></h5>
+                                    <div class="product-bottom-details">
+                                        <div class="product-price">Price : <small>{{$data->price}}</small>{{$data->sale_price}}</div>
+                                        <div class="product-links">
+                                            <a href="{{ route('card.show', $data->slug) }}" class="btn card-buy-button">Buy Now</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                </div>
-                <div class="product-card">
-                    <div class="badge">Hot</div>
-                    <div class="product-tumb">
-                        <img alt="B2B Smart Card" src="{{asset('assets/ict/images/cards/business-card-front.jpg')}}"/>
+                @empty
+                    <div class="text-center w-100">
+                        <p class="text-muted">No Data Available !!</p>
                     </div>
-                    <div class="product-details">
-                        <span class="product-catagory">Smart NFC CARD</span>
-                        <h4><a href="">B2B Smart Digital QR & NFC Card</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
-                        <div class="product-bottom-details">
-                            <div class="product-price"><small>300.00</small>300</div>
-                            <div class="product-links">
-                                <a href=""><i class="fa fa-heart"></i></a>
-                                <a href=""><i class="fa fa-shopping-cart"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="badge">Hot</div>
-                    <div class="product-tumb">
-                        <img alt="B2B Smart Card" src="{{asset('assets/ict/images/cards/business-card-front.jpg')}}"/>
-                    </div>
-                    <div class="product-details">
-                        <span class="product-catagory">Smart Card</span>
-                        <h4><a href="">B2B Freelancer Card</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
-                        <div class="product-bottom-details">
-                            <div class="product-price"><small>300.00</small>300</div>
-                            <div class="product-links">
-                                <a href=""><i class="fa fa-heart"></i></a>
-                                <a href=""><i class="fa fa-shopping-cart"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforelse
+
             </div>
         </div>
     </div>
-
-
 
 
 

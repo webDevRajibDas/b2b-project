@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\District;
+use App\Models\Card;
+use App\Models\EventForm;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\SubCategorie;
@@ -11,8 +12,7 @@ use App\Models\Vendor;
 use App\Models\VendorCategorie;
 use App\Models\VendorContact;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
+
 
 class HomepageController extends Controller
 {
@@ -23,10 +23,11 @@ class HomepageController extends Controller
      */
     public function homePage()
     {
-        $products = Product::all();
-        $allCat = VendorCategorie::all();
-        $productCat = ProductCategory::all();
-        return view('homepage',compact('allCat','products','productCat'));
+        $products = Product::latest()->get();
+        $allCat = VendorCategorie::latest()->get();
+        $productCat = ProductCategory::latest()->get();
+        $cards = Card::latest()->get();
+        return view('homepage',compact('allCat','products','productCat','cards'));
     }
 
 
@@ -98,16 +99,22 @@ class HomepageController extends Controller
         $category = VendorCategorie::where('slug',$category)->first();
         $template = 'frontend.vendors.templates.' . ($category->template ?? 'default');
         $products = Product::all();
+        $cards = Card::latest()->get();
         $product_categories = ProductCategory::all();
-        return view($template, compact('category', 'products','product_categories'));
+        return view($template, compact('category', 'products','product_categories','cards'));
     }
 
     public function productShowDetail($slug)
     {
         $productDetail = Product::with(['gallery'])->where('slug', $slug)->first();
-        //dd($productDetail);
         return view('frontend.shopping.single-product', compact('productDetail'));
 
+    }
+
+    public function cardShowDetail($slug)
+    {
+        $cardDetail = Card::with(['gallery'])->where('slug', $slug)->first();
+        return view('frontend.ict.single-product', compact('cardDetail'));
     }
 
 
@@ -131,5 +138,42 @@ class HomepageController extends Controller
     {
         return view('frontend.privacy_policy');
     }
+
+    public function eventEntryForm()
+    {
+        return view('frontend.entry-form');
+    }
+
+
+
+    public function eventEntryFormPost(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'father_name' => 'nullable|string|max:255',
+            'mother_name' => 'nullable|string|max:255',
+            'pass_year' => 'required|digits:4|integer',
+            'mobile' => 'required|string|max:20',
+            'whats_up' => 'nullable|string|max:20',
+            'r_fee' => 'nullable|string|max:100',
+            'r_fee_type' => 'required|string|max:50',
+            'transaction_id' => 'nullable|string|max:100',
+            'address' => 'nullable|string|max:300',
+            'present_address' => 'nullable|string|max:300',
+        ]);
+
+        $student = new EventForm();
+        $student->fill($validatedData);
+        $student->save();
+        return redirect()->back()->with('success', 'Your information save successfully!!! After some time Admin confirm you. thank you .');
+
+    }
+
+    public function eventEntryList()
+    {
+        $members = EventForm::latest()->get();
+        return view('frontend.entry-list', compact('members'));
+    }
+
 
 }

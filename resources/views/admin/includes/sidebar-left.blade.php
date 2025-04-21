@@ -122,6 +122,11 @@
                                     - Cards
                                 </a>
                             </li>
+                            <li>
+                                <a class="nav-link" href="{{url('admin/card-categories')}}">
+                                    - Card Categories
+                                </a>
+                            </li>
                         </ul>
                     </li>
 
