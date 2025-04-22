@@ -2,32 +2,72 @@
 @section('title', 'B2B ICT Products')
 @section('content')
 
-    <div class="slider-container rev_slider_wrapper" style="height: 570px;">
-        <div id="revolutionSlider" class="slider rev_slider" data-version="5.4.8" data-plugin-revolution-slider data-plugin-options="{'delay': 9000, 'gridwidth': 1170, 'gridheight': 670, 'disableProgressBar': 'on', 'responsiveLevels': [4096,1200,992,500], 'parallax': { 'type': 'scroll', 'origo': 'enterpoint', 'speed': 1000, 'levels': [2,3,4,5,6,7,8,9,12,50], 'disable_onmobile': 'on' }, 'navigation' : {'arrows': { 'enable': false }, 'bullets': {'enable': true, 'style': 'bullets-style-1', 'h_align': 'center', 'v_align': 'bottom', 'space': 7, 'v_offset': 70, 'h_offset': 0}}}">
-            <ul>
-                <li class="slide-overlay slide-overlay-primary" data-transition="fade">
-                    <div class="rs-background-video-layer"
-                         data-forcerewind="on"
-                         data-volume="mute"
-                         data-videowidth="100%"
-                         data-videoheight="70%"
-                         data-videomp4="{{asset('assets/ict/smart-card.mp4')}}"
-                         data-videopreload="preload"
-                         data-videoloop="loop"
-                         data-forceCover="1"
-                         data-aspectratio="16:9"
-                         data-autoplay="true"
-                         data-autoplayonlyfirsttime="false"
-                         data-nextslideatend="false">
+    <!-- YouTube Video Section -->
+    <section class="video-section py-5" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 text-center mb-4">
+                    <h2 class="display-8 font-weight-bold text-dark mb-3">B2B Digital Smart Card</h2>
+                    <div class="divider mx-auto" style="width: 60px; height: 3px; background: #0084ff; margin: 15px auto 30px;"></div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <!-- Video Container with Glow Effect -->
+                    <div class="video-container shadow-lg rounded-lg overflow-hidden">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item"
+                                    src="https://www.youtube.com/embed/lEQlcAkOCGU?si=gRVvCYzTlqtfL53r"
+                                    allowfullscreen
+                                    title="Featured Video"></iframe>
+                        </div>
                     </div>
 
-                </li>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            </ul>
+
+
+    <div class="products-container appear-animate" data-animation-name="fadeIn" data-animation-delay="200">
+        <div class="container-lg container">
+            <h2 class="section-title text-center text-uppercase appear-animate mb-4"
+                data-animation-name="fadeInUpShorter" data-animation-delay="200">Our Products (Smart Card)</h2>
+
+        </div>
+
+        <div class="container">
+            <div class="row">
+                @forelse($cards as $data)
+                    <div class="col-md-4">
+                        <a href="{{ route('card.show', $data->slug) }}">
+                            <div class="product-card">
+                                <div class="card-badge">Hot</div>
+                                <div class="product-tumb">
+                                    <img src="{{ asset('storage/' . $data->image) }}" alt="B2B Smart Card">
+                                </div>
+                                <div class="product-details">
+                                    <span class="product-catagory">B2B Smart Card</span>
+                                    <h5><a href="{{ route('card.show', $data->slug) }}">{{$data->title}}</a></h5>
+                                    <div class="product-bottom-details">
+                                        <div class="product-price">Price : <small>{{$data->price}}</small>{{$data->sale_price}}</div>
+                                        <div class="product-links">
+                                            <a href="{{ route('card.show', $data->slug) }}" class="btn card-buy-button">Buy Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                @empty
+                    <div class="text-center w-100">
+                        <p class="text-muted">No Data Available !!</p>
+                    </div>
+                @endforelse
+
+            </div>
         </div>
     </div>
-
-
 
     <!-- Full Width Section -->
     <section class="section section-default border-0"
@@ -71,45 +111,7 @@
     </section>
 
 
-    <div class="products-container appear-animate" data-animation-name="fadeIn" data-animation-delay="200">
-        <div class="container-lg container">
-            <h2 class="section-title text-center text-uppercase appear-animate mb-4"
-                data-animation-name="fadeInUpShorter" data-animation-delay="200">Our Products (Smart Card)</h2>
 
-        </div>
-
-        <div class="container">
-            <div class="row">
-                @forelse($cards as $data)
-                    <div class="col-md-4">
-                        <a href="{{ route('card.show', $data->slug) }}">
-                            <div class="product-card">
-                                <div class="card-badge">Hot</div>
-                                <div class="product-tumb">
-                                    <img src="{{ asset('storage/' . $data->image) }}" alt="B2B Smart Card">
-                                </div>
-                                <div class="product-details">
-                                    <span class="product-catagory">B2B Smart Card</span>
-                                    <h5><a href="{{ route('card.show', $data->slug) }}">{{$data->title}}</a></h5>
-                                    <div class="product-bottom-details">
-                                        <div class="product-price">Price : <small>{{$data->price}}</small>{{$data->sale_price}}</div>
-                                        <div class="product-links">
-                                            <a href="{{ route('card.show', $data->slug) }}" class="btn card-buy-button">Buy Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                @empty
-                    <div class="text-center w-100">
-                        <p class="text-muted">No Data Available !!</p>
-                    </div>
-                @endforelse
-
-            </div>
-        </div>
-    </div>
 
 
 
@@ -169,38 +171,42 @@
 
 
 
-    <div class="container">
-        <div class="row py-5 my-5">
-            <div class="col">
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h4 class="display-8">Our Video Gallery</h4>
+            </div>
+        </div>
 
-                <div class="owl-carousel owl-theme mb-0"
-                     data-plugin-options="{'responsive': {'0': {'items': 1}, '476': {'items': 1}, '768': {'items': 5}, '992': {'items': 7}, '1200': {'items': 7}}, 'autoplay': true, 'autoplayTimeout': 3000, 'dots': false}">
-                    <div>
-                        <img class="img-fluid opacity-2" src="{{asset('img/ict/logos/logo-1.png')}}" alt="">
-                    </div>
-                    <div>
-                        <img class="img-fluid opacity-2" src="{{asset('img/ict/logos/logo-2.png')}}" alt="">
-                    </div>
-                    <div>
-                        <img class="img-fluid opacity-2" src="{{asset('img/ict/logos/logo-3.png')}}" alt="">
-                    </div>
-                    <div>
-                        <img class="img-fluid opacity-2" src="{{asset('img/ict/logos/logo-4.png')}}" alt="">
-                    </div>
-                    <div>
-                        <img class="img-fluid opacity-2" src="{{asset('img/ict/logos/logo-4.png')}}" alt="">
-                    </div>
-                    <div>
-                        <img class="img-fluid opacity-2" src="{{asset('img/ict/logos/logo-6.png')}}" alt="">
-                    </div>
-                    <div>
-                        <img class="img-fluid opacity-2" src="{{asset('img/ict/logos/logo-4.png')}}" alt="">
-                    </div>
-                    <div>
-                        <img class="img-fluid opacity-2" src="{{asset('img/ict/logos/logo-2.png')}}" alt="">
-                    </div>
+        <div class="row">
+            <!-- Video 1 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="embed-responsive embed-responsive-16by9 shadow-sm rounded">
+                    <iframe class="embed-responsive-item"
+                            src="https://www.youtube.com/embed/VIDEO_ID_1"
+                            allowfullscreen></iframe>
                 </div>
+                <h5 class="mt-2">Video Title 1</h5>
+            </div>
 
+            <!-- Video 2 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="embed-responsive embed-responsive-16by9 shadow-sm rounded">
+                    <iframe class="embed-responsive-item"
+                            src="https://www.youtube.com/embed/VIDEO_ID_2"
+                            allowfullscreen></iframe>
+                </div>
+                <h5 class="mt-2">Video Title 2</h5>
+            </div>
+
+            <!-- Video 3 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="embed-responsive embed-responsive-16by9 shadow-sm rounded">
+                    <iframe class="embed-responsive-item"
+                            src="https://www.youtube.com/embed/VIDEO_ID_3"
+                            allowfullscreen></iframe>
+                </div>
+                <h5 class="mt-2">Video Title 3</h5>
             </div>
         </div>
     </div>

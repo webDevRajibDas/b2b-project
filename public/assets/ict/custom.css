@@ -1,25 +1,35 @@
 
-.video-container {
+
+.video-section {
+    position: relative;
     overflow: hidden;
-    border-radius: 12px; /* Rounded corners */
-    box-shadow: rgb(255 255 255 / 67%) 0px 14px 55px, rgb(255 255 255 / 91%) 0px 10px 10px;
-    transition: box-shadow 0.3s ease;
+}
+
+.video-container {
+    position: relative;
+    border: 5px solid white;
+    box-shadow: 0 10px 30px rgba(0, 132, 255, 0.2) !important;
+    transition: all 0.3s ease;
 }
 
 .video-container:hover {
-    box-shadow: 0 14px 28px rgba(255, 255, 255, 0.92),
-    0 10px 10px rgba(255, 255, 255, 0.96);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 132, 255, 0.3) !important;
 }
 
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 12px; /* Match the container's border radius */
-    border: none; /* Remove default iframe border */
+.rounded-lg {
+    border-radius: 12px !important;
 }
+
+@media (max-width: 768px) {
+    .video-section {
+        padding: 2rem 0 !important;
+    }
+    .display-4 {
+        font-size: 2.5rem;
+    }
+}
+
 
 
 
@@ -214,8 +224,8 @@
 .messenger-button {
     background-color: #0084FF;
     color: white;
-    padding: 10px 15px;
-    border-radius: 50px;
+    padding: 16px 40px;
+    border-radius: 15px;
     text-decoration: none;
     font-family: Arial, sans-serif;
     font-weight: bold;
@@ -227,6 +237,7 @@
     background-color: #0069D9;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    text-decoration: none;
 }
 
 .messenger-button img {

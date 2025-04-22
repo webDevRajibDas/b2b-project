@@ -5,7 +5,7 @@
                 <div class="header-column">
                     <div class="header-row">
                         <div class="header-logo">
-                            <a href="#">
+                            <a href="{{URL('/')}}">
                                 <img alt="B2B Smart Card" width="82" height="40" src="{{asset('assets/images/b2b-logo.png')}}">
                             </a>
                         </div>
@@ -18,7 +18,7 @@
                                 <nav class="collapse">
                                     <ul class="nav nav-pills" id="mainNav">
                                         <li class="dropdown">
-                                            <a class="dropdown-item dropdown-toggle active" href="#">
+                                            <a class="dropdown-item dropdown-toggle active" href="{{URL('/')}}">
                                                 Home
                                             </a>
                                         </li>
