@@ -11,11 +11,11 @@
                 <h5 class="text-6 text-transform-none font-weight-semibold text-color-light mb-4">Social Media</h5>
                 <div class="row">
                     <div class="col-6">
-                        <p class="mb-1"><a href="#" class="text-4 link-hover-style-1">Facebook</a></p>
+                        <p class="mb-1"><a href="https://www.facebook.com/infodigitalcard" class="text-4 link-hover-style-1">Facebook</a></p>
+                        <p class="mb-1"><a href="https://www.youtube.com/@InfoCardbd" target="_blank" class="text-4 link-hover-style-1">YouTube</a></p>
                         <p class="mb-1"><a href="#" class="text-4 link-hover-style-1">Linkedin</a></p>
                         <p class="mb-1"><a href="#" class="text-4 link-hover-style-1">Instagram</a></p>
                         <p class="mb-1"><a href="#" class="text-4 link-hover-style-1">Twitter</a></p>
-                        <p class="mb-1"><a href="#" class="text-4 link-hover-style-1">Youtube</a></p>
                         <p class="mb-1"><a href="#" class="text-4 link-hover-style-1">Tiktok</a></p>
                     </div>
 

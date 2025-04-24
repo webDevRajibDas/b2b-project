@@ -3,37 +3,17 @@
 @section('content')
 
     <!-- YouTube Video Section -->
-    <section class="video-section py-5" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
+    <section class="video-section py-5" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe27d 100%);">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 text-center mb-4">
-                    <h2 class="display-8 font-weight-bold text-dark mb-3">B2B Digital Smart Card</h2>
-                    <div class="divider mx-auto" style="width: 60px; height: 3px; background: #0084ff; margin: 15px auto 30px;"></div>
-                </div>
-
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <!-- Video Container with Glow Effect -->
-                    <div class="video-container shadow-lg rounded-lg overflow-hidden">
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item"
-                                    src="https://www.youtube.com/embed/lEQlcAkOCGU?si=gRVvCYzTlqtfL53r"
-                                    allowfullscreen
-                                    title="Featured Video"></iframe>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+            <img src="{{asset('assets/ict/images/digital-card-banner.jpg')}}" alt="B2B digital-card-banner" class="img-thumbnail img-fluid">
         </div>
     </section>
 
 
-
     <div class="products-container appear-animate" data-animation-name="fadeIn" data-animation-delay="200">
         <div class="container-lg container">
-            <h2 class="section-title text-center text-uppercase appear-animate mb-4"
+            <h2 class="section-title text-center text-uppercase appear-animate mb-4 mt-4"
                 data-animation-name="fadeInUpShorter" data-animation-delay="200">Our Products (Smart Card)</h2>
-
         </div>
 
         <div class="container">
@@ -71,38 +51,63 @@
 
     <!-- Full Width Section -->
     <section class="section section-default border-0"
-             style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
-    <div class="container">
+             style="box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6 match-height p-0 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="400">
-                <div class="video-container">
-                    <iframe width="560" height="315"
-                            src="https://www.youtube-nocookie.com/embed/GhKoIL_44nI?si=tzE6Diwge9zojC0X"
-                            title="B2B Smart Card" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="video-container shadow-lg rounded-lg overflow-hidden">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item"
+                                src="https://www.youtube.com/embed/lEQlcAkOCGU?si=gRVvCYzTlqtfL53r"
+                                allowfullscreen
+                                title="Featured Video"></iframe>
+                    </div>
                 </div>
+
             </div>
             <div class="col-lg-6 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="400">
                 <section class="card">
-                    <div class="card-header text-6">B2B Smart Card</div>
                     <div class="card-body">
-                        <h4 class="text-dark font-weight-bold text-4">B2B Smart Uddokta Card হলো অনুমোদিত B2B
-                            এজেন্টদের পরিচয়পত্র, যা কমিশন সুবিধা ও স্বীকৃতি নিশ্চিত করে। এটি ফিজিক্যাল বা ডিজিটাল
-                            হতে পারে । প্রয়োজনীয়তা:</h4>
-                        <ul class="list list-icons list-icons-style-3 list-primary">
-                            <li><i class="fas fa-check"></i> ফ্রি অনলাইন ও অফলাইন ট্রেনিং – দক্ষতা বৃদ্ধির জন্য
-                                বিনামূল্যে প্রশিক্ষণ।
-                            </li>
-                            <li><i class="fas fa-check"></i> পার্ট টাইম ও ফুল টাইম কাজের সুযোগ – আকর্ষণীয় বেতন,
-                                কমিশন ও ইনসেনটিভ
-                            </li>
-                            <li><i class="fas fa-check"></i> ২৪/৭ গাইডলাইন ও সাপোর্ট – ব্যবসায়িক সহায়তা সার্বক্ষণিক।
-                            </li>
-                            <li><i class="fas fa-check"></i> ফ্রিল্যান্সিং ক্যারিয়ারের সুযোগ – স্বাধীনভাবে উপার্জন ও
-                                ক্যারিয়ার গড়ার সুযোগ।
-                            </li>
-                        </ul>
+                        <div class="row">
+                            <div class="col">
+                                <h2 class="font-weight-normal text-7 mb-2">Frequently Asked <strong class="font-weight-extra-bold">Questions</strong></h2>
+                                <hr class="solid my-3">
+                                <div class="toggle toggle-primary" data-plugin-toggle>
+                                    <section class="toggle active">
+                                        <a class="toggle-title">Does the other person need Info Card?</a>
+                                        <div class="toggle-content">
+                                            <p>No! When someone taps your Info Digital Smart Card or scans your QR code your profile will instantly appear on their device via a web browser. No app is needed for them to receive your information.</p>
+                                        </div>
+                                    </section>
+
+                                    <section class="toggle">
+                                        <a class="toggle-title">How does Info work?</a>
+                                        <div class="toggle-content">
+                                            <p>Our product is Digital Smart Business Card, Employee card, Unity Card, Freelancer Card and Smart Student Card. Our cards have a built-in NFC chip. When you purchase a card, you have to create a profile. In your profile you may include name, designation, company name, website, social media links, address, email, phone number, profile picture etc.
+                                                Once the profile is set your card is ready to use. Whenever you want to share your contact information with someone, just tap the card with his/her smartphone and your profile will show up on their screen. The other person does not need any app. They can then save your contact information and also send their contact information in your email.
+                                                You can change your profile information anytime. The tap function only works with NFC enabled smartphones. If a smartphone does not have NFC then QR Code will work the same way.</p>
+                                        </div>
+                                    </section>
+
+                                    <section class="toggle">
+                                        <a class="toggle-title">What phones are compatible? </a>
+                                        <div class="toggle-content">
+                                            <p>Many modern smartphones are equipped with Near Field Communication (NFC) capabilities, including.
+                                                •	Apple iPhone 7 and newer
+                                                •	Samsung Galaxy S7 and newer
+                                                •	Google Pixel 2 and newer
+                                                •	Huawei P30 and newer
+                                                •	LG G6 and newer
+                                                •	Sony Xperia XZ2 and newer
+                                                •	OnePlus 6 and newer
+                                                This list is not exhaustive, and many other phone models may also have NFC capabilities. To be sure, you can check the specifications of your device or consult the manufacturer’s website.</p>
+                                        </div>
+                                    </section>
+
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </section>
             </div>
@@ -111,17 +116,13 @@
     </section>
 
 
-
-
-
-
     <section class="section section-default border-0"
              style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
         <div class="container">
             <div class="row">
                 <div class="col mt-5 mb-2">
 
-                    <h4 class="mb-2 text-10">Ordering Process To Smart Card</h4>
+                    <h4 class="mb-2">Ordering Process To Smart Card</h4>
                     <div class="row process my-5">
                         <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation"
                              data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
@@ -174,7 +175,7 @@
     <div class="container my-5">
         <div class="row">
             <div class="col-12 text-center mb-5">
-                <h4 class="display-8">Our Video Gallery</h4>
+                <h4 class="display-8">Videos Gallery</h4>
             </div>
         </div>
 
@@ -186,7 +187,6 @@
                             src="https://www.youtube.com/embed/VIDEO_ID_1"
                             allowfullscreen></iframe>
                 </div>
-                <h5 class="mt-2">Video Title 1</h5>
             </div>
 
             <!-- Video 2 -->
@@ -196,7 +196,6 @@
                             src="https://www.youtube.com/embed/VIDEO_ID_2"
                             allowfullscreen></iframe>
                 </div>
-                <h5 class="mt-2">Video Title 2</h5>
             </div>
 
             <!-- Video 3 -->
@@ -206,7 +205,6 @@
                             src="https://www.youtube.com/embed/VIDEO_ID_3"
                             allowfullscreen></iframe>
                 </div>
-                <h5 class="mt-2">Video Title 3</h5>
             </div>
         </div>
     </div>

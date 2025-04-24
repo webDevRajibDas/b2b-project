@@ -1,8 +1,16 @@
-<h3>{{ isset($cardData) ? 'Update Info' : 'Add New' }}</h3>
-
-<form class="action-buttons-fixed" action="{{ isset($cardData) ? route('admin.cards.update', $cardData->id) : route('admin.cards.store') }}" method="post" novalidate="novalidate" enctype="multipart/form-data">
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+<h3>{{ isset($card) ? 'Update Info' : 'Add New' }}</h3>
+<form class="action-buttons-fixed" action="{{ isset($card) ? route('admin.cards.update', $card->id) : route('admin.cards.store') }}" method="post" enctype="multipart/form-data">
     @csrf
-    @if (isset($cardData))
+    @if (isset($card))
         @method('PUT')
     @endif
     <div class="row mt-2">
@@ -16,7 +24,6 @@
                             <p class="card-big-info-desc">Add here the product description with all details and necessary information.</p>
                         </div>
                         <div class="col-lg-3-5 col-xl-4-5">
-
                             <div class="form-group row align-items-center pb-3">
                                 <label class="col-lg-4 col-xl-4 control-label text-lg-end mb-0">Title</label>
                                 <div class="col-lg-8 col-xl-8">
@@ -26,6 +33,19 @@
                                     @enderror
                                 </div>
                             </div>
+
+                            <div class="form-group row align-items-center pb-3">
+                                <label class="col-lg-4 col-xl-4 control-label text-lg-end mb-0">Card Category</label>
+                                <div class="col-lg-8 col-xl-8">
+                                    <select name="card_categorie_id" id="category_id" class="form-control">
+                                        <option value="0"> Category</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}" {{ old('card_categorie_id', $card->card_categorie_id ?? null) == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
                             <div class="form-group row align-items-center pb-3">
                                 <label class="col-lg-4 col-xl-4 control-label text-lg-end mb-0">Regular Price</label>
                                 <div class="col-lg-8 col-xl-8">
@@ -120,7 +140,7 @@
             </button>
         </div>
         <div class="col-12 col-md-auto px-md-0 mt-3 mt-md-0">
-            <a href="{{'admin.cards.index'}}" class="cancel-button btn btn-light btn-px-4 py-3 border font-weight-semibold text-color-dark text-3">Cancel</a>
+            <a href="{{route('admin.cards.index')}}" class="cancel-button btn btn-light btn-px-4 py-3 border font-weight-semibold text-color-dark text-3">Cancel</a>
         </div>
     </div>
 </form>

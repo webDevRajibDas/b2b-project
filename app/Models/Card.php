@@ -33,7 +33,7 @@ class Card extends Model
     {
         return $this->hasMany(CardImage::class);
     }
-    public function category()
+    public function cardCategory()
     {
         return $this->belongsTo(CardCategory::class, 'card_categorie_id'); //product_categories
     }

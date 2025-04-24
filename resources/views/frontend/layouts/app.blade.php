@@ -74,6 +74,8 @@
 @include('frontend.includes.sticky-nabbar')
 <a id="scroll-top" href="#top" title="Top" role="button"><i class="icon-angle-up"></i></a>
 
+
+
 <!-- Scripts -->
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
@@ -87,6 +89,8 @@
 <script src="{{ asset('assets/js/custom.js') }}"></script>
 
 @stack('scripts')
+
+
 </body>
 
 </html>

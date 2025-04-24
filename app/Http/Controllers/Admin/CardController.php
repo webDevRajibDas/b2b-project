@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UpdateCardRequest;
 use App\Models\Card;
 use App\Models\CardCategory;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Http\Request;
+
 
 
 class CardController extends Controller
@@ -98,7 +98,52 @@ class CardController extends Controller
      */
     public function update(Request $request, Card $card)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'content' => 'nullable|string',
+            'price' => 'required|numeric',
+            'sale_price' => 'nullable|numeric',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'status' => 'required',
+            'card_categorie_id' => 'required',
+        ]);
+
+
+
+        if ($request->hasFile('image')) {
+            if ($card->image) {
+                $this->deleteImage($card->image);
+            }
+            $filePath = $this->uploadImage($request->file('image'), 'cards');
+        } else {
+            $filePath = $card->image;
+        }
+        \Log::info('Updating card', ['card_categorie_id' => $card->card_categorie_id]);
+        $card->update([
+            'title' => $validatedData['title'],
+            'description' => $validatedData['description'],
+            'content' => $validatedData['content'],
+            'price' => $validatedData['price'],
+            'sale_price' => $validatedData['sale_price'],
+            'image' => $filePath,
+            'status' => $validatedData['status'],
+            'card_categorie_id' => $validatedData['card_categorie_id'],
+        ]);
+
+        if ($request->hasFile('images')) {
+            foreach ($card->gallery as $galleryImage) {
+                $this->deleteImage($galleryImage->image);
+                $galleryImage->delete();
+            }
+            foreach ($request->file('images') as $image) {
+                $imagePath = $this->uploadImage($image, 'cards');
+                $card->gallery()->create(['image' => $imagePath]);
+            }
+        }
+
+
+        return to_route('admin.cards.index')->with('success', 'Card Updated successfully.');
     }
 
     /**

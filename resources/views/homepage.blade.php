@@ -249,7 +249,6 @@
     </div>
 
 
-
     <section id="top-rated-shops">
         <div class="container mt-4">
             <h2 class="section-title text-center text-uppercase appear-animate mb-4"
