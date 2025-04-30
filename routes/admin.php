@@ -1,6 +1,6 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Admin\CardCategoriesController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CardController;
@@ -29,6 +29,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'isAdmin'])->group(f
     });
 
     Route::get('/get-subcategories', [VendorsController::class, 'getSubcategories'])->name('get.subcategories');
+    Route::resource('sub-categories', SubCategoriesController::class);
+
     Route::resources([
         'card-categories' => CardCategoriesController::class,
         'cards' => CardController::class,
@@ -37,9 +39,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'isAdmin'])->group(f
         'brands' => BrandController::class,
         'vendors' => VendorsController::class,
         'vendor-categories' => VendorCategoriesController::class,
+        'videos' => VideoController::class,
     ]);
-
-    Route::resource('sub-categories', SubCategoriesController::class);
 
 });
 

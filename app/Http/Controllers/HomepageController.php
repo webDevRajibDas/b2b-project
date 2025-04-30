@@ -95,13 +95,15 @@ class HomepageController extends Controller
 
     }
 
-    public function show($category, $subCategory){
+    public function show($category){
         $category = VendorCategorie::where('slug',$category)->first();
         $template = 'frontend.vendors.templates.' . ($category->template ?? 'default');
         $products = Product::all();
-        $cards = Card::latest()->get();
+
+        $digital_product = Card::where('type', 'digital_product')->get();
+        $cards = Card::where('type', 'card')->get();
         $product_categories = ProductCategory::all();
-        return view($template, compact('category', 'products','product_categories','cards'));
+        return view($template, compact('category', 'products','product_categories','cards','digital_product'));
     }
 
     public function productShowDetail($slug)

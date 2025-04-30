@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\DataTables\ProductsDataTable;
 use App\Models\Brand;
 use App\Models\ProductCategory;
 use App\Traits\ImageUploadTrait;
@@ -14,10 +15,9 @@ class ProductController extends Controller
 {
     use ImageUploadTrait;
 
-    public function index()
+    public function index(ProductsDataTable $dataTable)
     {
-        $products = Product::all();
-        return view('admin.product.index',compact('products'));
+        return $dataTable->render('admin.product.index');
     }
 
     public function create()

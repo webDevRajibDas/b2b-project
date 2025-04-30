@@ -35,13 +35,24 @@
                             </div>
 
                             <div class="form-group row align-items-center pb-3">
-                                <label class="col-lg-4 col-xl-4 control-label text-lg-end mb-0">Card Category</label>
+                                <label class="col-lg-4 col-xl-4 control-label text-lg-end mb-0">Category</label>
                                 <div class="col-lg-8 col-xl-8">
                                     <select name="card_categorie_id" id="category_id" class="form-control">
                                         <option value="0"> Category</option>
                                         @foreach($categories as $category)
                                             <option value="{{ $category->id }}" {{ old('card_categorie_id', $card->card_categorie_id ?? null) == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                         @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row align-items-center pb-3">
+                                <label class="col-lg-4 col-xl-4 control-label text-lg-end mb-0">Page Type</label>
+                                <div class="col-lg-8 col-xl-8">
+                                    <select name="type" id="type" class="form-control">
+                                        <option value="card">Card</option>
+                                        <option value="digital_product">Digital Product</option>
                                     </select>
                                 </div>
                             </div>
@@ -59,7 +70,7 @@
                                     <input type="text" class="form-control form-control-modern" name="sale_price" value="{{ isset($card) ? $card->sale_price : old('sale_price') }}" required />
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row align-items-center pb-3">
                                 <label class="col-lg-5 col-xl-4 control-label text-lg-end pt-2 mt-1 mb-0">Short Description</label>
                                 <div class="col-lg-7 col-xl-8">
                                    <textarea class="form-control form-control-modern"

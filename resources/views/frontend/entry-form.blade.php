@@ -213,7 +213,7 @@
 
                             <div class="form-group mb-2">
                                 <label style="font-size: 20px"> রেজিষ্ট্রেশন ফি: ৫৩১ টাকা ।  ফি প্রধানের নাম্বার: বিকাশ-০১৭৩৫৯৫২২৩৩, নগদ-০১৭১৮০৩৬৭২২</label>
-                                <input name="r_fee" type="text" class="form-control form-control-lg" value="টাকা : ৫৩১" readonly>
+                                <input name="r_fee" type="text" class="form-control form-control-lg" value="টাকা : ৬০০" readonly>
                             </div>
 
                             <div class="form-group mb-2">

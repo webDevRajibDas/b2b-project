@@ -37,6 +37,7 @@
     <!-- Head Libs -->
     <script src="{{asset('admin/vendor/modernizr/modernizr.js')}}"></script>
     <script src="{{asset('admin/master/style-switcher/style.switcher.localstorage.js')}}"></script>
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
 <section class="body">

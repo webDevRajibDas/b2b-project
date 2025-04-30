@@ -27,7 +27,8 @@ class CardController extends Controller
      */
     public function create()
     {
-        return view('admin.cards.create');
+        $categories = CardCategory::all();
+        return view('admin.cards.create',compact('categories'));
     }
 
     /**
@@ -35,11 +36,11 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
-
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
+            'card_categorie_id' => 'required|integer',
             'description' => 'required|string',
+            'type' => 'required|string',
             'content' => 'nullable|string',
             'price' => 'required|numeric',
             'sale_price' => 'nullable|numeric',
@@ -53,7 +54,9 @@ class CardController extends Controller
         }
 
         $product = Card::create([
-            'title' => $validatedData['name'],
+            'title' => $validatedData['title'],
+            'type' => $validatedData['type'],
+            'card_categorie_id' => $validatedData['card_categorie_id'],
             'description' => $validatedData['description'],
             'content' => $validatedData['content'],
             'price' => $validatedData['price'],
@@ -62,18 +65,13 @@ class CardController extends Controller
             'status' => $validatedData['status'],
         ]);
 
-        // Handle additional images upload
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
                 $imagePath = $this->uploadImage($image, 'cards');
                 $product->gallery()->create(['image' => $imagePath]);
             }
         }
-
-        return to_route('admin.cards.index')->with('success', 'Card Created successfully.');
-
-
-
+        return to_route('admin.cards.index')->with('success', 'Product Created successfully.');
     }
 
     /**

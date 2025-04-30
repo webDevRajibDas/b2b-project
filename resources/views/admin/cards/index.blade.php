@@ -23,6 +23,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Type</th>
                         <th>Title</th>
                         <th>Description</th>
                         <th>Image</th>
@@ -36,6 +37,7 @@
                 @foreach($cards as $cat)
                     <tr>
                         <td>{{$cat->id}}</td>
+                        <td>{{$cat->type}}</td>
                         <td>{{$cat->title}}</td>
                         <td>{{$cat->description}}</td>
                         <td>

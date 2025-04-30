@@ -102,8 +102,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link" href="#">
-                                    - Modern
+                                <a class="nav-link" href="{{url('admin/videos')}}">
+                                    - Videos links
                                 </a>
                             </li>
                         </ul>
@@ -119,12 +119,12 @@
                         <ul class="nav nav-children">
                             <li>
                                 <a class="nav-link" href="{{url('admin/cards')}}">
-                                    - Cards
+                                    - Cards & Digital Products
                                 </a>
                             </li>
                             <li>
                                 <a class="nav-link" href="{{url('admin/card-categories')}}">
-                                    - Card Categories
+                                    - Categories
                                 </a>
                             </li>
                         </ul>

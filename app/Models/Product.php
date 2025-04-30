@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
@@ -9,7 +10,13 @@ use Illuminate\Support\Str;
 class Product extends Model
 {
 
-    protected $fillable = ['name','brand_id', 'description', 'image','content','product_categorie_id', 'brand_id','vendor_id','price', 'sale_price','image','atts'];
+    /** @use HasFactory<\Database\Factories\UserFactory> */
+    use HasFactory;
+
+    protected $fillable = ['name','brand_id', 'description', 'image','content','product_categorie_id',
+        'brand_id','vendor_id','price', 'sale_price','image','atts','video_media','sku',
+        'allow_checkout_when_out_of_stock','with_storehouse_management','is_featured','stock_status','quantity'
+    ];
 
     protected $casts = [
         'atts' => 'array',
