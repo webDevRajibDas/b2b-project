@@ -118,6 +118,12 @@ class HomepageController extends Controller
         $cardDetail = Card::with(['gallery'])->where('slug', $slug)->first();
         return view('frontend.ict.single-product', compact('cardDetail'));
     }
+    public function digitalProductDetail($slug)
+    {
+        $digitalProduct = Card::where('slug', $slug)->first();
+        return view('frontend.ict.digital-product', compact('digitalProduct'));
+    }
+
 
 
 

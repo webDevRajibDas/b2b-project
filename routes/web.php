@@ -38,6 +38,9 @@ Route::post('/update-subtotal', [CartController::class, 'updateCartPage'])->name
 Route::get('/cards/{slug}', [HomepageController::class, 'cardShowDetail'])->name('card.show');
 
 
+Route::get('/digital-product/{slug}', [HomepageController::class, 'digitalProductDetail'])->name('digital-product.show');
+
+
 Route::get('/members/entry-form', [HomepageController::class, 'eventEntryForm'])->name('event.form');
 Route::post('/members/form/save', [HomepageController::class, 'eventEntryFormPost'])->name('event_entry.form');
 Route::get('/members/entry/list', [HomepageController::class, 'eventEntryList'])->name('event_entry.list');
