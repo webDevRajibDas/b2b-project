@@ -13,7 +13,7 @@
     @if (isset($card))
         @method('PUT')
     @endif
-    <div class="row mt-2">
+    <div class="mt-2 row">
         <div class="col">
             <section class="card card-modern card-big-info">
                 <div class="card-body">
@@ -24,8 +24,8 @@
                             <p class="card-big-info-desc">Add here the product description with all details and necessary information.</p>
                         </div>
                         <div class="col-lg-3-5 col-xl-4-5">
-                            <div class="form-group row align-items-center pb-3">
-                                <label class="col-lg-4 col-xl-4 control-label text-lg-end mb-0">Title</label>
+                            <div class="pb-3 form-group row align-items-center">
+                                <label class="mb-0 col-lg-4 col-xl-4 control-label text-lg-end">Title</label>
                                 <div class="col-lg-8 col-xl-8">
                                     <input type="text" class="form-control form-control-modern" name="title" value="{{ isset($card) ? $card->title : old('title') }}" required />
                                     @error('title')
@@ -34,8 +34,8 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row align-items-center pb-3">
-                                <label class="col-lg-4 col-xl-4 control-label text-lg-end mb-0">Category</label>
+                            <div class="pb-3 form-group row align-items-center">
+                                <label class="mb-0 col-lg-4 col-xl-4 control-label text-lg-end">Category</label>
                                 <div class="col-lg-8 col-xl-8">
                                     <select name="card_categorie_id" id="category_id" class="form-control">
                                         <option value="0"> Category</option>
@@ -47,8 +47,8 @@
                             </div>
 
 
-                            <div class="form-group row align-items-center pb-3">
-                                <label class="col-lg-4 col-xl-4 control-label text-lg-end mb-0">Page Type</label>
+                            <div class="pb-3 form-group row align-items-center">
+                                <label class="mb-0 col-lg-4 col-xl-4 control-label text-lg-end">Page Type</label>
                                 <div class="col-lg-8 col-xl-8">
                                     <select name="type" id="type" class="form-control">
                                         <option value="card">Card</option>
@@ -57,21 +57,21 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row align-items-center pb-3">
-                                <label class="col-lg-4 col-xl-4 control-label text-lg-end mb-0">Regular Price</label>
+                            <div class="pb-3 form-group row align-items-center">
+                                <label class="mb-0 col-lg-4 col-xl-4 control-label text-lg-end">Regular Price</label>
                                 <div class="col-lg-8 col-xl-8">
                                     <input type="text" class="form-control form-control-modern" name="price" value="{{ isset($card) ? $card->price : old('price') }}" required />
                                 </div>
                             </div>
 
-                            <div class="form-group row align-items-center pb-3">
-                                <label class="col-lg-4 col-xl-4 control-label text-lg-end mb-0">Sale Price</label>
+                            <div class="pb-3 form-group row align-items-center">
+                                <label class="mb-0 col-lg-4 col-xl-4 control-label text-lg-end">Sale Price</label>
                                 <div class="col-lg-8 col-xl-8">
                                     <input type="text" class="form-control form-control-modern" name="sale_price" value="{{ isset($card) ? $card->sale_price : old('sale_price') }}" required />
                                 </div>
                             </div>
-                            <div class="form-group row align-items-center pb-3">
-                                <label class="col-lg-5 col-xl-4 control-label text-lg-end pt-2 mt-1 mb-0">Short Description</label>
+                            <div class="pb-3 form-group row align-items-center">
+                                <label class="pt-2 mt-1 mb-0 col-lg-5 col-xl-4 control-label text-lg-end">Short Description</label>
                                 <div class="col-lg-7 col-xl-8">
                                    <textarea class="form-control form-control-modern"
                                            name="description"
@@ -81,13 +81,32 @@
                             </div>
 
 
-                            <div class="form-group row pb-3">
-                                <label class="col-lg-4 control-label text-lg-end pt-2">Details Description</label>
+                            <div class="pb-3 form-group row">
+                                <label class="pt-2 col-lg-4 control-label text-lg-end">Details Description</label>
                                 <div class="col-lg-8">
                                 <textarea class="summernote" name="content" data-plugin-summernote data-plugin-options='{ "height": 200 }'>{!! old('content', $card->content ?? '') !!}</textarea>
                                 </div>
                             </div>
 
+                            <div class="ecommerce-attributes-wrapper">
+                                <div class="pb-3 form-group row justify-content-center ecommerce-attribute-row">
+                                    <div class="col-xl-3">
+                                        <label class="control-label">Chosse Option</label>
+                                        <div class="mt-3 mb-3 checkbox mb-lg-0"></div>
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <a href="#" class="ecommerce-attribute-remove text-color-danger float-end">Remove</a>
+                                        <label class="control-label">Value(s)</label>
+                                        <input type="text" class="form-control form-control-modern" name="attName" value="month , year" />
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="mt-4 row justify-content-center">
+                                <div class="col-xl-9 text-end">
+                                    <a href="#" class="ecommerce-attribute-add-new btn btn-primary btn-px-4 btn-py-2">+ Add New</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -115,7 +134,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row align-items-center mt-2 mb-2">
+                            <div class="mt-2 mb-2 form-group row align-items-center">
                                 <div class="col">
                                     <div class="mb-3">
                                         <label for="formFileMultiple" class="form-label">Gallery images</label>
@@ -124,11 +143,11 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row align-items-center mt-2 mb-2">
+                            <div class="mt-2 mb-2 form-group row align-items-center">
                                 <div class="col">
                                     <div class="mb-3">
                                         <label for="status" class="form-label">Status</label>
-                                        <select class="form-control mb-3" id="status" name="status">
+                                        <select class="mb-3 form-control" id="status" name="status">
                                             <option value="active">Active</option>
                                             <option value="inactive">InActive</option>
                                         </select>
@@ -146,12 +165,12 @@
 
     <div class="row action-buttons">
         <div class="col-12 col-md-auto">
-            <button type="submit" class="submit-button btn btn-primary btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1" data-loading-text="Loading...">
+            <button type="submit" class="py-3 submit-button btn btn-primary btn-px-4 d-flex align-items-center font-weight-semibold line-height-1" data-loading-text="Loading...">
                 <i class="bx bx-save text-4 me-2"></i>Save Card
             </button>
         </div>
-        <div class="col-12 col-md-auto px-md-0 mt-3 mt-md-0">
-            <a href="{{route('admin.cards.index')}}" class="cancel-button btn btn-light btn-px-4 py-3 border font-weight-semibold text-color-dark text-3">Cancel</a>
+        <div class="mt-3 col-12 col-md-auto px-md-0 mt-md-0">
+            <a href="{{route('admin.cards.index')}}" class="py-3 border cancel-button btn btn-light btn-px-4 font-weight-semibold text-color-dark text-3">Cancel</a>
         </div>
     </div>
 </form>

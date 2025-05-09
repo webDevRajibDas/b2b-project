@@ -134,14 +134,14 @@
 <body>
 <div class="page-wrapper">
     <main class="main">
-        <section class="entry-form mb-3">
+        <section class="mb-3 entry-form">
             <div class="center-sign" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 20px">
                 <div class="panel card-sign">
-                    <div class="card-title-sign mt-1 text-center p-2">
-                        <h3 class="title text-uppercase font-weight-bold m-0">
+                    <div class="p-2 mt-1 text-center card-title-sign">
+                        <h3 class="m-0 title text-uppercase font-weight-bold">
                             স্মৃতির টানে প্রিয় প্রাঙ্গনে, এসো মিলিত হই প্রানের বন্দনে। ১ম পুনর্মিলনী অনুষ্ঠান ,২০২৫ রতনদি তালতলী মাধ্যমিক বিদ্যালয়, গলাচিপা, পটুয়াখালী। এসএসসি প্রথম ব্যাচ হইতে ২০২৪ ব্যাচ পর্যন্ত।
                         </h3>
-                        <p class="text-uppercase font-weight-bold mt-2 mb-2">
+                        <p class="mt-2 mb-2 text-uppercase font-weight-bold">
                             নিচের তথ্যগুলো সঠিকভাবে পূরণ করুন
                         </p>
                     </div>
@@ -149,7 +149,7 @@
                     <div class="card-body">
                         @if(session('success'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <i class="fas fa-check-circle mr-2"></i> {{ session('success') }}
+                                <i class="mr-2 fas fa-check-circle"></i> {{ session('success') }}
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -168,55 +168,60 @@
                         <form action="{{ route('event_entry.form') }}" method="post" enctype="multipart/form-data" id="entry_form">
                             @csrf
 
-                            <div class="form-group mb-1">
+                            <div class="mb-1 form-group">
                                 <label> সদস্য নাম: *</label>
                                 <input name="name" type="text" class="form-control form-control-sm">
                             </div>
 
-                            <div class="form-group mb-2">
+                            <div class="mb-2 form-group">
                                 <label>পিতার নাম : </label>
                                 <input name="father_name" type="text" class="form-control form-control-sm">
                             </div>
 
-                            <div class="form-group mb-2">
+                            <div class="mb-2 form-group">
                                 <label>মাতার  নাম : </label>
                                 <input name="mother_name" type="text" class="form-control form-control-sm">
                             </div>
 
-                            <div class="form-group mb-2">
+                            <div class="mb-2 form-group">
                                 <label> পাশের সন :  *</label>
                                 <input name="pass_year" type="text" class="form-control form-control-sm">
                             </div>
 
-                            <div class="form-group mb-2">
+                            <div class="mb-2 form-group">
+                                <label> বর্তমান পেশা  : </label>
+                                <input name="job" type="text" class="form-control form-control-sm">
+                            </div>
+
+                            <div class="mb-2 form-group">
                                 <label> ঠিকানা : </label>
                                 <input name="address" type="text" class="form-control form-control-sm">
                             </div>
 
-                            <div class="form-group mb-2">
+                            <div class="mb-2 form-group">
                                 <label> বর্তমান অবস্থান : </label>
                                 <input name="present_address" type="text" class="form-control form-control-sm">
                             </div>
 
-                            <div class="form-group mb-0">
+                            <div class="mb-0 form-group">
                                 <div class="row">
-                                    <div class="col-sm-6 mb-1">
+                                    <div class="mb-1 col-sm-6">
                                         <label>মোবাইল নাম্বার : *</label>
                                         <input name="mobile" type="text" class="form-control form-control-sm">
                                     </div>
-                                    <div class="col-sm-6 mb-1">
+                                    <div class="mb-1 col-sm-6">
                                         <label>ওয়্যাটসঅ্যাপ নাম্বার </label>
                                         <input name="whats_up" type="text" class="form-control form-control-lg">
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="form-group mb-2">
+                            <div class="mb-2 form-group">
                                 <label style="font-size: 20px"> রেজিষ্ট্রেশন ফি: ৫৩১ টাকা ।  ফি প্রধানের নাম্বার: বিকাশ-০১৭৩৫৯৫২২৩৩, নগদ-০১৭১৮০৩৬৭২২</label>
                                 <input name="r_fee" type="text" class="form-control form-control-lg" value="টাকা : ৬০০" readonly>
                             </div>
 
-                            <div class="form-group mb-2">
+                            <div class="mb-2 form-group">
                                 <label class="">আপনি কী রেজিস্ট্রেশন ফী জমা দিয়েছেন ? *</label>
                                 <select data-plugin-selecttwo="" class="form-control populate" name="r_fee_type">
                                     <option value="হ্যাঁ">হ্যাঁ</option>
@@ -224,12 +229,12 @@
                                 </select>
                             </div>
 
-                            <div class="form-group mb-2">
+                            <div class="mb-2 form-group">
                                 <label> ট্রান্সাকশন আইডি  : </label>
                                 <input name="transaction_id" type="text" class="form-control form-control-lg">
                             </div>
 
-                            <button style="width: 35%" type="submit" class="mb-1 mt-1 mr-1 btn btn-primary btn-block">সেভ করুন</button>
+                            <button style="width: 35%" type="submit" class="mt-1 mb-1 mr-1 btn btn-primary btn-block">সেভ করুন</button>
 
                         </form>
                     </div>

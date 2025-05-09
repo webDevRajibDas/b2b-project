@@ -3,14 +3,16 @@
 @section('content')
 
 
-    <section class="video-section py-5" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe27d 100%);">
+    <section class="py-5 video-section" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe27d 100%);">
         <div class="container-fluid">
             <img src="{{asset('assets/digital-products/digital-products-banner.jpg')}}" alt="B2B Digital Products" class="img-thumbnail img-fluid">
         </div>
     </section>
-    <div class="products-container appear-animate py-5" data-animation-name="fadeIn" data-animation-delay="200">
-        <div class="container-lg container">
-            <h2 class="section-title text-center text-uppercase appear-animate mb-4 mt-4"
+
+    
+    <div class="py-5 products-container appear-animate" data-animation-name="fadeIn" data-animation-delay="200">
+        <div class="container container-lg">
+            <h2 class="mt-4 mb-4 text-center section-title text-uppercase appear-animate"
                 data-animation-name="fadeInUpShorter" data-animation-delay="200">All Digital Products</h2>
         </div>
 
