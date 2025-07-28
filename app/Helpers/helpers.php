@@ -4,7 +4,7 @@ use App\Models\ProductCategory;
 use Illuminate\Support\Facades\Cookie;
 use App\Models\Cart;
 use Carbon\Carbon;
-
+use Illuminate\Support\Str;
 
 
 /*
@@ -122,7 +122,12 @@ if (!function_exists('ProductCategoryDropdown')) {
 
 
 
-
+    if (!function_exists('generatePdfUrl')) {
+        function generatePdfUrl($file)
+        {
+            return url("/{$file}.php?p=" . strtoupper(Str::random(8)));
+        }
+    }
 
 
 

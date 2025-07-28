@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 class Card extends Model
 {
 
-    protected $fillable = ['title','description', 'image','content','price', 'sale_price','status','card_categorie_id','type'];
+    protected $fillable = ['title','description', 'image','content','price', 'sale_price','status','card_categorie_id','type','attr_price','attr_packege'];
 
     protected static function boot()
     {

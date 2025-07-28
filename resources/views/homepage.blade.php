@@ -4,323 +4,1108 @@
     Home
 @endsection
 @section('content')
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-9 col-xxl-8 offset-lg-3 offset-xxl-2">
+                <div class="intro-slider-container slider-container-ratio mb-2">
+                    <div class="intro-slider owl-carousel owl-simple owl-nav-inside" data-toggle="owl" data-owl-options='{
+                                    "nav": false,
+                                    "dots": true
+                                }'>
+                        <div class="intro-slide">
+                            <figure class="slide-image">
+                                <picture>
+                                    <source media="(max-width: 480px)" srcset="assets/images/demos/demo-14/slider/slide-1-480w.jpg">
+                                    <img src="assets/images/demos/demo-14/slider/slide-1.jpg" alt="Image Desc">
+                                </picture>
+                            </figure><!-- End .slide-image -->
 
-    <section class="intro-section mb-3">
-        <div class="home-slider slide-animate owl-carousel owl-theme" data-owl-options="{
-                        'nav': false,
-                        'responsive': {
-                            '1440': {
-                                'nav': true
-                            }
+                            <div class="intro-content">
+                                <h3 class="intro-subtitle">New Arrivals</h3><!-- End .h3 intro-subtitle -->
+                                <h1 class="intro-title text-white">
+                                    The New Way <br>To Buy Furniture
+                                </h1><!-- End .intro-title -->
+
+                                <div class="intro-text text-white">
+                                    Spring Collections 2019
+                                </div><!-- End .intro-text -->
+
+                                <a href="category.html" class="btn btn-primary">
+                                    <span>Discover Now</span>
+                                    <i class="icon-long-arrow-right"></i>
+                                </a>
+                            </div><!-- End .intro-content -->
+                        </div><!-- End .intro-slide -->
+
+                        <div class="intro-slide">
+                            <figure class="slide-image">
+                                <picture>
+                                    <source media="(max-width: 480px)" srcset="assets/images/demos/demo-14/slider/slide-2-480w.jpg">
+                                    <img src="assets/images/demos/demo-14/slider/slide-2.jpg" alt="Image Desc">
+                                </picture>
+                            </figure><!-- End .slide-image -->
+
+                            <div class="intro-content">
+                                <h3 class="intro-subtitle">Hottest Deals</h3><!-- End .h3 intro-subtitle -->
+                                <h1 class="intro-title">
+                                    <span>Wherever You Go</span> <br>DJI Mavic 2 Pro
+                                </h1><!-- End .intro-title -->
+
+                                <div class="intro-price">
+                                    <sup>from</sup>
+                                    <span>
+                                                $1,948<sup>.99</sup>
+                                            </span>
+                                </div><!-- End .intro-price -->
+
+                                <a href="category.html" class="btn btn-primary">
+                                    <span>Discover Here</span>
+                                    <i class="icon-long-arrow-right"></i>
+                                </a>
+                            </div><!-- End .intro-content -->
+                        </div><!-- End .intro-slide -->
+
+                        <div class="intro-slide">
+                            <figure class="slide-image">
+                                <picture>
+                                    <source media="(max-width: 480px)" srcset="assets/images/demos/demo-14/slider/slide-3-480w.jpg">
+                                    <img src="assets/images/demos/demo-14/slider/slide-3.jpg" alt="Image Desc">
+                                </picture>
+                            </figure><!-- End .slide-image -->
+
+                            <div class="intro-content">
+                                <h3 class="intro-subtitle">Limited Quantities</h3><!-- End .h3 intro-subtitle -->
+                                <h1 class="intro-title">
+                                    Refresh Your <br>Wardrobe
+                                </h1><!-- End .intro-title -->
+
+                                <div class="intro-text">
+                                    Summer Collection 2019
+                                </div><!-- End .intro-text -->
+
+                                <a href="category.html" class="btn btn-primary">
+                                    <span>Discover Now</span>
+                                    <i class="icon-long-arrow-right"></i>
+                                </a>
+                            </div><!-- End .intro-content -->
+                        </div><!-- End .intro-slide -->
+                    </div><!-- End .intro-slider owl-carousel owl-simple -->
+
+                    <span class="slider-loader"></span><!-- End .slider-loader -->
+                </div><!-- End .intro-slider-container -->
+            </div><!-- End .col-xl-9 col-xxl-10 -->
+            <div class="col-xl-3 col-xxl-2 d-none d-xxl-block">
+                <div class="banner banner-overlay  banner-content-stretch ">
+                    <a href="#">
+                        <img src="assets/images/demos/demo-14/banners/banner-1.png" alt="Banner img desc">
+                    </a>
+                    <div class="banner-content text-right">
+                        <div class="price text-center">
+                            <sup class="text-white">from</sup>
+                            <span class="text-white">
+                                        <strong>$199</strong><sup class="text-white">,99</sup>
+                                    </span>
+                        </div>
+                        <a href="#" class="banner-link">Discover Now <i class="icon-long-arrow-right"></i></a>
+                    </div><!-- End .banner-content -->
+                </div><!-- End .banner banner-overlay -->
+            </div><!-- End .col-xl-3 col-xxl-2 -->
+        </div><!-- End .row -->
+    </div><!-- End .container-fluid -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-9 col-xxl-10">
+                <div class="row">
+                    <div class="col-lg-12 col-xxl-4-5col">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="banner banner-overlay">
+                                    <a href="#">
+                                        <img src="assets/images/demos/demo-14/banners/banner-2.jpg" alt="Banner img desc">
+                                    </a>
+
+                                    <div class="banner-content">
+                                        <h4 class="banner-subtitle text-white d-none d-sm-block"><a href="#">Hottest Deals</a></h4><!-- End .banner-subtitle -->
+                                        <h3 class="banner-title text-white"><a href="#">Detox And Beautify <br>For Spring <br><span>Up To  20% Off</span></a></h3><!-- End .banner-title -->
+                                        <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
+                                    </div><!-- End .banner-content -->
+                                </div><!-- End .banner -->
+                            </div><!-- End .col-md-6 -->
+
+                            <div class="col-md-6">
+                                <div class="banner banner-overlay">
+                                    <a href="#">
+                                        <img src="assets/images/demos/demo-14/banners/banner-3.png" alt="Banner img desc">
+                                    </a>
+
+                                    <div class="banner-content">
+                                        <h4 class="banner-subtitle text-white d-none d-sm-block"><a href="#">Deal of the Day</a></h4><!-- End .banner-subtitle -->
+                                        <h3 class="banner-title text-white"><a href="#">Headphones <br><span>Up To 30% Off</span></a></h3><!-- End .banner-title -->
+                                        <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
+                                    </div><!-- End .banner-content -->
+                                </div><!-- End .banner banner-overlay -->
+                            </div><!-- End .col-md-6 -->
+                        </div><!-- End .row -->
+                    </div><!-- End .col-lg-3 col-xxl-4-5col -->
+
+                    <div class="col-12 col-xxl-5col d-none d-xxl-block">
+                        <div class="banner banner-overlay">
+                            <a href="#">
+                                <img src="assets/images/demos/demo-14/banners/banner-4.jpg" alt="Banner img desc">
+                            </a>
+
+                            <div class="banner-content">
+                                <h4 class="banner-subtitle text-white"><a href="#">Clearance</a></h4><!-- End .banner-subtitle -->
+                                <h3 class="banner-title text-white"><a href="#">Seating and Tables Clearance</a></h3><!-- End .banner-title -->
+                                <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
+                            </div><!-- End .banner-content -->
+                        </div><!-- End .banner banner-overlay -->
+                    </div><!-- End .col-lg-3 col-xxl-2 -->
+                </div><!-- End .row -->
+
+                <div class="mb-3"></div><!-- End .mb-3 -->
+
+                <div class="owl-carousel owl-simple brands-carousel" data-toggle="owl"
+                     data-owl-options='{
+                                "nav": false,
+                                "dots": false,
+                                "margin": 20,
+                                "loop": false,
+                                "responsive": {
+                                    "0": {
+                                        "items":2
+                                    },
+                                    "420": {
+                                        "items":3
+                                    },
+                                    "600": {
+                                        "items":4
+                                    },
+                                    "900": {
+                                        "items":5
+                                    },
+                                    "1600": {
+                                        "items":6,
+                                        "nav": true
+                                    }
+                                }
+                            }'>
+                    <a href="#" class="brand">
+                        <img src="assets/images/brands/1.png" alt="Brand Name">
+                    </a>
+
+                    <a href="#" class="brand">
+                        <img src="assets/images/brands/2.png" alt="Brand Name">
+                    </a>
+
+                    <a href="#" class="brand">
+                        <img src="assets/images/brands/3.png" alt="Brand Name">
+                    </a>
+
+                    <a href="#" class="brand">
+                        <img src="assets/images/brands/4.png" alt="Brand Name">
+                    </a>
+
+                    <a href="#" class="brand">
+                        <img src="assets/images/brands/5.png" alt="Brand Name">
+                    </a>
+
+                    <a href="#" class="brand">
+                        <img src="assets/images/brands/6.png" alt="Brand Name">
+                    </a>
+
+                    <a href="#" class="brand">
+                        <img src="assets/images/brands/7.png" alt="Brand Name">
+                    </a>
+                </div><!-- End .owl-carousel -->
+
+                <div class="mb-5"></div><!-- End .mb-5 -->
+
+                <div class="bg-lighter trending-products">
+                    <div class="heading heading-flex mb-3">
+                        <div class="heading-left">
+                            <h2 class="title">Trending Today</h2><!-- End .title -->
+                        </div><!-- End .heading-left -->
+
+                        <div class="heading-right">
+                            <ul class="nav nav-pills justify-content-center" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="trending-all-link" data-toggle="tab" href="#trending-all-tab" role="tab" aria-controls="trending-all-tab" aria-selected="true">All</a>
+                                </li>
+                                @foreach($productCat as $category)
+                                    <li class="nav-item">
+                                        <a class="nav-link"
+                                           id="trending-{{ $category->title }}-link"
+                                           data-toggle="tab"
+                                           href="#trending-{{ $category->title }}-tab"
+                                           role="tab"
+                                           aria-controls="trending-{{ $category->title }}-tab"
+                                           aria-selected="false">
+                                            {{ $category->title }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div><!-- End .heading-right -->
+                    </div><!-- End .heading -->
+
+                    <div class="tab-content tab-content-carousel">
+                        <!-- All Products Tab -->
+                        <div class="tab-pane p-0 fade show active" id="trending-all-tab" role="tabpanel" aria-labelledby="trending-all-link">
+                            <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl"
+                                 data-owl-options='{
+                        "nav": false,
+                        "dots": true,
+                        "margin": 20,
+                        "loop": false,
+                        "responsive": {
+                            "0": {"items":1},
+                            "480": {"items":2},
+                            "768": {"items":3},
+                            "992": {"items":4},
+                            "1200": {"items":3, "nav": true},
+                            "1600": {"items":5, "nav": true}
                         }
-                    }">
-            <div class="home-slide home-slide-1 banner">
-                <img class="slide-bg" src="{{asset('assets/images/slider/slide-5.jpg')}}" alt="slider image">
-                <div class="banner-layer banner-layer-middle banner-layer-left">
-                    <div class="container-fluid">
-                        <div class="appear-animate" data-animation-name="fadeInLeftShorter"
-                             data-animation-delay="200">
-                            <h2 class="font-weight-light ls-10 text-primary">Discover our Arrivals!</h2>
-                            <a href="#" class="btn btn-link"><i>View
-                                    our
-                                    Dresses</i><i class="icon-right-open-big"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="home-slide home-slide-2 banner">
-                <img class="slide-bg" src="{{asset('assets/images/slider/slide-5.jpg')}}" alt="slider image">
+                    }'>
+                                @foreach($products as $product)
+                                    <div class="product text-center">
+                                        <figure class="product-media">
+                                            @if($product->on_sale)
+                                                <span class="product-label label-sale">Sale</span>
+                                            @endif
+                                            <a href="{{ route('product.show', $product->slug) }}">
+                                                <img src="{{ asset('storage/'.$product->image) }}" alt="{{ $product->name }}" class="product-image">
+                                            </a>
 
-                <div class="banner-layer banner-layer-middle banner-layer-right w-100">
-                    <div class="container-fluid">
-                        <div class="col-6 offset-6 appear-animate" data-animation-name="fadeInRightShorter"
-                             data-animation-delay="200">
-                            <h2 class="font-weight-light ls-10 text-primary">Trendy Collections!</h2>
-                            <a href="#" class="btn btn-link"><i>View
-                                    our
-                                    Specials</i><i class="icon-right-open-big"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <section class="welcome-section">
-        <div class="container">
-            <h2 class="section-title text-center text-uppercase appear-animate mb-4"
-                data-animation-name="fadeInUpShorter" data-animation-delay="200">B2B Platform || Best Online
-                Market Place</h2>
-            <div class="row mb-2">
-                @foreach($allCat as $cat)
-                    <div class="col-md-4 col-lg-3">
-                        <a class="fancy" href="{{ route('categories.show', $cat->slug) }}">
-                            <div class="card primary-card">
-                                <img src="{{ isset($cat->image) ? asset('storage/' . $cat->image) : asset('assets/images/buisness.jpg') }}"
-                                     class="card-img-top card-img-height"
-                                     alt="banner">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{$cat->title}}</h5>
-                                    <p class="card-text">{{$cat->description}}</p>
-                                </div>
-                            </div>
-
-                            <span class="top-key"></span>
-                            <span class="text">View our {{$cat->title}}</span>
-                            <span class="bottom-key-1"></span>
-                            <span class="bottom-key-2"></span>
-                        </a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-
-
-
-    <!-- Full Width Section -->
-    <section class="full-width-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/your-youtube-video-id" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <div class="col-md-6 text-center-vertical">
-                    <div class="bgblue">
-                        <div class="promo-card">
-                            <h4 class="text-white font-weight-bold text-12">B2B PLATFORM (ONLINE MARKETPLACE)</h4>
-                            <h2 class="text-white">পণ্য আপনার বিক্রয় আমাদের!</h2>
-                            <h4 class="text-white">দেশে এই প্রথম উদ্যোক্তা বা সাপ্লায়ারদের পন্য কে একই সাথে মার্কেটিং এবং অর্থায়ন সুবিধা দিচ্ছে B2B PLATFORM</h4>
-                            <a href="#" class="btn btn-primary">বিস্তারিত...</a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-4">Boost Your Retail Business Using || B2B Platform</h2>
-            <div class="row">
-                <div class="col-md-3 mb-4">
-                    <div class="card growup-card">
-                        <img src="{{asset('assets/images/grow-up.png')}}" class="card-img-top img-thumbnail"
-                             alt="Business Image">
-                        <div class="card-body text-center">
-                            <h5 class="card-title boost-card-title">Digitization</h5>
-                            <p class="card-text">Expand your business reach with verified retailers and suppliers.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <div class="card growup-card">
-                        <img src="{{asset('assets/images/grow-up.png')}}" class="card-img-top img-thumbnail"
-                             alt="Business Image">
-                        <div class="card-body text-center">
-                            <h5 class="card-title boost-card-title">Verified Suppliers</h5>
-                            <p class="card-text">Connect with verified suppliers to ensure quality products.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <div class="card growup-card">
-                        <img src="{{asset('assets/images/grow-up.png')}}" class="card-img-top img-thumbnail"
-                             alt="Business Image">
-                        <div class="card-body text-center">
-                            <h5 class="card-title boost-card-title">Wholesale Business</h5>
-                            <p class="card-text">Enjoy faster delivery with our dedicated logistics partners.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 mb-4">
-                    <div class="card growup-card">
-                        <img src="{{asset('assets/images/grow-up.png')}}" class="card-img-top img-thumbnail"
-                             alt="Business Image">
-                        <div class="card-body text-center">
-                            <h5 class="card-title boost-card-title">Fast Delivery</h5>
-                            <p class="card-text">Enjoy faster delivery with our dedicated logistics partners.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <?php
-    $shops = [
-        ['name' => 'Easy Life', 'items' => 16, 'categories' => 4, 'rating' => 5.0, 'status' => 'Online', 'logo' => asset('assets/images/shops/Online-Store-Toy-Shop.jpg')],
-        ['name' => 'ShopMax', 'items' => 12, 'categories' => 3, 'rating' => 4.5, 'status' => 'Offline', 'logo' => asset('assets/images/shops/Orange-Online-Shop.jpg')],
-        ['name' => 'StyleHub', 'items' => 20, 'categories' => 5, 'rating' => 4.8, 'status' => 'Online', 'logo' => asset('assets/images/shops/Red-Online-Store.png')],
-        ['name' => 'Gadget World', 'items' => 30, 'categories' => 8, 'rating' => 4.9, 'status' => 'Online', 'logo' => asset('assets/images/shops/Online-Store-Toy-Shop.jpg')],
-        ['name' => 'Home Essentials', 'items' => 10, 'categories' => 2, 'rating' => 4.3, 'status' => 'Busy', 'logo' => asset('assets/images/shops/Online-Store-Toy-Shop.jpg')],
-        ['name' => 'DailyMart', 'items' => 25, 'categories' => 6, 'rating' => 4.7, 'status' => 'Online', 'logo' => asset('assets/images/shops/Online-Store-Toy-Shop.jpg')],
-    ];
-
-    ?>
-
-
-
-    <div class="brands-section" style="background: #65829d !important;">
-        <div class="container">
-            <div class="row">
-                <h2 class="section-title text-center text-uppercase appear-animate mb-4"
-                    data-animation-name="fadeInUpShorter" data-animation-delay="200" style="color: #ffffff !important;">
-                    Popular Category</h2>
-            </div>
-
-            <div class="brands-slider owl-carousel owl-theme images-center appear-animate"
-                 data-animation-name="fadeIn" data-animation-delay="400" data-owl-options="{
-                        'margin': 20,
-                        'loop': false,
-                        'responsive': {
-                            '0': {
-                                'items': 1
-                            },
-                            '768': {
-                                'items': 2
-                            },
-                            '1200': {
-                                'items': 6
-                            }
-                        }
-                    }">
-
-                @forelse($productCat as $pCategory)
-                    <div class="category-card">
-                        <img src="{{asset('assets/images/category_diagram.png') }}"
-                             width="200" height="100" alt="{{ $pCategory->title }}">
-                        <p class="text-title" style="color: #0074db">{{ $pCategory->title }}</p>
-                    </div>
-                @empty
-                    <div class="text-center w-100">
-                        <p class="text-muted">No Category Available !! Now</p>
-                    </div>
-                @endforelse
-            </div>
-
-        </div>
-    </div>
-
-    <div class="products-container appear-animate" data-animation-name="fadeIn" data-animation-delay="200">
-        <div class="container-lg container">
-            <h2 class="section-title text-center text-uppercase appear-animate mb-4"
-                data-animation-name="fadeInUpShorter" data-animation-delay="200">Our Products (Smart Card)</h2>
-
-        </div>
-
-        <div class="container">
-            <div class="row">
-                @forelse($cards as $data)
-                    <div class="col-md-4">
-                        <a href="{{ route('card.show', $data->slug) }}">
-                            <div class="product-card">
-                                <div class="card-badge">Hot</div>
-                                <div class="product-tumb">
-                                    <img src="{{ asset('storage/' . $data->image) }}" alt="B2B Smart Card">
-                                </div>
-                                <div class="product-details">
-                                    <span class="product-catagory">B2B Smart Card</span>
-                                    <h5><a href="{{ route('card.show', $data->slug) }}">{{$data->title}}</a></h5>
-                                    <div class="product-bottom-details">
-                                        <div class="product-price">Price : <small>{{$data->price}}</small>{{$data->sale_price}}</div>
-                                        <div class="product-links">
-                                            <a href="{{ route('card.show', $data->slug) }}" class="btn card-buy-button">Buy Now</a>
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist">
+                                                    <span>add to wishlist</span>
+                                                </a>
+                                                <a href="#" class="btn-product-icon btn-quickview" title="Quick view" data-product-id="{{ $product->id }}">
+                                                    <span>Quick view</span>
+                                                </a>
+                                                <a href="#" class="btn-product-icon btn-compare" title="Compare">
+                                                    <span>Compare</span>
+                                                </a>
+                                            </div>
+                                            <div class="product-action">
+                                                <a href="#" class="btn-product btn-cart" title="Add to cart">
+                                                    <span>add to cart</span>
+                                                </a>
+                                            </div>
+                                        </figure>
+                                        <div class="product-body">
+                                            <div class="product-cat">
+                                                <a href="#">{{ $product->category->name }}</a>
+                                            </div>
+                                            <h3 class="product-title">
+                                                <a href="{{ route('product.show', $product->slug) }}">{{ $product->name }}</a>
+                                            </h3>
+                                            <div class="product-price">
+                                                <span class="new-price">${{ number_format($product->price, 2) }}</span>
+                                                @if($product->original_price)
+                                                    <span class="old-price">Was ${{ number_format($product->original_price, 2) }}</span>
+                                                @endif
+                                            </div>
+                                            <div class="ratings-container">
+                                                <div class="ratings">
+                                                    <div class="ratings-val" style="width: {{ $product->rating * 20 }}%;"></div>
+                                                </div>
+                                                <span class="ratings-text">( {{ $product->reviews_count }} Reviews )</span>
+                                            </div>
                                         </div>
                                     </div>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <!-- Category Tabs -->
+                        @foreach($productCat as $category)
+                            <div class="tab-pane p-0 fade" id="trending-{{ $category->slug }}-tab" role="tabpanel" aria-labelledby="trending-{{ $category->slug }}-link">
+                                <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl"
+                                     data-owl-options='{
+                            "nav": false,
+                            "dots": true,
+                            "margin": 20,
+                            "loop": false,
+                            "responsive": {
+                                "0": {"items":1},
+                                "480": {"items":2},
+                                "768": {"items":3},
+                                "992": {"items":4},
+                                "1200": {"items":3, "nav": true},
+                                "1600": {"items":5, "nav": true}
+                            }
+                        }'>
+                                    @foreach($category->products->take(8) as $product)
+                                        <div class="product text-center">
+                                            <figure class="product-media">
+                                                @if($product->on_sale)
+                                                    <span class="product-label label-sale">Sale</span>
+                                                @endif
+                                                <a href="{{ route('product.show', $product->slug) }}">
+                                                    <img src="{{ asset('storage/'.$product->image) }}" alt="{{ $product->name }}" class="product-image">
+                                                </a>
+
+                                                <div class="product-action-vertical">
+                                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist">
+                                                        <span>add to wishlist</span>
+                                                    </a>
+                                                    <a href="#" class="btn-product-icon btn-quickview" title="Quick view" data-product-id="{{ $product->id }}">
+                                                        <span>Quick view</span>
+                                                    </a>
+                                                    <a href="#" class="btn-product-icon btn-compare" title="Compare">
+                                                        <span>Compare</span>
+                                                    </a>
+                                                </div>
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart" title="Add to cart">
+                                                        <span>add to cart</span>
+                                                    </a>
+                                                </div>
+                                            </figure>
+                                            <div class="product-body">
+                                                <div class="product-cat">
+                                                    <a href="#">{{ $category->name }}</a>
+                                                </div>
+                                                <h3 class="product-title">
+                                                    <a href="{{ route('product.show', $product->slug) }}">{{ $product->name }}</a>
+                                                </h3>
+                                                <div class="product-price">
+                                                    <span class="new-price">${{ number_format($product->price, 2) }}</span>
+                                                    @if($product->original_price)
+                                                        <span class="old-price">Was ${{ number_format($product->original_price, 2) }}</span>
+                                                    @endif
+                                                </div>
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: {{ $product->rating * 20 }}%;"></div>
+                                                    </div>
+                                                    <span class="ratings-text">( {{ $product->reviews_count }} Reviews )</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
-                        </a>
+                        @endforeach
                     </div>
-                @empty
-                    <div class="text-center w-100">
-                        <p class="text-muted">No Data Available !!</p>
-                    </div>
-                @endforelse
+                </div><!-- End .bg-lighter -->
 
-            </div>
-        </div>
-    </div>
+                <div class="mb-5"></div><!-- End .mb-5 -->
+                <div class="row cat-banner-row ict">
+                    <div class="col-xl-3 col-xxl-4">
+                        <div class="cat-banner row no-gutters">
+                            <div class="cat-banner-list col-sm-6 d-xl-none d-xxl-flex" style="background-image: url(assets/images/demos/demo-14/banners/banner-bg-3.jpg);">
+                                <div class="banner-list-content">
+                                    <h2><a href="#">ICT Products </a></h2>
+
+                                    <ul>
+                                        <li><a href="#">Best Sellers</a></li>
+                                        <li><a href="#">Trending</a></li>
+                                        <li><a href="#">Accessories</a></li>
+                                        <li class="list-all-link"><a href="#">See All Departments</a></li>
+                                    </ul>
+                                </div><!-- End .banner-list-content -->
+                            </div><!-- End .col-sm-6 -->
+
+                            <div class="col-sm-6 col-xl-12 col-xxl-6">
+                                <div class="banner banner-overlay">
+                                    <a href="#">
+                                        <img src="assets/images/demos/demo-14/banners/banner-9.jpg" alt="Banner img desc">
+                                    </a>
+
+                                    <div class="banner-content">
+                                        <h4 class="banner-subtitle text-white"><a href="#">Best Deals</a></h4><!-- End .banner-subtitle -->
+                                        <h3 class="banner-title text-white"><a href="#">Clearance <br>Outerwear<br><span>Up To 70% Off</span></a></h3><!-- End .banner-title -->
+                                        <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
+                                    </div><!-- End .banner-content -->
+                                </div><!-- End .banner -->
+                            </div><!-- End .col-sm-6 -->
+                        </div><!-- End .cat-banner -->
+                    </div><!-- End .col-xl-3 -->
+
+                    <div class="col-xl-9 col-xxl-8">
+                        <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
+                             data-owl-options='{
+                                        "nav": true,
+                                        "dots": false,
+                                        "margin": 20,
+                                        "loop": false,
+                                        "responsive": {
+                                            "0": {
+                                                "items":2
+                                            },
+                                            "480": {
+                                                "items":2
+                                            },
+                                            "768": {
+                                                "items":3
+                                            },
+                                            "992": {
+                                                "items":4
+                                            },
+                                            "1200": {
+                                                "items":3
+                                            },
+                                            "1600": {
+                                                "items":4
+                                            }
+                                        }
+                                    }'>
+
+                            @forelse($ictProducts as $ictProduct)
+                                <div class="product text-center">
+                                    <figure class="product-media">
+                                        <a href="product.html">
+                                            <img src="{{ asset('storage/'.$ictProduct->image) }}" alt="Product image" class="product-image">
+                                        </a>
+
+                                        <div class="product-action-vertical">
+                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                            <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                        </div><!-- End .product-action-vertical -->
+
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </figure><!-- End .product-media -->
+
+                                    <div class="product-body">
+                                        <div class="product-cat">
+                                            <a href="#">Shoes</a>
+                                        </div><!-- End .product-cat -->
+                                        <h3 class="product-title">
+                                            <a href="{{ route('product.show', $ictProduct->slug) }}">{{ $ictProduct->name }}</a>
+                                        </h3><!-- End .product-title -->
+                                        <div class="product-price">
+                                            $64.00
+                                        </div><!-- End .product-price -->
+                                        <div class="ratings-container">
+                                            <div class="ratings">
+                                                <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
+                                            </div><!-- End .ratings -->
+                                            <span class="ratings-text">( 12 Reviews )</span>
+                                        </div><!-- End .rating-container -->
+                                    </div><!-- End .product-body -->
+                                </div>
+                            @empty
+                                <p>No products found this category!!</p>
+                            @endforelse
 
 
-    <section id="top-rated-shops">
-        <div class="container mt-4">
-            <h2 class="section-title text-center text-uppercase appear-animate mb-4"
-                data-animation-name="fadeInUpShorter" data-animation-delay="200">Top Shops</h2>
-            <div class="row">
-                <?php foreach ($shops as $shop): ?>
-                <div class="col-md-4 mb-4">
-                    <div class="card border-0 shadow"
-                         style="border-radius: 15px; overflow: hidden; position: relative;">
-                        <!-- Status Badge -->
-                        <div class="badge badge-<?php echo strtolower($shop['status']) === 'online' ? 'success' : 'warning'; ?>"
-                             style="position: absolute; top: 10px; right: 10px; font-size: 0.85rem; padding: 5px 10px; border-radius: 12px;">
-                                <?php echo $shop['status']; ?>
-                        </div>
-                        <!-- Logo Section -->
-                        <div class="text-center p-3" style="background-color: #f4f4f4;">
-                            <img style="height: 150px; width: 100%" src="<?php echo $shop['logo']; ?>"
-                                 alt="Shop Logo" class="">
-                        </div>
-                        <div class="card-body text-white"
-                             style="background-color: #e91e63; border-radius: 0 0 15px 15px;">
-                            <h5 class="card-title mb-2"><?php echo $shop['name']; ?></h5>
-                            <p class="card-text mb-1">
-                                <span><?php echo $shop['items']; ?> + Items</span> &nbsp; | &nbsp;
-                                <span><?php echo $shop['categories']; ?> + Categories</span> &nbsp; | &nbsp;
-                                <span><i class="fa fa-star text-warning"></i> <?php echo number_format($shop['rating'], 1); ?></span>
-                            </p>
-                            <a href="#" class="btn btn-outline-light btn-sm">Visit Store →</a>
-                        </div>
-                    </div>
-                </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </section>
+                        </div><!-- End .owl-carousel -->
+                    </div><!-- End .col-xl-9 -->
+                </div><!-- End .row cat-banner-row -->
 
-    <div class="banner-container position-relative"> <!-- Added position-relative -->
-       <div class="container-lg container-fluid">
-           <div class="row no-gutters">
-               <div class="col-12">
-                   <img style="height: 450px; object-fit: cover; width: 100%;"
-                        src="{{asset('assets/images/b2b-handshake.jpg')}}"
-                        class="card-img-top img-thumbnail"
-                        alt="Business Image">
+                <div class="row cat-banner-row clothing">
+                    <div class="col-xl-3 col-xxl-4">
+                        <div class="cat-banner row no-gutters">
+                            <div class="cat-banner-list col-sm-6 d-xl-none d-xxl-flex" style="background-image: url(assets/images/demos/demo-14/banners/banner-bg-3.jpg);">
+                                <div class="banner-list-content">
+                                    <h2><a href="#">Clothing  </a></h2>
 
-                   <!-- Enhanced Overlay -->
-                   <div class="overlay overlay-lighter d-flex align-items-center justify-content-center">
-                       <div class="overlay-content-wrapper text-center p-4">
-                           <!-- B2B Platform Logo -->
-                           <div class="b2b-logo mb-3">
-                               <div class="b2b-text display-3 font-weight-bold">
-                                   <span class="b-letter" style="color: cyan;">B</span>
-                                   <span class="number-2 text-white">2</span>
-                                   <span class="b-letter" style="color: cyan;">B</span>
-                               </div>
-                               <div class="platform-text h4 text-uppercase text-white">PLATFORM</div>
-                           </div>
+                                    <ul>
+                                        <li><a href="#">Best Sellers</a></li>
+                                        <li><a href="#">Trending</a></li>
+                                        <li><a href="#">Women</a></li>
+                                        <li><a href="#">Man</a></li>
+                                        <li><a href="#">Shoes</a></li>
+                                        <li><a href="#">Accessories</a></li>
+                                        <li class="list-all-link"><a href="#">See All Departments</a></li>
+                                    </ul>
+                                </div><!-- End .banner-list-content -->
+                            </div><!-- End .col-sm-6 -->
 
-                           <!-- Bengali text -->
-                           <div class="bengali-text h5 mt-3 text-white">
-                               আমাদের সাথে যোগাযোগ করুন
-                           </div>
+                            <div class="col-sm-6 col-xl-12 col-xxl-6">
+                                <div class="banner banner-overlay">
+                                    <a href="#">
+                                        <img src="assets/images/demos/demo-14/banners/banner-9.jpg" alt="Banner img desc">
+                                    </a>
 
-                           <!-- Optional CTA Button -->
-                           <a href="#" class="btn btn-primary mt-4 px-4 py-2">
-                               Contact Us
-                           </a>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </div>
-    </div>
+                                    <div class="banner-content">
+                                        <h4 class="banner-subtitle text-white"><a href="#">Best Deals</a></h4><!-- End .banner-subtitle -->
+                                        <h3 class="banner-title text-white"><a href="#">Clearance <br>Outerwear<br><span>Up To 70% Off</span></a></h3><!-- End .banner-title -->
+                                        <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
+                                    </div><!-- End .banner-content -->
+                                </div><!-- End .banner -->
+                            </div><!-- End .col-sm-6 -->
+                        </div><!-- End .cat-banner -->
+                    </div><!-- End .col-xl-3 -->
+
+                    <div class="col-xl-9 col-xxl-8">
+                        <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
+                             data-owl-options='{
+                                        "nav": true,
+                                        "dots": false,
+                                        "margin": 20,
+                                        "loop": false,
+                                        "responsive": {
+                                            "0": {
+                                                "items":2
+                                            },
+                                            "480": {
+                                                "items":2
+                                            },
+                                            "768": {
+                                                "items":3
+                                            },
+                                            "992": {
+                                                "items":4
+                                            },
+                                            "1200": {
+                                                "items":3
+                                            },
+                                            "1600": {
+                                                "items":4
+                                            }
+                                        }
+                                    }'>
+
+                            @forelse($fashionProducts as $fashionProduct)
+                                <div class="product text-center">
+                                    <figure class="product-media">
+                                        <a href="product.html">
+                                            <img src="assets/images/demos/demo-14/products/product-14.jpg" alt="Product image" class="product-image">
+                                        </a>
+
+                                        <div class="product-action-vertical">
+                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                            <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                        </div><!-- End .product-action-vertical -->
+
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </figure><!-- End .product-media -->
+
+                                    <div class="product-body">
+                                        <div class="product-cat">
+                                            <a href="#">Shoes</a>
+                                        </div><!-- End .product-cat -->
+                                        <h3 class="product-title"><a href="product.html">Beige faux suede runner  trainers</a></h3><!-- End .product-title -->
+                                        <div class="product-price">
+                                            $64.00
+                                        </div><!-- End .product-price -->
+                                        <div class="ratings-container">
+                                            <div class="ratings">
+                                                <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
+                                            </div><!-- End .ratings -->
+                                            <span class="ratings-text">( 12 Reviews )</span>
+                                        </div><!-- End .rating-container -->
+                                    </div><!-- End .product-body -->
+                                </div>
+                            @empty
+                                <p>No products found this category!!</p>
+                            @endforelse
+
+
+                        </div><!-- End .owl-carousel -->
+                    </div><!-- End .col-xl-9 -->
+                </div><!-- End .row cat-banner-row -->
+
+                <div class="mb-3"></div><!-- End .mb-3 -->
+
+                <div class="row cat-banner-row electronics">
+                    <div class="col-xl-3 col-xxl-4">
+                        <div class="cat-banner row no-gutters">
+                            <div class="cat-banner-list col-sm-6 d-xl-none d-xxl-flex" style="background-image: url(assets/images/demos/demo-14/banners/banner-bg-1.jpg);">
+                                <div class="banner-list-content">
+                                    <h2><a href="#">Electronics</a></h2>
+
+                                    <ul>
+                                        <li><a href="#">Cell Phones</a></li>
+                                        <li><a href="#">Computers</a></li>
+                                        <li><a href="#">TV & Video</a></li>
+                                        <li><a href="#">Smart Home</a></li>
+                                        <li><a href="#">Audi</a></li>
+                                        <li><a href="#">Home Audio & Theater</a></li>
+                                        <li class="list-all-link"><a href="#">See All Departments</a></li>
+                                    </ul>
+                                </div><!-- End .banner-list-content -->
+                            </div><!-- End .col-sm-6 -->
+
+                            <div class="col-sm-6 col-xl-12 col-xxl-6">
+                                <div class="banner banner-overlay">
+                                    <a href="#">
+                                        <img src="assets/images/demos/demo-14/banners/banner-5.jpg" alt="Banner img desc">
+                                    </a>
+
+                                    <div class="banner-content">
+                                        <h4 class="banner-subtitle text-white"><a href="#">Best Deals</a></h4><!-- End .banner-subtitle -->
+                                        <h3 class="banner-title text-white"><a href="#">Canon EOS <br>Mega Sale <br><span>Up To 20% Off</span></a></h3><!-- End .banner-title -->
+                                        <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
+                                    </div><!-- End .banner-content -->
+                                </div><!-- End .banner -->
+                            </div><!-- End .col-sm-6 -->
+                        </div><!-- End .cat-banner -->
+                    </div><!-- End .col-xl-3 -->
+
+                    <div class="col-xl-9 col-xxl-8">
+                        <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
+                             data-owl-options='{
+                                        "nav": true,
+                                        "dots": false,
+                                        "margin": 20,
+                                        "loop": false,
+                                        "responsive": {
+                                            "0": {
+                                                "items":2
+                                            },
+                                            "480": {
+                                                "items":2
+                                            },
+                                            "768": {
+                                                "items":3
+                                            },
+                                            "992": {
+                                                "items":4
+                                            },
+                                            "1200": {
+                                                "items":3
+                                            },
+                                            "1600": {
+                                                "items":4
+                                            }
+                                        }
+                                    }'>
+
+
+                            @forelse($electronicsProducts as $electronicsProduct)
+                                <div class="product text-center">
+                                    <figure class="product-media">
+                                        <span class="product-label label-top">Top</span>
+                                        <a href="product.html">
+                                            <img src="assets/images/demos/demo-14/products/product-6.jpg" alt="Product image" class="product-image">
+                                        </a>
+
+                                        <div class="product-action-vertical">
+                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                            <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                        </div><!-- End .product-action-vertical -->
+
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </figure><!-- End .product-media -->
+
+                                    <div class="product-body">
+                                        <div class="product-cat">
+                                            <a href="#">Laptops</a>
+                                        </div><!-- End .product-cat -->
+                                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a></h3><!-- End .product-title -->
+                                        <div class="product-price">
+                                            $1,199.99
+                                        </div><!-- End .product-price -->
+                                        <div class="ratings-container">
+                                            <div class="ratings">
+                                                <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
+                                            </div><!-- End .ratings -->
+                                            <span class="ratings-text">( 4 Reviews )</span>
+                                        </div><!-- End .rating-container -->
+                                    </div><!-- End .product-body -->
+                                </div>
+                            @empty
+                                <p>No products found this category!!</p>
+                            @endforelse
+
+
+                        </div><!-- End .owl-carousel -->
+                    </div><!-- End .col-xl-9 -->
+                </div><!-- End .row cat-banner-row -->
+
+                <div class="mb-3"></div><!-- End .mb-3 -->
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="banner banner-overlay">
+                            <a href="#">
+                                <img src="assets/images/demos/demo-14/banners/banner-7.jpg" alt="Banner img desc">
+                            </a>
+
+                            <div class="banner-content">
+                                <h4 class="banner-subtitle text-white d-none d-sm-block"><a href="#">Spring Sale is Coming</a></h4><!-- End .banner-subtitle -->
+                                <h3 class="banner-title text-white"><a href="#">Floral T-shirts and Vests  <br><span>Spring Sale</span></a></h3><!-- End .banner-title -->
+                                <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
+                            </div><!-- End .banner-content -->
+                        </div><!-- End .banner -->
+                    </div><!-- End .col-md-6 -->
+
+                    <div class="col-md-6">
+                        <div class="banner banner-overlay">
+                            <a href="#">
+                                <img src="assets/images/demos/demo-14/banners/banner-8.jpg" alt="Banner img desc">
+                            </a>
+
+                            <div class="banner-content">
+                                <h4 class="banner-subtitle text-white d-none d-sm-block"><a href="#">Amazing Value</a></h4><!-- End .banner-subtitle -->
+                                <h3 class="banner-title text-white"><a href="#">Upgrade and Save <br><span>On The Latest Apple Devices</span></a></h3><!-- End .banner-title -->
+                                <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
+                            </div><!-- End .banner-content -->
+                        </div><!-- End .banner banner-overlay -->
+                    </div><!-- End .col-md-6 -->
+                </div><!-- End .row -->
+
+                <div class="mb-3"></div><!-- End .mb-3 -->
+
+                <div class="icon-boxes-container">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="icon-box icon-box-side">
+                                            <span class="icon-box-icon text-dark">
+                                                <i class="icon-rocket"></i>
+                                            </span>
+                                    <div class="icon-box-content">
+                                        <h3 class="icon-box-title">Free Shipping</h3><!-- End .icon-box-title -->
+                                        <p>Orders $50 or more</p>
+                                    </div><!-- End .icon-box-content -->
+                                </div><!-- End .icon-box -->
+                            </div><!-- End .col-sm-6 col-lg-3 -->
+
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="icon-box icon-box-side">
+                                            <span class="icon-box-icon text-dark">
+                                                <i class="icon-rotate-left"></i>
+                                            </span>
+
+                                    <div class="icon-box-content">
+                                        <h3 class="icon-box-title">Free Returns</h3><!-- End .icon-box-title -->
+                                        <p>Within 30 days</p>
+                                    </div><!-- End .icon-box-content -->
+                                </div><!-- End .icon-box -->
+                            </div><!-- End .col-sm-6 col-lg-3 -->
+
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="icon-box icon-box-side">
+                                            <span class="icon-box-icon text-dark">
+                                                <i class="icon-info-circle"></i>
+                                            </span>
+
+                                    <div class="icon-box-content">
+                                        <h3 class="icon-box-title">Get 20% Off 1 Item</h3><!-- End .icon-box-title -->
+                                        <p>When you sign up</p>
+                                    </div><!-- End .icon-box-content -->
+                                </div><!-- End .icon-box -->
+                            </div><!-- End .col-sm-6 col-lg-3 -->
+
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="icon-box icon-box-side">
+                                            <span class="icon-box-icon text-dark">
+                                                <i class="icon-life-ring"></i>
+                                            </span>
+
+                                    <div class="icon-box-content">
+                                        <h3 class="icon-box-title">We Support</h3><!-- End .icon-box-title -->
+                                        <p>24/7 amazing services</p>
+                                    </div><!-- End .icon-box-content -->
+                                </div><!-- End .icon-box -->
+                            </div><!-- End .col-sm-6 col-lg-3 -->
+                        </div><!-- End .row -->
+                    </div><!-- End .container-fluid -->
+                </div><!-- End .icon-boxes-container -->
+
+                <div class="mb-5"></div><!-- End .mb-5 -->
+            </div><!-- End .col-lg-9 col-xxl-10 -->
+
+            <aside class="col-xl-3 col-xxl-2 order-xl-first">
+                <div class="sidebar sidebar-home">
+                    <div class="row">
+                        <div class="col-sm-6 col-xl-12">
+                            <div class="widget widget-banner">
+                                <div class="banner banner-overlay">
+                                    <a href="#">
+                                        <img src="assets/images/demos/demo-14/banners/banner-11.jpg" alt="Banner img desc">
+                                    </a>
+
+                                    <div class="banner-content banner-content-top banner-content-right text-right">
+                                        <h3 class="banner-title text-white"><a href="#">Maximum Comfort <span>Sofas -20% Off</span></a></h3><!-- End .banner-title -->
+                                        <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
+                                    </div><!-- End .banner-content -->
+                                </div><!-- End .banner banner-overlay -->
+                            </div><!-- End .widget widget-banner -->
+                        </div><!-- End .col-sm-6 col-xl-12 -->
+
+                        <div class="col-sm-6 col-xl-12 mb-2">
+                            <div class="widget widget-products">
+                                <h4 class="widget-title"><span>Bestsellers</span></h4><!-- End .widget-title -->
+
+                                <div class="products">
+                                    <div class="product product-sm">
+                                        <figure class="product-media">
+                                            <a href="product.html">
+                                                <img src="assets/images/demos/demo-14/products/small/product-1.jpg" alt="Product image" class="product-image">
+                                            </a>
+                                        </figure>
+
+                                        <div class="product-body">
+                                            <h5 class="product-title"><a href="product.html">Sceptre 50" Class FHD (1080P) LED TV</a></h5><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $199.99
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                    </div><!-- End .product product-sm -->
+
+                                    <div class="product product-sm">
+                                        <figure class="product-media">
+                                            <a href="product.html">
+                                                <img src="assets/images/demos/demo-14/products/small/product-2.jpg" alt="Product image" class="product-image">
+                                            </a>
+                                        </figure>
+
+                                        <div class="product-body">
+                                            <h5 class="product-title"><a href="product.html">Red Cookware Set, 9 Piece</a></h5><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $24.95
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                    </div><!-- End .product product-sm -->
+
+                                    <div class="product product-sm">
+                                        <figure class="product-media">
+                                            <a href="product.html">
+                                                <img src="assets/images/demos/demo-14/products/small/product-3.jpg" alt="Product image" class="product-image">
+                                            </a>
+                                        </figure>
+
+                                        <div class="product-body">
+                                            <h5 class="product-title"><a href="product.html">Epson WorkForce WF-2750 All-in-One Wireless</a></h5><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $49.99
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                    </div><!-- End .product product-sm -->
+
+                                    <div class="product product-sm">
+                                        <figure class="product-media">
+                                            <a href="product.html">
+                                                <img src="assets/images/demos/demo-14/products/small/product-4.jpg" alt="Product image" class="product-image">
+                                            </a>
+                                        </figure>
+
+                                        <div class="product-body">
+                                            <h5 class="product-title"><a href="product.html">Stainless Steel Microwave Oven</a></h5><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $64.84
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                    </div><!-- End .product product-sm -->
+
+                                    <div class="product product-sm">
+                                        <figure class="product-media">
+                                            <a href="product.html">
+                                                <img src="assets/images/demos/demo-14/products/small/product-5.jpg" alt="Product image" class="product-image">
+                                            </a>
+                                        </figure>
+
+                                        <div class="product-body">
+                                            <h5 class="product-title"><a href="product.html">Fatboy Original Beanbag</a></h5><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $49.99
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                    </div><!-- End .product product-sm -->
+                                </div><!-- End .products -->
+                            </div><!-- End .widget widget-products -->
+                        </div><!-- End .col-sm-6 col-xl-12 -->
+
+                        <div class="col-12">
+                            <div class="widget widget-deals">
+                                <h4 class="widget-title"><span>Special Offer</span></h4><!-- End .widget-title -->
+
+                                <div class="row">
+                                    <div class="col-sm-6 col-xl-12">
+                                        <div class="product text-center">
+                                            <figure class="product-media">
+                                                <span class="product-label label-sale">Deal of the week</span>
+                                                <a href="product.html">
+                                                    <img src="assets/images/demos/demo-14/products/deals/product-1.jpg" alt="Product image" class="product-image">
+                                                </a>
+
+                                                <div class="product-action-vertical">
+                                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                                                    <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                                </div><!-- End .product-action-vertical -->
+
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
+
+                                            <div class="product-body">
+                                                <div class="product-cat">
+                                                    <a href="#">Audio</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title"><a href="product.html">Bose SoundLink Micro speaker</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    <span class="new-price">$99.99</span>
+                                                    <span class="old-price">Was $110.99</span>
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 4 Reviews )</span>
+                                                </div><!-- End .rating-container -->
+
+                                                <div class="product-nav product-nav-dots">
+                                                    <a href="#" class="active" style="background: #f3815f;"><span class="sr-only">Color name</span></a>
+                                                    <a href="#" style="background: #333333;"><span class="sr-only">Color name</span></a>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+
+                                            <div class="product-countdown" data-until="+44h" data-relative="true" data-labels-short="true"></div><!-- End .product-countdown -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-xl-12 -->
+
+                                    <div class="col-sm-6 col-xl-12">
+                                        <div class="product text-center">
+                                            <figure class="product-media">
+                                                <span class="product-label label-sale">Deal of the week</span>
+                                                <a href="product.html">
+                                                    <img src="assets/images/demos/demo-14/products/deals/product-2.jpg" alt="Product image" class="product-image">
+                                                </a>
+
+                                                <div class="product-action-vertical">
+                                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                                                    <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                                </div><!-- End .product-action-vertical -->
+
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
+
+                                            <div class="product-body">
+                                                <div class="product-cat">
+                                                    <a href="#">Cameras</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title"><a href="product.html">GoPro HERO Session Waterproof HD Action Camera</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    <span class="new-price">$196.99</span>
+                                                    <span class="old-price">Was $210.99</span>
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 19 Reviews )</span>
+                                                </div><!-- End .rating-container -->
+                                            </div><!-- End .product-body -->
+
+                                            <div class="product-countdown" data-until="+52h" data-relative="true" data-labels-short="true"></div><!-- End .product-countdown -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-xl-12 -->
+                                </div><!-- End .row -->
+                            </div><!-- End .widget widget-deals -->
+                        </div><!-- End .col-sm-6 col-lg-xl -->
+
+                        <div class="col-sm-6 col-xl-12">
+                            <div class="widget widget-banner">
+                                <div class="banner banner-overlay">
+                                    <a href="#">
+                                        <img src="assets/images/demos/demo-14/banners/banner-12.jpg" alt="Banner img desc">
+                                    </a>
+
+                                    <div class="banner-content banner-content-top">
+                                        <h3 class="banner-title text-white"><a href="#">Take Better Photos <br><span>With</span> Canon EOS <br><span>Up To 20% Off</span></a></h3><!-- End .banner-title -->
+                                        <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
+                                    </div><!-- End .banner-content -->
+                                </div><!-- End .banner banner-overlay -->
+                            </div><!-- End .widget widget-banner -->
+                        </div><!-- End .col-sm-6 col-lg-12 -->
+
+                        <div class="col-sm-6 col-xl-12">
+                            <div class="widget widget-posts">
+                                <h4 class="widget-title"><span>Latest Blog Posts</span></h4><!-- End .widget-title -->
+
+                                <div class="owl-carousel owl-simple" data-toggle="owl"
+                                     data-owl-options='{
+                                                "nav":false,
+                                                "dots": true,
+                                                "loop": false,
+                                                "autoHeight": true
+                                            }'>
+                                    <article class="entry">
+                                        <figure class="entry-media">
+                                            <a href="single.html">
+                                                <img src="assets/images/demos/demo-14/blog/post-1.jpg" alt="image desc">
+                                            </a>
+                                        </figure><!-- End .entry-media -->
+
+                                        <div class="entry-body">
+                                            <div class="entry-meta">
+                                                <a href="#">Nov 22, 2018</a>, 0 Comments
+                                            </div><!-- End .entry-meta -->
+
+                                            <h5 class="entry-title">
+                                                <a href="single.html">Sed adipiscing ornare.</a>
+                                            </h5><!-- End .entry-title -->
+
+                                            <div class="entry-content">
+                                                <p>Lorem ipsum dolor consectetuer adipiscing elit. Phasellus hendrerit. Pelletesque aliquet nibh ...</p>
+                                                <a href="single.html" class="read-more">Read More</a>
+                                            </div><!-- End .entry-content -->
+                                        </div><!-- End .entry-body -->
+                                    </article><!-- End .entry -->
+
+                                    <article class="entry">
+                                        <figure class="entry-media">
+                                            <a href="single.html">
+                                                <img src="assets/images/demos/demo-14/blog/post-2.jpg" alt="image desc">
+                                            </a>
+                                        </figure><!-- End .entry-media -->
+
+                                        <div class="entry-body">
+                                            <div class="entry-meta">
+                                                <a href="#">Nov 22, 2018</a>, 0 Comments
+                                            </div><!-- End .entry-meta -->
+
+                                            <h5 class="entry-title">
+                                                <a href="single.html">Vivamus vestibulum ntulla.</a>
+                                            </h5><!-- End .entry-title -->
+
+                                            <div class="entry-content">
+                                                <p>Phasellus hendrerit. Pelletesque aliquet nibh necurna In nisi neque, aliquet vel, dapibus id ... </p>
+                                                <a href="single.html" class="read-more">Read More</a>
+                                            </div><!-- End .entry-content -->
+                                        </div><!-- End .entry-body -->
+                                    </article><!-- End .entry -->
+
+                                    <article class="entry">
+                                        <figure class="entry-media">
+                                            <a href="single.html">
+                                                <img src="assets/images/demos/demo-14/blog/post-3.jpg" alt="image desc">
+                                            </a>
+                                        </figure><!-- End .entry-media -->
+
+                                        <div class="entry-body">
+                                            <div class="entry-meta">
+                                                <a href="#">Nov 22, 2018</a>, 0 Comments
+                                            </div><!-- End .entry-meta -->
+
+                                            <h5 class="entry-title">
+                                                <a href="single.html">Praesent placerat risus.</a>
+                                            </h5><!-- End .entry-title -->
+
+                                            <div class="entry-content">
+                                                <p>Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc ...</p>
+                                                <a href="single.html" class="read-more">Read More</a>
+                                            </div><!-- End .entry-content -->
+                                        </div><!-- End .entry-body -->
+                                    </article><!-- End .entry -->
+                                </div><!-- End .owl-carousel -->
+                            </div><!-- End .widget widget-posts -->
+                        </div><!-- End .col-sm-6 col-xl-12 -->
+                    </div><!-- End .row -->
+                </div><!-- End .sidebar sidebar-home -->
+            </aside><!-- End .col-lg-3 col-xxl-2 -->
+        </div><!-- End .row -->
+    </div><!-- End .container-fluid -->
 
 @endsection

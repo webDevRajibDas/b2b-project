@@ -31,7 +31,7 @@ class BrandController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title' => 'required|string|max:191|unique:product_categories,title',
+            'title' => 'required|string|max:191|unique:brands,title',
             'description' => 'nullable|string',
         ]);
 
@@ -58,7 +58,7 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        return view('admin.product.brands.edit', compact('brand'));
+        return view('admin.product.brand.edit', compact('brand'));
     }
 
     /**

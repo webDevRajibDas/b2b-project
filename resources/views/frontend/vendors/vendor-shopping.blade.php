@@ -1,5 +1,4 @@
-
-@extends('frontend.shopping.layouts.page')
+@extends('frontend.cart.layouts.page')
 
 @section('content')
 
@@ -137,7 +136,8 @@
                 @forelse($product_categories as $categories)
                     <div class="banner banner-image">
                         <a href="#">
-                            <img src="{{asset('fashion/assets/images/demoes/demo7/banners/cats/banner-1.jpg')}}" width="272"
+                            <img src="{{asset('fashion/assets/images/demoes/demo7/banners/cats/banner-1.jpg')}}"
+                                 width="272"
                                  height="231"
                                  alt="banner">
                         </a>
@@ -504,7 +504,7 @@
         </div>
     </div>
 
-   <!---Best Selling Products --->
+    <!---Best Selling Products --->
 
     <!-- End .container -->
 @endsection

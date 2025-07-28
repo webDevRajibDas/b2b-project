@@ -1,6 +1,6 @@
 @extends('admin.layouts.admin-master')
 
-@section('title', 'Product Categories')
+@section('title', 'Product Brand')
 
 @section('content')
     <div class="row">
@@ -62,7 +62,9 @@
                                     <td><strong>{{$data->title}}</strong></td>
                                     <td>{{$data->description}}</td>
                                     <td class="actions">
-                                        <a href=""><i class="fas fa-pencil-alt"></i></a>
+                                        <a href="{{ route('admin.brands.edit', $data->id) }}" aria-label="Edit brand">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
                                         <a href="" class="delete-row"><i class="far fa-trash-alt"></i></a>
                                     </td>
                                 </tr>

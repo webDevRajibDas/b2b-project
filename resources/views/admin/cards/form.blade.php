@@ -60,14 +60,14 @@
                             <div class="pb-3 form-group row align-items-center">
                                 <label class="mb-0 col-lg-4 col-xl-4 control-label text-lg-end">Regular Price</label>
                                 <div class="col-lg-8 col-xl-8">
-                                    <input type="text" class="form-control form-control-modern" name="price" value="{{ isset($card) ? $card->price : old('price') }}" required />
+                                    <input type="number" class="form-control form-control-modern" name="price" value="{{ isset($card) ? $card->price : old('price') }}" required />
                                 </div>
                             </div>
 
                             <div class="pb-3 form-group row align-items-center">
                                 <label class="mb-0 col-lg-4 col-xl-4 control-label text-lg-end">Sale Price</label>
                                 <div class="col-lg-8 col-xl-8">
-                                    <input type="text" class="form-control form-control-modern" name="sale_price" value="{{ isset($card) ? $card->sale_price : old('sale_price') }}" required />
+                                    <input type="number" class="form-control form-control-modern" name="sale_price" value="{{ isset($card) ? $card->sale_price : old('sale_price') }}" required />
                                 </div>
                             </div>
                             <div class="pb-3 form-group row align-items-center">
@@ -90,20 +90,20 @@
 
                             <div class="ecommerce-attributes-wrapper">
                                 <div class="pb-3 form-group row justify-content-center ecommerce-attribute-row">
-                                    <div class="col-xl-3">
-                                        <label class="control-label">Chosse Option</label>
-                                        <div class="mt-3 mb-3 checkbox mb-lg-0"></div>
+                                    <div class="col-xl-4">
+                                        <label class="control-label text-lg-end">Chosse Option</label>
+                                        <input type="text" class="form-control form-control-modern" name="attr_price[]" value="" placeholder="Price" />
                                     </div>
-                                    <div class="col-xl-6">
+                                    <div class="col-xl-8">
                                         <a href="#" class="ecommerce-attribute-remove text-color-danger float-end">Remove</a>
-                                        <label class="control-label">Value(s)</label>
-                                        <input type="text" class="form-control form-control-modern" name="attName" value="month , year" />
+                                        <label class="control-label">Value</label>
+                                        <input type="text" class="form-control form-control-modern" name="attr_packege[]" value="" placeholder="Duration" />
                                     </div>
                                 </div>
                                 
                             </div>
-                            <div class="mt-4 row justify-content-center">
-                                <div class="col-xl-9 text-end">
+                            <div class="mt-2 row justify-content-center">
+                                <div class="col-xl-12 col-sm-12 text-end">
                                     <a href="#" class="ecommerce-attribute-add-new btn btn-primary btn-px-4 btn-py-2">+ Add New</a>
                                 </div>
                             </div>

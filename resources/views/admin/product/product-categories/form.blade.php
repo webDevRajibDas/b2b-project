@@ -30,12 +30,6 @@
                                     <input type="text" class="form-control form-control-modern" id="title" name="title" value="{{ isset($productCategory) ? $productCategory->title : old('title') }}" required>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-lg-5 col-xl-3 control-label text-lg-end pt-2 mt-1 mb-0">Description</label>
-                                <div class="col-lg-7 col-xl-6">
-                                    <textarea class="form-control form-control-modern" id="description" name="description" rows="3">{{ isset($productCategory) ? $productCategory->description : old('description') }}</textarea>
-                                </div>
-                            </div>
 
                             <!-- Status -->
                             <div class="form-group row">

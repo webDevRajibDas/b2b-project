@@ -38,20 +38,16 @@
     
                     var html = '' +
                         '<div class="form-group row justify-content-center ecommerce-attribute-row">' +
-                        '<div class="col-xl-3">' +
-                        '<label class="control-label">Name</label>' +
-                        '<input type="text" class="form-control form-control-modern" name="attName" value="" />' +
-                        '<div class="mt-3 mb-3 checkbox mb-lg-0">' +
-                        '<label class="my-2">' +
-                        '<input type="checkbox" name="attVisible" value="">' +
-                        'Visible on the item page' +
-                        '</label>' +
+                        '<div class="col-xl-4 col-md-4">' +
+                        '<div class="checkbox mb-lg-0">' +
+                            '<label class="control-label text-lg-end">Chosse Option</label>'+
+                        ' <input type="text" class="form-control form-control-modern" name="attr_price[]" value="" placeholder="Price" />'+     
                         '</div>' +
                         '</div>' +
-                        '<div class="col-xl-6">' +
+                        '<div class="col-xl-8 col-md-8">' +
                         '<a href="#" class="ecommerce-attribute-remove text-color-danger float-end">Remove</a>' +
-                        '<label class="control-label">Value(s)</label>' +
-                        '<textarea class="form-control form-control-modern" name="attValue" rows="4" placeholder="Enter some text, or some attributes by | separating values"></textarea>' +
+                        '<label class="control-label">Value</label>' +
+                        '<input type="text" class="form-control form-control-modern" name="attr_packege[]" value="" />' +
                         '</div>' +
                         '</div>' +
                         '';
@@ -120,7 +116,7 @@
     
                             // AJAX request with FormData
                             $.ajax({
-                                url: '{{ route("admin.products.store") }}',
+                                url: '{{ route("admin.cards.store") }}',
                                 type: 'POST',
                                 data: formData,
                                 processData: false, // Prevent jQuery from processing the data

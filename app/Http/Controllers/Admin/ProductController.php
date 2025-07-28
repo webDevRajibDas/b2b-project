@@ -15,10 +15,42 @@ class ProductController extends Controller
 {
     use ImageUploadTrait;
 
-    public function index(ProductsDataTable $dataTable)
+
+
+    public function index(Request $request)
     {
-        return $dataTable->render('admin.product.index');
+        $search = $request->input('search');
+        $category = $request->input('category');
+        $minPrice = $request->input('min_price');
+        $maxPrice = $request->input('max_price');
+        $perPage = $request->input('per_page', 12);
+
+        $products = Product::query()
+            ->when($search, function($query) use ($search) {
+                $query->where(function($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%")
+                        ->orWhere('description', 'like', "%{$search}%")
+                        ->orWhere('sku', 'like', "%{$search}%");
+                });
+            })
+            ->when($category, function($query) use ($category) {
+                $query->where('category_id', $category);
+            })
+            ->when($minPrice, function($query) use ($minPrice) {
+                $query->where('price', '>=', $minPrice);
+            })
+            ->when($maxPrice, function($query) use ($maxPrice) {
+                $query->where('price', '<=', $maxPrice);
+            })
+            ->with('category') // Eager load category relationship
+            ->orderBy('created_at', 'desc')
+            ->paginate($perPage);
+
+        $categories = ProductCategory::all(); // For category filter dropdown
+
+        return view('admin.product.index', compact('products', 'search', 'categories', 'category', 'minPrice', 'maxPrice'));
     }
+
 
     public function create()
     {

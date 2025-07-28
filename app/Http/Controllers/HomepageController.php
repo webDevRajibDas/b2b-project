@@ -2,41 +2,73 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Card;
-use App\Models\EventForm;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\SubCategorie;
 use App\Models\Upazila;
 use App\Models\Vendor;
-use App\Models\VendorCategorie;
 use App\Models\VendorContact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 
 class HomepageController extends Controller
 {
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
+
     public function homePage()
     {
-        $products = Product::latest()->get();
-        $allCat = VendorCategorie::latest()->get();
-        $productCat = ProductCategory::latest()->get();
-        $cards = Card::latest()->get();
-        return view('homepage',compact('allCat','products','productCat','cards'));
+        $products = Product::with('category')
+            ->latest()
+            ->take(12)
+            ->get();
+
+        $productCat = ProductCategory::latest()
+            ->take(5)
+            ->get();
+
+        $categories = ['Fashion', 'Electronics','ICT Product'];
+        $categorizedProducts = [];
+
+        foreach ($categories as $categoryTitle) {
+            $categorizedProducts[$categoryTitle] = Product::with('category')
+                ->whereHas('category', function ($query) use ($categoryTitle) {
+                    $query->where('title', $categoryTitle);
+                })
+                ->latest()
+                ->take(4)
+                ->get();
+        }
+
+        return view('homepage', [
+            'products' => $products,
+            'productCat' => $productCat,
+            'fashionProducts' => $categorizedProducts['Fashion'],
+            'electronicsProducts' => $categorizedProducts['Electronics'],
+            'ictProducts' => $categorizedProducts['ICT Product'],
+        ]);
+
     }
 
-
-    public function showSubCatList($slug)
+    public function productShowDetail($slug)
     {
-        $category = VendorCategorie::where('slug', $slug)->firstOrFail();
-        $subCategories = $category->subCategories;
-        return view('frontend.vendors.category-wise-sub', compact('category', 'subCategories'));
+        $detail = Product::with(['gallery','category'])->where('slug', $slug)->first();
+        $relatedProducts = Product::where('product_categorie_id', $detail->product_categorie_id)
+            ->where('id', '!=', $detail->id)
+            ->inRandomOrder()
+            ->limit(4)
+            ->get();
+
+        return view('frontend.product-details', compact('detail','relatedProducts'));
+
     }
+
+
+    public function categoryList()
+    {
+        $products = Product::latest()->paginate(20);
+        return view('frontend.cart.category-list', compact('products'));
+    }
+
 
 
     public function vendorForm()
@@ -66,7 +98,6 @@ class HomepageController extends Controller
         ]);
 
 
-
         $data = new VendorContact();
         $data->selling_product_type = $validatedData['selling_product_type'];
         $data->product_type = $validatedData['product_type'];
@@ -91,50 +122,11 @@ class HomepageController extends Controller
         $vendor = Vendor::where('sub_categories_id', $category)->first();
         $all_products = Product::all();
         $product_categories = ProductCategory::all();
-        return view('frontend.vendors.vendor-shopping', compact('category', 'vendor','all_products','product_categories'));
+        return view('frontend.vendors.vendor-cart', compact('category', 'vendor','all_products','product_categories'));
 
     }
 
-    public function show($category){
-        $category = VendorCategorie::where('slug',$category)->first();
-        $template = 'frontend.vendors.templates.' . ($category->template ?? 'default');
-        $products = Product::all();
 
-        $digital_product = Card::where('type', 'digital_product')->get();
-        $cards = Card::where('type', 'card')->get();
-        $product_categories = ProductCategory::all();
-        return view($template, compact('category', 'products','product_categories','cards','digital_product'));
-    }
-
-    public function productShowDetail($slug)
-    {
-        $productDetail = Product::with(['gallery'])->where('slug', $slug)->first();
-        return view('frontend.shopping.single-product', compact('productDetail'));
-
-    }
-
-    public function cardShowDetail($slug)
-    {
-        $cardDetail = Card::with(['gallery'])->where('slug', $slug)->first();
-        return view('frontend.ict.single-product', compact('cardDetail'));
-    }
-
-
-    public function digitalProductDetail($slug)
-    {
-        
-        $digitalProduct = Card::where('slug', $slug)->firstOrFail();
-    
-        $relatedProducts = Card::where('id', '!=', $digitalProduct->id)
-            ->where('type', 'digital_product')
-            ->inRandomOrder()
-            ->limit(4)
-            ->get();
-        
-        return view('frontend.ict.digital-product', compact('digitalProduct', 'relatedProducts'));
-
-
-    }
 
 
 
@@ -159,41 +151,6 @@ class HomepageController extends Controller
         return view('frontend.privacy_policy');
     }
 
-    public function eventEntryForm()
-    {
-        return view('frontend.entry-form');
-    }
-
-
-
-    public function eventEntryFormPost(Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'father_name' => 'nullable|string|max:255',
-            'mother_name' => 'nullable|string|max:255',
-            'pass_year' => 'required|digits:4|integer',
-            'mobile' => 'required|string|max:20',
-            'whats_up' => 'nullable|string|max:20',
-            'r_fee' => 'nullable|string|max:100',
-            'r_fee_type' => 'required|string|max:50',
-            'transaction_id' => 'nullable|string|max:100',
-            'address' => 'nullable|string|max:300',
-            'present_address' => 'nullable|string|max:300',
-        ]);
-
-        $student = new EventForm();
-        $student->fill($validatedData);
-        $student->save();
-        return redirect()->back()->with('success', 'Your information save successfully!!! After some time Admin confirm you. thank you .');
-
-    }
-
-    public function eventEntryList()
-    {
-        $members = EventForm::latest()->get();
-        return view('frontend.entry-list', compact('members'));
-    }
 
 
 }

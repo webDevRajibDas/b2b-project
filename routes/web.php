@@ -8,14 +8,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
-
 Route::get('/', [HomepageController::class, 'homePage'])->name('homePage');
 Route::get('/vendors/{slug}', [HomepageController::class, 'showVendorList'])->name('vendors.show');
-Route::get('/category/{slug}', [HomepageController::class, 'showSubCatList'])->name('categories.show');
-//Route::get('/vendor-wise/{slug}', [HomepageController::class, 'show'])->name('vendor-wise.show');
+
+Route::get('/category-list', [HomepageController::class, 'categoryList'])->name('category.list');
 
 
-Route::get('/category/{category}/{subCategory}', [HomepageController::class, 'show'])->name('subcategory.show');
 Route::get('/product/{slug}', [HomepageController::class, 'productShowDetail'])->name('product.show');
 Route::get('/upazilas/{districtId}', [HomepageController::class, 'getUpazilas']);
 
@@ -35,15 +33,12 @@ Route::get('/cart/items', [CartController::class, 'getCartItems'])->name('cart.i
 Route::post('/update-subtotal', [CartController::class, 'updateCartPage'])->name('update.cart');
 
 
-Route::get('/cards/{slug}', [HomepageController::class, 'cardShowDetail'])->name('card.show');
 
 
-Route::get('/digital-product/{slug}', [HomepageController::class, 'digitalProductDetail'])->name('digital-product.show');
+Route::get('/landing', function () {
+    return view('landing'); // Assuming your file is resources/views/landing.blade.php.php
+});
 
-
-Route::get('/members/entry-form', [HomepageController::class, 'eventEntryForm'])->name('event.form');
-Route::post('/members/form/save', [HomepageController::class, 'eventEntryFormPost'])->name('event_entry.form');
-Route::get('/members/entry/list', [HomepageController::class, 'eventEntryList'])->name('event_entry.list');
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -62,3 +57,5 @@ Route::get('/storage-link', function () {
     Artisan::call('storage:link');
     return 'storage link created';
 });
+
+

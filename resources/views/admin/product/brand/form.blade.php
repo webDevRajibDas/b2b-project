@@ -31,8 +31,8 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-lg-5 col-xl-3 control-label text-lg-end pt-2 mt-1 mb-0">Description</label>
-                                <div class="col-lg-7 col-xl-6">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-end pt-2 mt-1 mb-3">Description</label>
+                                <div class="col-lg-7 col-xl-6 mb-4">
                                     <textarea class="form-control form-control-modern" id="description" name="description" rows="3">{{ isset($brand) ? $brand->description : old('description') }}</textarea>
                                 </div>
                             </div>

@@ -23,7 +23,10 @@ class ProductsDataTable extends DataTable
      */
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
-        return (new EloquentDataTable($query))->setRowId('id');
+        return (new EloquentDataTable($query))
+            ->addColumn('actions', 'components.datatables_actions')
+            ->rawColumns(['actions'])
+            ->setRowId('id');
     }
 
     /**
@@ -40,21 +43,26 @@ class ProductsDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
+
                     ->setTableId('products-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
                     ->orderBy(1)
                     ->selectStyleSingle()
+
                     ->buttons([
                         Button::make('excel'),
                         Button::make('csv'),
                         Button::make('pdf'),
                         Button::make('print'),
                         Button::make('reset'),
-                        Button::make('reload')
+                        Button::make('reload'),
                     ]);
     }
+
+
+
 
     /**
      * Get the dataTable columns definition.
@@ -66,6 +74,11 @@ class ProductsDataTable extends DataTable
             Column::make('name'),
             Column::make('price'),
             Column::make('sale_price'),
+            Column::make('sku'),
+            Column::make('quantity'),
+
+            Column::make('actions')
+
         ];
     }
 

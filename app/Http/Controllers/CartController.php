@@ -14,10 +14,9 @@ class CartController extends Controller
 {
     public function addToCart(Request $request)
     {
-
+        //dd($request->all());
         $productId = $request->product_id;
         $quantity = $request->quantity;
-
         if (auth()->check()) {
             $cart = session('cart', []);
             if (isset($cart[$productId])) {
@@ -45,16 +44,33 @@ class CartController extends Controller
     {
         if (auth()->check()) {
             $user_id = auth()->id();
-            $cartItems = Cart::where('user_id', $user_id)->with('products')->get();
-        } else {
-            $cart = json_decode(request()->cookie('cart'), true) ?? session('cart', []);
-            $cartItems = collect($cart)->map(function ($quantity, $product_id) {
-                $product = \App\Models\Product::find($product_id);
-                return $product ? (object) ['product' => $product, 'quantity' => $quantity] : null;
-            })->filter()->values()->all();
-        }
+            $cartItems = Cart::where('user_id', $user_id)->with('product')->get();
+            // Calculate grand total (sum of all items' price * quantity)
+            $grandTotal = $cartItems->sum(function($item) {
+                return $item->product->sale_price * $item->quantity;
+            });
 
-        return view('frontend.shopping.cart', compact( 'cartItems'));
+        } else {
+            // For guests (cookie/session cart)
+            $cartCookie = request()->cookie('cart');
+            $cart = json_decode($cartCookie, true) ?? session('cart', []);
+            $cartItems = collect($cart)->map(function ($item, $product_id) {
+                if (is_array($item)) { // If cart stores array structure
+                    $product = \App\Models\Product::find($product_id);
+                    return $product ? (object) ['product' => $product, 'quantity' => $item['quantity']] : null;
+                } else { // If cart stores simple quantity
+                    $product = \App\Models\Product::find($product_id);
+                    return $product ? (object) ['product' => $product, 'quantity' => $item] : null;
+                }
+            })->filter()->values()->all();
+
+            // Calculate grand total for guest
+            $grandTotal = collect($cartItems)->sum(function($item) {
+                return $item->product->sale_price * $item->quantity;
+            });
+        }
+        return view('frontend.cart.view', compact('cartItems', 'grandTotal'));
+
     }
 
     public function cartCount(){
@@ -112,20 +128,19 @@ class CartController extends Controller
     }
 
 
+
     public function updateCartPage(Request $request)
     {
-        // Validate the request
         $request->validate([
-            'product_id' => 'required|integer|exists:products,id', // Ensure the product exists
-            'quantity' => 'required|integer|min:1', // Ensure quantity is at least 1
+            'product_id' => 'required|integer|exists:products,id',
+            'quantity' => 'required|integer|min:1',
         ]);
 
-        // Get the product ID and quantity from the request
         $productId = $request->input('product_id');
         $quantity = $request->input('quantity');
-
         // Fetch the product price (replace with your logic to get the product price)
         $product = Product::find($productId);
+
         if (!$product) {
             return response()->json([
                 'success' => false,
@@ -133,9 +148,7 @@ class CartController extends Controller
             ], 404);
         }
 
-        $price = $product->price;
-
-        // Calculate the new subtotal
+        $price = $product->sale_price;
         $subtotal = $quantity * $price;
 
         // Get the current cart from the cookie or session
@@ -149,7 +162,6 @@ class CartController extends Controller
             $cart[$productId]['quantity'] = $quantity;
             $cart[$productId]['subtotal'] = $subtotal;
         } else {
-            // If the product is not in the cart or $cart[$productId] is not an array, add it
             $cart[$productId] = [
                 'name' => $product->name,
                 'price' => $price,
@@ -158,29 +170,32 @@ class CartController extends Controller
             ];
         }
 
+        // Calculate GRAND TOTAL (sum of all items)
+        $grandTotal = array_reduce($cart, function($carry, $item) {
+            return $carry + $item['subtotal'];
+        }, 0);
 
-        //dd($cart);
+        //dd($grandTotal);
 
-        // Save the updated cart to the cookie or session
         if ($request->cookie('cart')) {
-            // Update the cart cookie
             $cookie = Cookie::make('cart', json_encode($cart), 60 * 24 * 30); // 30 days expiration
             return response()->json([
                 'success' => true,
-                'subtotal' => number_format($subtotal, 2), // Format the subtotal
+                'subtotal' => number_format($subtotal, 2),
+                'grand_total' => number_format($grandTotal, 2), // Add grand total
+                'cart_count' => count($cart), // Optional: item count
             ])->withCookie($cookie);
         } else {
-            // Update the cart session
             session(['cart' => $cart]);
             return response()->json([
                 'success' => true,
-                'subtotal' => number_format($subtotal, 2), // Format the subtotal
+                'subtotal' => number_format($subtotal, 2),
+                'grand_total' => number_format($grandTotal, 2), // Add grand total
+                'cart_count' => count($cart), // Optional: item count
             ]);
         }
 
     }
-
-
 
 
 
@@ -201,7 +216,7 @@ class CartController extends Controller
         }
 
 
-        return view('frontend.shopping.checkout');
+        return view('frontend.cart.checkout');
 
     }
 

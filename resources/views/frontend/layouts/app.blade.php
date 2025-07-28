@@ -1,47 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>@yield('title', 'B2B Platform')</title>
-    <meta name="keywords" content="B2B Platform BD"/>
-    <meta name="description" content="B2B Market Place Bangladesh ,B2B Platform">
-    <meta name="author" content="B2B Market Place , b2b platform">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>B2B Online Shopping</title>
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="B2B eCommerce online">
+    <meta name="author" content="p-themes">
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/icons/favicon.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('assets/images/icons/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('assets/images/icons/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/icons/favicon-16x16.png')}}">
+    <link rel="manifest" href="{{asset('assets/images/icons/site.html')}}">
+    <link rel="mask-icon" href="{{asset('assets/images/icons/safari-pinned-tab.svg')}}" color="#666666">
+    <link rel="shortcut icon" href="{{asset('assets/images/icons/favicon.ico')}}">
+    <meta name="apple-mobile-web-app-title" content="B2B">
+    <meta name="application-name" content="Molla">
+    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="msapplication-config" content="{{asset('assets/images/icons/browserconfig.xml')}}">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="{{asset('assets/vendor/line-awesome/line-awesome/line-awesome/css/line-awesome.min.css')}}">
+    <!-- Plugins CSS File -->
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/plugins/owl-carousel/owl.carousel.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/plugins/magnific-popup/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/plugins/jquery.countdown.css')}}">
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="{{asset('assets/css/demos/demo-14.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/skins/skin-demo-14.css')}}">
 
-    <!-- Shortcut Icon -->
-    <link href="{{ asset('favicon/favicon.ico') }}" rel="shortcut icon">
-    <link rel="apple-touch-icon" sizes="180x180" href=" {{asset('favicon/apple-touch-icon.png')}}">
-    <link rel="icon" type="image/png" sizes="32x32" href=" {{asset('favicon/favicon-32x32.png')}}">
-    <link rel="icon" type="image/png" sizes="16x16" href=" {{asset('favicon/favicon-16x16.png')}}">
-{{--    <link rel="manifest" href=" {{asset('favicon/site.webmanifest')}}">--}}
-
-    <!-- Google Fonts -->
-    <script>
-        WebFontConfig = {
-            google: {families: ['Open+Sans:300,400,600,700,800', 'Poppins:200,300,400,500,600,700,800', 'Oswald:300,400,500,600,700,800', 'Nanum+Brush+Script:400,700,800']}
-        };
-        (function (d) {
-            var wf = d.createElement('script'), s = d.scripts[0];
-            wf.src = '{{ asset('assets/js/webfont.js') }}';
-            wf.async = true;
-            s.parentNode.insertBefore(wf, s);
-        })(document);
-    </script>
-
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/owl.carousel/assets/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/owl.carousel/assets/owl.theme.default.min.css') }}">
-    <link rel="stylesheet" href="{{asset('assets/css/animate.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/css/demo23.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/select2.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+    <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
 
     @stack('styles')
 </head>
@@ -49,48 +40,34 @@
 <body>
 <div class="page-wrapper">
     @include('frontend.includes.header')
-
     <main class="main">
         @yield('content')
-    </main>
-
+    </main><!-- End .main -->
     @include('frontend.includes.footer')
-</div>
+</div><!-- End .page-wrapper -->
+<button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
 
-<!-- Loader -->
-<div class="loading-overlay">
-    <div class="bounce-loader">
-        <div class="bounce1"></div>
-        <div class="bounce2"></div>
-        <div class="bounce3"></div>
-    </div>
-</div>
-
-<div class="mobile-menu-overlay"></div>
-
+<!-- Mobile Menu -->
+<div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
 
 
 @include('frontend.includes.mobile-menu-container')
-@include('frontend.includes.sticky-nabbar')
-<a id="scroll-top" href="#top" title="Top" role="button"><i class="icon-angle-up"></i></a>
 
 
-
-<!-- Scripts -->
-<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('assets/js/plugins.min.js') }}"></script>
-<script src="{{ asset('assets/js/optional/isotope.pkgd.min.js') }}"></script>
-<script src="{{ asset('assets/js/jquery.appear.min.js') }}"></script>
-<script src="{{ asset('assets/js/jquery.plugin.min.js') }}"></script>
-<script src="{{ asset('assets/js/select2.js') }}"></script>
-<script src="{{ asset('assets/owl.carousel/owl.carousel.min.js') }}"></script>
-<script src="{{ asset('assets/js/main.min.js') }}"></script>
-<script src="{{ asset('assets/js/custom.js') }}"></script>
-
+<!-- Plugins JS File -->
+<script src="{{asset('assets/js/jquery.min.js')}}"></script>
+<script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('assets/js/jquery.hoverIntent.min.js')}}"></script>
+<script src="{{asset('assets/js/jquery.elevateZoom.min.js')}}"></script>
+<script src="{{asset('assets/js/jquery.waypoints.min.js')}}"></script>
+<script src="{{asset('assets/js/superfish.min.js')}}"></script>
+<script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
+<script src="{{asset('assets/js/bootstrap-input-spinner.js')}}"></script>
+<script src="{{asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
+<script src="{{asset('assets/js/jquery.plugin.min.js')}}"></script>
+<script src="{{asset('assets/js/jquery.countdown.min.js')}}"></script>
+<!-- Main JS File -->
+<script src="{{asset('assets/js/main.js')}}"></script>
 @stack('scripts')
-
-
 </body>
-
 </html>

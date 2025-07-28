@@ -66,7 +66,6 @@ class ProductCategoriesController extends Controller
      */
     public function edit(ProductCategory $productCategory)
     {
-        dd($productCategory);
         return view('admin.product.product-categories.edit', compact('productCategory'));
     }
 
@@ -76,13 +75,13 @@ class ProductCategoriesController extends Controller
     public function update(Request $request, ProductCategory $productCategory)
     {
         $request->validate([
-            'name' => 'required|string|max:191|unique:product_categories,name,' . $productCategory->id,
-            'description' => 'nullable|string',
+            'title' => 'required|string|max:191|unique:product_categories,title,' . $productCategory->id,
+            'status' => 'nullable|string',
         ]);
 
         $productCategory->update($request->all());
 
-        return redirect()->route('product-categories.index')->with('success', 'Category updated successfully.');
+        return redirect()->route('admin.product-categories.index')->with('success', 'Category updated successfully.');
     }
 
     /**

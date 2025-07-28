@@ -25,7 +25,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'isAdmin'])->group(f
         Route::post('/store', [ProductController::class, 'store'])->name('store');
         Route::get('/{product}/edit', [ProductController::class, 'edit'])->name('edit');
         Route::put('/{product}', [ProductController::class, 'update'])->name('update');
-
+        Route::put('/{product}', [ProductController::class, 'destroy'])->name('destroy');
     });
 
     Route::get('/get-subcategories', [VendorsController::class, 'getSubcategories'])->name('get.subcategories');

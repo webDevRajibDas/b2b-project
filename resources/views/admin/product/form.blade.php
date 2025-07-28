@@ -16,23 +16,27 @@
                             <div class="form-group row align-items-center pb-3">
                                 <label class="col-lg-4 col-xl-4 control-label text-lg-end mb-0">Name</label>
                                 <div class="col-lg-8 col-xl-8">
-                                    <input type="text" class="form-control form-control-modern" name="name" value="" required />
+                                    <input type="text" class="form-control form-control-modern @error('name') is-invalid @enderror" name="name" value="{{ old('name', $product->name ?? '') }}" required>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row mb-2">
                                 <label class="col-lg-5 col-xl-4 control-label text-lg-end pt-2 mt-1 mb-0">Short Description</label>
                                 <div class="col-lg-7 col-xl-8">
-                                    <textarea class="form-control form-control-modern" name="description" rows="3"></textarea>
+                                    <textarea class="form-control form-control-modern" name="description" rows="3">{{$product->description ?? ''}}</textarea>
                                 </div>
                             </div>
 
 
                             <div class="form-group row pb-3">
-                                <label class="col-lg-4 control-label text-lg-end pt-2">Product Details Content </label>
+                                <label class="col-lg-4 control-label text-lg-end pt-2">Product Details </label>
                                 <div class="col-lg-8">
-                                    <textarea class="summernote" name="content" data-plugin-summernote data-plugin-options='{ "height": 180 }'><p></p></textarea>
+                                    <textarea class="summernote" name="content" data-plugin-summernote data-plugin-options='{ "height": 180 }'>{{old('content',$product->content ?? '')}}</textarea>
+                                    @error('content')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
+
 
                         </div>
                     </div>
@@ -64,8 +68,12 @@
                             <div class="form-group row align-items-center">
                                 <div class="col">
                                     <div class="mb-3">
-                                        <label for="formFileMultiple" class="form-label">Gallery images</label>
-                                        <input class="form-control" type="file" id="formFileMultiple" multiple name="images[]">
+                                        <label for="images" class="form-label">Gallery images</label>
+                                        <input class="form-control" type="file" id="images" multiple name="images[]">
+                                    </div>
+
+                                    <div id="image_preview" style="width:100%;">
+
                                     </div>
                                 </div>
                             </div>
@@ -103,11 +111,11 @@
                                             @endphp
                                             <select data-plugin-selectTwo class="form-control form-control-modern" name="vendor_id">
                                                 <option value="">Select a Vendor</option>
-                                                @foreach($vendors as $data)
-                                                    <option value="{{ $data->id }}" {{ old('vendor_id') == $data->id ? 'selected' : '' }}>
-                                                        {{ $data->title }}
-                                                    </option>
-                                                @endforeach
+                                                    @foreach($vendors as $data)
+                                                        <option value="{{ $data->id }}" {{ old('vendor_id') == $data->id ? 'selected' : '' }}>
+                                                            {{ $data->title }}
+                                                        </option>
+                                                    @endforeach
                                             </select>
 
                                         </div>
@@ -145,13 +153,13 @@
 
                                 <div class="tab-pane fade" id="price" role="tabpanel" aria-labelledby="price-tab">
                                     <div class="form-group row align-items-center pb-3">
-                                        <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Regular Price ($)</label>
+                                        <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Regular Price (TK)</label>
                                         <div class="col-lg-7 col-xl-6">
                                             <input type="text" class="form-control form-control-modern" name="price" value="" required />
                                         </div>
                                     </div>
                                     <div class="form-group row align-items-center">
-                                        <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Sale Price ($)</label>
+                                        <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Discount Price (TK)</label>
                                         <div class="col-lg-7 col-xl-6">
                                             <input type="text" class="form-control form-control-modern" name="sale_price" value="" />
                                         </div>
@@ -204,21 +212,23 @@
 
                                 <div class="tab-pane fade" id="metatab" role="tabpanel" aria-labelledby="meta-tab">
                                     <div class="form-group row align-items-center pb-3">
-                                        <label class="col-lg-5 col-xl-4 control-label text-lg-end mb-0">Meta Title</label>
-                                        <div class="col-lg-8 col-xl-6">
+                                        <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Meta Title</label>
+                                        <div class="col-lg-7 col-xl-6">
                                             <input type="text" class="form-control form-control-modern" name="meta_title" value="" />
                                         </div>
                                     </div>
-                                    <div class="form-group row align-items-center">
+                                    <div class="form-group row align-items-center mb-2">
                                         <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Meta description</label>
                                         <div class="col-lg-7 col-xl-6">
-                                            <input type="text" class="form-control form-control-modern" name="meta_description" value="" />
+                                            <textarea class="form-control form-control-modern" aria-label="With textarea" name="meta_description">{{ old('meta_description', @$product->meta_description ?? '') }}</textarea>
                                         </div>
                                     </div>
-                                    <div class="form-group row align-items-center">
+
+
+                                    <div class="form-group row align-items-center mb-2">
                                         <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Meta keywords</label>
                                         <div class="col-lg-7 col-xl-6">
-                                            <input type="text" class="form-control form-control-modern" name="meta_keywords" value="" />
+                                            <textarea class="form-control form-control-modern" aria-label="With textarea" name="meta_keywords">{{ old('meta_keywords', @$product->meta_keywords ?? '') }}</textarea>
                                         </div>
                                     </div>
                                 </div>

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->integer('order')->nullable();
             $table->string('status')->default('1');
-            $table->string('template')->nullable(); // e.g., ict.blade.php, shopping.blade.php
+            $table->string('template')->nullable(); // e.g., ict.blade.php, cart.blade.php
             $table->integer('created_by')->unsigned()->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
             $table->integer('deleted_by')->unsigned()->nullable();

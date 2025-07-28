@@ -36,6 +36,8 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
+
+        //dd($request->all());
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'card_categorie_id' => 'required|integer',
@@ -63,6 +65,8 @@ class CardController extends Controller
             'sale_price' => $validatedData['sale_price'],
             'image' => $singleImage,
             'status' => $validatedData['status'],
+            'attr_price' => json_encode($request->attr_price),
+            'attr_packege' => json_encode($request->attr_packege),
         ]);
 
         if ($request->hasFile('images')) {

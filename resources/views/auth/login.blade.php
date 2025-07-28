@@ -1,180 +1,203 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-    <div class="page-header">
-        <div class="container d-flex flex-column align-items-center">
-            <nav aria-label="breadcrumb" class="breadcrumb-nav">
-                <div class="container">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">
-                            My Account
-                        </li>
-                    </ol>
-                </div>
-            </nav>
 
-            <h1>My Account</h1>
-        </div>
-    </div>
+    <div class="form-box">
+        <div class="form-container">
+            <p class="title">Login</p>
+            <form class="form" action="{{route('login')}}" method="post">
+                @csrf
+                <input type="email" class="input" name="email" value="{{ old('email') }}"
+                       id="email" required autocomplete="email" placeholder="Email" autofocus/>
+                @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
 
-    <div class="container login-container">
-        <div class="row">
-            <div class="col-lg-10 mx-auto">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="heading mb-1">
-                            <h2 class="title">Login</h2>
-                        </div>
+                <input id="password" type="password"
+                       class="input @error('password') is-invalid @enderror" name="password" required
+                       autocomplete="current-password" placeholder="Password">
 
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf
-                            <label for="login-email">
-                                Email
-                                <span class="required">*</span>
-                            </label>
-                            <input type="email" class="form-input form-wide" name="email" value="{{ old('email') }}"
-                                   id="login-email" required autocomplete="email" autofocus/>
-                            @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                            <label for="login-password">
-                                Password
-                                <span class="required">*</span>
-                            </label>
-
-                            <input id="password" type="password"
-                                   class="form-control @error('password') is-invalid @enderror" name="password" required
-                                   autocomplete="current-password">
-
-                            @error('password')
-                            <span class="invalid-feedback" role="alert">
+                @error('password')
+                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                            @enderror
+                @enderror
 
-                            <div class="form-footer">
-                                <div class="custom-control custom-checkbox mb-0">
-                                    <input type="checkbox" class="custom-control-input" id="lost-password"/>
-                                    <label class="custom-control-label mb-0" for="lost-password">Remember
-                                        me</label>
-                                </div>
-
-                                @if (Route::has('password.request'))
-                                    <a class=" -password text-dark form-footer-right"
-                                       href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                            <button type="submit" class="btn btn-dark btn-md w-100">
-                                LOGIN
-                            </button>
-                        </form>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="heading mb-1">
-                            <h2 class="title">Register</h2>
-                        </div>
-
-                        <form action="#">
-                            <label for="register-email">
-                                Email address
-                                <span class="required">*</span>
-                            </label>
-                            <input type="email" class="form-input form-wide" id="register-email" required/>
-
-                            <label for="register-password">
-                                Password
-                                <span class="required">*</span>
-                            </label>
-                            <input type="password" class="form-input form-wide" id="register-password"
-                                   required/>
-
-                            <div class="form-footer mb-2">
-                                <button type="submit" class="btn btn-dark btn-md w-100 mr-0">
-                                    Register
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                <p class="page-link">
+                    <span class="page-link-label">Forgot Password?</span>
+                </p>
+                <button class="form-btn">Log in</button>
+            </form>
+            <p class="sign-up-label">
+                Don't have an account? <a href="{{route('register')}}"><span class="sign-up-link">Sign up</span></a>
+            </p>
+            <div class="buttons-container">
+                <div class="apple-login-button">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" class="apple-icon"
+                         viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M747.4 535.7c-.4-68.2 30.5-119.6 92.9-157.5-34.9-50-87.7-77.5-157.3-82.8-65.9-5.2-138 38.4-164.4 38.4-27.9 0-91.7-36.6-141.9-36.6C273.1 298.8 163 379.8 163 544.6c0 48.7 8.9 99 26.7 150.8 23.8 68.2 109.6 235.3 199.1 232.6 46.8-1.1 79.9-33.2 140.8-33.2 59.1 0 89.7 33.2 141.9 33.2 90.3-1.3 167.9-153.2 190.5-221.6-121.1-57.1-114.6-167.2-114.6-170.7zm-105.1-305c50.7-60.2 46.1-115 44.6-134.7-44.8 2.6-96.6 30.5-126.1 64.8-32.5 36.8-51.6 82.3-47.5 133.6 48.4 3.7 92.6-21.2 129-63.7z"></path>
+                    </svg>
+                    <span>Log in with Apple</span>
+                </div>
+                <div class="google-login-button">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1.1" x="0px" y="0px"
+                         class="google-icon" viewBox="0 0 48 48" height="1em" width="1em"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12
+	c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24
+	c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"></path>
+                        <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657
+	C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"></path>
+                        <path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36
+	c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"></path>
+                        <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571
+	c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"></path>
+                    </svg>
+                    <span>Log in with Google</span>
                 </div>
             </div>
         </div>
-    </div>
+    </div><!-- End .form-box -->
 
 @endsection
 
 @push('styles')
     <style>
-        .login-container {
-            margin-top: 3.9rem
+
+        .form-container {
+            height: auto;
+            background-color: #fff;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            border-radius: 10px;
+            box-sizing: border-box;
+            padding: 20px 30px;
+            margin: 35px;
         }
 
-        .login-container .heading .title {
-            margin-bottom: 0;
-            font-size: 2.2rem;
-            letter-spacing: -0.01em
+        .title {
+            text-align: center;
+            font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+            "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+            margin: 10px 0 30px 0;
+            font-size: 28px;
+            font-weight: 800;
         }
 
-        .login-container .custom-checkbox .custom-control-label:after {
-            top: 1px
+        .form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-bottom: 15px;
         }
 
-        .login-container form {
-            margin-bottom: 64px
+        .input {
+            border-radius: 20px;
+            border: 1px solid #c0c0c0;
+            outline: 0 !important;
+            box-sizing: border-box;
+            padding: 12px 15px;
         }
 
-        .login-container form label {
-            margin-bottom: 0.7rem;
-            color: #777;
-            font-family: "Open Sans", sans-serif;
-            font-size: 1.4rem;
-            font-weight: 400
+        .page-link {
+            text-decoration: underline;
+            margin: 0;
+            text-align: end;
+            color: #747474;
+            text-decoration-color: #747474;
         }
 
-        .login-container form .form-input {
-            margin-bottom: 1.7rem;
-            padding-top: 0.8rem;
-            padding-bottom: 0.8rem;
-            border-color: #e7e7e7;
-            line-height: 32px
+        .page-link-label {
+            cursor: pointer;
+            font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+            "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+            font-size: 9px;
+            font-weight: 700;
         }
 
-        .login-container form .btn {
-            font-family: "Open Sans", sans-serif;
-            font-size: 1.6rem
+        .page-link-label:hover {
+            color: #000;
         }
 
-        .login-container form .form-footer {
-            margin-top: 1.8rem;
-            margin-bottom: 2.8rem
+        .form-btn {
+            padding: 10px 15px;
+            font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+            "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+            border-radius: 20px;
+            border: 0 !important;
+            outline: 0 !important;
+            background: teal;
+            color: white;
+            cursor: pointer;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         }
 
-        .login-container .custom-checkbox {
-            margin-top: 1px;
-            padding-left: 2.5rem
+        .form-btn:active {
+            box-shadow: none;
         }
 
-        .login-container .custom-checkbox .custom-control-label {
-            margin-top: 2px;
-            font-size: 1.2rem
+        .sign-up-label {
+            margin: 0;
+            font-size: 10px;
+            color: #747474;
+            font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+            "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
         }
 
-        .login-container .forget-password {
-            font-size: 1.4rem;
-            font-weight: 600
+        .sign-up-link {
+            margin-left: 1px;
+            font-size: 11px;
+            text-decoration: underline;
+            text-decoration-color: teal;
+            color: teal;
+            cursor: pointer;
+            font-weight: 800;
+            font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+            "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
         }
 
-        .login-container .forget-password:hover {
-            text-decoration: underline
+        .buttons-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            margin-top: 20px;
+            gap: 15px;
         }
 
-        .login-container .col-md-6:first-child .form-footer {
-            margin-top: 1.3rem
+        .apple-login-button,
+        .google-login-button {
+            border-radius: 20px;
+            box-sizing: border-box;
+            padding: 10px 15px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+            rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+            "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+            font-size: 11px;
+            gap: 5px;
+        }
+
+        .apple-login-button {
+            background-color: #000;
+            color: #fff;
+            border: 2px solid #000;
+        }
+
+        .google-login-button {
+            border: 2px solid #747474;
+        }
+
+        .apple-icon,
+        .google-icon {
+            font-size: 18px;
+            margin-bottom: 1px;
         }
     </style>
 @endpush

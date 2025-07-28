@@ -9,7 +9,7 @@ class MasterSettingController extends Controller
 
     public function Settings()
     {
-        dd('Master');
+        dd('Master Settings');
 
     }
 }

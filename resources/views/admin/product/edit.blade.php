@@ -3,7 +3,7 @@
 @section('title', 'Edit Product')
 
 @section('content')
-    @include('admin.product.edit-form')
+    @include('admin.product.form')
 @endsection
 
 @push('styles')
@@ -119,19 +119,21 @@
                         $submitButton.html('<i class="bx bx-save text-4 mr-2"></i>' + $submitButton.data('loading-text'));
 
                         // AJAX request with FormData
+
                         $.ajax({
-                            url: '{{ route("admin.products.store") }}',
-                            type: 'POST',
+                            url: '',
+                            type: 'PUT',
                             data: formData,
-                            processData: false, // Prevent jQuery from processing the data
-                            contentType: false, // Prevent jQuery from setting content type
+                            processData: false,
+                            contentType: false,
                             headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Include CSRF token
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                                'X-HTTP-Method-Override': 'PUT' // Only needed if using POST to simulate PUT
                             },
                             success: function(response) {
                                 new PNotify({
                                     title: 'Success',
-                                    text: 'Product Successfully Added',
+                                    text: 'Product Successfully Updated',
                                     type: 'success',
                                     addclass: 'notification-success',
                                     icon: 'fas fa-check'
@@ -141,21 +143,31 @@
 
                                 if ($form.closest('.ecommerce-form-sidebar-overlay-wrapper').get(0)) {
                                     $('.ecommerce-form-sidebar-overlay-wrapper').removeClass('show');
+                                    // Optional: Refresh the product list or update the view without full page reload
                                 } else {
                                     setTimeout(function() {
                                         location.reload();
-                                    }, 5000);
+                                    }, 3000); // Reduced delay from 5s to 3s
                                 }
                             },
                             error: function(xhr, status, error) {
                                 $submitButton.html(submitText);
 
+                                // Show validation errors if they exist
+                                let errorMessage = 'Unfortunately an error occurred, please try again or contact the website administrator.';
+                                if (xhr.responseJSON && xhr.responseJSON.errors) {
+                                    errorMessage = Object.values(xhr.responseJSON.errors).join('<br>');
+                                } else if (xhr.responseJSON && xhr.responseJSON.message) {
+                                    errorMessage = xhr.responseJSON.message;
+                                }
+
                                 new PNotify({
                                     title: 'Error',
-                                    text: 'Unfortunately an error occurred, please try again or contact the website administrator.',
+                                    text: errorMessage,
                                     type: 'error',
                                     addclass: 'notification-error',
-                                    icon: 'fas fa-times'
+                                    icon: 'fas fa-times',
+                                    hide: false
                                 });
                             }
                         });

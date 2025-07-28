@@ -19,6 +19,7 @@
         <div class="container">
             <div class="row">
                 @forelse($digital_product as $data)
+                
                     <div class="col-md-4">
                         <a href="{{ route('digital-product.show', $data->slug) }}">
                             <div class="product-card">
