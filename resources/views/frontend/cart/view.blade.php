@@ -122,7 +122,7 @@
                                                 Shipping</label>
                                         </div><!-- End .custom-control -->
                                     </td>
-                                    <td>$0.00</td>
+                                    <td>0.00</td>
                                 </tr><!-- End .summary-shipping-row -->
 
                                 <tr class="summary-shipping-row">
@@ -131,10 +131,10 @@
                                             <input type="radio" id="standart-shipping" name="shipping"
                                                    class="custom-control-input">
                                             <label class="custom-control-label"
-                                                   for="standart-shipping">Standart:</label>
+                                                   for="standart-shipping">Standard:</label>
                                         </div><!-- End .custom-control -->
                                     </td>
-                                    <td>$10.00</td>
+                                    <td>10.00</td>
                                 </tr><!-- End .summary-shipping-row -->
 
                                 <tr class="summary-shipping-row">
@@ -145,7 +145,7 @@
                                             <label class="custom-control-label" for="express-shipping">Express:</label>
                                         </div><!-- End .custom-control -->
                                     </td>
-                                    <td>$20.00</td>
+                                    <td>50.00</td>
                                 </tr><!-- End .summary-shipping-row -->
 
                                 <tr class="summary-shipping-estimate">
@@ -155,16 +155,19 @@
 
                                 <tr class="summary-total">
                                     <td>Total:</td>
-                                    <td>$160.00</td>
+                                    <td>140.00</td>
                                 </tr><!-- End .summary-total -->
                                 </tbody>
                             </table><!-- End .table table-summary -->
 
-                            <a href="checkout.html" class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO
-                                CHECKOUT</a>
+                            <a href="#"
+                               class="btn btn-outline-primary-2 btn-order btn-block"
+                               id="proceedToCheckout">
+                                PROCEED TO CHECKOUT
+                            </a>
                         </div><!-- End .summary -->
 
-                        <a href="category.html"
+                        <a href="#"
                            class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE SHOPPING</span><i
                                     class="icon-refresh"></i></a>
                     </aside><!-- End .col-lg-3 -->
@@ -172,6 +175,29 @@
             </div><!-- End .container -->
         </div><!-- End .cart -->
     </div><!-- End .page-content -->
+
+
+    <!-- Modal for guest users -->
+    <div class="modal fade" id="loginRequiredModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="padding: 20px">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login Required</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>You need to login or register to proceed to checkout.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+                    <a href="{{ route('register') }}" class="btn btn-secondary">Register</a>
+                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Continue Shopping</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 
@@ -209,6 +235,20 @@
                         console.log('Error updating cart');
                     }
                 });
+            });
+        });
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkoutBtn = document.getElementById('proceedToCheckout');
+
+            checkoutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                @auth
+                    window.location.href = "{{ route('checkout') }}";
+                @else
+                $('#loginRequiredModal').modal('show');
+                @endauth
             });
         });
     </script>

@@ -26,11 +26,16 @@ Route::get('/privacy-policy', [HomepageController::class, 'privacyPolicy'])->nam
 //CartController function
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('addToCart');
 Route::get('/carts', [CartController::class, 'viewCart'])->name('view.cart');
-Route::get('/checkouts', [CartController::class, 'checkOuts'])->name('checkouts');
+
 Route::get('/cart/count', [CartController::class, 'cartCount'])->name('cart.count');
 Route::post('/cart/remove', [CartController::class, 'removeCartItem'])->name('cart.remove');
 Route::get('/cart/items', [CartController::class, 'getCartItems'])->name('cart.items');
 Route::post('/update-subtotal', [CartController::class, 'updateCartPage'])->name('update.cart');
+
+// Protected checkout route
+Route::middleware(['auth'])->group(function() {
+    Route::get('/checkout', [CartController::class, 'checkOuts'])->name('checkout');
+});
 
 
 

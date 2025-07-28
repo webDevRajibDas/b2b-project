@@ -201,6 +201,8 @@ class CartController extends Controller
 
     public function checkOuts()
     {
+        dd('Check Out');
+
         if (auth()->check()) {
             $user_id = auth()->id();
             $cartItems = Cart::where('user_id', $user_id)->with('products')->get();

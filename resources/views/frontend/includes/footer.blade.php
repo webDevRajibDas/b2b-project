@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-sm-12 col-lg-4">
                     <div class="widget widget-about">
-                        <img src="{{asset('assets/images/demos/demo-14/logo-footer.png')}}" class="footer-logo" alt="Footer Logo" width="105" height="25">
+                        <img src="{{asset('assets/images/b2b_logo.jpg')}}" class="footer-logo" alt="Footer Logo" width="105" height="25">
                         <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus. </p>
 
                         <div class="widget-about-info">
@@ -114,7 +114,7 @@
 
     <div class="footer-bottom">
         <div class="container-fluid">
-            <p class="footer-copyright">Copyright © 2019 B2B Store. All Rights Reserved.</p><!-- End .footer-copyright -->
+            <p class="footer-copyright">Copyright © 2024 B2B Store. All Rights Reserved.</p><!-- End .footer-copyright -->
             <div class="social-icons social-icons-color">
                 <span class="social-label">Social Media</span>
                 <a href="#" class="social-icon social-facebook" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>

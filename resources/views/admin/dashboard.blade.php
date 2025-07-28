@@ -20,11 +20,11 @@
                                 <div class="widget-user-info-body">
                                     <div class="row">
                                         <div class="col-auto">
-                                            <strong class="text-color-dark text-5">$19.876,02</strong>
+                                            <strong class="text-color-dark text-5">5000</strong>
                                             <h3 class="text-4-1">User Balance</h3>
                                         </div>
                                         <div class="col-auto">
-                                            <strong class="text-color-dark text-5">637</strong>
+                                            <strong class="text-color-dark text-5">{{$totalProduct}}</strong>
                                             <h3 class="text-4-1">Products</h3>
                                         </div>
                                     </div>
@@ -48,7 +48,7 @@
                             <div class="row align-items-center">
                                 <div class="col-6 col-md-4">
                                     <h3 class="text-4-1 my-0">Total Orders</h3>
-                                    <strong class="text-6 text-color-dark">4825</strong>
+                                    <strong class="text-6 text-color-dark">{{$totalOrder}}</strong>
                                 </div>
                                 <div class="col-6 col-md-4 border border-top-0 border-end-0 border-bottom-0 border-color-light-grey py-3">
                                     <h3 class="text-4-1 text-color-success line-height-2 my-0">Orders <strong>UP
