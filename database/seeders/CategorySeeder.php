@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
-class ProductCategorySeeder extends Seeder
+
+class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -78,7 +78,7 @@ class ProductCategorySeeder extends Seeder
         ];
 
         // Insert data into the product_categories table
-        DB::table('product_categories')->insert($categories);
+        DB::table('categories')->insert($categories);
     }
 
 

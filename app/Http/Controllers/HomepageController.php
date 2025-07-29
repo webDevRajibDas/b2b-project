@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\ProductCategory;
+use App\Models\Category;
 use App\Models\SubCategorie;
 use App\Models\Upazila;
 use App\Models\Vendor;
@@ -22,7 +22,7 @@ class HomepageController extends Controller
             ->take(12)
             ->get();
 
-        $productCat = ProductCategory::latest()
+        $productCat = Category::latest()
             ->take(5)
             ->get();
 
@@ -52,14 +52,12 @@ class HomepageController extends Controller
     public function productShowDetail($slug)
     {
         $detail = Product::with(['gallery','category'])->where('slug', $slug)->first();
-        $relatedProducts = Product::where('product_categorie_id', $detail->product_categorie_id)
+        $relatedProducts = Product::where('categorie_id', $detail->categorie_id)
             ->where('id', '!=', $detail->id)
             ->inRandomOrder()
-            ->limit(4)
+            ->limit(5)
             ->get();
-
         return view('frontend.product-details', compact('detail','relatedProducts'));
-
     }
 
 
@@ -121,7 +119,7 @@ class HomepageController extends Controller
         $category = SubCategorie::where('slug', $categorySlug)->firstOrFail();
         $vendor = Vendor::where('sub_categories_id', $category)->first();
         $all_products = Product::all();
-        $product_categories = ProductCategory::all();
+        $product_categories = Category::all();
         return view('frontend.vendors.vendor-cart', compact('category', 'vendor','all_products','product_categories'));
 
     }

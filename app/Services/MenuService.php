@@ -1,14 +1,14 @@
 <?php
 // app/Services/MenuService.php
 namespace App\Services;
-use App\Models\ProductCategory;
-use PhpOffice\PhpSpreadsheet\Calculation\Category;
+use App\Models\Category;
+
 
 class MenuService
 {
     public function generateMegaMenu()
     {
-        $categories = ProductCategory::with(['children' => function($query) {
+        $categories = Category::with(['children' => function($query) {
             $query->where('is_active', true);
         }])
             ->whereNull('parent_id')

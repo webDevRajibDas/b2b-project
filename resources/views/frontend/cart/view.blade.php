@@ -36,47 +36,53 @@
                             </thead>
 
                             <tbody>
-                                @foreach($cartItems as $item)
-                                    @if($item->product)
-                                        <tr>
-                                            <td class="product-col">
-                                                <div class="product">
-                                                    <figure class="product-media">
-                                                        <a href="#">
-                                                            <img src="{{asset('storage/'.$item->product->image)}}"
-                                                                 alt="Product image">
-                                                        </a>
-                                                    </figure>
+                            @foreach($cartItems as $item)
+                                @if($item->product)
+                                    <tr>
+                                        <td class="product-col">
+                                            <div class="product">
+                                                <figure class="product-media">
+                                                    <a href="#">
+                                                        <img src="{{asset('storage/'.$item->product->image)}}"
+                                                             alt="Product image">
+                                                    </a>
+                                                </figure>
 
-                                                    <h3 class="product-title">
-                                                        <a href="#">{{$item->product->name}}</a>
-                                                    </h3><!-- End .product-title -->
+                                                <h3 class="product-title">
+                                                    <a href="#">{{$item->product->name}}</a>
+                                                </h3><!-- End .product-title -->
 
-                                                </div><!-- End .product -->
-                                            </td>
-                                            <td class="price-col">{{$item->product->sale_price}}</td>
-                                            <td class="quantity-col">
-                                                <div class="cart-product-quantity">
-                                                    <input type="number" class="form-control cart-quantity-input" value="{{ (int)$item->quantity }}" min="1" max="10" step="1"
-                                                               data-decimals="0" data-product-id="{{ $item->product->id }}" data-update-url="{{ route('update.cart') }}" required
-                                                        >
+                                            </div><!-- End .product -->
+                                        </td>
+                                        <td class="price-col">{{$item->product->sale_price}}</td>
+                                        <td class="quantity-col">
+                                            <div class="cart-product-quantity">
+                                                <input type="number" class="form-control cart-quantity-input"
+                                                       value="{{ (int)$item->quantity }}" min="1" max="10" step="1"
+                                                       data-decimals="0" data-product-id="{{ $item->product->id }}"
+                                                       data-update-url="{{ route('update.cart') }}" required
+                                                >
 
-                                                </div>
-                                            </td>
+                                            </div>
+                                        </td>
 
-                                            <td class="total-col" id="total-{{ $item->product->id }}">
-                                                {{ $item->product->sale_price * (int)$item->quantity}}
-                                            </td>
+                                        <td class="total-col" id="total-{{ $item->product->id }}">
+                                            {{ $item->product->sale_price * (int)$item->quantity}}
+                                        </td>
 
-                                            <td class="remove-col">
-                                                <button class="btn-remove"><i class="icon-close"></i></button>
-                                            </td>
-                                        </tr>
-                                    @else
-                                        <td colspan="5">Product no longer available</td>
-                                    @endif
+                                        <td class="remove-col">
+                                            <button type="button" class="btn-remove remove-from-cart"
+                                                    data-product-id="{{ $item->product->id }}"
+                                                    data-remove-url="{{ route('cart.remove') }}">
+                                                <i class="icon-close"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                @else
+                                    <td colspan="5">Product no longer available</td>
+                                @endif
 
-                                @endforeach
+                            @endforeach
 
                             </tbody>
                         </table><!-- End .table table-wishlist -->
@@ -204,7 +210,7 @@
 @push('scripts')
     <script>
         $(document).ready(function () {
-            $(document).on('change', '.cart-quantity-input', function() {
+            $(document).on('change', '.cart-quantity-input', function () {
                 const input = $(this);
                 const productId = input.data('product-id');
                 const newQuantity = input.val();
@@ -220,7 +226,7 @@
                         quantity: newQuantity,
                         _token: csrfToken
                     },
-                    success: function(response) {
+                    success: function (response) {
                         if (response.success) {
                             const newTotal = parseFloat(response.subtotal.replace(/,/g, ''));
                             console.log(newTotal);
@@ -231,18 +237,46 @@
                             console.log('Failed to update cart');
                         }
                     },
-                    error: function() {
+                    error: function () {
                         console.log('Error updating cart');
                     }
                 });
             });
+
+
+            $(document).on('click', '.remove-from-cart', function () {
+                const button = $(this);
+                const productId = button.data('product-id');
+                const url = button.data('remove-url');
+
+                $.ajax({
+                    url: url,
+                    method: 'POST',
+                    data: {
+                        product_id: productId,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            // Optionally show a message
+                            // Remove the row from DOM
+                            button.closest('tr').remove();
+                        }
+                    },
+                    error: function () {
+                        alert('Failed to remove item from cart.');
+                    }
+                });
+            });
+
+
         });
 
 
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const checkoutBtn = document.getElementById('proceedToCheckout');
 
-            checkoutBtn.addEventListener('click', function(e) {
+            checkoutBtn.addEventListener('click', function (e) {
                 e.preventDefault();
                 @auth
                     window.location.href = "{{ route('checkout') }}";

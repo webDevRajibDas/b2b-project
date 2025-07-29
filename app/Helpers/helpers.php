@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\ProductCategory;
+use App\Models\Category;
 use Illuminate\Support\Facades\Cookie;
 use App\Models\Cart;
 use Carbon\Carbon;
@@ -77,7 +77,7 @@ if (!function_exists('ProductCategoryDropdown')) {
     function ProductCategoryDropdown($name, $selected = null, $attributes = [])
     {
 
-        $categories = ProductCategory::all();
+        $categories = Category::all();
         $html = '<select name="' . $name . '"';
         foreach ($attributes as $key => $value) {
             $html .= ' ' . $key . '="' . $value . '"';
@@ -119,16 +119,6 @@ if (!function_exists('ProductCategoryDropdown')) {
             return $html;
         }
     }
-
-
-
-    if (!function_exists('generatePdfUrl')) {
-        function generatePdfUrl($file)
-        {
-            return url("/{$file}.php?p=" . strtoupper(Str::random(8)));
-        }
-    }
-
 
 
 

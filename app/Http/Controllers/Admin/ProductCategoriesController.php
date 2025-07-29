@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\ProductCategory;
+
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -14,7 +15,7 @@ class ProductCategoriesController extends Controller
      */
     public function index()
     {
-        $categories = ProductCategory::all();
+        $categories = Category::all();
         return view('admin.product.product-categories.index', compact('categories'));
     }
 
@@ -37,12 +38,12 @@ class ProductCategoriesController extends Controller
         ]);
 
         $slug = $validated['slug'] ?? Str::slug($validated['title']);
-        $count = ProductCategory::where('slug', 'like', $slug . '%')->count();
+        $count = Category::where('slug', 'like', $slug . '%')->count();
         if ($count > 0) {
             $slug .= '-' . ($count + 1);
         }
 
-        ProductCategory::create([
+        Category::create([
             'title' => $validated['title'],
             'slug' => $slug,
             'created_by' => auth()->user()->id,
@@ -64,22 +65,22 @@ class ProductCategoriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ProductCategory $productCategory)
+    public function edit(Category $category)
     {
-        return view('admin.product.product-categories.edit', compact('productCategory'));
+        return view('admin.product.product-categories.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ProductCategory $productCategory)
+    public function update(Request $request, Category $category)
     {
         $request->validate([
-            'title' => 'required|string|max:191|unique:product_categories,title,' . $productCategory->id,
+            'title' => 'required|string|max:191|unique:product_categories,title,' . $category->id,
             'status' => 'nullable|string',
         ]);
 
-        $productCategory->update($request->all());
+        $category->update($request->all());
 
         return redirect()->route('admin.product-categories.index')->with('success', 'Category updated successfully.');
     }
@@ -87,7 +88,7 @@ class ProductCategoriesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ProductCategory $productCategory)
+    public function destroy(Category $productCategory)
     {
         $productCategory->delete();
         return redirect()->route('product-categories.index')->with('success', 'Category deleted successfully.');

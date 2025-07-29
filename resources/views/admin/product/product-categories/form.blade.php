@@ -27,7 +27,7 @@
                             <div class="form-group row align-items-center mb-3">
                                 <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Category Name</label>
                                 <div class="col-lg-7 col-xl-6">
-                                    <input type="text" class="form-control form-control-modern" id="title" name="title" value="{{ isset($productCategory) ? $productCategory->title : old('title') }}" required>
+                                    <input type="text" class="form-control form-control-modern" id="title" name="title" value="{{ isset($category) ? $category->title : old('title') }}" required>
                                 </div>
                             </div>
 
@@ -36,8 +36,8 @@
                                 <label class="col-lg-5 col-xl-3 control-label text-lg-end pt-2 mt-1 mb-0">Status</label>
                                 <div class="col-lg-7 col-xl-6">
                                     <select class="form-control" id="status" name="status" required>
-                                        <option value="active" {{ (isset($productCategory) && $productCategory->status == 'active') ? 'selected' : '' }}>Active</option>
-                                        <option value="inactive" {{ (isset($productCategory) && $productCategory->status == 'inactive') ? 'selected' : '' }}>Inactive</option>
+                                        <option value="active" {{ (isset($category) && $category->status == 'active') ? 'selected' : '' }}>Active</option>
+                                        <option value="inactive" {{ (isset($category) && $category->status == 'inactive') ? 'selected' : '' }}>Inactive</option>
                                     </select>
                                 </div>
                             </div>
@@ -52,7 +52,7 @@
         <div class="col-12 col-md-auto">
             <button type="submit" class="submit-button btn btn-primary btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1" data-loading-text="Loading...">
                 <i class="bx bx-save text-4 me-2"></i>
-                @if (isset($productCategory))
+                @if (isset($category))
                     Update Category
                 @else
                     Save Category

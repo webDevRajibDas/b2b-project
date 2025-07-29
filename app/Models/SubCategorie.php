@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 
 class SubCategorie extends Model
 {
-    protected $fillable = ['title','parent_id', 'description', 'slug','image'];
+    protected $fillable = ['title','parent_id', 'description', 'slug','image','order','status'];
     public static function boot()
     {
         parent::boot();
@@ -25,6 +25,6 @@ class SubCategorie extends Model
 
     public function parentCategory()
     {
-        return $this->belongsTo(VendorCategorie::class, 'parent_id');
+        return $this->belongsTo(Category::class, 'id');
     }
 }

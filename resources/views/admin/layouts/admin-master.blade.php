@@ -27,6 +27,7 @@
     <!-- Specific Page Vendor CSS -->
     <link rel="stylesheet" href="{{asset('admin/vendor/morris/morris.css')}}"/>
     <link rel="stylesheet" href="{{asset('admin/vendor/datatables/media/css/dataTables.bootstrap5.css')}}"/>
+    @include('sweetalert2::index')
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('admin/css/theme.css')}}"/>
     <!-- Theme Layout -->

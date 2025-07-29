@@ -33,6 +33,17 @@
                                     - Categories List
                                 </a>
                             </li>
+
+                            <li>
+                                <a class="nav-link" href="{{url('admin/product-categories')}}">
+                                    - Sub Categories List
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{{url('admin/product-categories')}}">
+                                    - Sub SubCategories List
+                                </a>
+                            </li>
                             <li>
                                 <a class="nav-link" href="{{url('admin/brands')}}">
                                     - Brands List

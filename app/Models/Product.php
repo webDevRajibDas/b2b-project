@@ -13,7 +13,7 @@ class Product extends Model
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
 
-    protected $fillable = ['name','brand_id', 'description', 'image','content','product_categorie_id',
+    protected $fillable = ['name','brand_id', 'description', 'image','content','categorie_id',
         'brand_id','vendor_id','price', 'sale_price','image','atts','video_media','sku',
         'allow_checkout_when_out_of_stock','with_storehouse_management','is_featured','stock_status','quantity'
     ];
@@ -41,7 +41,7 @@ class Product extends Model
 
     public function category()
     {
-        return $this->belongsTo(ProductCategory::class, 'product_categorie_id'); //product_categories
+        return $this->belongsTo(Category::class, 'categorie_id');
     }
 
     public function brands()

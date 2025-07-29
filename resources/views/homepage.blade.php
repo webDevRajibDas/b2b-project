@@ -232,7 +232,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link active" id="trending-all-link" data-toggle="tab" href="#trending-all-tab" role="tab" aria-controls="trending-all-tab" aria-selected="true">All</a>
                                 </li>
-                                @foreach($productCat as $category)
+                                @foreach($productCat  ?? [] as $category)
                                     <li class="nav-item">
                                         <a class="nav-link"
                                            id="trending-{{ $category->title }}-link"
@@ -320,7 +320,7 @@
                         </div>
 
                         <!-- Category Tabs -->
-                        @foreach($productCat as $category)
+                        @foreach($productCat  ?? [] as $category)
                             <div class="tab-pane p-0 fade" id="trending-{{ $category->slug }}-tab" role="tabpanel" aria-labelledby="trending-{{ $category->slug }}-link">
                                 <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl"
                                      data-owl-options='{
@@ -337,7 +337,7 @@
                                 "1600": {"items":5, "nav": true}
                             }
                         }'>
-                                    @foreach($category->products->take(8) as $product)
+                                    @forelse($category->products ?? [] as $product)
                                         <div class="product text-center">
                                             <figure class="product-media">
                                                 @if($product->on_sale)
@@ -385,7 +385,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    @endforeach
+                                    @empty
+                                        <p>No products found this category!!</p>
+                                    @endforelse
+
                                 </div>
                             </div>
                         @endforeach
@@ -454,7 +457,7 @@
                                         }
                                     }'>
 
-                            @forelse($ictProducts as $ictProduct)
+                            @forelse($ictProducts  ?? [] as $ictProduct)
                                 <div class="product text-center">
                                     <figure class="product-media">
                                         <a href="product.html">

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\DataTables\ProductsDataTable;
 use App\Models\Brand;
-use App\Models\ProductCategory;
+use App\Models\Category;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -46,7 +46,7 @@ class ProductController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate($perPage);
 
-        $categories = ProductCategory::all(); // For category filter dropdown
+        $categories = Category::all(); // For category filter dropdown
 
         return view('admin.product.index', compact('products', 'search', 'categories', 'category', 'minPrice', 'maxPrice'));
     }
@@ -55,7 +55,7 @@ class ProductController extends Controller
     public function create()
     {
         $brands = Brand::where('status', 1) ->orderBy('id', 'desc')->get();
-        $categories =  ProductCategory::where('status', 'active') ->orderBy('id', 'desc')->get();
+        $categories =  Category::where('status', 'active') ->orderBy('id', 'desc')->get();
         return view('admin.product.create',compact('categories','brands'));
     }
 
@@ -126,9 +126,8 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-
         $brands = Brand::where('status', 1) ->orderBy('id', 'desc')->get();
-        $categories =  ProductCategory::where('status', 'active') ->orderBy('id', 'desc')->get();
+        $categories =  Category::where('status', 'active') ->orderBy('id', 'desc')->get();
         return view('admin.product.edit', compact('product','categories','brands'));
     }
 

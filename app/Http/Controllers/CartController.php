@@ -87,12 +87,62 @@ class CartController extends Controller
 
     public function removeCartItem(Request $request)
     {
-        $cart = Cart::find($request->cart_id);
-        if ($cart) {
-            $cart->delete();
-            return response()->json(['message' => 'Item removed successfully']);
+
+        $request->validate([
+            'product_id' => 'required|integer|exists:products,id'
+        ]);
+
+        $productId = $request->input('product_id');
+
+        if (auth()->check()) {
+            // For authenticated users - remove from database
+            $cartItem = auth()->user()->cartItems()->where('product_id', $productId)->first();
+
+            if ($cartItem) {
+                $cartItem->delete();
+
+                // Recalculate grand total
+                $grandTotal = auth()->user()->cartItems()->with('product')->get()->sum(function($item) {
+                    return $item->product->price * $item->quantity;
+                });
+
+                return response()->json([
+                    'success' => true,
+                    'grand_total' => $grandTotal,
+                    'item_count' => auth()->user()->cartItems()->count()
+                ]);
+            }
+
+        } else {
+            // For guest users - remove from cookie
+            $cart = json_decode($request->cookie('cart'), true) ?? [];
+
+            if (isset($cart[$productId])) {
+                // Store the removed item's subtotal before removing
+                $removedSubtotal = $cart[$productId]['subtotal'];
+
+                // Remove the item
+                unset($cart[$productId]);
+
+                // Calculate new grand total
+                $grandTotal = array_sum(array_column($cart, 'subtotal'));
+
+                // Create new cookie
+                $cookie = cookie('cart', json_encode($cart), 60 * 24 * 30); // 30 days
+
+                return response()->json([
+                    'success' => true,
+                    'product_id' => $productId,
+                    'grand_total' => $grandTotal,
+                    'item_count' => count($cart)
+                ])->withCookie($cookie);
+            }
         }
-        return response()->json(['message' => 'Item not found'], 404);
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Item not found in cart'
+        ], 404);
     }
 
 

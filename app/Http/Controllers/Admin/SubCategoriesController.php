@@ -15,7 +15,7 @@ class SubCategoriesController extends Controller
 
     public function index()
     {
-        $allData = SubCategorie::with('parentCategory')->get();
+        $allData = SubCategorie::all();
         return view('admin.vendor-section.sub-categories.index', compact('allData'));
     }
 

@@ -16,7 +16,7 @@ class ProductSeeder extends Seeder
     {
 
         \DB::transaction(function (){
-            Product::factory()->count(200)->create()
+            Product::factory()->count(100)->create()
                 ->each(function ($product) {
                     $product->update([
                         'image' => fake()->imageUrl(640, 480, 'products', true),
