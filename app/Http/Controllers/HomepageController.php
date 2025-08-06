@@ -61,6 +61,11 @@ class HomepageController extends Controller
     }
 
 
+    public function shopList()
+    {
+        return view('frontend.category-shop-list');
+    }
+
     public function categoryList()
     {
         $products = Product::latest()->paginate(20);
@@ -123,9 +128,6 @@ class HomepageController extends Controller
         return view('frontend.vendors.vendor-cart', compact('category', 'vendor','all_products','product_categories'));
 
     }
-
-
-
 
 
 

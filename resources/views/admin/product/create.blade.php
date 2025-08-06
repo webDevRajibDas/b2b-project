@@ -10,10 +10,10 @@
 
 @push('styles')
     <!-- Specific Page Vendor CSS -->
-    <link rel="stylesheet" href="{{asset('admin/vendor/select2/css/select2.css')}}" />
-    <link rel="stylesheet" href="{{asset('admin/vendor/select2-bootstrap-theme/select2-bootstrap.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('admin/vendor/bootstrap-markdown/css/bootstrap-markdown.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('admin/vendor/pnotify/pnotify.custom.css')}}" />
+    <link rel="stylesheet" href="{{asset('admin/vendor/select2/css/select2.css')}}"/>
+    <link rel="stylesheet" href="{{asset('admin/vendor/select2-bootstrap-theme/select2-bootstrap.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('admin/vendor/bootstrap-markdown/css/bootstrap-markdown.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('admin/vendor/pnotify/pnotify.custom.css')}}"/>
 @endpush
 
 @push('scripts')
@@ -24,9 +24,121 @@
     <script src="{{asset('admin/vendor/pnotify/pnotify.custom.js')}}"></script>
 
     <script>
+
         $(document).ready(function () {
+
+
+            const $categorySelect = $('#categorieId');
+            const $subCategorySelect = $('#subCategorie');
+            const $subSubCategorySelect = $('#subSubCategories');
+
+
+            $categorySelect.on('change', function (e) {
+                e.preventDefault();
+                const categoryId = $(this).val();
+                $subCategorySelect.empty().prop('disabled', true).append($('<option>', {
+                    value: '',
+                    text: 'Select a category'
+                }));
+                $subSubCategorySelect.empty().prop('disabled', true).append($('<option>', {
+                    value: '',
+                    text: 'Select a subcategory first'
+                }));
+
+                if (categoryId) {
+                    $.ajax({
+                        url: "{{ route('admin.get.subCategories.list') }}",
+                        type: 'GET',
+                        data: {category_id: categoryId},
+                        success: function (response) {
+                            $subCategorySelect.empty().prop('disabled', false).append($('<option>', {
+                                value: '',
+                                text: 'Select a subcategory'
+                            }));
+                            if (response && response.length > 0) {
+                                $.each(response, function (index, subcategory) {
+                                    $subCategorySelect.append($('<option>', {
+                                        value: subcategory.id,
+                                        text: subcategory.title
+                                    }));
+                                });
+                            } else {
+                                $subCategorySelect.append($('<option>', {value: '', text: 'No subcategories found'}));
+                            }
+                            // Re-init Select2 if necessary: $subCategorySelect.select2();
+                        },
+                        error: function (xhr, status, error) { /* ... error handling ... */
+                        }
+                    });
+                }
+            });
+
+            // --- NEW Event Listener for Subcategory Change ---
+            $subCategorySelect.on('change', function (e) {
+                e.preventDefault();
+                const subcategoryId = $(this).val();
+                console.log(subcategoryId)
+
+                $subSubCategorySelect.empty().prop('disabled', true).append($('<option>', {
+                    value: '',
+                    text: 'Loading...'
+                }));
+
+                if (subcategoryId) {
+                    $.ajax({
+                        url: "{{ route('admin.get.subsubCategories.list') }}",
+                        type: 'GET',
+                        data: {
+                            subcategory_id: subcategoryId // Send the selected subcategory ID
+                        },
+                        success: function (response) {
+                            console.log(response)
+                            $subSubCategorySelect.empty().prop('disabled', false).append($('<option>', {
+                                value: '',
+                                text: 'Select a sub-subcategory'
+                            }));
+
+                            if (response && response.length > 0) {
+                                $.each(response, function (index, subSubcategory) {
+                                    $subSubCategorySelect.append($('<option>', {
+                                        value: subSubcategory.id,
+                                        text: subSubcategory.title
+                                    }));
+                                });
+                            } else {
+                                $subSubCategorySelect.append($('<option>', {
+                                    value: '',
+                                    text: 'No sub-subcategories found'
+                                }));
+                            }
+                            // Re-init Select2 if necessary: $subSubCategorySelect.select2();
+                        },
+                        error: function (xhr, status, error) {
+                            console.error("AJAX Error fetching sub-subcategories:", status, error);
+                            $subSubCategorySelect.empty().prop('disabled', false);
+                            $subSubCategorySelect.append($('<option>', {
+                                value: '',
+                                text: 'Error loading sub-subcategories'
+                            }));
+                        }
+                    });
+                } else {
+
+                    $subSubCategorySelect.empty().prop('disabled', true).append($('<option>', {
+                        value: '',
+                        text: 'Select a category first' // Or 'Select a subcategory'
+                    }));
+
+                }
+            });
+
+            if ($categorySelect.val()) {
+                $categorySelect.trigger('change');
+            }
+
+
             var fileArr = [];
-            $("#images").change(function(){
+            $("#images").change(function () {
                 // check if fileArr length is greater than 0
                 if (fileArr.length > 0) fileArr = [];
 
@@ -38,12 +150,12 @@
                         return false;
                     } else {
                         fileArr.push(total_file[i]);
-                        $('#image_preview').append("<div class='img-div' id='img-div"+i+"'><img src='"+URL.createObjectURL(event.target.files[i])+"' class='img-responsive gallery_image img-thumbnail' title='"+total_file[i].name+"'><div class='middle'><button id='action-icon' value='img-div"+i+"' class='btn btn-danger' role='"+total_file[i].name+"'><i class='fa fa-trash-alt'></i></button></div></div>");
+                        $('#image_preview').append("<div class='img-div' id='img-div" + i + "'><img src='" + URL.createObjectURL(event.target.files[i]) + "' class='img-responsive gallery_image img-thumbnail' title='" + total_file[i].name + "'><div class='middle'><button id='action-icon' value='img-div" + i + "' class='btn btn-danger' role='" + total_file[i].name + "'><i class='fa fa-trash-alt'></i></button></div></div>");
                     }
                 }
             });
 
-            $('body').on('click', '#action-icon', function(evt){
+            $('body').on('click', '#action-icon', function (evt) {
                 var divName = this.value;
                 var fileName = $(this).attr('role');
                 $(`#${divName}`).remove();
@@ -69,14 +181,14 @@
         }
 
 
-        (function($) {
+        (function ($) {
             'use strict';
 
             /*
              * eCommerce Attribues - Add New
              *
              */
-            $(document).on('click', '.ecommerce-attribute-add-new', function(e){
+            $(document).on('click', '.ecommerce-attribute-add-new', function (e) {
                 e.preventDefault();
 
                 var html = '' +
@@ -106,7 +218,7 @@
              * eCommerce Attribues - Remove
              *
              */
-            $(document).on('click', '.ecommerce-attribute-remove', function(e){
+            $(document).on('click', '.ecommerce-attribute-remove', function (e) {
                 e.preventDefault();
                 $(this).closest('.ecommerce-attribute-row').remove();
             });
@@ -115,28 +227,28 @@
              * eCommerce Form - Validation and Submit the form data
              *
              */
-            var ecommerceFormValidate = function() {
+            var ecommerceFormValidate = function () {
                 var $form = $('.ecommerce-form');
 
                 $form.validate({
                     ignore: '',
-                    invalidHandler: function(form, validator) {
+                    invalidHandler: function (form, validator) {
                         var errors = validator.numberOfInvalids();
 
                         if (errors) {
-                            $('.form-control.error').each(function(){
+                            $('.form-control.error').each(function () {
                                 var tab_id = $(this).closest('.tab-pane').attr('id');
 
-                                $('.nav-link[href="#'+ tab_id +'"]').trigger('click');
+                                $('.nav-link[href="#' + tab_id + '"]').trigger('click');
                                 return false;
                             });
                         }
                     },
-                    submitHandler: function(form) {
+                    submitHandler: function (form) {
                         var formData = new FormData(form);
                         var attsArray = [];
 
-                        $('.ecommerce-attribute-row').each(function(){
+                        $('.ecommerce-attribute-row').each(function () {
                             var $row = $(this);
 
                             attsArray.push({
@@ -167,7 +279,8 @@
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Include CSRF token
                             },
-                            success: function(response) {
+                            success: function (response) {
+                                console.log(response)
                                 new PNotify({
                                     title: 'Success',
                                     text: 'Product Successfully Added',
@@ -181,22 +294,44 @@
                                 if ($form.closest('.ecommerce-form-sidebar-overlay-wrapper').get(0)) {
                                     $('.ecommerce-form-sidebar-overlay-wrapper').removeClass('show');
                                 } else {
-                                    setTimeout(function() {
+                                    setTimeout(function () {
                                         location.reload();
-                                    }, 5000);
+                                    }, 3000);
                                 }
                             },
-                            error: function(xhr, status, error) {
+                            error: function (xhr, status, error) {
                                 $submitButton.html(submitText);
 
-                                new PNotify({
-                                    title: 'Error',
-                                    text: 'Unfortunately an error occurred, please try again or contact the website administrator.',
-                                    type: 'error',
-                                    addclass: 'notification-error',
-                                    icon: 'fas fa-times'
-                                });
+                                if (xhr.status === 422) {
+                                    let errors = xhr.responseJSON.errors;
+                                    let messageList = '';
+
+                                    for (let field in errors) {
+                                        if (errors.hasOwnProperty(field)) {
+                                            errors[field].forEach(msg => {
+                                                messageList += `<div>${msg}</div>`;
+                                            });
+                                        }
+                                    }
+
+                                    new PNotify({
+                                        title: 'Validation Error',
+                                        text: messageList,
+                                        type: 'error',
+                                        addclass: 'notification-error',
+                                        icon: 'fas fa-exclamation-triangle'
+                                    });
+                                } else {
+                                    new PNotify({
+                                        title: 'Error',
+                                        text: 'An error occurred. Please try again.',
+                                        type: 'error',
+                                        addclass: 'notification-error',
+                                        icon: 'fas fa-times'
+                                    });
+                                }
                             }
+
                         });
                     }
                 });
@@ -206,7 +341,7 @@
             ecommerceFormValidate();
 
             // Sidebar Overlay Form Show
-            $(window).on('ecommerce.sidebar.overlay.show', function(){
+            $(window).on('ecommerce.sidebar.overlay.show', function () {
                 ecommerceFormValidate();
             });
 

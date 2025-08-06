@@ -6,7 +6,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-5 cta-txt">
                             <h3 class="cta-title text-primary">Join Our Newsletter</h3><!-- End .cta-title -->
-                            <p class="cta-desc text-light">Subcribe to get information about products and coupons</p><!-- End .cta-desc -->
+                            <p class="cta-desc text-light">Subscribe to get information about products and coupons</p><!-- End .cta-desc -->
                         </div><!-- End .col-lg-5 -->
 
                         <div class="col-lg-7">
@@ -54,8 +54,7 @@
                         <h4 class="widget-title">Useful Links</h4><!-- End .widget-title -->
 
                         <ul class="widget-list">
-                            <li><a href="#">About Molla</a></li>
-                            <li><a href="#">How to shop on Molla</a></li>
+                            <li><a href="#">About B2B PlatForm</a></li>
                             <li><a href="#">FAQ</a></li>
                             <li><a href="#">Contact us</a></li>
                             <li><a href="#">Log in</a></li>
@@ -114,7 +113,7 @@
 
     <div class="footer-bottom">
         <div class="container-fluid">
-            <p class="footer-copyright">Copyright © 2024 B2B Store. All Rights Reserved.</p><!-- End .footer-copyright -->
+            <p class="footer-copyright">Copyright © 2024 B2B Platform. All Rights Reserved.</p><!-- End .footer-copyright -->
             <div class="social-icons social-icons-color">
                 <span class="social-label">Social Media</span>
                 <a href="#" class="social-icon social-facebook" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>

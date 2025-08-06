@@ -28,8 +28,7 @@
                                     <div class="header-menu">
                                         <ul>
                                             <li><a href="#">English</a></li>
-                                            <li><a href="#">French</a></li>
-                                            <li><a href="#">Spanish</a></li>
+                                            <li><a href="#">Bn</a></li>
                                         </ul>
                                     </div><!-- End .header-menu -->
                                 </div><!-- End .header-dropdown -->
@@ -106,31 +105,6 @@
 
                         <div class="col-lg-4 col-xxl-5col d-flex justify-content-end align-items-center">
                             <div class="header-dropdown-link">
-                                <div class="dropdown compare-dropdown">
-                                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Compare Products" aria-label="Compare Products">
-                                        <i class="icon-random"></i>
-                                        <span class="compare-txt">Compare</span>
-                                    </a>
-
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <ul class="compare-products">
-                                            <li class="compare-product">
-                                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                                                <h4 class="compare-product-title"><a href="product.html">Blue Night Dress</a></h4>
-                                            </li>
-                                            <li class="compare-product">
-                                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                                                <h4 class="compare-product-title"><a href="product.html">White Long Skirt</a></h4>
-                                            </li>
-                                        </ul>
-
-                                        <div class="compare-actions">
-                                            <a href="#" class="action-link">Clear All</a>
-                                            <a href="#" class="btn btn-outline-primary-2"><span>Compare</span><i class="icon-long-arrow-right"></i></a>
-                                        </div>
-                                    </div><!-- End .dropdown-menu -->
-                                </div><!-- End .compare-dropdown -->
-
                                 <a href="wishlist.html" class="wishlist-link">
                                     <i class="icon-heart-o"></i>
                                     <span class="wishlist-count">3</span>
@@ -211,20 +185,16 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-auto col-lg-3 col-xl-3 col-xxl-2 header-left">
-                    <div class="dropdown category-dropdown show is-on" data-visible="true">
+                    <div class="dropdown category-dropdown show is-on" data-visible="false">
                         <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Browse Categories">
                             Browse Categories
                         </a>
 
-                        <div class="dropdown-menu show">
+                        <div class="dropdown-menu none">
                             <nav class="side-nav">
                                 <ul class="menu-vertical sf-arrows">
                                     @include('frontend.partials.mega-menu')
-                                    <li><a href="#"><i class="icon-blender"></i>Home Appliances</a></li>
-                                    <li><a href="#"><i class="icon-heartbeat"></i>Healthy & Beauty</a></li>
-                                    <li><a href="#"><i class="icon-shoe-prints"></i>Shoes & Boots</a></li>
-                                    <li><a href="#"><i class="icon-mobile-alt"></i>Smart Phones</a></li>
-                                    <li><a href="#"><i class="icon-gift"></i>Gift Ideas</a></li>
+                                   
                                 </ul><!-- End .menu-vertical -->
                             </nav><!-- End .side-nav -->
                         </div><!-- End .dropdown-menu -->
@@ -248,10 +218,9 @@
                                                         <div class="menu-title">Shop Pages</div><!-- End .menu-title -->
                                                         <ul>
                                                             <li><a href="{{route('view.cart')}}">Cart</a></li>
-                                                            <li><a href="checkout.html">Checkout</a></li>
-                                                            <li><a href="wishlist.html">Wishlist</a></li>
+                                                            <li><a href="#">Checkout</a></li>
+                                                            <li><a href="#">Wishlist</a></li>
                                                             <li><a href="dashboard.html">My Account</a></li>
-                                                            <li><a href="#">Lookbook</a></li>
                                                         </ul>
                                                     </div><!-- End .col-md-6 -->
                                                 </div><!-- End .row -->
@@ -269,14 +238,7 @@
                                             <div class="menu-col">
                                                 <div class="menu-title">Product Details</div><!-- End .menu-title -->
                                                 <ul>
-                                                    <li><a href="product.html">Default</a></li>
-                                                    <li><a href="product-centered.html">Centered</a></li>
-                                                    <li><a href="product-extended.html"><span>Extended Info<span class="tip tip-new">New</span></span></a></li>
-                                                    <li><a href="product-gallery.html">Gallery</a></li>
-                                                    <li><a href="product-sticky.html">Sticky Info</a></li>
-                                                    <li><a href="product-sidebar.html">Boxed With Sidebar</a></li>
-                                                    <li><a href="product-fullwidth.html">Full Width</a></li>
-                                                    <li><a href="product-masonry.html">Masonry Sticky Info</a></li>
+                                                    <li><a href="{{route('product.shopList')}}">Product Shop List</a></li>
                                                 </ul>
                                             </div><!-- End .menu-col -->
                                         </div><!-- End .col-md-6 -->
@@ -287,7 +249,7 @@
                                                     <img src="assets/images/menu/banner-2.jpg" alt="Banner">
 
                                                     <div class="banner-content banner-content-bottom">
-                                                        <div class="banner-title text-white">New Trends<br><span><strong>spring 2019</strong></span></div><!-- End .banner-title -->
+                                                        <div class="banner-title text-white">New Trends<br><span><strong>spring 2025</strong></span></div><!-- End .banner-title -->
                                                     </div><!-- End .banner-content -->
                                                 </a>
                                             </div><!-- End .banner -->
@@ -298,24 +260,11 @@
                             <li>
                                 <a href="#" class="sf-with-ul">Pages</a>
                                 <ul>
-                                    <li>
-                                        <a href="about.html" class="sf-with-ul">About</a>
-                                        <ul>
-                                            <li><a href="about.html">About 01</a></li>
-                                            <li><a href="about-2.html">About 02</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="contact.html" class="sf-with-ul">Contact</a>
-                                        <ul>
-                                            <li><a href="contact.html">Contact 01</a></li>
-                                            <li><a href="contact-2.html">Contact 02</a></li>
-                                        </ul>
-                                    </li>
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
                                     <li><a href="login.html">Login</a></li>
                                     <li><a href="faq.html">FAQs</a></li>
                                     <li><a href="404.html">Error 404</a></li>
-                                    <li><a href="coming-soon.html">Coming Soon</a></li>
                                 </ul>
                             </li>
 

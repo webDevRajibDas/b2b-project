@@ -103,29 +103,12 @@
                             <div class="tab-content" id="tabContent">
 
                                 <div class="tab-pane fade show active" id="linked-products" role="tabpanel" aria-labelledby="linked-products-tab">
-                                    <div class="form-group row align-items-center pb-3">
-                                        <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Vendor</label>
-                                        <div class="col-lg-7 col-xl-6">
-                                            @php
-                                                $vendors = \App\Models\Vendor::where('status', 'active') ->orderBy('id', 'asc')->get();
-                                            @endphp
-                                            <select data-plugin-selectTwo class="form-control form-control-modern" name="vendor_id">
-                                                <option value="">Select a Vendor</option>
-                                                    @foreach($vendors as $data)
-                                                        <option value="{{ $data->id }}" {{ old('vendor_id') == $data->id ? 'selected' : '' }}>
-                                                            {{ $data->title }}
-                                                        </option>
-                                                    @endforeach
-                                            </select>
-
-                                        </div>
-                                    </div>
 
                                     <div class="form-group row align-items-center pb-3">
-                                        <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Category</label>
+                                        <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Main Category</label>
                                         <div class="col-lg-7 col-xl-6">
-                                            <select data-plugin-selectTwo class="form-control form-control-modern" name="category_id">
-                                                <option value="">Select a category</option>
+                                            <select data-plugin-selectTwo class="form-control form-control-modern" name="category_id" id="categorieId">
+                                                <option value="">Please Select</option>
                                                 @foreach($categories as $category)
                                                     <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
                                                         {{ $category->title }}
@@ -135,7 +118,27 @@
 
                                         </div>
                                     </div>
-                                    <div class="form-group row align-items-center">
+                                    <div class="form-group row align-items-center pb-3">
+                                        <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Sub Category</label>
+                                        <div class="col-lg-7 col-xl-6">
+                                            <select data-plugin-selectTwo class="form-control form-control-modern" name="sub_categorie_id" id="subCategorie">
+                                                <option value="">Select a category</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row align-items-center pb-3">
+                                        <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Sub SubCategory</label>
+                                        <div class="col-lg-7 col-xl-6">
+                                            <select data-plugin-selectTwo class="form-control form-control-modern" name="sub_subcategorie_id" id="subSubCategories">
+                                                <option value="">Select a category</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group row align-items-center pb-3">
                                         <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Brand</label>
                                         <div class="col-lg-7 col-xl-6">
                                             <select data-plugin-selectTwo class="form-control form-control-modern" name="brand_id">
@@ -150,18 +153,17 @@
                                     </div>
                                 </div>
 
-
                                 <div class="tab-pane fade" id="price" role="tabpanel" aria-labelledby="price-tab">
                                     <div class="form-group row align-items-center pb-3">
                                         <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Regular Price (TK)</label>
                                         <div class="col-lg-7 col-xl-6">
-                                            <input type="text" class="form-control form-control-modern" name="price" value="" required />
+                                            <input type="text" class="form-control form-control-modern" name="price"  />
                                         </div>
                                     </div>
                                     <div class="form-group row align-items-center">
                                         <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Discount Price (TK)</label>
                                         <div class="col-lg-7 col-xl-6">
-                                            <input type="text" class="form-control form-control-modern" name="sale_price" value="" />
+                                            <input type="text" class="form-control form-control-modern" name="sale_price" required/>
                                         </div>
                                     </div>
                                 </div>

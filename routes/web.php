@@ -8,20 +8,23 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', [HomepageController::class, 'homePage'])->name('homePage');
-Route::get('/vendors/{slug}', [HomepageController::class, 'showVendorList'])->name('vendors.show');
+Route::controller(HomepageController::class)->group(function () {
+    Route::get('/', 'homePage')->name('homePage');
+    Route::get('/shop-list', 'shopList')->name('product.shopList');
+    Route::get('/category-list', 'categoryList')->name('category.list');
 
-Route::get('/category-list', [HomepageController::class, 'categoryList'])->name('category.list');
+    Route::get('/product/{slug}', 'productShowDetail')->name('product.show');
+    Route::get('/upazilas/{districtId}', 'getUpazilas');
+
+    Route::get('/vendor-form', 'vendorForm')->name('vendor-form');
+    Route::post('/vendor-contact-form', 'vendorContactForm')->name('vendorContactForm');
+
+    Route::get('/about-us', 'aboutUs')->name('about.us');
+    Route::get('/terms-and-conditions', 'termsAndConditions')->name('terms.conditions');
+    Route::get('/privacy-policy', 'privacyPolicy')->name('privacy_policy');
+});
 
 
-Route::get('/product/{slug}', [HomepageController::class, 'productShowDetail'])->name('product.show');
-Route::get('/upazilas/{districtId}', [HomepageController::class, 'getUpazilas']);
-
-Route::get('/vendor-form', [HomepageController::class, 'vendorForm'])->name('vendor-form');
-Route::post('/vendor-contact-form', [HomepageController::class, 'vendorContactForm'])->name('vendorContactForm');
-Route::get('/about-us', [HomepageController::class, 'aboutUs'])->name('about.us');
-Route::get('/terms-and-conditions', [HomepageController::class, 'termsAndConditions'])->name('terms.conditions');
-Route::get('/privacy-policy', [HomepageController::class, 'privacyPolicy'])->name('privacy_policy');
 
 //CartController function
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('addToCart');

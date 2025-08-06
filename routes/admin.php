@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\Admin\SubSubcategoriesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Admin\CardCategoriesController;
@@ -28,13 +30,18 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'isAdmin'])->group(f
         Route::put('/{product}', [ProductController::class, 'destroy'])->name('destroy');
     });
 
-    Route::get('/get-subcategories', [VendorsController::class, 'getSubcategories'])->name('get.subcategories');
-    Route::resource('sub-categories', SubCategoriesController::class);
+    Route::get('/categories/{id}/subcategories', [SubSubcategoriesController::class, 'getSubcategories'])->name('get.subCategories');
+
+    Route::get('/get-sub-categories', [ProductController::class, 'getSubcategories'])->name('get.subCategories.list');
+    Route::get('/get-sub-subcategories', [ProductController::class, 'getSubSubcategories'])->name('get.subsubCategories.list');
+
 
     Route::resources([
         'card-categories' => CardCategoriesController::class,
         'cards' => CardController::class,
         'product-categories' => ProductCategoriesController::class,
+        'sub-categories' => SubCategoriesController::class,
+        'sub-sub-categories' => SubSubcategoriesController::class,
         'sliders' => SliderController::class,
         'brands' => BrandController::class,
         'vendors' => VendorsController::class,

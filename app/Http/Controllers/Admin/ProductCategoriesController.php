@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class ProductCategoriesController extends Controller
@@ -33,7 +34,7 @@ class ProductCategoriesController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title' => 'required|string|max:191|unique:product_categories,title',
+            'title' => 'required|string|max:191|unique:categories,title',
             'description' => 'nullable|string',
         ]);
 
@@ -45,6 +46,7 @@ class ProductCategoriesController extends Controller
 
         Category::create([
             'title' => $validated['title'],
+            'status' => $request->status,
             'slug' => $slug,
             'created_by' => auth()->user()->id,
             'description' => $validated['description'] ?? null,
@@ -65,32 +67,45 @@ class ProductCategoriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        return view('admin.product.product-categories.edit', compact('category'));
+        $productCategory = Category::findOrFail($id);
+        return view('admin.product.product-categories.edit', compact('productCategory'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
+        $categoryData = Category::findOrFail($id);
         $request->validate([
-            'title' => 'required|string|max:191|unique:product_categories,title,' . $category->id,
+            'title' => 'required|string|max:191|unique:categories,title,' . $categoryData->id,
             'status' => 'nullable|string',
         ]);
 
-        $category->update($request->all());
-
+        $categoryData->update($request->all());
         return redirect()->route('admin.product-categories.index')->with('success', 'Category updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $productCategory)
-    {
-        $productCategory->delete();
-        return redirect()->route('product-categories.index')->with('success', 'Category deleted successfully.');
+
+    public function destroy($id){
+        try {
+            $category = Category::findOrFail($id);
+            $category->delete();
+            // 3. Redirect back with a success message
+            return redirect()->route('admin.product-categories.index')->with('success', 'Category deleted successfully.');
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            Log::error("Category not found for deletion: ID {$id}", ['exception' => $e]);
+            return redirect()->route('product-categories.index')->with('error', 'Category not found.');
+        } catch (\Exception $e) {
+            Log::error("Error deleting category ID {$id}: " . $e->getMessage(), ['exception' => $e]);
+            return redirect()->route('product-categories.index')->with('error', 'Could not delete category. Please try again.');
+        }
+
+
     }
 }

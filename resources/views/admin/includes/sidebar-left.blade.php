@@ -35,12 +35,12 @@
                             </li>
 
                             <li>
-                                <a class="nav-link" href="{{url('admin/product-categories')}}">
+                                <a class="nav-link" href="{{url('admin/sub-categories')}}">
                                     - Sub Categories List
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link" href="{{url('admin/product-categories')}}">
+                                <a class="nav-link" href="{{url('admin/sub-sub-categories')}}">
                                     - Sub SubCategories List
                                 </a>
                             </li>

@@ -264,6 +264,38 @@
     </div>
 </footer>
 
+
+
+@foreach($menuCategories as $category)
+    <li class="menu-item">
+        <a href="#">{{ $category->title }}</a>
+
+        @if($category->subcategories->count())
+            <ul class="sub-menu">
+                @foreach($category->subcategories as $subcategory)
+                    <li class="menu-item">
+                        <a href="#">
+                            {{ $subcategory->title }}
+                        </a>
+
+                        @if($subcategory->subSubcategories->count())
+                            <ul class="sub-sub-menu">
+                                @foreach($subcategory->subSubcategories as $subSubcategory)
+                                    <li class="menu-item">
+                                        <a href="#">
+                                            {{ $subSubcategory->title }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </li>
+                @endforeach
+            </ul>
+        @endif
+    </li>
+@endforeach
+
 <!-- Optional: JavaScript for smoother scrolling or animations -->
 <!-- <script src="js/scripts.js"></script> -->
 </body>

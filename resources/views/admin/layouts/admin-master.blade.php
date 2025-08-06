@@ -10,6 +10,10 @@
     <meta name="description" content="B2B Market Place Admin">
     <meta name="author" content="https://b2bplatformbd.com">
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/icons/favicon.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('assets/images/icons/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('assets/images/icons/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/icons/favicon-16x16.png')}}">
+    <link rel="shortcut icon" href="{{asset('assets/images/icons/favicon.ico')}}">
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -27,7 +31,7 @@
     <!-- Specific Page Vendor CSS -->
     <link rel="stylesheet" href="{{asset('admin/vendor/morris/morris.css')}}"/>
     <link rel="stylesheet" href="{{asset('admin/vendor/datatables/media/css/dataTables.bootstrap5.css')}}"/>
-    @include('sweetalert2::index')
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.22.2/dist/sweetalert2.min.css" rel="stylesheet">
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('admin/css/theme.css')}}"/>
     <!-- Theme Layout -->
@@ -135,6 +139,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
 <script src="{{asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('admin/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.22.2/dist/sweetalert2.all.min.js"></script>
 <script src="{{asset('admin/vendor/common/common.js')}}"></script>
 <script src="{{asset('admin/vendor/nanoscroller/nanoscroller.js')}}"></script>
 <script src="{{asset('admin/vendor/magnific-popup/jquery.magnific-popup.js')}}"></script>

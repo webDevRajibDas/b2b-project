@@ -13,7 +13,7 @@ class Product extends Model
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
 
-    protected $fillable = ['name','brand_id', 'description', 'image','content','categorie_id',
+    protected $fillable = ['name','brand_id', 'description', 'image','content','categorie_id','sub_categorie_id','sub_subcategorie_id',
         'brand_id','vendor_id','price', 'sale_price','image','atts','video_media','sku',
         'allow_checkout_when_out_of_stock','with_storehouse_management','is_featured','stock_status','quantity'
     ];

@@ -1,35 +1,32 @@
-
-<li class="megamenu-container">
-    <a class="sf-with-ul" href="#"><i class="icon-laptop"></i>Electronics</a>
-    <div class="megamenu">
-        <div class="row no-gutters">
-            @foreach($megaMenuCategories->chunk(ceil($megaMenuCategories->count()/2)) as $chunk)
-                <div class="col-md-6">
-                    @foreach($chunk as $category)
-                        <div class="menu-title">{{ $category->name }}</div>
-                        <ul>
-                            @foreach($category->children as $subcategory)
-                                <li>
-                                    <a href="{{ route('category.show', $subcategory->slug) }}">
-                                        {{ $subcategory->name }}
-                                    </a>
-                                    @if($subcategory->children->count())
-                                        <ul class="submenu">
-                                            @foreach($subcategory->children as $child)
+@foreach($menuCategories as $category)
+    <li class="megamenu-container">
+        <a class="sf-with-ul" href="#">{{ $category->title }}</a>
+        <div class="megamenu">
+            <div class="row no-gutters">
+                <div class="col-md-8">
+                    <div class="menu-col">
+                        <div class="row">
+                            @foreach($category->subcategories->chunk(2) as $chunk)
+                                <div class="col-md-6">
+                                    @foreach($chunk as $subcategory)
+                                        <div class="menu-title">{{ $subcategory->title }}</div>
+                                        <ul>
+                                            @foreach($subcategory->subSubcategories as $subSubcategory)
                                                 <li>
-                                                    <a href="{{ route('category.show', $child->slug) }}">
-                                                        {{ $child->name }}
+                                                    <a href="#">
+                                                        {{ $subSubcategory->title }}
                                                     </a>
                                                 </li>
                                             @endforeach
                                         </ul>
-                                    @endif
-                                </li>
+                                    @endforeach
+                                </div><!-- End .col-md-6 -->
                             @endforeach
-                        </ul>
-                    @endforeach
-                </div>
-            @endforeach
-        </div>
-    </div>
-</li>
+                        </div><!-- End .row -->
+                    </div><!-- End .menu-col -->
+                </div><!-- End .col-md-8 -->
+
+            </div><!-- End .row -->
+        </div><!-- End .megamenu -->
+    </li>
+@endforeach

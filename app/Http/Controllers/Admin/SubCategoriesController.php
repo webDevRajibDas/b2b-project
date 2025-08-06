@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\SubCategorie;
-use App\Models\VendorCategorie;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -15,15 +15,15 @@ class SubCategoriesController extends Controller
 
     public function index()
     {
-        $allData = SubCategorie::all();
-        return view('admin.vendor-section.sub-categories.index', compact('allData'));
+        $subCategories = SubCategorie::with('category')->get();
+        return view('admin.product.sub-categories.index', compact('subCategories'));
     }
 
 
     public function create()
     {
-        $vendorCategories = VendorCategorie::all();
-        return view('admin.vendor-section.sub-categories.create', compact('vendorCategories'));
+        $categories = Category::all();
+        return view('admin.product.sub-categories.create', compact('categories'));
     }
 
     /**
@@ -34,9 +34,9 @@ class SubCategoriesController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:191|unique:sub_categories,title',
-            'parent_id' => 'required|exists:vendor_categories,id',
+            'parent_id' => 'required|exists:categories,id',
             'slug' => 'nullable|string|max:191|unique:sub_categories,slug',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'description' => 'nullable|string',
         ]);
 
@@ -45,9 +45,16 @@ class SubCategoriesController extends Controller
         if ($count > 0) {
             $slug .= '-' . ($count + 1);
         }
-        $filePath = $this->uploadImage($request->file('image'), 'sub_category');
 
-        $subCategory = SubCategorie::create([
+        $filePath = null;
+        if ($request->hasFile('image')) {
+            $filePath = $this->uploadImage($request->file('image'), 'sub_category');
+            if ($filePath === null) {
+
+                return back()->withErrors(['image' => 'Image upload failed.'])->withInput();
+            }
+        }
+        SubCategorie::create([
             'title' => $validated['title'],
             'parent_id' => $request->parent_id,
             'slug' => $slug,
@@ -60,9 +67,9 @@ class SubCategoriesController extends Controller
 
     public function edit($id)
     {
-        $subCategory = SubCategorie::with('parentCategory')->findOrFail($id);
-        $vendorCategories = VendorCategorie::all();
-        return view('admin.vendor-section.sub-categories.edit', compact('subCategory','vendorCategories'));
+        $subCategory = SubCategorie::with('category')->findOrFail($id);
+        $categories = Category::all();
+        return view('admin.product.sub-categories.edit', compact('subCategory','categories'));
     }
 
     public function show($id)
@@ -71,6 +78,7 @@ class SubCategoriesController extends Controller
 
     public function update(Request $request, SubCategorie $subCategory)
     {
+        //dd($subCategory);
         $validated = $request->validate([
             'title' => [
                 'required',
@@ -80,7 +88,7 @@ class SubCategoriesController extends Controller
             ],
             'parent_id' => [
                 'required',
-                Rule::exists('vendor_categories', 'id')
+                Rule::exists('sub_categories', 'id')
             ],
             'slug' => [
                 'nullable', 'string', 'max:191',
@@ -89,7 +97,7 @@ class SubCategoriesController extends Controller
             'image' => [
                 'sometimes', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'
             ],
-            'description' => 'required|string',
+            'description' => 'nullable|string',
         ]);
 
         // Slug generation logic

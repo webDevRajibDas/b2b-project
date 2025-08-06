@@ -1,6 +1,6 @@
 @extends('admin.layouts.admin-master')
 
-@section('title', 'Product Categories')
+@section('title', 'Sub Categories')
 
 @section('content')
     <div class="row">
@@ -11,7 +11,8 @@
                         <div class="datatable-header">
                             <div class="row align-items-center mb-3">
                                 <div class="col-12 col-lg-auto mb-3 mb-lg-0">
-                                    <a href="{{route('admin.product-categories.create')}}" class="btn btn-primary btn-md font-weight-semibold btn-py-2 px-4">+ Add Category</a>
+                                    <a href="{{route('admin.sub-categories.index')}}" class="btn btn-primary btn-md font-weight-semibold btn-py-2 px-4">Sub Category List</a>
+                                    <a href="{{route('admin.sub-categories.create')}}" class="btn btn-primary btn-md font-weight-semibold btn-py-2 px-4">+ Add Category</a>
                                 </div>
                                 <div class="col-8 col-lg-auto ms-auto ml-auto mb-3 mb-lg-0">
                                     <div class="d-flex align-items-lg-center flex-column flex-lg-row">
@@ -49,27 +50,35 @@
                             <tr>
                                 <th width="3%"><input type="checkbox" name="select-all" class="select-all checkbox-style-1 p-relative top-2" value="" /></th>
                                 <th width="8%">ID</th>
+                                <th width="28%">Main Category</th>
                                 <th width="28%">Name</th>
                                 <th width="38%">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($categories as $data )
+                            @foreach($subCategories as $data )
+
                                 <tr>
                                     <td width="30">
                                         <input type="checkbox" name="checkboxRow1" class="checkbox-style-1 p-relative top-2" value="" />
                                     </td>
                                     <td><strong>{{$data->id}}</strong></td>
+                                    <td> @if($data->category && $data->category->title)
+                                            {{ $data->category->title }}
+                                        @else
+                                            N/A
+                                        @endif
+                                    </td>
+
                                     <td><strong>{{$data->title}}</strong></td>
                                     <td class="actions">
-                                        <a href="{{ route('admin.product-categories.edit', $data->id) }}"><i class="fas fa-pencil-alt"></i></a>
+                                        <a href="{{ route('admin.sub-categories.edit', $data->id) }}"><i class="fas fa-pencil-alt"></i></a>
                                         <button class="delete-row btn"
-                                                data-url="{{ route('admin.product-categories.destroy', $data->id) }}"
+                                                data-url="{{ route('admin.sub-categories.destroy', $data->id) }}"
                                                 title="Delete Category"
                                                 aria-label="Delete">
                                             <i class="far fa-trash-alt" style="color: red"></i>
                                         </button>
-
                                         <form id="delete-data" method="POST" style="display:none;">
                                             @csrf
                                             @method('DELETE')
@@ -113,6 +122,7 @@
     <style>
     </style>
 @endpush
+
 @push('scripts')
 
     <script>
