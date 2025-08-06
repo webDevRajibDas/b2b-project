@@ -20,6 +20,7 @@ Route::controller(HomepageController::class)->group(function () {
     Route::post('/vendor-contact-form', 'vendorContactForm')->name('vendorContactForm');
 
     Route::get('/about-us', 'aboutUs')->name('about.us');
+    Route::get('/contact-us', 'contactUs')->name('contact.us');
     Route::get('/terms-and-conditions', 'termsAndConditions')->name('terms.conditions');
     Route::get('/privacy-policy', 'privacyPolicy')->name('privacy_policy');
 });

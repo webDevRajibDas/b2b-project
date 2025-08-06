@@ -140,6 +140,9 @@ class HomepageController extends Controller
     public function aboutUs()
     {
         return view('frontend.about');
+    }public function contactUs()
+    {
+        return view('frontend.contact');
     }
     public function termsAndConditions()
     {

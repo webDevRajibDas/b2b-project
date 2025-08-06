@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Page Title')
+@section('title', 'All Product List')
 
 @section('content')
 
@@ -14,7 +14,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{URL('/')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Shop</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">All Product List</li>
+                    <li class="breadcrumb-item active" aria-current="page">Product List</li>
                 </ol>
             </div><!-- End .container -->
         </nav><!-- End .breadcrumb-nav -->

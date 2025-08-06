@@ -230,13 +230,12 @@
                                 </div><!-- End .megamenu megamenu-md -->
                             </li>
                             <li>
-                                <a href="product.html" class="sf-with-ul">Product</a>
+                                <a href="#" class="sf-with-ul">Product</a>
 
                                 <div class="megamenu megamenu-sm">
                                     <div class="row no-gutters">
                                         <div class="col-md-6">
                                             <div class="menu-col">
-                                                <div class="menu-title">Product Details</div><!-- End .menu-title -->
                                                 <ul>
                                                     <li><a href="{{route('product.shopList')}}">Product Shop List</a></li>
                                                 </ul>
@@ -260,9 +259,9 @@
                             <li>
                                 <a href="#" class="sf-with-ul">Pages</a>
                                 <ul>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="login.html">Login</a></li>
+                                    <li><a href="{{route('about.us')}}">About</a></li>
+                                    <li><a href="{{route('contact.us')}}">Contact</a></li>
+                                    <li><a href="{{route('login')}}">Login</a></li>
                                     <li><a href="faq.html">FAQs</a></li>
                                     <li><a href="404.html">Error 404</a></li>
                                 </ul>
