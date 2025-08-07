@@ -251,7 +251,6 @@ class CartController extends Controller
 
     public function checkOuts()
     {
-        dd('Check Out');
 
         if (auth()->check()) {
             $user_id = auth()->id();
@@ -266,7 +265,6 @@ class CartController extends Controller
                 return $product ? (object) ['product' => $product, 'quantity' => $quantity] : null;
             })->filter()->values()->all();
         }
-
 
         return view('frontend.cart.checkout');
 

@@ -166,7 +166,7 @@
                                 </tbody>
                             </table><!-- End .table table-summary -->
 
-                            <a href="#"
+                            <a href="{{route('cart.checkout')}}"
                                class="btn btn-outline-primary-2 btn-order btn-block"
                                id="proceedToCheckout">
                                 PROCEED TO CHECKOUT
@@ -285,5 +285,30 @@
                 @endauth
             });
         });
+
+        $(document).on('click', '.removeFromCart', function(e) {
+            e.preventDefault();
+            var itemId = $(this).closest('.cart-item').data('id'); // Get item ID
+
+            $.ajax({
+                url: '/cart/remove/' + itemId, // Your Laravel route
+                type: 'DELETE',
+                data: {
+                    _token: '{{ csrf_token() }}' // Include CSRF token
+                },
+                success: function(response) {
+                    // Remove the item's HTML element from the DOM
+                    $(`div.cart-item[data-id="${itemId}"]`).remove();
+                    // Optionally, update cart total or display a success message
+                    console.log(response.message);
+                },
+                error: function(xhr) {
+                    console.error('Error removing item:', xhr.responseText);
+                }
+            });
+        });
+
+
+
     </script>
 @endpush

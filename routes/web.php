@@ -35,11 +35,12 @@ Route::get('/cart/count', [CartController::class, 'cartCount'])->name('cart.coun
 Route::post('/cart/remove', [CartController::class, 'removeCartItem'])->name('cart.remove');
 Route::get('/cart/items', [CartController::class, 'getCartItems'])->name('cart.items');
 Route::post('/update-subtotal', [CartController::class, 'updateCartPage'])->name('update.cart');
+Route::get('/checkout', [CartController::class, 'checkOuts'])->name('cart.checkout');
 
 // Protected checkout route
-Route::middleware(['auth'])->group(function() {
-    Route::get('/checkout', [CartController::class, 'checkOuts'])->name('checkout');
-});
+//Route::middleware(['auth'])->group(function() {
+//    Route::get('/checkout', [CartController::class, 'checkOuts'])->name('checkout');
+//});
 
 
 

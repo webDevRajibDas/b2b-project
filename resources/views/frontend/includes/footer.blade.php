@@ -56,7 +56,7 @@
                         <ul class="widget-list">
                             <li><a href="#">About B2B PlatForm</a></li>
                             <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Contact us</a></li>
+                            <li><a href="{{route('contact.us')}}">Contact us</a></li>
                             <li><a href="#">Log in</a></li>
                         </ul><!-- End .widget-list -->
                     </div><!-- End .widget -->

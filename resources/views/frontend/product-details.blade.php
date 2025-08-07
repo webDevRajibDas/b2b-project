@@ -128,19 +128,16 @@
 
                                 <div class="product-details-action">
                                     <button class="cart-button" id="cart-btn" data-product-id="{{ $detail->id }}">
-                                        Add to cart
+                                        ADD TO CART
                                         <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
-                                            <path
-                                                    clip-rule="evenodd"
+                                            <path clip-rule="evenodd"
                                                     d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
                                                     fill-rule="evenodd"
                                             ></path>
                                         </svg>
                                     </button>
-
-
                                     <div class="details-action-wrapper">
-                                        <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Add to Wishlist</span></a>
+                                        <a href="#" class="btn btn-primary btn-round btn-shadow" style="background-color: #3000ff"><span style="font-weight: bolder">BUY NOW</span><i class="icon-long-arrow-right"></i></a>
                                     </div><!-- End .details-action-wrapper -->
                                 </div><!-- End .product-details-action -->
 
@@ -153,9 +150,8 @@
                                     <div class="social-icons social-icons-sm">
                                         <span class="social-label">Share:</span>
                                         <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
-                                        <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
                                         <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
-                                        <a href="#" class="social-icon" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
+                                        <a href="#" class="social-icon" title="Whatsup" target="_blank"><i class="icon-whatsapp"></i></a>
                                     </div>
                                 </div><!-- End .product-details-footer -->
                             </div><!-- End .product-details -->
@@ -194,27 +190,6 @@
                                     </div><!-- End .row -->
                                 </div><!-- End .container -->
                             </div><!-- End .product-desc-row -->
-
-                            <div class="product-desc-row bg-image text-white"  style="background-image: url({{asset('assets/images/products/single/extended/bg-2.jpg')}})">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <h2>Design</h2>
-                                            <p>The perfect choice for the summer months. These wedges are perfect for holidays and home, with the thick cross-over strap design and heel strap with an adjustable buckle fastening. Featuring chunky soles with an espadrille and cork-style wedge. </p>
-                                        </div><!-- End .col-md-6 -->
-
-                                        <div class="col-md-6">
-                                            <h2>Fabric & care</h2>
-                                            <p>As part of our Forever Comfort collection, these wedges have ultimate cushioning with soft padding and flexi soles. Perfect for strolls into the old town on holiday or a casual wander into the village.</p>
-                                        </div><!-- End .col-md-6 -->
-                                    </div><!-- End .row -->
-
-                                    <div class="mb-5"></div><!-- End .mb-3 -->
-
-                                    <img src="{{asset('assets/images/products/single/extended/sign.png')}}" alt="" class="ml-auto mr-auto">
-                                </div><!-- End .container -->
-                            </div><!-- End .product-desc-row -->
-
                         </div><!-- End .product-desc-content -->
                     </div><!-- .End .tab-pane -->
                     <div class="tab-pane fade" id="product-info-tab" role="tabpanel" aria-labelledby="product-info-link">
@@ -445,5 +420,32 @@
                 });
             }
         });
+
+
+        @if (Session::has('message'))
+        var type = "{{ Session::get('alert-type', 'info') }}"
+        switch (type) {
+            case 'info':
+
+                toastr.options.timeOut = 10000;
+                toastr.info("{{ Session::get('message') }}");
+                break;
+            case 'success':
+
+                toastr.options.timeOut = 10000;
+                toastr.success("{{ Session::get('message') }}");
+                break;
+            case 'warning':
+
+                toastr.options.timeOut = 10000;
+                toastr.warning("{{ Session::get('message') }}");
+                break;
+            case 'error':
+
+                toastr.options.timeOut = 10000;
+                toastr.error("{{ Session::get('message') }}");
+                break;
+        }
+        @endif
     </script>
 @endpush
