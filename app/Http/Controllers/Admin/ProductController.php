@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\DataTables\ProductsDataTable;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Label;
 use App\Models\SubCategorie;
 use App\Models\SubSubcategorie;
 use App\Traits\ImageUploadTrait;
@@ -57,8 +58,9 @@ class ProductController extends Controller
     public function create()
     {
         $brands = Brand::where('status', 1) ->orderBy('id', 'desc')->get();
+        $labels = Label::all();
         $categories =  Category::where('status', 'active') ->orderBy('id', 'asc')->get();
-        return view('admin.product.create',compact('categories','brands'));
+        return view('admin.product.create',compact('categories','brands','labels'));
     }
 
 
@@ -75,6 +77,7 @@ class ProductController extends Controller
             'sub_subcategorie_id' => 'nullable',
             'brand_id' => 'required',
             'vendor_id' => 'nullable|integer',
+            'label_id' => 'nullable|integer',
             'price' => 'nullable|numeric',
             'sale_price' => 'nullable|numeric',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:4096',
@@ -116,6 +119,7 @@ class ProductController extends Controller
         $productData->brand_id = $validatedData['brand_id'];
         $productData->price = $validatedData['price'];
         $productData->sale_price = $validatedData['sale_price'];
+        $productData->label_id = $validatedData['label_id'];;
         $productData->image = $singleImage;
         $productData->atts = $validatedAtts;
         $productData->save();

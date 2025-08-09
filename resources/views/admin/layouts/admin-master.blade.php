@@ -5,7 +5,7 @@
 <head>
     <!-- Basic -->
     <meta charset="UTF-8">
-    <title>Dashboard | B2B Admin</title>
+    <title>Dashboard | B2BPlatform Admin</title>
     <meta name="keywords" content="B2B Market Place"/>
     <meta name="description" content="B2B Market Place Admin">
     <meta name="author" content="https://b2bplatformbd.com">
@@ -13,7 +13,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('assets/images/icons/apple-touch-icon.png')}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('assets/images/icons/favicon-32x32.png')}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/icons/favicon-16x16.png')}}">
-    <link rel="shortcut icon" href="{{asset('assets/images/icons/favicon.ico')}}">
+    <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}">
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">

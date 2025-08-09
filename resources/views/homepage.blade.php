@@ -75,7 +75,7 @@
                         <div class="price text-center">
                             <sup class="text-white">from</sup>
                             <span class="text-white">
-                                        <strong>$199</strong><sup class="text-white">,99</sup>
+                                        <strong>  ৳&nbsp;</strong><sup class="text-white">,99</sup>
                                     </span>
                         </div>
                         <a href="#" class="banner-link">Discover Now <i class="icon-long-arrow-right"></i></a>
@@ -274,10 +274,7 @@
                                                 <a href="{{ route('product.show', $product->slug) }}">{{ $product->name }}</a>
                                             </h3>
                                             <div class="product-price">
-                                                <span class="new-price">${{ number_format($product->price, 2) }}</span>
-                                                @if($product->original_price)
-                                                    <span class="old-price">Was ${{ number_format($product->original_price, 2) }}</span>
-                                                @endif
+                                                <span class="new-price"> ৳&nbsp;{{ number_format($product->sale_price, 2) }}</span>
                                             </div>
                                             <div class="ratings-container">
                                                 <div class="ratings">
@@ -585,37 +582,20 @@
 
                 <div class="row cat-banner-row electronics">
                     <div class="col-xl-3 col-xxl-4">
-                        <div class="cat-banner row no-gutters">
-                            <div class="cat-banner-list col-sm-6 d-xl-none d-xxl-flex" style="background-image: url(assets/images/demos/demo-14/banners/banner-bg-1.jpg);">
-                                <div class="banner-list-content">
-                                    <h2><a href="#">Electronics</a></h2>
-
-                                    <ul>
-                                        <li><a href="#">Cell Phones</a></li>
-                                        <li><a href="#">Computers</a></li>
-                                        <li><a href="#">TV & Video</a></li>
-                                        <li><a href="#">Smart Home</a></li>
-                                        <li><a href="#">Audi</a></li>
-                                        <li><a href="#">Home Audio & Theater</a></li>
-                                        <li class="list-all-link"><a href="#">See All Departments</a></li>
-                                    </ul>
-                                </div><!-- End .banner-list-content -->
-                            </div><!-- End .col-sm-6 -->
-
-                            <div class="col-sm-6 col-xl-12 col-xxl-6">
-                                <div class="banner banner-overlay">
-                                    <a href="#">
-                                        <img src="assets/images/demos/demo-14/banners/banner-5.jpg" alt="Banner img desc">
-                                    </a>
-
-                                    <div class="banner-content">
-                                        <h4 class="banner-subtitle text-white"><a href="#">Best Deals</a></h4><!-- End .banner-subtitle -->
-                                        <h3 class="banner-title text-white"><a href="#">Canon EOS <br>Mega Sale <br><span>Up To 20% Off</span></a></h3><!-- End .banner-title -->
-                                        <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
-                                    </div><!-- End .banner-content -->
-                                </div><!-- End .banner -->
-                            </div><!-- End .col-sm-6 -->
-                        </div><!-- End .cat-banner -->
+                        <div class="cat-banner-list col-sm-6" style="background-image: url(assets/images/demos/demo-14/banners/banner-bg-1.jpg);">
+                            <div class="banner-list-content">
+                                <h2><a href="#">Electronics</a></h2>
+                                <ul>
+                                    <li><a href="#">Cell Phones</a></li>
+                                    <li><a href="#">Computers</a></li>
+                                    <li><a href="#">TV & Video</a></li>
+                                    <li><a href="#">Smart Home</a></li>
+                                    <li><a href="#">Audi</a></li>
+                                    <li><a href="#">Home Audio & Theater</a></li>
+                                    <li class="list-all-link"><a href="#">See All Departments</a></li>
+                                </ul>
+                            </div><!-- End .banner-list-content -->
+                        </div><!-- End .col-sm-6 -->
                     </div><!-- End .col-xl-3 -->
 
                     <div class="col-xl-9 col-xxl-8">
@@ -639,7 +619,7 @@
                                                 "items":4
                                             },
                                             "1200": {
-                                                "items":3
+                                                "items":5
                                             },
                                             "1600": {
                                                 "items":4
@@ -647,41 +627,50 @@
                                         }
                                     }'>
 
-
                             @forelse($electronicsProducts as $electronicsProduct)
                                 <div class="product text-center">
                                     <figure class="product-media">
-                                        <span class="product-label label-top">Top</span>
-                                        <a href="product.html">
-                                            <img src="assets/images/demos/demo-14/products/product-6.jpg" alt="Product image" class="product-image">
+                                        @if($electronicsProduct->on_sale)
+                                            <span class="product-label label-sale">Sale</span>
+                                        @endif
+                                        <a href="{{ route('product.show', $electronicsProduct->slug) }}">
+                                            <img src="{{ asset('storage/'.$electronicsProduct->image) }}" alt="{{ $electronicsProduct->name }}" class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                            <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                        </div><!-- End .product-action-vertical -->
-
+                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist">
+                                                <span>add to wishlist</span>
+                                            </a>
+                                            <a href="#" class="btn-product-icon btn-quickview" title="Quick view" data-product-id="{{ $electronicsProduct->id }}">
+                                                <span>Quick view</span>
+                                            </a>
+                                            <a href="#" class="btn-product-icon btn-compare" title="Compare">
+                                                <span>Compare</span>
+                                            </a>
+                                        </div>
                                         <div class="product-action">
-                                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                        </div><!-- End .product-action -->
-                                    </figure><!-- End .product-media -->
-
+                                            <a href="#" class="btn-product btn-cart" title="Add to cart">
+                                                <span>add to cart</span>
+                                            </a>
+                                        </div>
+                                    </figure>
                                     <div class="product-body">
                                         <div class="product-cat">
-                                            <a href="#">Laptops</a>
-                                        </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a></h3><!-- End .product-title -->
+                                            <a href="#">{{ $electronicsProduct->category->name }}</a>
+                                        </div>
+                                        <h3 class="product-title">
+                                            <a href="{{ route('product.show', $electronicsProduct->slug) }}">{{ $electronicsProduct->name }}</a>
+                                        </h3>
                                         <div class="product-price">
-                                            $1,199.99
-                                        </div><!-- End .product-price -->
+                                            <span class="new-price"> ৳&nbsp;{{ number_format($product->sale_price, 2) }}</span>
+                                        </div>
                                         <div class="ratings-container">
                                             <div class="ratings">
-                                                <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
-                                            </div><!-- End .ratings -->
-                                            <span class="ratings-text">( 4 Reviews )</span>
-                                        </div><!-- End .rating-container -->
-                                    </div><!-- End .product-body -->
+                                                <div class="ratings-val" style="width: {{ $product->rating * 20 }}%;"></div>
+                                            </div>
+                                            <span class="ratings-text">( {{ $electronicsProduct->reviews_count }} Reviews )</span>
+                                        </div>
+                                    </div>
                                 </div>
                             @empty
                                 <p>No products found this category!!</p>
@@ -795,80 +784,24 @@
                                 <h4 class="widget-title"><span>Bestsellers</span></h4><!-- End .widget-title -->
 
                                 <div class="products">
-                                    <div class="product product-sm">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="assets/images/demos/demo-14/products/small/product-1.jpg" alt="Product image" class="product-image">
-                                            </a>
-                                        </figure>
+                                    @forelse($best_sellers as $best_sell)
+                                        <div class="product product-sm">
+                                            <figure class="product-media">
+                                                <a href="{{ route('product.show', $best_sell->slug) }}">
+                                                    <img src="{{ asset('storage/'.$best_sell->image) }}" alt="{{$best_sell->name}}" class="product-image">
+                                                </a>
+                                            </figure>
 
-                                        <div class="product-body">
-                                            <h5 class="product-title"><a href="product.html">Sceptre 50" Class FHD (1080P) LED TV</a></h5><!-- End .product-title -->
-                                            <div class="product-price">
-                                                $199.99
-                                            </div><!-- End .product-price -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product product-sm -->
-
-                                    <div class="product product-sm">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="assets/images/demos/demo-14/products/small/product-2.jpg" alt="Product image" class="product-image">
-                                            </a>
-                                        </figure>
-
-                                        <div class="product-body">
-                                            <h5 class="product-title"><a href="product.html">Red Cookware Set, 9 Piece</a></h5><!-- End .product-title -->
-                                            <div class="product-price">
-                                                $24.95
-                                            </div><!-- End .product-price -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product product-sm -->
-
-                                    <div class="product product-sm">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="assets/images/demos/demo-14/products/small/product-3.jpg" alt="Product image" class="product-image">
-                                            </a>
-                                        </figure>
-
-                                        <div class="product-body">
-                                            <h5 class="product-title"><a href="product.html">Epson WorkForce WF-2750 All-in-One Wireless</a></h5><!-- End .product-title -->
-                                            <div class="product-price">
-                                                $49.99
-                                            </div><!-- End .product-price -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product product-sm -->
-
-                                    <div class="product product-sm">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="assets/images/demos/demo-14/products/small/product-4.jpg" alt="Product image" class="product-image">
-                                            </a>
-                                        </figure>
-
-                                        <div class="product-body">
-                                            <h5 class="product-title"><a href="product.html">Stainless Steel Microwave Oven</a></h5><!-- End .product-title -->
-                                            <div class="product-price">
-                                                $64.84
-                                            </div><!-- End .product-price -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product product-sm -->
-
-                                    <div class="product product-sm">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="assets/images/demos/demo-14/products/small/product-5.jpg" alt="Product image" class="product-image">
-                                            </a>
-                                        </figure>
-
-                                        <div class="product-body">
-                                            <h5 class="product-title"><a href="product.html">Fatboy Original Beanbag</a></h5><!-- End .product-title -->
-                                            <div class="product-price">
-                                                $49.99
-                                            </div><!-- End .product-price -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product product-sm -->
+                                            <div class="product-body">
+                                                <h5 class="product-title"><a href="{{ route('product.show', $best_sell->slug) }}">{{$best_sell->name}}</a></h5>
+                                                <div class="product-price">
+                                                    ৳&nbsp;{{$best_sell->sale_price}}
+                                                </div><!-- End .product-price -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product product-sm -->
+                                    @empty
+                                        <p>No products found this category!!</p>
+                                    @endforelse
                                 </div><!-- End .products -->
                             </div><!-- End .widget widget-products -->
                         </div><!-- End .col-sm-6 col-xl-12 -->

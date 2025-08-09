@@ -1,7 +1,6 @@
 
 <form class="ecommerce-form action-buttons-fixed" action="#" method="POST" enctype="multipart/form-data">
     @csrf
-
     <div class="row mt-2">
         <div class="col">
             <section class="card card-modern card-big-info">
@@ -59,8 +58,9 @@
                             <div class="form-group row align-items-center">
                                 <div class="col">
                                     <div>
-                                        <label for="formFileLg" class="form-label">Product main image</label>
-                                        <input class="form-control form-control-lg" id="formFileLg" type="file" name="image">
+                                        <label for="formFileLg" class="form-label"> Product main image: Dimensions must be Height 218px and Width 192px</label>
+                                        <input class="form-control form-control-lg" id="formFileLg" type="file" name="image" required>
+                                        <small class="form-text text-muted">Only JPEG, PNG, JPG, or GIF files allowed, max size 4MB.</small>
                                     </div>
                                 </div>
                             </div>
@@ -90,7 +90,7 @@
                     <div class="tabs-modern row" style="min-height: 490px;">
                         <div class="col-lg-2-5 col-xl-1-5">
                             <div class="nav flex-column tabs" id="tab" role="tablist" aria-orientation="vertical">
-                                <a class="nav-link active" id="linked-products-tab" data-bs-toggle="pill" data-bs-target="#linked-products" role="tab" aria-controls="linked-products" aria-selected="true">Category, Brand</a>
+                                <a class="nav-link active" id="linked-products-tab" data-bs-toggle="pill" data-bs-target="#linked-products" role="tab" aria-controls="linked-products" aria-selected="true">Category, Brand , Label</a>
                                 <a class="nav-link" id="price-tab" data-bs-toggle="pill" data-bs-target="#price" role="tab" aria-controls="price" aria-selected="false">Price</a>
                                 <a class="nav-link" id="attributes-tab" data-bs-toggle="pill" data-bs-target="#attributes" role="tab" aria-controls="attributes">Attributes</a>
 {{--                                <a class="nav-link" id="inventory-tab" data-bs-toggle="pill" data-bs-target="#inventory" role="tab" aria-controls="inventory" aria-selected="false">Inventory</a>--}}
@@ -101,9 +101,7 @@
                         </div>
                         <div class="col-lg-3-5 col-xl-4-5">
                             <div class="tab-content" id="tabContent">
-
                                 <div class="tab-pane fade show active" id="linked-products" role="tabpanel" aria-labelledby="linked-products-tab">
-
                                     <div class="form-group row align-items-center pb-3">
                                         <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Main Category</label>
                                         <div class="col-lg-7 col-xl-6">
@@ -139,6 +137,20 @@
 
 
                                     <div class="form-group row align-items-center pb-3">
+                                        <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Labels</label>
+                                        <div class="col-lg-7 col-xl-6">
+                                            <select data-plugin-selectTwo class="form-control form-control-modern" name="label_id">
+                                                <option value="">Select a Label</option>
+                                                @foreach($labels as $label)
+                                                    <option value="{{ $label->id }}" {{ old('label_id') == $label->id ? 'selected' : '' }}>
+                                                        {{ $label->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row align-items-center pb-3">
                                         <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Brand</label>
                                         <div class="col-lg-7 col-xl-6">
                                             <select data-plugin-selectTwo class="form-control form-control-modern" name="brand_id">
@@ -157,15 +169,16 @@
                                     <div class="form-group row align-items-center pb-3">
                                         <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Regular Price (TK)</label>
                                         <div class="col-lg-7 col-xl-6">
-                                            <input type="text" class="form-control form-control-modern" name="price"  />
+                                            <input type="number" class="form-control form-control-modern" name="price"  />
                                         </div>
                                     </div>
                                     <div class="form-group row align-items-center">
                                         <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Discount Price (TK)</label>
                                         <div class="col-lg-7 col-xl-6">
-                                            <input type="text" class="form-control form-control-modern" name="sale_price" required/>
+                                            <input type="number" class="form-control form-control-modern" name="sale_price" required/>
                                         </div>
                                     </div>
+
                                 </div>
 
                                 <div class="tab-pane fade" id="attributes" role="tabpanel" aria-labelledby="attributes-tab">

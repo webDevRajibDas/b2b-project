@@ -39,10 +39,7 @@
                     <div class="card-body bg-light">
                         <div class="image-frame mb-2">
                             <div class="image-frame-wrapper">
-                                <div class="image-frame-badges-wrapper">
-                                    <span class="badge badge-ecommerce badge-danger"></span>
-                                </div>
-                                <img src="{{ asset('storage/' . $product->image) }}" class="img-thumbnail" width="150" alt="{{ $product->name }}" />
+                                <img src="{{ asset('storage/' . $product->image) }}" class="img-thumbnail" width="250" alt="{{ $product->name }}" />
                             </div>
                         </div>
                         <small><a href="#" class="ecommerce-sidebar-link text-color-grey text-color-hover-primary text-decoration-none">CATEGORY</a></small>

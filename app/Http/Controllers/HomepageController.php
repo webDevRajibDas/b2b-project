@@ -22,6 +22,11 @@ class HomepageController extends Controller
             ->take(12)
             ->get();
 
+        $best_sellers = Product::with('category')
+            ->latest()
+            ->take(5)
+            ->get();
+
         $productCat = Category::latest()
             ->take(5)
             ->get();
@@ -41,6 +46,7 @@ class HomepageController extends Controller
 
         return view('homepage', [
             'products' => $products,
+            'best_sellers' => $best_sellers,
             'productCat' => $productCat,
             'fashionProducts' => $categorizedProducts['Fashion'],
             'electronicsProducts' => $categorizedProducts['Electronics'],
@@ -63,7 +69,11 @@ class HomepageController extends Controller
 
     public function shopList()
     {
-        return view('frontend.category-shop-list');
+        $productList = Product::with('category')
+            ->latest()
+            ->take(12)
+            ->get();
+        return view('frontend.category-shop-list',compact('productList'));
     }
 
     public function categoryList()

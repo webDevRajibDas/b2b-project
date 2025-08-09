@@ -1,5 +1,38 @@
 @extends('frontend.layouts.app')
 
+@push('styles')
+<style>
+    .temp-order-card {
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(50,50,93,0.08), 0 2px 6px rgba(0,0,0,0.06);
+        overflow: hidden;
+    }
+    .product-thumb {
+        width: 72px;
+        height: 72px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    .tag {
+        background: #f1f5f9;
+        color: #334155;
+        font-size: 12px;
+        padding: 4px 8px;
+        border-radius: 999px;
+    }
+    .whatsapp-btn {
+        background: #25D366;
+        color: #fff;
+    }
+    .messenger-btn {
+        background: #0084FF;
+        color: #fff;
+    }
+    .muted-small { font-size: 13px; color: #6b7280; }
+</style>
+
+@endpush
+
 @section('content')
 
         <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
@@ -155,6 +188,34 @@
                                     </div>
                                 </div><!-- End .product-details-footer -->
                             </div><!-- End .product-details -->
+                            <div class="temp_order_box">
+                                <div class="card temp-order-card mb-3">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="text-right">
+                                                <div class="tag" style="font-size: 16px">সরাসরি অর্ডার করতে </div>
+                                            </div>
+                                        </div>
+                                        <hr style="margin:2rem auto 1.5rem;">
+                                        <div class="row align-items-center">
+                                            <div class="col-12 d-flex flex-column">
+                                                <button id="open-messenger" class="btn messenger-btn btn-sm mb-1">Send Messenger</button>
+                                                <button id="open-whatsapp" class="btn whatsapp-btn btn-sm">Send WhatsApp</button>
+                                            </div>
+                                        </div>
+
+                                        <hr style="margin:2rem auto 1.5rem;">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <small class="muted-small">Notes</small>
+                                                <div id="order-notes">Deliver between 10am-5pm. Call on arrival.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div><!-- End .col-md-6 -->
                     </div><!-- End .row -->
                 </div><!-- End .product-details-top -->
@@ -173,7 +234,7 @@
                             <a class="nav-link" id="product-shipping-link" data-toggle="tab" href="#product-shipping-tab" role="tab" aria-controls="product-shipping-tab" aria-selected="false">Shipping & Returns</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="product-review-link" data-toggle="tab" href="#product-review-tab" role="tab" aria-controls="product-review-tab" aria-selected="false">Reviews (2)</a>
+                            <a class="nav-link" id="product-review-link" data-toggle="tab" href="#product-review-tab" role="tab" aria-controls="product-review-tab" aria-selected="false">Reviews</a>
                         </li>
                     </ul>
                 </div><!-- End .container -->
@@ -181,11 +242,15 @@
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="product-desc-tab" role="tabpanel" aria-labelledby="product-desc-link">
                         <div class="product-desc-content">
-                            <div class="product-desc-row bg-image"  style="background-image: url({{asset('assets/images/products/single/extended/bg-1.jpg')}})">
+                            <div class="product-desc-row">
                                 <div class="container">
-                                    <div class="row justify-content-end">
-                                        <div class="col-sm-6 col-lg-4">
-                                            {!! $detail->content !!}
+                                    <div class="row justify-content-center">
+                                        <div class="col-sm-12 col-lg-8 col-xxl-8">
+                                           <div class="card" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; padding: 20px">
+                                               <div class="card-body">
+                                                   {!! $detail->content !!}
+                                               </div>
+                                           </div>
                                         </div><!-- End .col-lg-4 -->
                                     </div><!-- End .row -->
                                 </div><!-- End .container -->
@@ -196,20 +261,7 @@
                         <div class="product-desc-content">
                             <div class="container">
                                 <h3>Information</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. </p>
 
-                                <h3>Fabric & care</h3>
-                                <ul>
-                                    <li>Faux suede fabric</li>
-                                    <li>Gold tone metal hoop handles.</li>
-                                    <li>RI branding</li>
-                                    <li>Snake print trim interior </li>
-                                    <li>Adjustable cross body strap</li>
-                                    <li> Height: 31cm; Width: 32cm; Depth: 12cm; Handle Drop: 61cm</li>
-                                </ul>
-
-                                <h3>Size</h3>
-                                <p>one size</p>
                             </div><!-- End .container -->
                         </div><!-- End .product-desc-content -->
                     </div><!-- .End .tab-pane -->
@@ -225,7 +277,7 @@
                     <div class="tab-pane fade" id="product-review-tab" role="tabpanel" aria-labelledby="product-review-link">
                         <div class="reviews">
                             <div class="container">
-                                <h3>Reviews (2)</h3>
+                                <h3>Reviews</h3>
                                 <div class="review">
                                     <div class="row no-gutters">
                                         <div class="col-auto">
@@ -246,32 +298,6 @@
 
                                             <div class="review-action">
                                                 <a href="#"><i class="icon-thumbs-up"></i>Helpful (2)</a>
-                                                <a href="#"><i class="icon-thumbs-down"></i>Unhelpful (0)</a>
-                                            </div><!-- End .review-action -->
-                                        </div><!-- End .col-auto -->
-                                    </div><!-- End .row -->
-                                </div><!-- End .review -->
-
-                                <div class="review">
-                                    <div class="row no-gutters">
-                                        <div class="col-auto">
-                                            <h4><a href="#">John Doe</a></h4>
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                            </div><!-- End .rating-container -->
-                                            <span class="review-date">5 days ago</span>
-                                        </div><!-- End .col -->
-                                        <div class="col">
-                                            <h4>Very good</h4>
-
-                                            <div class="review-content">
-                                                <p>Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!</p>
-                                            </div><!-- End .review-content -->
-
-                                            <div class="review-action">
-                                                <a href="#"><i class="icon-thumbs-up"></i>Helpful (0)</a>
                                                 <a href="#"><i class="icon-thumbs-down"></i>Unhelpful (0)</a>
                                             </div><!-- End .review-action -->
                                         </div><!-- End .col-auto -->
@@ -335,7 +361,7 @@
                                 <div class="product-cat">
                                     <a href="#">Women</a>
                                 </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">{{$relatedProduct->name}}</a></h3><!-- End .product-title -->
+                                <h3 class="product-title"><a href="{{ route('product.show', $relatedProduct->slug) }}">{{$relatedProduct->name}}</a></h3><!-- End .product-title -->
                                 <div class="product-price">
                                     {{$relatedProduct->sale_price}}
                                 </div><!-- End .product-price -->

@@ -30,21 +30,9 @@
                 <div class="col-sm-12 col-lg-4">
                     <div class="widget widget-about">
                         <img src="{{asset('assets/images/b2b_logo.jpg')}}" class="footer-logo" alt="Footer Logo" width="105" height="25">
-                        <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus. </p>
+                        <p>A leading B2B platform offering a wide range of digital & physical products, smart digital cards, branding, IT solutions, and an online marketplace—empowering businesses with innovative services, seamless connectivity, and end-to-end support.</p>
 
                         <div class="widget-about-info">
-                            <div class="row">
-                                <div class="col-sm-6 col-md-4">
-                                    <span class="widget-about-title">Got Question? Call us 24/7</span>
-                                    <a href="tel:123456789">+0123 456 789</a>
-                                </div><!-- End .col-sm-6 -->
-                                <div class="col-sm-6 col-md-8">
-                                    <span class="widget-about-title">Payment Method</span>
-                                    <figure class="footer-payments">
-                                        <img src="assets/images/payments.png" alt="Payment methods" width="272" height="20">
-                                    </figure><!-- End .footer-payments -->
-                                </div><!-- End .col-sm-6 -->
-                            </div><!-- End .row -->
                         </div><!-- End .widget-about-info -->
                     </div><!-- End .widget about-widget -->
                 </div><!-- End .col-sm-12 col-lg-4 -->
@@ -52,7 +40,6 @@
                 <div class="col-sm-4 col-lg-2">
                     <div class="widget">
                         <h4 class="widget-title">Useful Links</h4><!-- End .widget-title -->
-
                         <ul class="widget-list">
                             <li><a href="#">About B2B PlatForm</a></li>
                             <li><a href="#">FAQ</a></li>
@@ -65,7 +52,6 @@
                 <div class="col-sm-4 col-lg-2">
                     <div class="widget">
                         <h4 class="widget-title">Customer Service</h4><!-- End .widget-title -->
-
                         <ul class="widget-list">
                             <li><a href="#">Payment Methods</a></li>
                             <li><a href="#">Money-back guarantee!</a></li>
@@ -80,7 +66,6 @@
                 <div class="col-sm-4 col-lg-2">
                     <div class="widget">
                         <h4 class="widget-title">My Account</h4><!-- End .widget-title -->
-
                         <ul class="widget-list">
                             <li><a href="#">Sign In</a></li>
                             <li><a href="{{route('view.cart')}}">View Cart</a></li>
@@ -94,9 +79,7 @@
                 <div class="col-sm-4 col-lg-2">
                     <div class="widget widget-newsletter">
                         <h4 class="widget-title">Sign Up to Newsletter</h4><!-- End .widget-title -->
-
                         <p>Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan.</p>
-
                         <form action="#">
                             <div class="input-group">
                                 <input type="email" class="form-control" placeholder="Enter your Email Address" aria-label="Email Adress" required>
@@ -107,6 +90,23 @@
                         </form>
                     </div><!-- End .widget -->
                 </div><!-- End .col-sm-4 col-lg-2 -->
+            </div><!-- End .row -->
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                   <div class="">
+
+                       <span class="widget-about-title">Got Question? Call us 24/7</span>
+                       <span class="widget-about-title"><a href="tel:01751359305">+8801751359305</a></span>
+                       <span class="widget-about-title">Address :
+House# 53, Road # 14, Sector# 13, Uttara, Dhaka</span>
+                   </div>
+                </div><!-- End .col-sm-6 -->
+                <div class="col-sm-6 col-md-8">
+                    <span class="widget-about-title">Payment Method</span>
+                    <figure class="footer-payments">
+                        <img src="{{asset('assets/images/payments-summary.png')}}" alt="Payment methods" class="img-fluid img-thumbnail">
+                    </figure><!-- End .footer-payments -->
+                </div><!-- End .col-sm-6 -->
             </div><!-- End .row -->
         </div><!-- End .container-fluid -->
     </div><!-- End .footer-middle -->

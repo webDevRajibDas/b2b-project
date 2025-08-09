@@ -173,8 +173,7 @@
                         <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Browse Categories">
                             Browse Categories
                         </a>
-
-                        <div class="dropdown-menu none">
+                        <div class="dropdown-menu show">
                             <nav class="side-nav">
                                 <ul class="menu-vertical sf-arrows">
                                     @include('frontend.partials.mega-menu')
