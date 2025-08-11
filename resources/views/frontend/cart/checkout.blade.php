@@ -44,15 +44,14 @@
                                 </div><!-- End .col-sm-6 -->
                             </div><!-- End .row -->
 
-                            <label>Company Name (Optional)</label>
-                            <input type="text" class="form-control">
+
 
                             <label>Country *</label>
-                            <input type="text" class="form-control" required>
+                            <input type="text" class="form-control" value="Bangladesh">
 
                             <label>Street address *</label>
                             <input type="text" class="form-control" placeholder="House number and Street name" required>
-                            <input type="text" class="form-control" placeholder="Appartments, suite, unit etc ..." required>
+
 
                             <div class="row">
                                 <div class="col-sm-6">
@@ -60,18 +59,9 @@
                                     <input type="text" class="form-control" required>
                                 </div><!-- End .col-sm-6 -->
 
-                                <div class="col-sm-6">
-                                    <label>State / County *</label>
-                                    <input type="text" class="form-control" required>
-                                </div><!-- End .col-sm-6 -->
                             </div><!-- End .row -->
 
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <label>Postcode / ZIP *</label>
-                                    <input type="text" class="form-control" required>
-                                </div><!-- End .col-sm-6 -->
-
                                 <div class="col-sm-6">
                                     <label>Phone *</label>
                                     <input type="tel" class="form-control" required>

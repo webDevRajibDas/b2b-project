@@ -197,7 +197,7 @@
                                             <div class="col-xl-6">
                                                 <a href="#" class="ecommerce-attribute-remove text-color-danger float-end">Remove</a>
                                                 <label class="control-label">Value(s)</label>
-                                                <textarea class="form-control form-control-modern" name="attValue" rows="4" placeholder="Enter some text, or some attributes by | separating values">Small|Medium|Big</textarea>
+                                                <textarea class="form-control form-control-modern" name="attValue" rows="4" placeholder="Enter some text, or some attributes by | separating values"> Small,Medium,Big</textarea>
                                             </div>
                                         </div>
                                         <div class="form-group row justify-content-center ecommerce-attribute-row">
@@ -214,7 +214,7 @@
                                             <div class="col-xl-6">
                                                 <a href="#" class="ecommerce-attribute-remove text-color-danger float-end">Remove</a>
                                                 <label class="control-label">Value(s)</label>
-                                                <textarea class="form-control form-control-modern" name="attValue" rows="4" placeholder="Enter some text, or some attributes by | separating values">Blue|Red|Green</textarea>
+                                                <textarea class="form-control form-control-modern" name="attValue" rows="4" placeholder="Enter some text, or some attributes by | separating values">Blue,Red,Green</textarea>
                                             </div>
                                         </div>
                                     </div>

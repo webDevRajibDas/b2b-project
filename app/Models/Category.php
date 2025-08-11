@@ -14,6 +14,11 @@ class Category extends Model
 
 
     
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'categorie_id');
+    }
+
     public function subcategories()
     {
         return $this->hasMany(SubCategorie::class, 'parent_id')->where('status', 1);

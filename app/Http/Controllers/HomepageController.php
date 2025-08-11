@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Slider;
 use App\Models\SubCategorie;
 use App\Models\Upazila;
 use App\Models\Vendor;
@@ -17,42 +18,39 @@ class HomepageController extends Controller
 
     public function homePage()
     {
-        $products = Product::with('category')
+        $latestProducts = Product::with('category')
             ->latest()
             ->take(12)
             ->get();
-
-        $best_sellers = Product::with('category')
-            ->latest()
+        $bestSellers = $latestProducts->take(5);
+        $latestCategories = Category::latest()
             ->take(5)
             ->get();
+        $categoryTitles = ['Clothing', 'Electronics', 'ICT Product','Fashion'];
+        $sliders = Slider::latest()->take(3)->get();
 
-        $productCat = Category::latest()
-            ->take(5)
-            ->get();
+        $categoriesWithProducts = Category::whereIn('title', $categoryTitles)
+            ->with(['products' => function ($query) {
+                $query->with('category')->latest()->take(4);
+            }])
+            ->get()
+            ->keyBy('title');
 
-        $categories = ['Fashion', 'Electronics','ICT Product'];
-        $categorizedProducts = [];
+        $fashionProducts = $categoriesWithProducts->get('Fashion')?->products ?? collect();
+        $electronicsProducts = $categoriesWithProducts->get('Electronics')?->products ?? collect();
+        $ictProducts = $categoriesWithProducts->get('ICT Product')?->products ?? collect();
 
-        foreach ($categories as $categoryTitle) {
-            $categorizedProducts[$categoryTitle] = Product::with('category')
-                ->whereHas('category', function ($query) use ($categoryTitle) {
-                    $query->where('title', $categoryTitle);
-                })
-                ->latest()
-                ->take(4)
-                ->get();
-        }
 
+        // --- Return data to the view ---
         return view('homepage', [
-            'products' => $products,
-            'best_sellers' => $best_sellers,
-            'productCat' => $productCat,
-            'fashionProducts' => $categorizedProducts['Fashion'],
-            'electronicsProducts' => $categorizedProducts['Electronics'],
-            'ictProducts' => $categorizedProducts['ICT Product'],
+            'products' => $latestProducts,
+            'sliders' => $sliders,
+            'best_sellers' => $bestSellers,
+            'productCat' => $latestCategories,
+            'fashionProducts' => $fashionProducts,
+            'electronicsProducts' => $electronicsProducts,
+            'ictProducts' => $ictProducts,
         ]);
-
     }
 
     public function productShowDetail($slug)
@@ -70,9 +68,7 @@ class HomepageController extends Controller
     public function shopList()
     {
         $productList = Product::with('category')
-            ->latest()
-            ->take(12)
-            ->get();
+            ->latest()->take(12)->get();
         return view('frontend.category-shop-list',compact('productList'));
     }
 

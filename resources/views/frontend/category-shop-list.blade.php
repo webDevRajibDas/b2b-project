@@ -56,7 +56,7 @@
                                             <span class="product-label label-sale">Sale</span>
                                         @endif
                                         <a href="{{ route('product.show', $productData->slug) }}">
-                                            <img src="{{ asset('storage/'.$productData->image) }}" alt="{{ $productData->name }}" class="product-image">
+                                            <img style="height: 275px;"  src="{{ asset('storage/'.$productData->image) }}" alt="{{ $productData->name }}" class="product-image img-thumbnail img-fluid">
                                         </a>
 
                                         <div class="product-action-vertical">

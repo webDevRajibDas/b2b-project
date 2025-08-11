@@ -135,12 +135,12 @@
                     <div class="col-md-4">
                         <div class="member member-anim text-center">
                             <figure class="member-media">
-                                <img src="assets/images/team/member-1.jpg" alt="member photo">
+                                <img src="assets/images/team/jewel-sir.jpg" alt="member photo">
 
                                 <figcaption class="member-overlay">
                                     <div class="member-overlay-content">
-                                        <h3 class="member-title">Samanta Grey<span>Founder & CEO</span></h3><!-- End .member-title -->
-                                        <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p>
+                                        <h3 class="member-title">Md Billal Hossain ( Jewel)</h3><!-- End .member-title -->
+                                        <p>Md. Billal Hossain ( Jewel) is the visionary CEO behind our P2B Platform. With deep expertise in technology and business innovation, he leads our Expert Team in crafting intelligent digital solutions that empower businesses, foster growth, and reshape the B2B ecosystem with excellence and impact.</p>
                                         <div class="social-icons social-icons-simple">
                                             <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
                                             <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
@@ -150,7 +150,7 @@
                                 </figcaption><!-- End .member-overlay -->
                             </figure><!-- End .member-media -->
                             <div class="member-content">
-                                <h3 class="member-title">Samanta Grey<span>Founder & CEO</span></h3><!-- End .member-title -->
+                                <h3 class="member-title">Md Billal Hossain ( Jewel)<span>CEO</span></h3><!-- End .member-title -->
                             </div><!-- End .member-content -->
                         </div><!-- End .member -->
                     </div><!-- End .col-md-4 -->
@@ -158,12 +158,12 @@
                     <div class="col-md-4">
                         <div class="member member-anim text-center">
                             <figure class="member-media">
-                                <img src="assets/images/team/member-2.jpg" alt="member photo">
+                                <img src="assets/images/team/sanjida-beli.jpg" alt="member photo">
 
                                 <figcaption class="member-overlay">
                                     <div class="member-overlay-content">
-                                        <h3 class="member-title">Bruce Sutton<span>Sales & Marketing Manager</span></h3><!-- End .member-title -->
-                                        <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p>
+                                        <h3 class="member-title">Sanjida Beli</h3><!-- End .member-title -->
+                                        <p> Sanjida Beli , our Chief Operating Officer, oversees operations and strategy at P2B Platform. With strong expertise in process optimization and team leadership, they ensure seamless delivery of our solutions, enhance operational efficiency, and drive sustainable growth for our B2B clients.</p>
                                         <div class="social-icons social-icons-simple">
                                             <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
                                             <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
@@ -173,7 +173,7 @@
                                 </figcaption><!-- End .member-overlay -->
                             </figure><!-- End .member-media -->
                             <div class="member-content">
-                                <h3 class="member-title">Bruce Sutton<span>Sales & Marketing Manager</span></h3><!-- End .member-title -->
+                                <h3 class="member-title">Sanjida Beli <span>COO</span></h3><!-- End .member-title -->
                             </div><!-- End .member-content -->
                         </div><!-- End .member -->
                     </div><!-- End .col-md-4 -->
@@ -185,8 +185,8 @@
 
                                 <figcaption class="member-overlay">
                                     <div class="member-overlay-content">
-                                        <h3 class="member-title">Janet Joy<span>Product Manager</span></h3><!-- End .member-title -->
-                                        <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p>
+                                        <h3 class="member-title">Engr Md. Abdus Sattar</h3><!-- End .member-title -->
+                                        <p>Engr. Md Abdus Sattar is our Chief Marketing Officer at P2B Platform, driving strategic brand growth and customer engagement. With a strong background in digital marketing and business development, they lead our marketing team in crafting compelling campaigns that amplify our mission, connect with B2B clients, and fuel sustainable growth..</p>
                                         <div class="social-icons social-icons-simple">
                                             <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
                                             <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
@@ -196,7 +196,7 @@
                                 </figcaption><!-- End .member-overlay -->
                             </figure><!-- End .member-media -->
                             <div class="member-content">
-                                <h3 class="member-title">Janet Joy<span>Product Manager</span></h3><!-- End .member-title -->
+                                <h3 class="member-title">Engr Md. Abdus Sattar<span>CMO</span></h3><!-- End .member-title -->
                             </div><!-- End .member-content -->
                         </div><!-- End .member -->
                     </div><!-- End .col-md-4 -->

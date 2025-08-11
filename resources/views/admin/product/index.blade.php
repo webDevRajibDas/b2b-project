@@ -34,15 +34,17 @@
     </div>
     <div class="row row-gutter-sm mb-5">
         @foreach($products as $product)
-            <div class="col-sm-6 col-xl-3 mb-4">
+            <div class="col-sm-12 col-xl-2 mb-4">
                 <div class="card card-modern card-modern-alt-padding">
                     <div class="card-body bg-light">
                         <div class="image-frame mb-2">
                             <div class="image-frame-wrapper">
-                                <img src="{{ asset('storage/' . $product->image) }}" class="img-thumbnail" width="250" alt="{{ $product->name }}" />
+                                <img src="{{ asset('storage/' . $product->image) }}" class="img-thumbnail" style="height: 140px; width: 180px" alt="{{ $product->name }}" />
                             </div>
                         </div>
-                        <small><a href="#" class="ecommerce-sidebar-link text-color-grey text-color-hover-primary text-decoration-none">CATEGORY</a></small>
+                        <small><a href="#" class="ecommerce-sidebar-link text-color-grey text-color-hover-primary text-decoration-none">
+                               {{ $product->category['title']}}
+                            </a></small>
                         <h4 class="text-4 line-height-2 mt-0 mb-2"><a href="#" class="ecommerce-sidebar-link text-color-dark text-color-hover-primary text-decoration-none">{{ $product->name }}</a></h4>
                         <div class="stars-wrapper">
                             <i class="fas fa-star"></i>

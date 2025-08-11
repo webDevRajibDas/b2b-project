@@ -1,4 +1,5 @@
 // Main Js File
+
 $(document).ready(function () {
     'use strict';
 
@@ -29,6 +30,20 @@ $(document).ready(function () {
 	$('.header-search').on('click', function (e) {
 		e.stopPropagation();
 	});
+
+    // Toggle megamenu on click (e.g., a button or parent element)
+    $('#megamenuToggle').click(function(e) {
+        e.preventDefault();
+        $('#megamenuDropdown').toggleClass('show'); // Toggle visibility
+    });
+
+    // Optional: Close when clicking outside
+    $(document).click(function(e) {
+        if (!$(e.target).closest('#megamenuDropdown, #megamenuToggle').length) {
+            $('#megamenuDropdown').removeClass('show');
+        }
+    });
+
 
 	// Sticky header 
     var catDropdown = $('.category-dropdown'),
