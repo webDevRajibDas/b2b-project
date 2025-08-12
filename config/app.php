@@ -54,6 +54,9 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+
+
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
@@ -123,4 +126,5 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'Cart' => Darryldecode\Cart\Facades\CartFacade::class
 ];

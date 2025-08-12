@@ -3,40 +3,39 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
-use App\Models\District;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Session;
 
-class CartController extends Controller
+class CartControllerOld extends Controller
 {
     public function addToCart(Request $request)
     {
-        $productId = $request->input('product_id');
 
-        $productDetails = null;
-        foreach (config('shopping_cart.product_details') as $details) {
-            if ($details['id'] == $productId) {
-                $productDetails = $details;
-                break;
+        $productId = $request->product_id;
+        $quantity = $request->quantity;
+        if (auth()->check()) {
+            $cart = session('cart', []);
+            if (isset($cart[$productId])) {
+                $cart[$productId] += $quantity;
+            } else {
+                $cart[$productId] = $quantity;
             }
+            session(['cart' => $cart]);
+        } else {
+            $cart = json_decode($request->cookie('cart'), true) ?? [];
+            if (isset($cart[$productId])) {
+                $cart[$productId] += $quantity;
+            } else {
+                $cart[$productId] = $quantity;
+            }
+            $cookie = Cookie::make('cart', json_encode($cart), 60 * 24 * 30);
+            return response()->json(['cart' => $cart, 'message'=>'Cart Add Successful'])->withCookie($cookie);
         }
 
-        $userID = 2;
-
-        // Add the product to the cart
-        \Cart::session($userID)->add([
-            'id' => $productId,
-            'name' => $productDetails['name'],
-            'price' => $productDetails['price'],
-            'quantity' => $productDetails['quantity'],
-            'attributes' => [],
-            'associatedModel' => $productDetails,
-        ]);
-        return response()->json(['success' => true]);
+        return response()->json(['cart' => $cart]);
     }
+
 
     public function viewCart()
     {

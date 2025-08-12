@@ -5,14 +5,14 @@
         <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{URL('/')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
                     <li class="breadcrumb-item active" aria-current="page">About us</li>
                 </ol>
             </div><!-- End .container -->
         </nav><!-- End .breadcrumb-nav -->
         <div class="container">
-            <div class="page-header page-header-big text-center" style="background-image: url('assets/images/about-header-bg.jpg')">
+            <div class="page-header page-header-big text-center" style="background-image: url('assets/images/about/about.jpg')">
                 <h1 class="page-title text-white">About us<span class="text-white">Who we are</span></h1>
             </div><!-- End .page-header -->
         </div><!-- End .container -->
@@ -140,7 +140,6 @@
                                 <figcaption class="member-overlay">
                                     <div class="member-overlay-content">
                                         <h3 class="member-title">Md Billal Hossain ( Jewel)</h3><!-- End .member-title -->
-                                        <p>Md. Billal Hossain ( Jewel) is the visionary CEO behind our P2B Platform. With deep expertise in technology and business innovation, he leads our Expert Team in crafting intelligent digital solutions that empower businesses, foster growth, and reshape the B2B ecosystem with excellence and impact.</p>
                                         <div class="social-icons social-icons-simple">
                                             <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
                                             <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
@@ -151,6 +150,7 @@
                             </figure><!-- End .member-media -->
                             <div class="member-content">
                                 <h3 class="member-title">Md Billal Hossain ( Jewel)<span>CEO</span></h3><!-- End .member-title -->
+                                <p>Md. Billal Hossain ( Jewel) is the visionary CEO behind our P2B Platform. With deep expertise in technology and business innovation, he leads our Expert Team in crafting intelligent digital solutions that empower businesses, foster growth, and reshape the B2B ecosystem with excellence and impact.</p>
                             </div><!-- End .member-content -->
                         </div><!-- End .member -->
                     </div><!-- End .col-md-4 -->
@@ -163,7 +163,7 @@
                                 <figcaption class="member-overlay">
                                     <div class="member-overlay-content">
                                         <h3 class="member-title">Sanjida Beli</h3><!-- End .member-title -->
-                                        <p> Sanjida Beli , our Chief Operating Officer, oversees operations and strategy at P2B Platform. With strong expertise in process optimization and team leadership, they ensure seamless delivery of our solutions, enhance operational efficiency, and drive sustainable growth for our B2B clients.</p>
+
                                         <div class="social-icons social-icons-simple">
                                             <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
                                             <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
@@ -174,6 +174,7 @@
                             </figure><!-- End .member-media -->
                             <div class="member-content">
                                 <h3 class="member-title">Sanjida Beli <span>COO</span></h3><!-- End .member-title -->
+                                <p> Sanjida Beli , our Chief Operating Officer, oversees operations and strategy at P2B Platform. With strong expertise in process optimization and team leadership, they ensure seamless delivery of our solutions, enhance operational efficiency, and drive sustainable growth for our B2B clients.</p>
                             </div><!-- End .member-content -->
                         </div><!-- End .member -->
                     </div><!-- End .col-md-4 -->
@@ -181,12 +182,11 @@
                     <div class="col-md-4">
                         <div class="member member-anim text-center">
                             <figure class="member-media">
-                                <img src="assets/images/team/member-3.jpg" alt="member photo">
+                                <img src="assets/images/team/sattar.png" alt="member photo">
 
                                 <figcaption class="member-overlay">
                                     <div class="member-overlay-content">
                                         <h3 class="member-title">Engr Md. Abdus Sattar</h3><!-- End .member-title -->
-                                        <p>Engr. Md Abdus Sattar is our Chief Marketing Officer at P2B Platform, driving strategic brand growth and customer engagement. With a strong background in digital marketing and business development, they lead our marketing team in crafting compelling campaigns that amplify our mission, connect with B2B clients, and fuel sustainable growth..</p>
                                         <div class="social-icons social-icons-simple">
                                             <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
                                             <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
@@ -197,6 +197,7 @@
                             </figure><!-- End .member-media -->
                             <div class="member-content">
                                 <h3 class="member-title">Engr Md. Abdus Sattar<span>CMO</span></h3><!-- End .member-title -->
+                                <p>Engr. Md Abdus Sattar is our Chief Marketing Officer at P2B Platform, driving strategic brand growth and customer engagement. With a strong background in digital marketing and business development, they lead our marketing team in crafting compelling campaigns that amplify our mission, connect with B2B clients, and fuel sustainable growth..</p>
                             </div><!-- End .member-content -->
                         </div><!-- End .member -->
                     </div><!-- End .col-md-4 -->
@@ -247,7 +248,13 @@
 @endsection
 
 @push('styles')
+<style>
+    .member-media{
+        width: 40%;
+        margin: 0 auto;
+    }
 
+</style>
 @endpush
 
 @push('scripts')

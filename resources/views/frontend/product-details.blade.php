@@ -19,6 +19,7 @@
         font-size: 12px;
         padding: 4px 8px;
         border-radius: 999px;
+
     }
     .whatsapp-btn {
         background: #25D366;
