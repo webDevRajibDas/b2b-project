@@ -26,64 +26,59 @@
                     <div class="col-lg-9">
                         <table class="table table-cart table-mobile">
                             <thead>
-                            <tr>
-                                <th>Product</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Total</th>
-                                <th></th>
-                            </tr>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
                             </thead>
-
                             <tbody>
-                            @foreach($cartItems as $item)
-                                @if($item->product)
-                                    <tr>
-                                        <td class="product-col">
-                                            <div class="product">
-                                                <figure class="product-media">
-                                                    <a href="#">
-                                                        <img src="{{asset('storage/'.$item->product->image)}}"
-                                                             alt="Product image">
-                                                    </a>
-                                                </figure>
+                                @foreach($cartItems as $item)
+                                    @if($item)
+                                        <tr>
+                                            <td class="product-col">
+                                                <div class="product">
+                                                    <figure class="product-media">
+                                                        <a href="#">
+                                                            <img src="{{asset('storage/'.$item->attributes->image)}}" alt="Product image">
+                                                        </a>
+                                                    </figure>
 
-                                                <h3 class="product-title">
-                                                    <a href="#">{{$item->product->name}}</a>
-                                                </h3><!-- End .product-title -->
+                                                    <h3 class="product-title">
+                                                        <a href="#">{{$item->name}}</a>
+                                                    </h3><!-- End .product-title -->
 
-                                            </div><!-- End .product -->
-                                        </td>
-                                        <td class="price-col">{{$item->product->sale_price}}</td>
-                                        <td class="quantity-col">
-                                            <div class="cart-product-quantity">
-                                                <input type="number" class="form-control cart-quantity-input"
-                                                       value="{{ (int)$item->quantity }}" min="1" max="10" step="1"
-                                                       data-decimals="0" data-product-id="{{ $item->product->id }}"
-                                                       data-update-url="{{ route('update.cart') }}" required
-                                                >
+                                                </div><!-- End .product -->
+                                            </td>
+                                            <td class="price-col">{{$item->price}}</td>
+                                            <td class="quantity-col">
+                                                <div class="cart-product-quantity">
+                                                    <input type="number" class="form-control cart-quantity-input"
+                                                           value="{{$item->quantity}}" min="1" max="10" step="1"
+                                                           data-decimals="0" data-product-id=""
+                                                           data-update-url="" required
+                                                    >
+                                                </div>
+                                            </td>
 
-                                            </div>
-                                        </td>
+                                            <td class="total-col" id="total" style="font-size: 12px;">
+                                                ৳ {{ number_format($item->quantity * $item->price,2)}}
+                                            </td>
 
-                                        <td class="total-col" id="total-{{ $item->product->id }}">
-                                            {{ $item->product->sale_price * (int)$item->quantity}}
-                                        </td>
-
-                                        <td class="remove-col">
-                                            <button type="button" class="btn-remove remove-from-cart"
-                                                    data-product-id="{{ $item->product->id }}"
-                                                    data-remove-url="{{ route('cart.remove') }}">
-                                                <i class="icon-close"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                @else
-                                    <td colspan="5">Product no longer available</td>
-                                @endif
-
-                            @endforeach
-
+                                            <td class="remove-col">
+                                                <button type="button" class="btn-remove remove-from-cart"
+                                                        data-product-id=""
+                                                        data-remove-url="">
+                                                    <i class="icon-close"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @else
+                                        <td colspan="5">Product no longer available</td>
+                                    @endif
+                                @endforeach
                             </tbody>
                         </table><!-- End .table table-wishlist -->
 
@@ -112,11 +107,11 @@
                                 <tbody>
                                 <tr class="summary-subtotal">
                                     <td>Subtotal:</td>
-                                    <td id="grand-total">{{$grandTotal}} Tk</td>
+                                    <td id="grand-total">{{$total}} Tk</td>
                                 </tr><!-- End .summary-subtotal -->
                                 <tr class="summary-total">
                                     <td>Total:</td>
-                                    <td>140.00</td>
+                                    <td>{{$total}}</td>
                                 </tr><!-- End .summary-total -->
                                 </tbody>
                             </table><!-- End .table table-summary -->
@@ -228,17 +223,26 @@
         });
 
 
+
         document.addEventListener('DOMContentLoaded', function () {
             const checkoutBtn = document.getElementById('proceedToCheckout');
             checkoutBtn.addEventListener('click', function (e) {
                 e.preventDefault();
-                @auth
-                    window.location.href = "{{ route('cart.checkout') }}";
-                @else
-                $('#loginRequiredModal').modal('show');
-                @endauth
+                window.location.href = "{{ route('cart.checkout') }}";
             });
         });
+
+        {{--document.addEventListener('DOMContentLoaded', function () {--}}
+        {{--    const checkoutBtn = document.getElementById('proceedToCheckout');--}}
+        {{--    checkoutBtn.addEventListener('click', function (e) {--}}
+        {{--        e.preventDefault();--}}
+        {{--        @auth--}}
+        {{--            window.location.href = "{{ route('cart.checkout') }}";--}}
+        {{--        @else--}}
+        {{--        $('#loginRequiredModal').modal('show');--}}
+        {{--        @endauth--}}
+        {{--    });--}}
+        {{--});--}}
 
         $(document).on('click', '.removeFromCart', function(e) {
             e.preventDefault();
@@ -262,7 +266,33 @@
             });
         });
 
+        $('.update-btn').on('click', function() {
+            var button = $(this);
+            var productId = button.data('product-id');
+            var quantity = button.closest('td').find('.quantity-input').val();
 
+            button.find('.update-text').addClass('d-none');
+            button.find('.updating-text').removeClass('d-none');
+
+            // Make an AJAX request to update the product to the cart
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('updateCart') }}',
+                data: {
+                    product_id: productId,
+                    quantity: quantity,
+                    _token: '{{ csrf_token() }}',
+                },
+                success: function(response) {
+                    button.find('.updating-text').addClass('d-none');
+                    button.find('.updated-text').removeClass('d-none');
+                    location.reload();
+                },
+                error: function(error) {
+                    console.error('Error updating product to cart:', error);
+                }
+            });
+        });
 
     </script>
 @endpush

@@ -14,60 +14,60 @@ class CartController extends Controller
 {
     public function addToCart(Request $request)
     {
-        $productId = $request->input('product_id');
+        $request->validate([
+            'product_id' => 'required|exists:products,id',
+            'quantity' => 'required|integer|min:1'
+        ]);
+        $productId = $request->product_id;
+        $quantity = $request->quantity;
 
-        $productDetails = null;
-        foreach (config('shopping_cart.product_details') as $details) {
-            if ($details['id'] == $productId) {
-                $productDetails = $details;
-                break;
-            }
+        // Find the product (single product, not collection)
+        $product = Product::find($productId);
+        if (!$product) {
+            return response()->json(['success' => false, 'message' => 'Product not found'], 404);
         }
 
-        $userID = 2;
+        $userId = auth()->id() ?? 2; // Use 2 as fallback for testing
+        $existingItem = \Cart::session($userId)->get($productId);
+        if ($existingItem) {
+            \Cart::session($userId)->update($productId, [
+                'quantity' => [
+                    'relative' => false,
+                    'value' => $existingItem->quantity + $quantity
+                ]
+            ]);
+        } else {
+            // Add new item to cart
+            \Cart::session($userId)->add([
+                'id' => $product->id,
+                'name' => $product->name,
+                'price' => $product->price,
+                'quantity' => $quantity,
+                'attributes' => [
+                    'image' => $product->image,
+                    'slug' => $product->slug
+                ],
+                'associatedModel' => $product
+            ]);
+        }
 
-        // Add the product to the cart
-        \Cart::session($userID)->add([
-            'id' => $productId,
-            'name' => $productDetails['name'],
-            'price' => $productDetails['price'],
-            'quantity' => $productDetails['quantity'],
-            'attributes' => [],
-            'associatedModel' => $productDetails,
-        ]);
+
         return response()->json(['success' => true]);
     }
 
     public function viewCart()
     {
-        if (auth()->check()) {
-            $user_id = auth()->id();
-            $cartItems = Cart::where('user_id', $user_id)->with('product')->get();
-            // Calculate grand total (sum of all items' price * quantity)
-            $grandTotal = $cartItems->sum(function($item) {
-                return $item->product->sale_price * $item->quantity;
-            });
 
-        } else {
-            // For guests (cookie/session cart)
-            $cartCookie = request()->cookie('cart');
-            $cart = json_decode($cartCookie, true) ?? session('cart', []);
-            $cartItems = collect($cart)->map(function ($item, $product_id) {
-                if (is_array($item)) { // If cart stores array structure
-                    $product = \App\Models\Product::find($product_id);
-                    return $product ? (object) ['product' => $product, 'quantity' => $item['quantity']] : null;
-                } else { // If cart stores simple quantity
-                    $product = \App\Models\Product::find($product_id);
-                    return $product ? (object) ['product' => $product, 'quantity' => $item] : null;
-                }
-            })->filter()->values()->all();
+        $productDetailsArray = Product::all();
+        $userId = auth()->id() ?? 2;
+        $cartItems = \Cart::session($userId)->getContent();
+        $total = \Cart::getTotal();
 
-            // Calculate grand total for guest
-            $grandTotal = collect($cartItems)->sum(function($item) {
-                return $item->product->sale_price * $item->quantity;
-            });
-        }
-        return view('frontend.cart.view', compact('cartItems', 'grandTotal'));
+        return view('frontend.cart.view')
+            ->with('productDetailsArray', $productDetailsArray)
+            ->with('cartItems', $cartItems)->with('total', $total);
+
+        //return view('frontend.cart.view', compact('cartItems', 'grandTotal'));
 
     }
 

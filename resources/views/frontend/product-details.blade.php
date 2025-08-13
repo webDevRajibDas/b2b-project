@@ -142,10 +142,10 @@
                                         <div class="select-custom">
                                             <select name="size" id="size" class="form-control">
                                                 <option value="#" selected="selected">Select a size</option>
-                                                @foreach($sizes as $size)
-                                                    @php $sizeValue = strtolower(trim($size)); @endphp
-                                                    <option value="{{ $sizeValue }}">{{ trim($size) }}</option>
-                                                @endforeach
+                                                    @foreach($sizes as $size)
+                                                        @php $sizeValue = strtolower(trim($size)); @endphp
+                                                        <option value="{{ $sizeValue }}">{{ trim($size) }}</option>
+                                                    @endforeach
                                             </select>
                                         </div>
                                     </div><!-- End .select-custom -->
@@ -161,7 +161,8 @@
                                 </div><!-- End .details-filter-row -->
 
                                 <div class="product-details-action">
-                                    <button class="cart-button" id="cart-btn" data-product-id="{{ $detail->id }}">
+
+                                    <button class="cart-button add-to-cart-btn" id="" data-product-id="{{ $detail->id }}">
                                         ADD TO CART
                                         <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
                                             <path clip-rule="evenodd"
@@ -169,6 +170,7 @@
                                                     fill-rule="evenodd"
                                             ></path>
                                         </svg>
+
                                     </button>
                                     <div class="details-action-wrapper">
                                         <a href="#" class="btn btn-primary btn-round btn-shadow" style="background-color: #3000ff"><span style="font-weight: bolder">BUY NOW</span><i class="icon-long-arrow-right"></i></a>
@@ -201,7 +203,9 @@
                                         <div class="row align-items-center">
                                             <div class="col-12 d-flex flex-column">
                                                 <button id="open-messenger" class="btn messenger-btn btn-sm mb-1">Send Messenger</button>
-                                                <button id="open-whatsapp" class="btn whatsapp-btn btn-sm">Send WhatsApp</button>
+                                                <button id="open-whatsapp" class="btn whatsapp-btn btn-sm" data-product-name="{{ $detail->name }}"
+                                                        data-product-price="{{ $detail->sale_price }}"
+                                                        data-product-id="{{ $detail->id }}">Send WhatsApp</button>
                                             </div>
                                         </div>
 
@@ -410,17 +414,67 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $('#cart-btn').click(function() {
-                const productId = $(this).data('product-id');
-                const quantity = $("#qty").val();
-                @auth
-                // For logged-in users - make AJAX call directly
-                addToCart(productId,quantity);
-                @else
-                // For guests - show modal
-                $('#guestCartModal').modal('show');
-                @endauth
+
+            document.getElementById('open-whatsapp').addEventListener('click', function () {
+                const phoneNumber = "01720869950"; // Replace with your WhatsApp number
+                const productName = this.dataset.productName;
+                const productPrice = this.dataset.productPrice;
+                const productId = this.dataset.productId;
+                const qty = document.getElementById('qty').value;
+                const productUrl = window.location.href;
+
+                const message = `Hello, I want to order:
+                    Product: ${productName}
+                    Price: ${productPrice}
+                    Quantity: ${qty}
+                    Product Link: ${productUrl}`;
+                const encodedMessage = encodeURIComponent(message);
+                console.log(encodedMessage);
+                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+                window.open(whatsappUrl, '_blank');
             });
+
+
+            $('.add-to-cart-btn').on('click', function() {
+                var button = $(this);
+                var productId = button.data('product-id');
+                const p_quantity = $("#qty").val();
+
+                button.find('.add-text').addClass('d-none');
+                button.find('.adding-text').removeClass('d-none');
+
+                // Make an AJAX request to add the product to the cart
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ route('addToCart') }}',
+                    data: {
+                        product_id: productId,
+                        quantity: p_quantity,
+                        _token: '{{ csrf_token() }}',
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        //location.reload();
+                    },
+                    error: function(error) {
+                        console.error('Error adding product to cart:', error);
+                    }
+                });
+            });
+
+
+
+            {{--$('#cart-btn').click(function() {--}}
+            {{--    const productId = $(this).data('product-id');--}}
+            {{--    const quantity = $("#qty").val();--}}
+            {{--    @auth--}}
+            {{--    // For logged-in users - make AJAX call directly--}}
+            {{--    addToCart(productId,quantity);--}}
+            {{--    @else--}}
+            {{--    // For guests - show modal--}}
+            {{--    $('#guestCartModal').modal('show');--}}
+            {{--    @endauth--}}
+            {{--});--}}
 
             $('#continueAsGuest').click(function() {
                 const productId = $('#cart-btn').data('product-id');
