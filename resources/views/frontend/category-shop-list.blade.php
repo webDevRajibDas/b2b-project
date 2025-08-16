@@ -49,59 +49,23 @@
                 <div class="products">
                     <div class="row">
                         @forelse($productList as $productData)
-                            <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                <div class="product">
-                                    <figure class="product-media">
-                                        @if($productData->on_sale)
-                                            <span class="product-label label-sale">Sale</span>
-                                        @endif
-                                        <a href="{{ route('product.show', $productData->slug) }}">
-                                            <img style="height: 275px;"  src="{{ asset('storage/'.$productData->image) }}" alt="{{ $productData->name }}" class="product-image img-thumbnail img-fluid">
-                                        </a>
-
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                        </div><!-- End .product-action -->
-
-                                        <div class="product-action action-icon-top">
-                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                            <a href="#" class="btn-product-icon btn-quickview" title="Quick view" data-product-id="{{ $productData->id }}">
-                                                <span>Quick view</span>
-                                            </a>
-                                        </div><!-- End .product-action -->
-                                    </figure><!-- End .product-media -->
-
-                                    <div class="product-body">
-                                        <div class="product-cat">
-                                            <a href="#">Women</a>
-                                        </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="{{ route('product.show', $productData->slug) }}">{{$productData->name}}</a></h3><!-- End .product-title -->
-                                        <div class="product-price">
-                                            ৳&nbsp;{{$productData->sale_price}}
-                                        </div><!-- End .product-price -->
-                                        <div class="ratings-container">
-                                            <div class="ratings">
-                                                <div class="ratings-val" style="width: 0%;"></div><!-- End .ratings-val -->
-                                            </div><!-- End .ratings -->
-                                            <span class="ratings-text">( 0 Reviews )</span>
-                                        </div><!-- End .rating-container -->
-
-                                        <div class="product-nav product-nav-dots">
-                                            <a href="#" style="background: #cc9966;"><span class="sr-only">Color name</span></a>
-                                            <a href="#" class="active" style="background: #ebebeb;"><span class="sr-only">Color name</span></a>
-                                        </div><!-- End .product-nav -->
-                                    </div><!-- End .product-body -->
-                                </div><!-- End .product -->
-                            </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+                            {{-- Your product card partial --}}
+                            @include('frontend.products.partials._product_card', ['product' => $productData])
                         @empty
                             <p>No products found</p>
                         @endforelse
 
                     </div><!-- End .row -->
 
-                    <div class="load-more-container text-center">
-                        <a href="#" class="btn btn-outline-darker btn-load-more">More Products <i class="icon-refresh"></i></a>
+
+                    <div class="load-more-container text-center mt-4">
+                        @if ($productList->hasMorePages())
+                            <a href="#" class="btn btn-outline-darker btn-load-more">
+                                More Products <i class="icon-refresh"></i>
+                            </a>
+                        @endif
                     </div><!-- End .load-more-container -->
+
                 </div><!-- End .products -->
 
                 <div class="sidebar-filter-overlay"></div><!-- End .sidebar-filter-overlay -->
@@ -364,5 +328,60 @@
 @endpush
 
 @push('scripts')
+<script>
+    $(document).ready(function() {
 
+    let page = 2;
+    let loading = false; // A flag to prevent multiple AJAX requests at the same time
+
+    // Use a delegated event handler for the click
+    $('body').on('click', '.btn-load-more', function(e) {
+        e.preventDefault(); // Prevent the link from navigating
+
+        if (loading) {
+            return; // If a request is already in progress, do nothing
+        }
+
+        loading = true; // Set the flag
+        const $button = $(this);
+        const originalButtonText = $button.html(); // Store the original button content
+
+        // Provide visual feedback to the user
+        $button.html('Loading... <i class="icon-refresh"></i>');
+        $button.prop('disabled', true);
+
+        // AJAX request
+        $.ajax({
+            url: "{{ route('products.load_more') }}?page=" + page,
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                if (response.html.trim() !== "") {
+                    // Append the new products to the container
+                    $('#product-container').append(response.html);
+                    page++;
+                    if (!response.hasMorePages) {
+                        $button.remove();
+                    }
+                } else {
+                    $button.remove();
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("AJAX Error: ", status, error);
+                alert("An error occurred. Please try again.");
+            },
+            complete: function() {
+                loading = false; // Reset the flag
+                if ($button.length) {
+                    $button.html(originalButtonText);
+                    $button.prop('disabled', false);
+                }
+            }
+        });
+    });
+
+    });
+
+</script>
 @endpush

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(HomepageController::class)->group(function () {
     Route::get('/', 'homePage')->name('homePage');
-    Route::get('/shop-list', 'shopList')->name('product.shopList');
+
     Route::get('/category-list', 'categoryList')->name('category.list');
 
     Route::get('/product/{slug}', 'productShowDetail')->name('product.show');
@@ -26,6 +27,9 @@ Route::controller(HomepageController::class)->group(function () {
 });
 
 
+Route::get('/products/shop-list', [ProductController::class, 'shopList'])->name('product.shopList');
+Route::get('/products/load-more', [ProductController::class, 'loadMore'])->name('products.load_more');
+
 
 //CartController function
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('addToCart');
@@ -34,7 +38,7 @@ Route::get('/carts', [CartController::class, 'viewCart'])->name('view.cart');
 Route::get('/cart/count', [CartController::class, 'cartCount'])->name('cart.count');
 Route::post('/cart/remove', [CartController::class, 'removeCartItem'])->name('cart.remove');
 Route::get('/cart/items', [CartController::class, 'getCartItems'])->name('cart.items');
-Route::post('/update-subtotal', [CartController::class, 'updateCartPage'])->name('update.cart');
+Route::post('/update-cart', [CartController::class, 'updateCartPage'])->name('update.cart');
 Route::get('/checkout', [CartController::class, 'checkOuts'])->name('cart.checkout');
 
 // Protected checkout route

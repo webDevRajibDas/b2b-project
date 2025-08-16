@@ -277,7 +277,7 @@
             // Make an AJAX request to update the product to the cart
             $.ajax({
                 type: 'POST',
-                url: '{{ route('updateCart') }}',
+                url: '{{ route('update.cart') }}',
                 data: {
                     product_id: productId,
                     quantity: quantity,

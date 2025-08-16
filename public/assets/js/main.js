@@ -794,4 +794,9 @@ $(document).ready(function () {
             }, 500)
         }, 10000)
     }
-});
+
+
+
+
+
+}); // doc ready

@@ -65,12 +65,6 @@ class HomepageController extends Controller
     }
 
 
-    public function shopList()
-    {
-        $productList = Product::with('category')
-            ->latest()->take(12)->get();
-        return view('frontend.category-shop-list',compact('productList'));
-    }
 
     public function categoryList()
     {
