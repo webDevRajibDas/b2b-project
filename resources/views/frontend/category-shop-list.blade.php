@@ -28,7 +28,7 @@
 
                     <div class="toolbox-center">
                         <div class="toolbox-info">
-                            Showing <span>12 of 56</span> Products
+                            Showing <span id="displayed-products-count">{{ $productList->count() }}</span> of <span id="total-products-count">{{ $productList->total() }}</span> Products
                         </div><!-- End .toolbox-info -->
                     </div><!-- End .toolbox-center -->
 
@@ -47,7 +47,7 @@
                 </div><!-- End .toolbox -->
 
                 <div class="products">
-                    <div class="row">
+                    <div class="row" id="product-container">
                         @forelse($productList as $productData)
                             {{-- Your product card partial --}}
                             @include('frontend.products.partials._product_card', ['product' => $productData])
@@ -330,58 +330,53 @@
 @push('scripts')
 <script>
     $(document).ready(function() {
+        let page = 2;
+        let loading = false;
 
-    let page = 2;
-    let loading = false; // A flag to prevent multiple AJAX requests at the same time
+        let displayedCount = parseInt($('#displayed-products-count').text());
 
-    // Use a delegated event handler for the click
-    $('body').on('click', '.btn-load-more', function(e) {
-        e.preventDefault(); // Prevent the link from navigating
+        $('body').on('click', '.btn-load-more', function(e) {
+            e.preventDefault();
+            if (loading) return;
 
-        if (loading) {
-            return; // If a request is already in progress, do nothing
-        }
+            loading = true;
+            const $button = $(this);
+            $button.html('Loading... <i class="icon-refresh"></i>').prop('disabled', true);
 
-        loading = true; // Set the flag
-        const $button = $(this);
-        const originalButtonText = $button.html(); // Store the original button content
+            $.ajax({
+                url: "{{ route('products.load_more') }}?page=" + page,
+                type: 'GET',
+                dataType: 'json',
+                success: function(response) {
+                    if (response.html.trim() !== "") {
+                        $('#product-container').append(response.html);
+                        page++;
+                        displayedCount += response.count;
+                        $('#displayed-products-count').text(displayedCount);
+                        $('#total-products-count').text(response.total);
 
-        // Provide visual feedback to the user
-        $button.html('Loading... <i class="icon-refresh"></i>');
-        $button.prop('disabled', true);
-
-        // AJAX request
-        $.ajax({
-            url: "{{ route('products.load_more') }}?page=" + page,
-            type: 'GET',
-            dataType: 'json',
-            success: function(response) {
-                if (response.html.trim() !== "") {
-                    // Append the new products to the container
-                    $('#product-container').append(response.html);
-                    page++;
-                    if (!response.hasMorePages) {
+                        if (!response.hasMorePages) {
+                            $button.remove();
+                        }
+                    } else {
                         $button.remove();
                     }
-                } else {
-                    $button.remove();
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX Error: ", status, error);
+                },
+                complete: function() {
+                    loading = false;
+                    if ($button.length) {
+                        $button.html('More Products <i class="icon-refresh"></i>').prop('disabled', false);
+                    }
                 }
-            },
-            error: function(xhr, status, error) {
-                console.error("AJAX Error: ", status, error);
-                alert("An error occurred. Please try again.");
-            },
-            complete: function() {
-                loading = false; // Reset the flag
-                if ($button.length) {
-                    $button.html(originalButtonText);
-                    $button.prop('disabled', false);
-                }
-            }
+            });
+        });
+
+        // --- What about sorting? ---
+        $('#sortby').on('change', function() {
         });
     });
-
-    });
-
 </script>
 @endpush

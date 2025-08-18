@@ -16,7 +16,8 @@
                             <div class="intro-slide">
                                 <figure class="slide-image">
                                     <picture>
-                                        <source media="(max-width: 480px)" srcset="{{ asset('storage/'.$slider->image) }}">
+                                        <source media="(max-width: 480px)"
+                                                srcset="{{ asset('storage/'.$slider->image) }}">
                                         <img src="{{ asset('storage/'.$slider->image) }}" alt="{{ $slider->name }}">
                                     </picture>
                                 </figure><!-- End .slide-image -->
@@ -123,7 +124,9 @@
                         <div class="heading-right">
                             <ul class="nav nav-pills justify-content-center" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="trending-all-link" data-toggle="tab" href="#trending-all-tab" role="tab" aria-controls="trending-all-tab" aria-selected="true">All</a>
+                                    <a class="nav-link active" id="trending-all-link" data-toggle="tab"
+                                       href="#trending-all-tab" role="tab" aria-controls="trending-all-tab"
+                                       aria-selected="true">All</a>
                                 </li>
                                 @foreach($productCat  ?? [] as $category)
                                     <li class="nav-item">
@@ -144,8 +147,10 @@
 
                     <div class="tab-content tab-content-carousel">
                         <!-- All Products Tab -->
-                        <div class="tab-pane p-0 fade show active" id="trending-all-tab" role="tabpanel" aria-labelledby="trending-all-link">
-                            <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl"
+                        <div class="tab-pane p-0 fade show active" id="trending-all-tab" role="tabpanel"
+                             aria-labelledby="trending-all-link">
+                            <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow"
+                                 data-toggle="owl"
                                  data-owl-options='{
                         "nav": false,
                         "dots": true,
@@ -167,14 +172,18 @@
                                                 <span class="product-label label-sale">Sale</span>
                                             @endif
                                             <a href="{{ route('product.show', $product->slug) }}">
-                                                <img style="height: 220px; width:180px" src="{{ asset('storage/'.$product->image) }}" alt="{{ $product->name }}" class="product-image">
+                                                <img style="height: 220px; width:180px"
+                                                     src="{{ asset('storage/'.$product->image) }}"
+                                                     alt="{{ $product->name }}" class="product-image">
                                             </a>
 
                                             <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist">
+                                                <a href="#" class="btn-product-icon btn-wishlist"
+                                                   title="Add to wishlist">
                                                     <span>add to wishlist</span>
                                                 </a>
-                                                <a href="#" class="btn-product-icon btn-quickview" title="Quick view" data-product-id="{{ $product->id }}">
+                                                <a href="#" class="btn-product-icon btn-quickview" title="Quick view"
+                                                   data-product-id="{{ $product->id }}">
                                                     <span>Quick view</span>
                                                 </a>
                                             </div>
@@ -196,7 +205,8 @@
                                             </div>
                                             <div class="ratings-container">
                                                 <div class="ratings">
-                                                    <div class="ratings-val" style="width: {{ $product->rating * 20 }}%;"></div>
+                                                    <div class="ratings-val"
+                                                         style="width: {{ $product->rating * 20 }}%;"></div>
                                                 </div>
                                                 <span class="ratings-text">( {{ $product->reviews_count }} Reviews )</span>
                                             </div>
@@ -208,8 +218,10 @@
 
                         <!-- Category Tabs -->
                         @foreach($productCat  ?? [] as $category)
-                            <div class="tab-pane p-0 fade" id="trending-{{ $category->slug }}-tab" role="tabpanel" aria-labelledby="trending-{{ $category->slug }}-link">
-                                <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl"
+                            <div class="tab-pane p-0 fade" id="trending-{{ $category->slug }}-tab" role="tabpanel"
+                                 aria-labelledby="trending-{{ $category->slug }}-link">
+                                <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow"
+                                     data-toggle="owl"
                                      data-owl-options='{
                             "nav": false,
                             "dots": true,
@@ -231,14 +243,18 @@
                                                     <span class="product-label label-sale">Sale</span>
                                                 @endif
                                                 <a href="{{ route('product.show', $product->slug) }}">
-                                                    <img style="height: 220px; width:180px" src="{{ asset('storage/'.$product->image) }}" alt="{{ $product->name }}" class="product-image">
+                                                    <img style="height: 220px; width:180px"
+                                                         src="{{ asset('storage/'.$product->image) }}"
+                                                         alt="{{ $product->name }}" class="product-image">
                                                 </a>
 
                                                 <div class="product-action-vertical">
-                                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist">
+                                                    <a href="#" class="btn-product-icon btn-wishlist"
+                                                       title="Add to wishlist">
                                                         <span>add to wishlist</span>
                                                     </a>
-                                                    <a href="#" class="btn-product-icon btn-quickview" title="Quick view" data-product-id="{{ $product->id }}">
+                                                    <a href="#" class="btn-product-icon btn-quickview"
+                                                       title="Quick view" data-product-id="{{ $product->id }}">
                                                         <span>Quick view</span>
                                                     </a>
 
@@ -264,7 +280,8 @@
                                                 </div>
                                                 <div class="ratings-container">
                                                     <div class="ratings">
-                                                        <div class="ratings-val" style="width: {{ $product->rating * 20 }}%;"></div>
+                                                        <div class="ratings-val"
+                                                             style="width: {{ $product->rating * 20 }}%;"></div>
                                                     </div>
                                                     <span class="ratings-text">( {{ $product->reviews_count }} Reviews )</span>
                                                 </div>
@@ -282,24 +299,16 @@
 
                 <div class="mb-5"></div><!-- End .mb-5 -->
                 <div class="row cat-banner-row ict">
-                    <div class="col-xl-2 col-md-2 col-xxl-2">
-                        <div class="cat-banner">
-                            <div class="cat-banner-list" style="background-image: url({{asset('assets/images/demos/demo-14/banners/banner-bg-3.jpg')}});">
-                                <div class="banner-list-content">
-                                    <h2><a href="#">ICT Products </a></h2>
-                                    <ul>
-                                        <li><a href="#">Best Sellers</a></li>
-                                        <li><a href="#">Trending</a></li>
-                                        <li><a href="#">Accessories</a></li>
-                                        <li class="list-all-link"><a href="#">See All Departments</a></li>
-                                    </ul>
-                                </div><!-- End .banner-list-content -->
-                            </div><!-- End .col-sm-6 -->
-
-                        </div><!-- End .cat-banner -->
-                    </div><!-- End .col-xl-3 -->
-
-                    <div class="col-xl-10 col-xxl-10">
+                    <div class="section-header p-3 mb-3"
+                         style="background: linear-gradient(135deg, #6e8efb, #a777e3); border-radius: 8px;">
+                        <h4 class="section-title text-white m-0">
+                            <i class="fas fa-laptop-code me-2"></i>
+                            <span class="d-inline-block animate__animated animate__fadeIn">ICT Products</span>
+                            <small class="d-block text-white-50 mt-1">Cutting-edge technology for your digital
+                                life</small>
+                        </h4>
+                    </div>
+                    <div class="col-xl-12 col-xxl-12 col-sm-12">
                         <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                              data-owl-options='{
                                         "nav": true,
@@ -332,12 +341,15 @@
                                 <div class="product text-center">
                                     <figure class="product-media">
                                         <a href="{{ route('product.show', $ictProduct->slug) }}">
-                                            <img src="{{ asset('storage/'.$ictProduct->image) }}" alt="{{$ictProduct->slug}}" class="product-image">
+                                            <img src="{{ asset('storage/'.$ictProduct->image) }}"
+                                                 alt="{{$ictProduct->slug}}" class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                               title="Add to wishlist"><span>add to wishlist</span></a>
+                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
+                                               title="Quick view"><span>Quick view</span></a>
                                         </div><!-- End .product-action-vertical -->
 
                                         <div class="product-action">
@@ -355,12 +367,7 @@
                                         <div class="product-price">
                                             ৳&nbsp; {{$ictProduct->sale_price}}
                                         </div><!-- End .product-price -->
-                                        <div class="ratings-container">
-                                            <div class="ratings">
-                                                <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-                                            </div><!-- End .ratings -->
-                                            <span class="ratings-text">( 2 Reviews )</span>
-                                        </div><!-- End .rating-container -->
+
                                     </div><!-- End .product-body -->
                                 </div>
                             @empty
@@ -373,26 +380,21 @@
                 </div><!-- End .row cat-banner-row -->
 
                 <div class="row cat-banner-row clothing">
-                    <div class="col-xl-2 col-xxl-2">
-                        <div class="cat-banner">
-                            <div class="cat-banner-list d-xl-none d-xxl-flex" style="background-image: url(assets/images/demos/demo-14/banners/banner-bg-3.jpg);">
-                                <div class="banner-list-content">
-                                    <h2><a href="#">Fashion </a></h2>
-                                    <ul>
-                                        <li><a href="#">Best Sellers</a></li>
-                                        <li><a href="#">Trending</a></li>
-                                        <li><a href="#">Women</a></li>
-                                        <li><a href="#">Man</a></li>
-                                        <li><a href="#">Shoes</a></li>
-                                        <li class="list-all-link"><a href="#">See All Departments</a></li>
-                                    </ul>
-                                </div><!-- End .banner-list-content -->
-                            </div><!-- End .col-sm-6 -->
+                    <div class="section-header p-3 mb-3"
+                         style="background: linear-gradient(135deg, #6e8efb, #a777e3); border-radius: 8px;">
+                        <h4 class="section-title text-white m-0 position-relative">
+                            <i class="fa fa-tshirt me-2"></i>
+                            <span class="d-inline-block animate__animated animate__fadeIn">Fashions & Clothing</span>
+                            <small class="d-block text-white-50 mt-1">Trendy styles for every occasion</small>
 
-                        </div><!-- End .cat-banner -->
-                    </div><!-- End .col-xl-3 -->
+                            <!-- Decorative fashion elements -->
+                            <span class="position-absolute top-0 end-0 me-3" style="opacity: 0.2;">
+        <i class="fas fa-ribbon fa-2x"></i>
+    </span>
+                        </h4>
+                    </div>
 
-                    <div class="col-xl-10 col-xxl-10">
+                    <div class="col-xl-12 col-xxl-12">
                         <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                              data-owl-options='{
                                         "nav": true,
@@ -425,12 +427,16 @@
                                 <div class="product text-center">
                                     <figure class="product-media">
                                         <a href="{{ route('product.show', $fashionProduct->slug) }}">
-                                            <img style="height: 250px" src="{{ asset('storage/'.$fashionProduct->image) }}" alt="Product image" class="product-image">
+                                            <img style="height: 250px"
+                                                 src="{{ asset('storage/'.$fashionProduct->image) }}"
+                                                 alt="Product image" class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                            <a href="#" class="btn-product-icon btn-wishlist"
+                                               title="Add to wishlist"><span>add to wishlist</span></a>
+                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
+                                               title="Quick view"><span>Quick view</span></a>
 
                                         </div><!-- End .product-action-vertical -->
 
@@ -443,13 +449,16 @@
                                         <div class="product-cat">
                                             <a href="#">Shoes</a>
                                         </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="{{ route('product.show', $fashionProduct->slug) }}">{{$fashionProduct->name}}</a></h3><!-- End .product-title -->
+                                        <h3 class="product-title"><a
+                                                    href="{{ route('product.show', $fashionProduct->slug) }}">{{$fashionProduct->name}}</a>
+                                        </h3><!-- End .product-title -->
                                         <div class="product-price">
                                             ৳&nbsp;{{$fashionProduct->sale_price}}
                                         </div><!-- End .product-price -->
                                         <div class="ratings-container">
                                             <div class="ratings">
-                                                <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
+                                                <div class="ratings-val" style="width: 80%;"></div>
+                                                <!-- End .ratings-val -->
                                             </div><!-- End .ratings -->
                                             <span class="ratings-text">( 12 Reviews )</span>
                                         </div><!-- End .rating-container -->
@@ -466,19 +475,21 @@
 
                 <div class="mb-3"></div><!-- End .mb-3 -->
                 <div class="row cat-banner-row electronics">
-                    <div class="col-xl-2 col-xxl-2">
-                        <div class="cat-banner-list" style="background-image: url({{asset('assets/images/demos/demo-14/banners/banner-bg-1.jpg')}});">
-                            <div class="banner-list-content">
-                                <h2><a href="#">Electronics</a></h2>
-                                <ul>
-                                    <li><a href="#">Cell Phones</a></li>
-                                    <li><a href="#">Computers</a></li>
-                                    <li><a href="#">TV & Video</a></li>
-                                    <li class="list-all-link"><a href="#">See All Departments</a></li>
-                                </ul>
-                            </div><!-- End .banner-list-content -->
-                        </div><!-- End .col-sm-6 -->
-                    </div><!-- End .col-xl-3 -->
+                    <div class="section-header p-3 mb-3" style="background: linear-gradient(135deg, #6e8efb, #a777e3); border-radius: 8px;">
+                        <h4 class="section-title text-white m-0 position-relative">
+                            <i class="fas fa-microchip me-2"></i>
+                            <span class="d-inline-block animate__animated animate__fadeIn">Electronics</span>
+                            <small class="d-block text-white-50 mt-1">Innovative tech for modern living</small>
+
+                            <!-- Decorative tech elements -->
+                            <span class="position-absolute top-0 end-0 me-3" style="opacity: 0.2;">
+        <i class="fas fa-bolt fa-2x"></i>
+    </span>
+                            <span class="position-absolute bottom-0 start-0 ms-3" style="opacity: 0.2;">
+        <i class="fas fa-satellite-dish fa-2x"></i>
+    </span>
+                        </h4>
+                    </div>
 
                     <div class="col-xl-10 col-xxl-10">
                         <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
@@ -516,14 +527,17 @@
                                             <span class="product-label label-sale">Sale</span>
                                         @endif
                                         <a href="{{ route('product.show', $electronicsProduct->slug) }}">
-                                            <img style="height: 250px" src="{{ asset('storage/'.$electronicsProduct->image) }}" alt="{{ $electronicsProduct->name }}" class="product-image">
+                                            <img style="height: 250px"
+                                                 src="{{ asset('storage/'.$electronicsProduct->image) }}"
+                                                 alt="{{ $electronicsProduct->name }}" class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
                                             <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist">
                                                 <span>add to wishlist</span>
                                             </a>
-                                            <a href="#" class="btn-product-icon btn-quickview" title="Quick view" data-product-id="{{ $electronicsProduct->id }}">
+                                            <a href="#" class="btn-product-icon btn-quickview" title="Quick view"
+                                               data-product-id="{{ $electronicsProduct->id }}">
                                                 <span>Quick view</span>
                                             </a>
 
@@ -546,7 +560,8 @@
                                         </div>
                                         <div class="ratings-container">
                                             <div class="ratings">
-                                                <div class="ratings-val" style="width: {{ $product->rating * 20 }}%;"></div>
+                                                <div class="ratings-val"
+                                                     style="width: {{ $product->rating * 20 }}%;"></div>
                                             </div>
                                             <span class="ratings-text">( {{ $electronicsProduct->reviews_count }} Reviews )</span>
                                         </div>
@@ -566,7 +581,8 @@
                 <div class="row cat-banner-row cooking">
                     <div class="col-xl-3 col-xxl-4">
                         <div class="cat-banner row no-gutters">
-                            <div class="cat-banner-list col-sm-6 d-xl-none d-xxl-flex" style="background-image: url(assets/images/demos/demo-14/banners/banner-bg-4.jpg);">
+                            <div class="cat-banner-list col-sm-6 d-xl-none d-xxl-flex"
+                                 style="background-image: url(assets/images/demos/demo-14/banners/banner-bg-4.jpg);">
                                 <div class="banner-list-content">
                                     <h2><a href="#">Cooking </a></h2>
 
@@ -585,13 +601,17 @@
                             <div class="col-sm-6 col-xl-12 col-xxl-6">
                                 <div class="banner banner-overlay">
                                     <a href="#">
-                                        <img src="assets/images/demos/demo-14/banners/banner-10.jpg" alt="Banner img desc">
+                                        <img src="assets/images/demos/demo-14/banners/banner-10.jpg"
+                                             alt="Banner img desc">
                                     </a>
 
                                     <div class="banner-content">
-                                        <h4 class="banner-subtitle text-white"><a href="#">Best Deals</a></h4><!-- End .banner-subtitle -->
-                                        <h3 class="banner-title text-white"><a href="#">Cooking <br>Appliances <br><span>Up To 30% Off</span></a></h3><!-- End .banner-title -->
-                                        <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
+                                        <h4 class="banner-subtitle text-white"><a href="#">Best Deals</a></h4>
+                                        <!-- End .banner-subtitle -->
+                                        <h3 class="banner-title text-white"><a href="#">Cooking <br>Appliances
+                                                <br><span>Up To 30% Off</span></a></h3><!-- End .banner-title -->
+                                        <a href="#" class="banner-link">Shop Now <i
+                                                    class="icon-long-arrow-right"></i></a>
                                     </div><!-- End .banner-content -->
                                 </div><!-- End .banner -->
                             </div><!-- End .col-sm-6 -->
@@ -630,17 +650,21 @@
                                 <figure class="product-media">
                                     <span class="product-label label-sale">Sale</span>
                                     <a href="product.html">
-                                        <img src="assets/images/demos/demo-14/products/product-18.jpg" alt="Product image" class="product-image">
+                                        <img src="assets/images/demos/demo-14/products/product-18.jpg"
+                                             alt="Product image" class="product-image">
                                     </a>
 
                                     <div class="product-action-vertical">
                                         <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
+                                           title="Quick view"><span>Quick view</span></a>
+                                        <a href="#" class="btn-product-icon btn-compare"
+                                           title="Compare"><span>Compare</span></a>
                                     </div><!-- End .product-action-vertical -->
 
                                     <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                        <a href="#" class="btn-product btn-cart"
+                                           title="Add to cart"><span>add to cart</span></a>
                                     </div><!-- End .product-action -->
                                 </figure><!-- End .product-media -->
 
@@ -648,14 +672,16 @@
                                     <div class="product-cat">
                                         <a href="#">Cooking Appliances</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">KitchenAid Professional  500 Series Stand Mixer</a></h3><!-- End .product-title -->
+                                    <h3 class="product-title"><a href="product.html">KitchenAid Professional 500 Series
+                                            Stand Mixer</a></h3><!-- End .product-title -->
                                     <div class="product-price">
                                         <span class="new-price">$249.99</span>
                                         <span class="old-price">Was $299.99</span>
                                     </div><!-- End .product-price -->
                                     <div class="ratings-container">
                                         <div class="ratings">
-                                            <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
+                                            <div class="ratings-val" style="width: 100%;"></div>
+                                            <!-- End .ratings-val -->
                                         </div><!-- End .ratings -->
                                         <span class="ratings-text">( 7 Reviews )</span>
                                     </div><!-- End .rating-container -->
@@ -665,17 +691,21 @@
                             <div class="product text-center">
                                 <figure class="product-media">
                                     <a href="product.html">
-                                        <img src="assets/images/demos/demo-14/products/product-19.jpg" alt="Product image" class="product-image">
+                                        <img src="assets/images/demos/demo-14/products/product-19.jpg"
+                                             alt="Product image" class="product-image">
                                     </a>
 
                                     <div class="product-action-vertical">
                                         <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
+                                           title="Quick view"><span>Quick view</span></a>
+                                        <a href="#" class="btn-product-icon btn-compare"
+                                           title="Compare"><span>Compare</span></a>
                                     </div><!-- End .product-action-vertical -->
 
                                     <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                        <a href="#" class="btn-product btn-cart"
+                                           title="Add to cart"><span>add to cart</span></a>
                                     </div><!-- End .product-action -->
                                 </figure><!-- End .product-media -->
 
@@ -683,7 +713,8 @@
                                     <div class="product-cat">
                                         <a href="#">Dinnerware</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">MoDRN Industrial 7 Piece</a></h3><!-- End .product-title -->
+                                    <h3 class="product-title"><a href="product.html">MoDRN Industrial 7 Piece</a></h3>
+                                    <!-- End .product-title -->
                                     <div class="product-price">
                                         $40.00
                                     </div><!-- End .product-price -->
@@ -699,17 +730,21 @@
                             <div class="product text-center">
                                 <figure class="product-media">
                                     <a href="product.html">
-                                        <img src="assets/images/demos/demo-14/products/product-20.jpg" alt="Product image" class="product-image">
+                                        <img src="assets/images/demos/demo-14/products/product-20.jpg"
+                                             alt="Product image" class="product-image">
                                     </a>
 
                                     <div class="product-action-vertical">
                                         <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
+                                           title="Quick view"><span>Quick view</span></a>
+                                        <a href="#" class="btn-product-icon btn-compare"
+                                           title="Compare"><span>Compare</span></a>
                                     </div><!-- End .product-action-vertical -->
 
                                     <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                        <a href="#" class="btn-product btn-cart"
+                                           title="Add to cart"><span>add to cart</span></a>
                                     </div><!-- End .product-action -->
                                 </figure><!-- End .product-media -->
 
@@ -717,7 +752,8 @@
                                     <div class="product-cat">
                                         <a href="#">Cookware</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">Cuisinart French Classic 3 Piece</a></h3><!-- End .product-title -->
+                                    <h3 class="product-title"><a href="product.html">Cuisinart French Classic 3
+                                            Piece</a></h3><!-- End .product-title -->
                                     <div class="product-price">
                                         $44.99
                                     </div><!-- End .product-price -->
@@ -734,17 +770,21 @@
                                 <figure class="product-media">
                                     <span class="product-label label-new">New</span>
                                     <a href="product.html">
-                                        <img src="assets/images/demos/demo-14/products/product-21.jpg" alt="Product image" class="product-image">
+                                        <img src="assets/images/demos/demo-14/products/product-21.jpg"
+                                             alt="Product image" class="product-image">
                                     </a>
 
                                     <div class="product-action-vertical">
                                         <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
+                                           title="Quick view"><span>Quick view</span></a>
+                                        <a href="#" class="btn-product-icon btn-compare"
+                                           title="Compare"><span>Compare</span></a>
                                     </div><!-- End .product-action-vertical -->
 
                                     <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                        <a href="#" class="btn-product btn-cart"
+                                           title="Add to cart"><span>add to cart</span></a>
                                     </div><!-- End .product-action -->
                                 </figure><!-- End .product-media -->
 
@@ -752,7 +792,8 @@
                                     <div class="product-cat">
                                         <a href="#">Cooking Appliances</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">KitchenAid - KSB1570WH Classic 5-Speed Blender</a></h3><!-- End .product-title -->
+                                    <h3 class="product-title"><a href="product.html">KitchenAid - KSB1570WH Classic
+                                            5-Speed Blender</a></h3><!-- End .product-title -->
                                     <div class="product-price">
                                         $75.00
                                     </div><!-- End .product-price -->
@@ -774,17 +815,21 @@
                                 <figure class="product-media">
                                     <span class="product-label label-sale">Sale</span>
                                     <a href="product.html">
-                                        <img src="assets/images/demos/demo-14/products/product-18.jpg" alt="Product image" class="product-image">
+                                        <img src="assets/images/demos/demo-14/products/product-18.jpg"
+                                             alt="Product image" class="product-image">
                                     </a>
 
                                     <div class="product-action-vertical">
                                         <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
+                                           title="Quick view"><span>Quick view</span></a>
+                                        <a href="#" class="btn-product-icon btn-compare"
+                                           title="Compare"><span>Compare</span></a>
                                     </div><!-- End .product-action-vertical -->
 
                                     <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                        <a href="#" class="btn-product btn-cart"
+                                           title="Add to cart"><span>add to cart</span></a>
                                     </div><!-- End .product-action -->
                                 </figure><!-- End .product-media -->
 
@@ -792,14 +837,16 @@
                                     <div class="product-cat">
                                         <a href="#">Cooking Appliances</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">KitchenAid Professional  500 Series Stand Mixer</a></h3><!-- End .product-title -->
+                                    <h3 class="product-title"><a href="product.html">KitchenAid Professional 500 Series
+                                            Stand Mixer</a></h3><!-- End .product-title -->
                                     <div class="product-price">
                                         <span class="new-price">$249.99</span>
                                         <span class="old-price">Was $299.99</span>
                                     </div><!-- End .product-price -->
                                     <div class="ratings-container">
                                         <div class="ratings">
-                                            <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
+                                            <div class="ratings-val" style="width: 100%;"></div>
+                                            <!-- End .ratings-val -->
                                         </div><!-- End .ratings -->
                                         <span class="ratings-text">( 7 Reviews )</span>
                                     </div><!-- End .rating-container -->
@@ -818,8 +865,10 @@
                             </a>
 
                             <div class="banner-content">
-                                <h4 class="banner-subtitle text-white d-none d-sm-block"><a href="#">Spring Sale is Coming</a></h4><!-- End .banner-subtitle -->
-                                <h3 class="banner-title text-white"><a href="#">Floral T-shirts and Vests  <br><span>Spring Sale</span></a></h3><!-- End .banner-title -->
+                                <h4 class="banner-subtitle text-white d-none d-sm-block"><a href="#">Spring Sale is
+                                        Coming</a></h4><!-- End .banner-subtitle -->
+                                <h3 class="banner-title text-white"><a href="#">Floral T-shirts and Vests <br><span>Spring Sale</span></a>
+                                </h3><!-- End .banner-title -->
                                 <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
                             </div><!-- End .banner-content -->
                         </div><!-- End .banner -->
@@ -832,8 +881,10 @@
                             </a>
 
                             <div class="banner-content">
-                                <h4 class="banner-subtitle text-white d-none d-sm-block"><a href="#">Amazing Value</a></h4><!-- End .banner-subtitle -->
-                                <h3 class="banner-title text-white"><a href="#">Upgrade and Save <br><span>On The Latest Apple Devices</span></a></h3><!-- End .banner-title -->
+                                <h4 class="banner-subtitle text-white d-none d-sm-block"><a href="#">Amazing Value</a>
+                                </h4><!-- End .banner-subtitle -->
+                                <h3 class="banner-title text-white"><a href="#">Upgrade and Save <br><span>On The Latest Apple Devices</span></a>
+                                </h3><!-- End .banner-title -->
                                 <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
                             </div><!-- End .banner-content -->
                         </div><!-- End .banner banner-overlay -->
@@ -903,12 +954,15 @@
                                         <div class="product product-sm">
                                             <figure class="product-media">
                                                 <a href="{{ route('product.show', $best_sell->slug) }}">
-                                                    <img src="{{ asset('storage/'.$best_sell->image) }}" alt="{{$best_sell->name}}" class="product-image">
+                                                    <img src="{{ asset('storage/'.$best_sell->image) }}"
+                                                         alt="{{$best_sell->name}}" class="product-image">
                                                 </a>
                                             </figure>
 
                                             <div class="product-body">
-                                                <h5 class="product-title"><a href="{{ route('product.show', $best_sell->slug) }}">{{$best_sell->name}}</a></h5>
+                                                <h5 class="product-title"><a
+                                                            href="{{ route('product.show', $best_sell->slug) }}">{{$best_sell->name}}</a>
+                                                </h5>
                                                 <div class="product-price">
                                                     ৳&nbsp;{{$best_sell->sale_price}}
                                                 </div><!-- End .product-price -->
@@ -931,12 +985,15 @@
                                             <figure class="product-media">
                                                 <span class="product-label label-sale">Deal of the week</span>
                                                 <a href="product.html">
-                                                    <img src="assets/images/demos/demo-14/products/deals/product-1.jpg" alt="Product image" class="product-image">
+                                                    <img src="assets/images/demos/demo-14/products/deals/product-1.jpg"
+                                                         alt="Product image" class="product-image">
                                                 </a>
 
                                                 <div class="product-action-vertical">
-                                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                                    <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                                    <a href="#" class="btn-product-icon btn-wishlist"
+                                                       title="Add to wishlist"><span>add to wishlist</span></a>
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
 
                                                 </div><!-- End .product-action-vertical -->
 
@@ -949,25 +1006,29 @@
                                                 <div class="product-cat">
                                                     <a href="#">Audio</a>
                                                 </div><!-- End .product-cat -->
-                                                <h3 class="product-title"><a href="product.html">Bose SoundLink Micro speaker</a></h3><!-- End .product-title -->
+                                                <h3 class="product-title"><a href="product.html">Bose SoundLink Micro
+                                                        speaker</a></h3><!-- End .product-title -->
                                                 <div class="product-price">
                                                     <span class="new-price">$99.99</span>
                                                     <span class="old-price">Was $110.99</span>
                                                 </div><!-- End .product-price -->
                                                 <div class="ratings-container">
                                                     <div class="ratings">
-                                                        <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
+                                                        <div class="ratings-val" style="width: 100%;"></div>
+                                                        <!-- End .ratings-val -->
                                                     </div><!-- End .ratings -->
                                                     <span class="ratings-text">( 4 Reviews )</span>
                                                 </div><!-- End .rating-container -->
 
                                                 <div class="product-nav product-nav-dots">
-                                                    <a href="#" class="active" style="background: #f3815f;"><span class="sr-only">Color name</span></a>
+                                                    <a href="#" class="active" style="background: #f3815f;"><span
+                                                                class="sr-only">Color name</span></a>
                                                     <a href="#" style="background: #333333;"><span class="sr-only">Color name</span></a>
                                                 </div><!-- End .product-nav -->
                                             </div><!-- End .product-body -->
 
-                                            <div class="product-countdown" data-until="+44h" data-relative="true" data-labels-short="true"></div><!-- End .product-countdown -->
+                                            <div class="product-countdown" data-until="+44h" data-relative="true"
+                                                 data-labels-short="true"></div><!-- End .product-countdown -->
                                         </div><!-- End .product -->
                                     </div><!-- End .col-sm-6 col-xl-12 -->
 
@@ -976,12 +1037,15 @@
                                             <figure class="product-media">
                                                 <span class="product-label label-sale">Deal of the week</span>
                                                 <a href="product.html">
-                                                    <img src="assets/images/demos/demo-14/products/deals/product-2.jpg" alt="Product image" class="product-image">
+                                                    <img src="assets/images/demos/demo-14/products/deals/product-2.jpg"
+                                                         alt="Product image" class="product-image">
                                                 </a>
 
                                                 <div class="product-action-vertical">
-                                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                                    <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                                    <a href="#" class="btn-product-icon btn-wishlist"
+                                                       title="Add to wishlist"><span>add to wishlist</span></a>
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
 
                                                 </div><!-- End .product-action-vertical -->
 
@@ -994,20 +1058,23 @@
                                                 <div class="product-cat">
                                                     <a href="#">Cameras</a>
                                                 </div><!-- End .product-cat -->
-                                                <h3 class="product-title"><a href="product.html">GoPro HERO Session Waterproof HD Action Camera</a></h3><!-- End .product-title -->
+                                                <h3 class="product-title"><a href="product.html">GoPro HERO Session
+                                                        Waterproof HD Action Camera</a></h3><!-- End .product-title -->
                                                 <div class="product-price">
                                                     <span class="new-price">$196.99</span>
                                                     <span class="old-price">Was $210.99</span>
                                                 </div><!-- End .product-price -->
                                                 <div class="ratings-container">
                                                     <div class="ratings">
-                                                        <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
+                                                        <div class="ratings-val" style="width: 100%;"></div>
+                                                        <!-- End .ratings-val -->
                                                     </div><!-- End .ratings -->
                                                     <span class="ratings-text">( 19 Reviews )</span>
                                                 </div><!-- End .rating-container -->
                                             </div><!-- End .product-body -->
 
-                                            <div class="product-countdown" data-until="+52h" data-relative="true" data-labels-short="true"></div><!-- End .product-countdown -->
+                                            <div class="product-countdown" data-until="+52h" data-relative="true"
+                                                 data-labels-short="true"></div><!-- End .product-countdown -->
                                         </div><!-- End .product -->
                                     </div><!-- End .col-sm-6 col-xl-12 -->
                                 </div><!-- End .row -->
@@ -1018,12 +1085,16 @@
                             <div class="widget widget-banner">
                                 <div class="banner banner-overlay">
                                     <a href="#">
-                                        <img src="assets/images/demos/demo-14/banners/banner-12.jpg" alt="Banner img desc">
+                                        <img src="assets/images/demos/demo-14/banners/banner-12.jpg"
+                                             alt="Banner img desc">
                                     </a>
 
                                     <div class="banner-content banner-content-top">
-                                        <h3 class="banner-title text-white"><a href="#">Take Better Photos <br><span>With</span> Canon EOS <br><span>Up To 20% Off</span></a></h3><!-- End .banner-title -->
-                                        <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
+                                        <h3 class="banner-title text-white"><a href="#">Take Better Photos <br><span>With</span>
+                                                Canon EOS <br><span>Up To 20% Off</span></a></h3>
+                                        <!-- End .banner-title -->
+                                        <a href="#" class="banner-link">Shop Now <i
+                                                    class="icon-long-arrow-right"></i></a>
                                     </div><!-- End .banner-content -->
                                 </div><!-- End .banner banner-overlay -->
                             </div><!-- End .widget widget-banner -->
@@ -1057,7 +1128,8 @@
                                             </h5><!-- End .entry-title -->
 
                                             <div class="entry-content">
-                                                <p>Lorem ipsum dolor consectetuer adipiscing elit. Phasellus hendrerit. Pelletesque aliquet nibh ...</p>
+                                                <p>Lorem ipsum dolor consectetuer adipiscing elit. Phasellus hendrerit.
+                                                    Pelletesque aliquet nibh ...</p>
                                                 <a href="single.html" class="read-more">Read More</a>
                                             </div><!-- End .entry-content -->
                                         </div><!-- End .entry-body -->
@@ -1080,7 +1152,8 @@
                                             </h5><!-- End .entry-title -->
 
                                             <div class="entry-content">
-                                                <p>Phasellus hendrerit. Pelletesque aliquet nibh necurna In nisi neque, aliquet vel, dapibus id ... </p>
+                                                <p>Phasellus hendrerit. Pelletesque aliquet nibh necurna In nisi neque,
+                                                    aliquet vel, dapibus id ... </p>
                                                 <a href="single.html" class="read-more">Read More</a>
                                             </div><!-- End .entry-content -->
                                         </div><!-- End .entry-body -->
@@ -1103,7 +1176,8 @@
                                             </h5><!-- End .entry-title -->
 
                                             <div class="entry-content">
-                                                <p>Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc ...</p>
+                                                <p>Sed pretium, ligula sollicitudin laoreet viverra, tortor libero
+                                                    sodales leo, eget blandit nunc ...</p>
                                                 <a href="single.html" class="read-more">Read More</a>
                                             </div><!-- End .entry-content -->
                                         </div><!-- End .entry-body -->

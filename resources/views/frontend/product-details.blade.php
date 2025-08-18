@@ -30,6 +30,27 @@
         color: #fff;
     }
     .muted-small { font-size: 13px; color: #6b7280; }
+
+    .product-pricing {
+        font-size: 1.1rem;
+        margin: 0.5rem 0;
+    }
+
+    .original-price {
+        font-size: 0.9rem;
+        margin-right: 0.5rem; color: #999; /* muted */
+        text-decoration: line-through;
+
+    }
+
+    .sale-price {
+        font-size: 1.2rem;
+    }
+
+    .discount-badge {
+        font-size: 0.8rem;
+        vertical-align: middle;
+    }
 </style>
 
 @endpush
@@ -98,9 +119,15 @@
                                     <a class="ratings-text" href="#product-review-link" id="review-link">( 2 Reviews )</a>
                                 </div><!-- End .rating-container -->
 
-                                <div class="product-price">
-                                    {{$detail->sale_price}}
-                                </div><!-- End .product-price -->
+                                <div class="product-pricing">
+                                    @if($detail->sale_price && $detail->sale_price < $detail->price)
+                                        <span class="original-price text-muted text-decoration-line-through text-decoration-line-through">{{ format_currency($detail->price) }}</span>
+                                        <span class="sale-price text-danger fw-bold">{{ format_currency($detail->sale_price) }}</span>
+                                        <span class="discount-badge badge bg-success ms-2">{{ calculate_discount_percentage($detail->price, $detail->sale_price) }}% OFF</span>
+                                    @else
+                                        <span class="current-price fw-bold">{{ format_currency($detail->price) }}</span>
+                                    @endif
+                                </div>
 
                                 <div class="product-content">
                                     <p>{{$detail->description}}</p>

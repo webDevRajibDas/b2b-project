@@ -1,0 +1,11 @@
+FTP_SERVER 199.188.200.88
+
+FTP_USERNAME bbbangladesh
+
+FTP_PASSWORD adfw3434tadfazd
+
+
+
+FTP Username: bbbangladesh
+FTP server: ftp.b2bplatformbd.com
+FTP & explicit FTPS port:  21

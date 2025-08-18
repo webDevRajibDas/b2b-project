@@ -122,5 +122,14 @@ if (!function_exists('ProductCategoryDropdown')) {
 
 
 
+    function format_currency($amount) {
+        return number_format($amount, 2);
+    }
+
+    function calculate_discount_percentage($original, $sale) {
+        return round((($original - $sale) / $original) * 100);
+    }
+
+
 
 }
