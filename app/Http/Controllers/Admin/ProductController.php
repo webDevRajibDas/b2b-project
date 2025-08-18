@@ -143,16 +143,11 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $brands = Brand::where('status', 1) ->orderBy('id', 'desc')->get();
-        $categories =  Category::where('status', 'active') ->orderBy('id', 'desc')->get();
-        return view('admin.product.edit', compact('product','categories','brands'));
+        $categories =  Category::where('status', 'active')->get();
+        $subSubcategories =  SubSubcategorie::where('status', 'active')->get();
+        $labels =  Label::all();
+        return view('admin.product.edit', compact('product','categories','subSubcategories','brands','labels'));
     }
-
-
-//    public function getSubcategories($id)
-//    {
-//        $subcategories = SubCategorie::where('parent_id', $id)->select('id', 'title')->get();
-//        return response()->json($subcategories);
-//    }
 
     public function getSubcategories(Request $request)
     {

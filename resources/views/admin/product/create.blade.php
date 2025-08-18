@@ -92,7 +92,7 @@
                             subcategory_id: subcategoryId // Send the selected subcategory ID
                         },
                         success: function (response) {
-                            console.log(response)
+                            //console.log(response)
                             $subSubCategorySelect.empty().prop('disabled', false).append($('<option>', {
                                 value: '',
                                 text: 'Select a sub-subcategory'

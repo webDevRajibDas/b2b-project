@@ -131,6 +131,9 @@
                                         <div class="col-lg-7 col-xl-6">
                                             <select data-plugin-selectTwo class="form-control form-control-modern" name="sub_subcategorie_id" id="subSubCategories">
                                                 <option value="">Select a category</option>
+                                                @foreach($categories as $data)
+                                                    <option value="{{ $data->id }}" {{ old('sub_subcategorie_id', $product->sub_subcategorie_id ?? null) == $data->id ? 'selected' : '' }} >{{ $data->title }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -142,9 +145,7 @@
                                             <select data-plugin-selectTwo class="form-control form-control-modern" name="label_id">
                                                 <option value="">Select a Label</option>
                                                 @foreach($labels as $label)
-                                                    <option value="{{ $label->id }}" {{ old('label_id') == $label->id ? 'selected' : '' }}>
-                                                        {{ $label->name }}
-                                                    </option>
+                                                    <option value="{{ $label->id }}" {{ old('label_id', $product->label_id ?? null) == $label->id ? 'selected' : '' }} >{{ $label->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -156,9 +157,7 @@
                                             <select data-plugin-selectTwo class="form-control form-control-modern" name="brand_id">
                                                 <option value="">Select a brand</option>
                                                 @foreach($brands as $brand)
-                                                    <option value="{{ $brand->id }}" {{ old('brand_id') == $brand->id ? 'selected' : '' }}>
-                                                        {{ $brand->title }}
-                                                    </option>
+                                                    <option value="{{ $brand->id }}" {{ old('brand_id', $product->brand_id ?? null) == $brand->id ? 'selected' : '' }} >{{ $brand->title }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -169,13 +168,13 @@
                                     <div class="form-group row align-items-center pb-3">
                                         <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Regular Price (TK)</label>
                                         <div class="col-lg-7 col-xl-6">
-                                            <input type="number" class="form-control form-control-modern" name="price"  />
+                                            <input type="number" class="form-control form-control-modern" value="{{$product->price}}" name="price"  />
                                         </div>
                                     </div>
                                     <div class="form-group row align-items-center">
                                         <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Discount Price (TK)</label>
                                         <div class="col-lg-7 col-xl-6">
-                                            <input type="number" class="form-control form-control-modern" name="sale_price" required/>
+                                            <input type="number" class="form-control form-control-modern" name="sale_price" value="{{$product->sale_price}}" required/>
                                         </div>
                                     </div>
 
