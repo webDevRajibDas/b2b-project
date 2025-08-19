@@ -14,7 +14,7 @@ jobs:
       - name: Build app
         run: |
           composer install --optimize-autoloader --no-dev
-          npm install && npm run build
+          
 
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
