@@ -34,6 +34,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'isAdmin'])->group(f
 
     Route::get('/get-sub-categories', [ProductController::class, 'getSubcategories'])->name('get.subCategories.list');
     Route::get('/get-sub-subcategories', [ProductController::class, 'getSubSubcategories'])->name('get.subsubCategories.list');
+    Route::post('/categories/category_order/update', [ProductCategoriesController::class, 'updateOrderPosition'])->name('category_order.update');
 
 
     Route::resources([

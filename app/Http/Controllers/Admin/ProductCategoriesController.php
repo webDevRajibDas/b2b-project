@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class ProductCategoriesController extends Controller
@@ -108,4 +110,52 @@ class ProductCategoriesController extends Controller
 
 
     }
+
+
+    public function updateOrderPosition(Request $request)
+    {
+        //dd($request->all());
+        // 1. Validate the incoming data
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|exists:categories,id',
+            'order' => 'required|integer|min:1',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Invalid data provided.',
+                'errors' => $validator->errors()
+            ], 422); // 422 Unprocessable Entity for validation errors
+        }
+
+        try {
+            // 2. Find the category and update its order
+            $category = Category::findOrFail($request->input('id'));
+            $category->order = $request->input('order');
+            $category->save();
+
+            // 3. Return a success response
+            return response()->json([
+                'success' => true,
+                'message' => "Order for '{$category->title}' updated to {$category->order}."
+            ]);
+
+        } catch (\Exception $e) {
+            // 4. Handle any errors and return an error response
+            Log::error("Failed to update category order: " . $e->getMessage());
+            return response()->json([
+                'success' => false,
+                'message' => 'An error occurred while updating the order.'
+            ], 500); // 500 Internal Server Error
+        }
+
+    }
+
+
+
+
+
+
+
 }

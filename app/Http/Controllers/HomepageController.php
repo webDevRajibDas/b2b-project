@@ -26,7 +26,7 @@ class HomepageController extends Controller
         $latestCategories = Category::latest()
             ->take(5)
             ->get();
-        $categoryTitles = ['Clothing', 'Electronics', 'ICT Product','Fashion'];
+        $categoryTitles = ['Clothing', 'Electronics', 'ICT Product','Fashion','Footwear'];
         $sliders = Slider::latest()->take(3)->get();
 
         $categoriesWithProducts = Category::whereIn('title', $categoryTitles)
@@ -39,6 +39,7 @@ class HomepageController extends Controller
         $fashionProducts = $categoriesWithProducts->get('Fashion')?->products ?? collect();
         $electronicsProducts = $categoriesWithProducts->get('Electronics')?->products ?? collect();
         $ictProducts = $categoriesWithProducts->get('ICT Product')?->products ?? collect();
+        $footwearProducts = $categoriesWithProducts->get('Footwear')?->products ?? collect();
 
 
         // --- Return data to the view ---
@@ -50,6 +51,7 @@ class HomepageController extends Controller
             'fashionProducts' => $fashionProducts,
             'electronicsProducts' => $electronicsProducts,
             'ictProducts' => $ictProducts,
+            'footwearProducts' => $footwearProducts,
         ]);
     }
 

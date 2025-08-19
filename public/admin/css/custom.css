@@ -37,3 +37,32 @@
 .img-div:hover .middle {
     opacity: 1;
 }
+
+.spinner-group {
+    position: relative;
+}
+
+.spinner-group.loading .spinner-input {
+    background-color: #f8f9fa;
+}
+
+.spinner-group .input-group-append {
+    display: flex;
+    flex-direction: column;
+}
+
+.spinner-group .btn {
+    padding: 0.375rem 0.75rem;
+    line-height: 1;
+}
+
+.spinner-group .spinner-up {
+    border-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.spinner-group .spinner-down {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}

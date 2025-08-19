@@ -12,12 +12,10 @@ public function buildMenu()
     {
         return Category::with(['subcategories.subSubcategories'])
             ->where('status', 'active')
-            ->orderBy('order')
+            ->orderBy('order','ASC')
             ->get();
     }
 
-
 }
-
 
 ?>

@@ -37,12 +37,6 @@ $(document).ready(function () {
         $('#megamenuDropdown').toggleClass('show'); // Toggle visibility
     });
 
-    // Optional: Close when clicking outside
-    $(document).click(function(e) {
-        if (!$(e.target).closest('#megamenuDropdown, #megamenuToggle').length) {
-            $('#megamenuDropdown').removeClass('show');
-        }
-    });
 
 
 	// Sticky header 

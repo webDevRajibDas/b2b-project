@@ -135,6 +135,7 @@
 <!-- Vendor -->
 <script src="{{asset('admin/vendor/jquery/jquery.js')}}"></script>
 <script src="{{asset('admin/vendor/jquery-browser-mobile/jquery.browser.mobile.js')}}"></script>
+
 <script src="{{asset('admin/vendor/jquery-cookie/jquery.cookie.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
 <script src="{{asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -145,7 +146,10 @@
 <script src="{{asset('admin/vendor/magnific-popup/jquery.magnific-popup.js')}}"></script>
 <script src="{{asset('admin/vendor/jquery-placeholder/jquery.placeholder.js')}}"></script>
 <script src="{{asset('admin/vendor/summernote/summernote-bs4.js')}}"></script>
+
+
 <!-- Specific Page Vendor -->
+<script src="{{asset('admin/vendor/fuelux/js/spinner.js')}}"></script>
 <script src="{{asset('admin/vendor/raphael/raphael.js')}}"></script>
 <script src="{{asset('admin/vendor/morris/morris.js')}}"></script>
 <script src="{{asset('admin/vendor/datatables/media/js/jquery.dataTables.min.js')}}"></script>

@@ -25,7 +25,10 @@ class SubSubcategorie extends Model
 
     }
 
-  
+    public function products()
+    {
+        return $this->hasMany(Product::class); // or whatever your relationship is
+    }
    
     
     public function subcategory()

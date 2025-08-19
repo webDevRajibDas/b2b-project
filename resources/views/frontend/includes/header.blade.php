@@ -98,7 +98,7 @@
                                 <div class="dropdown cart-dropdown">
                                     <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                                         <i class="icon-shopping-cart"></i>
-                                        <span class="cart-count">2</span>
+                                        <span class="cart-count">0</span>
                                         <span class="cart-txt">Cart</span>
                                     </a>
 
@@ -107,48 +107,27 @@
                                             <div class="product">
                                                 <div class="product-cart-details">
                                                     <h4 class="product-title">
-                                                        <a href="product.html">Beige knitted elastic runner shoes</a>
+                                                        <a href="#"></a>
                                                     </h4>
 
                                                     <span class="cart-product-info">
-                                                                <span class="cart-product-qty">1</span>
-                                                                x $84.00
-                                                            </span>
+                                                        <span class="cart-product-qty">1</span>x
+                                                    </span>
                                                 </div><!-- End .product-cart-details -->
-
                                                 <figure class="product-image-container">
-                                                    <a href="product.html" class="product-image">
-                                                        <img src="assets/images/products/cart/product-1.jpg" alt="product">
+                                                    <a href="#" class="product-image">
+                                                        <img src="#" alt="product">
                                                     </a>
                                                 </figure>
                                                 <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
                                             </div><!-- End .product -->
 
-                                            <div class="product">
-                                                <div class="product-cart-details">
-                                                    <h4 class="product-title">
-                                                        <a href="product.html">Blue utility pinafore denim dress</a>
-                                                    </h4>
-
-                                                    <span class="cart-product-info">
-                                                                <span class="cart-product-qty">1</span>
-                                                                x $76.00
-                                                            </span>
-                                                </div><!-- End .product-cart-details -->
-
-                                                <figure class="product-image-container">
-                                                    <a href="product.html" class="product-image">
-                                                        <img src="assets/images/products/cart/product-2.jpg" alt="product">
-                                                    </a>
-                                                </figure>
-                                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                                            </div><!-- End .product -->
                                         </div><!-- End .cart-product -->
 
                                         <div class="dropdown-cart-total">
                                             <span>Total</span>
 
-                                            <span class="cart-total-price">$160.00</span>
+                                            <span class="cart-total-price"></span>
                                         </div><!-- End .dropdown-cart-total -->
 
                                         <div class="dropdown-cart-action">
@@ -169,11 +148,11 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-auto col-lg-3 col-xl-3 col-xxl-2 header-left">
-                    <div class="dropdown category-dropdown show is-on" data-visible="false">
+                    <div class="dropdown category-dropdown show is-on" data-visible="true">
                         <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Browse Categories">
                             Browse Categories
                         </a>
-                        <div class="dropdown-menu" id="megamenuDropdown">
+                        <div class="dropdown-menu show" id="megamenuDropdown">
                             <nav class="side-nav">
                                 <ul class="menu-vertical sf-arrows">
                                     @include('frontend.partials.mega-menu')

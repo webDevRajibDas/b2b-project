@@ -16,6 +16,25 @@
                                                     <a href="#">
                                                         {{ $subSubcategory->title }}
                                                     </a>
+                                                    <!-- Product list for this sub-subcategory -->
+                                                    <ul class="product-list">
+                                                        @foreach($subSubcategory->products->take(5) as $product)
+                                                            <li>
+                                                                <a href="{{ route('product.show', $product->slug) }}">
+                                                                    <img src="{{ asset('storage/'.$product->image) }}" alt="{{ $product->name }}" width="100">
+                                                                    {{ $product->name }}
+                                                                    <span class="price">{{ $product->formatted_price }}</span>
+                                                                </a>
+                                                            </li>
+                                                        @endforeach
+                                                        @if($subSubcategory->products->count() > 5)
+                                                            <li class="view-all">
+                                                                <a href="{{ route('category.products', $subSubcategory->slug) }}">
+                                                                    View All ({{ $subSubcategory->products->count() }})
+                                                                </a>
+                                                            </li>
+                                                        @endif
+                                                    </ul>
                                                 </li>
                                             @endforeach
                                         </ul>
@@ -26,7 +45,9 @@
                     </div><!-- End .menu-col -->
                 </div><!-- End .col-md-8 -->
 
+                <!-- Featured Products Column -->
+
             </div><!-- End .row -->
-        </div><!-- End .megamenu -->
+        </div><!-- End .mega menu -->
     </li>
 @endforeach

@@ -168,13 +168,25 @@
                                     <div class="form-group row align-items-center pb-3">
                                         <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Regular Price (TK)</label>
                                         <div class="col-lg-7 col-xl-6">
-                                            <input type="number" class="form-control form-control-modern" value="{{$product->price}}" name="price"  />
+                                            <input type="number"
+                                                   class="form-control form-control-modern @error('price') is-invalid @enderror"
+                                                   value="{{ isset($product) ? $product->price : old('price') }}"
+                                                   name="price" />
+                                            @error('price')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="form-group row align-items-center">
                                         <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Discount Price (TK)</label>
                                         <div class="col-lg-7 col-xl-6">
-                                            <input type="number" class="form-control form-control-modern" name="sale_price" value="{{$product->sale_price}}" required/>
+                                            <input type="number"
+                                                   class="form-control form-control-modern @error('sale_price') is-invalid @enderror"
+                                                   value="{{ isset($product) ? $product->sale_price : old('sale_price') }}"
+                                                   name="sale_price" required/>
+                                            @error('sale_price')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
 
