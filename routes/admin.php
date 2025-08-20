@@ -1,7 +1,7 @@
 <?php
-
-use App\Http\Controllers\Admin\SubSubcategoriesController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\HomeWidgetController;
+use App\Http\Controllers\Admin\SubSubcategoriesController;
 use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Admin\CardCategoriesController;
 use App\Http\Controllers\Admin\BrandController;
@@ -49,6 +49,12 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'isAdmin'])->group(f
         'vendor-categories' => VendorCategoriesController::class,
         'videos' => VideoController::class,
     ]);
+
+
+    Route::get('widgets', [HomeWidgetController::class, 'index'])->name('widgets.index');
+    Route::post('widgets/store', [HomeWidgetController::class, 'store'])->name('widgets.store');
+    Route::post('widgets/{widget}/update', [HomeWidgetController::class, 'update'])->name('widgets.update');
+
 
 });
 

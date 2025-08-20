@@ -108,6 +108,11 @@
                         </a>
                         <ul class="nav nav-children">
                             <li>
+                                <a class="nav-link" href="{{url('admin/widgets')}}">
+                                    - Widget
+                                </a>
+                            </li>
+                            <li>
                                 <a class="nav-link" href="{{url('admin/sliders')}}">
                                     - Sliders
                                 </a>

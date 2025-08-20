@@ -475,7 +475,8 @@
 
                 <div class="mb-3"></div><!-- End .mb-3 -->
                 <div class="row cat-banner-row electronics">
-                    <div class="section-header p-3 mb-3" style="background: linear-gradient(135deg, #6e8efb, #a777e3); border-radius: 8px;">
+                    <div class="section-header p-3 mb-3"
+                         style="background: linear-gradient(135deg, #6e8efb, #a777e3); border-radius: 8px;">
                         <h4 class="section-title text-white m-0 position-relative">
                             <i class="fas fa-microchip me-2"></i>
                             <span class="d-inline-block animate__animated animate__fadeIn">Electronics</span>
@@ -579,7 +580,8 @@
 
 
                 <div class="row cat-banner-row footwear">
-                    <div class="section-header p-3 mb-3" style="background: linear-gradient(135deg, #6e8efb, #a777e3); border-radius: 8px;">
+                    <div class="section-header p-3 mb-3"
+                         style="background: linear-gradient(135deg, #6e8efb, #a777e3); border-radius: 8px;">
                         <h4 class="section-title text-white m-0 position-relative">
                             <i class="fa fa-bag-shopping me-2"></i>
                             <span class="d-inline-block animate__animated animate__fadeIn">Footwear</span>
@@ -800,48 +802,12 @@
                                     <div class="col-sm-6 col-xl-12">
                                         <div class="product text-center">
                                             <figure class="product-media">
-                                                <span class="product-label label-sale">Deal of the week</span>
-                                                <a href="product.html">
-                                                    <img src="assets/images/demos/demo-14/products/deals/product-1.jpg"
-                                                         alt="Product image" class="product-image">
-                                                </a>
-
-                                                <div class="product-action-vertical">
-                                                    <a href="#" class="btn-product-icon btn-wishlist"
-                                                       title="Add to wishlist"><span>add to wishlist</span></a>
-                                                    <a href="popup/quickView.html"
-                                                       class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-
-                                                </div><!-- End .product-action-vertical -->
-
-                                                <div class="product-action">
-                                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                                </div><!-- End .product-action -->
-                                            </figure><!-- End .product-media -->
+                                                @if(optional($widget)->short_2)
+                                                    {!! $widget->short_2 !!}
+                                                @endif
+                                            </figure>
 
                                             <div class="product-body">
-                                                <div class="product-cat">
-                                                    <a href="#">Audio</a>
-                                                </div><!-- End .product-cat -->
-                                                <h3 class="product-title"><a href="product.html">Bose SoundLink Micro
-                                                        speaker</a></h3><!-- End .product-title -->
-                                                <div class="product-price">
-                                                    <span class="new-price">$99.99</span>
-                                                    <span class="old-price">Was $110.99</span>
-                                                </div><!-- End .product-price -->
-                                                <div class="ratings-container">
-                                                    <div class="ratings">
-                                                        <div class="ratings-val" style="width: 100%;"></div>
-                                                        <!-- End .ratings-val -->
-                                                    </div><!-- End .ratings -->
-                                                    <span class="ratings-text">( 4 Reviews )</span>
-                                                </div><!-- End .rating-container -->
-
-                                                <div class="product-nav product-nav-dots">
-                                                    <a href="#" class="active" style="background: #f3815f;"><span
-                                                                class="sr-only">Color name</span></a>
-                                                    <a href="#" style="background: #333333;"><span class="sr-only">Color name</span></a>
-                                                </div><!-- End .product-nav -->
                                             </div><!-- End .product-body -->
 
                                             <div class="product-countdown" data-until="+44h" data-relative="true"
@@ -853,45 +819,11 @@
                                         <div class="product text-center">
                                             <figure class="product-media">
                                                 <span class="product-label label-sale">Deal of the week</span>
-                                                <a href="product.html">
-                                                    <img src="assets/images/demos/demo-14/products/deals/product-2.jpg"
-                                                         alt="Product image" class="product-image">
-                                                </a>
-
-                                                <div class="product-action-vertical">
-                                                    <a href="#" class="btn-product-icon btn-wishlist"
-                                                       title="Add to wishlist"><span>add to wishlist</span></a>
-                                                    <a href="popup/quickView.html"
-                                                       class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-
-                                                </div><!-- End .product-action-vertical -->
-
-                                                <div class="product-action">
-                                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                                </div><!-- End .product-action -->
+                                                @if(optional($widget)->short_1)
+                                                    {!! $widget->short_1 !!}
+                                                @endif
                                             </figure><!-- End .product-media -->
 
-                                            <div class="product-body">
-                                                <div class="product-cat">
-                                                    <a href="#">Cameras</a>
-                                                </div><!-- End .product-cat -->
-                                                <h3 class="product-title"><a href="product.html">GoPro HERO Session
-                                                        Waterproof HD Action Camera</a></h3><!-- End .product-title -->
-                                                <div class="product-price">
-                                                    <span class="new-price">$196.99</span>
-                                                    <span class="old-price">Was $210.99</span>
-                                                </div><!-- End .product-price -->
-                                                <div class="ratings-container">
-                                                    <div class="ratings">
-                                                        <div class="ratings-val" style="width: 100%;"></div>
-                                                        <!-- End .ratings-val -->
-                                                    </div><!-- End .ratings -->
-                                                    <span class="ratings-text">( 19 Reviews )</span>
-                                                </div><!-- End .rating-container -->
-                                            </div><!-- End .product-body -->
-
-                                            <div class="product-countdown" data-until="+52h" data-relative="true"
-                                                 data-labels-short="true"></div><!-- End .product-countdown -->
                                         </div><!-- End .product -->
                                     </div><!-- End .col-sm-6 col-xl-12 -->
                                 </div><!-- End .row -->

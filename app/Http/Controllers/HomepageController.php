@@ -41,6 +41,7 @@ class HomepageController extends Controller
         $ictProducts = $categoriesWithProducts->get('ICT Product')?->products ?? collect();
         $footwearProducts = $categoriesWithProducts->get('Footwear')?->products ?? collect();
 
+        $widget = \App\Models\HomeWidget::first();
 
         // --- Return data to the view ---
         return view('homepage', [
@@ -52,6 +53,7 @@ class HomepageController extends Controller
             'electronicsProducts' => $electronicsProducts,
             'ictProducts' => $ictProducts,
             'footwearProducts' => $footwearProducts,
+            'widget' => $widget,
         ]);
     }
 
