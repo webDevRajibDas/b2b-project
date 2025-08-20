@@ -1,6 +1,8 @@
 @foreach($menuCategories as $category)
     <li class="megamenu-container">
-        <a class="sf-with-ul" href="#">{{ $category->title }}</a>
+        <a class="sf-with-ul" href="{{ route('products.byCategory', $category->slug) }}">
+            {{ $category->title }}
+        </a>
         <div class="megamenu">
             <div class="row no-gutters">
                 <div class="col-md-8">
@@ -16,7 +18,7 @@
                                                     <a href="#">
                                                         {{ $subSubcategory->title }}
                                                     </a>
-                                                    <!-- Product list for this sub-subcategory -->
+
                                                     <ul class="product-list">
                                                         @foreach($subSubcategory->products->take(5) as $product)
                                                             <li>

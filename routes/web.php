@@ -24,11 +24,13 @@ Route::controller(HomepageController::class)->group(function () {
     Route::get('/contact-us', 'contactUs')->name('contact.us');
     Route::get('/terms-and-conditions', 'termsAndConditions')->name('terms.conditions');
     Route::get('/privacy-policy', 'privacyPolicy')->name('privacy_policy');
+
 });
 
 
 Route::get('/products/shop-list', [ProductController::class, 'shopList'])->name('product.shopList');
 Route::get('/products/load-more', [ProductController::class, 'loadMore'])->name('products.load_more');
+Route::get('/products/category/{slug}', [ProductController::class, 'byCategory'])->name('products.byCategory');
 
 
 //CartController function

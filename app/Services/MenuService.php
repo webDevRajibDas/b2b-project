@@ -8,7 +8,7 @@ class MenuService
 {
 
 
-public function buildMenu()
+public function mainCategoryMenu()
     {
         return Category::with(['subcategories.subSubcategories'])
             ->where('status', 'active')

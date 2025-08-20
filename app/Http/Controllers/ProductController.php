@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,10 @@ class ProductController extends Controller
     public function shopList()
     {
         $products = Product::with('category')->latest()->paginate(8);
-        return view('frontend.category-shop-list', ['productList' => $products]);
+        return view('frontend.category-shop-list', [
+            'productList' => $products,
+            'currentCategory' => null
+        ]);
     }
 
 
@@ -33,6 +37,24 @@ class ProductController extends Controller
             'count' => $products->count() // Number of items on the current page
         ]);
     }
+
+
+    public function byCategory($slug)
+    {
+        $category = Category::where('slug', $slug)->firstOrFail();
+
+        $products = $category->products()
+            ->with('category')
+            ->latest()
+            ->paginate(8);
+
+        return view('frontend.category-shop-list', [
+            'productList' => $products,
+            'currentCategory' => $category
+        ]);
+    }
+
+
 
 
 }

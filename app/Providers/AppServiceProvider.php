@@ -24,9 +24,10 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
+
       View::composer('*', function ($view) {
             $menuBuilder = new MenuService();
-            $view->with('menuCategories', $menuBuilder->buildMenu());
+            $view->with('menuCategories', $menuBuilder->mainCategoryMenu());
         });
     }
 }
