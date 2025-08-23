@@ -69,7 +69,7 @@
         .form-container {
             height: auto;
             background-color: #fff;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 8px;
             border-radius: 10px;
             box-sizing: border-box;
             padding: 20px 30px;

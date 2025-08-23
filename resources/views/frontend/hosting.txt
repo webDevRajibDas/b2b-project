@@ -21,3 +21,29 @@ FTP & explicit FTPS port:  21
                                                     <i class="fas fa-angle-down"></i>
                                                 </button>
                                             </div>
+
+
+     var toastMixin = Swal.mixin({
+                 toast: true,
+                 icon: 'success',
+                 title: 'General Title',
+                 animation: false,
+                 position: 'top-right',
+                 showConfirmButton: false,
+                 timer: 3000,
+                 timerProgressBar: true,
+                 didOpen: (toast) => {
+                     toast.addEventListener('mouseenter', Swal.stopTimer)
+                     toast.addEventListener('mouseleave', Swal.resumeTimer)
+                 }
+             });
+
+             toastMixin.fire({
+                 animation: true,
+                 title: 'Signed in Successfully'
+             });
+
+             toastMixin.fire({
+                 title: 'Wrong Password',
+                 icon: 'error'
+             });

@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{asset('assets/vendor/line-awesome/line-awesome/line-awesome/css/line-awesome.min.css')}}">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.22.2/dist/sweetalert2.min.css" rel="stylesheet">
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/plugins/owl-carousel/owl.carousel.css')}}">
@@ -35,7 +36,6 @@
     <link rel="stylesheet" href="{{asset('assets/css/skins/skin-demo-14.css')}}">
 
     <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
-    @include('sweetalert2::index')
     @stack('styles')
 </head>
 
@@ -60,7 +60,7 @@
 <script src="{{asset('assets/js/jquery.min.js')}}"></script>
 <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.22.2/dist/sweetalert2.all.min.js"></script>
 <script src="{{asset('assets/js/jquery.hoverIntent.min.js')}}"></script>
 <script src="{{asset('assets/js/jquery.elevateZoom.min.js')}}"></script>
 <script src="{{asset('assets/js/jquery.waypoints.min.js')}}"></script>

@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 
-    <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+    <div class="page-header text-center" style="background-image: url({{asset('assets/images/page-header-bg.jpg')}})">
         <div class="container">
             <h1 class="page-title">Shopping Cart<span>Shop</span></h1>
         </div><!-- End .container -->
@@ -69,7 +69,7 @@
 
                                             <td class="remove-col">
                                                 <button type="button" class="btn-remove remove-from-cart"
-                                                        data-product-id=""
+                                                        data-product-id="{{$item->id}}"
                                                         data-remove-url="">
                                                     <i class="icon-close"></i>
                                                 </button>
@@ -111,7 +111,7 @@
                                 </tr><!-- End .summary-subtotal -->
                                 <tr class="summary-total">
                                     <td>Total:</td>
-                                    <td>{{$total}}</td>
+                                    <td>৳ :{{$total}}</td>
                                 </tr><!-- End .summary-total -->
                                 </tbody>
                             </table><!-- End .table table-summary -->
@@ -194,31 +194,54 @@
             });
 
 
-            $(document).on('click', '.remove-from-cart', function () {
+            $(document).on('click', '.remove-from-cart', function (e) {
+                e.preventDefault();
                 const button = $(this);
                 const productId = button.data('product-id');
                 const url = button.data('remove-url');
 
-                $.ajax({
-                    url: url,
-                    method: 'POST',
-                    data: {
-                        product_id: productId,
-                        _token: '{{ csrf_token() }}'
-                    },
-                    success: function (response) {
-                        if (response.success) {
-                            // Optionally show a message
-                            // Remove the row from DOM
-                            button.closest('tr').remove();
+                if (confirm("Are you sure want to remove product from the cart.")) {
+                    $.ajax({
+                        url: url,
+                        method: 'POST',
+                        data: {
+                            product_id: productId,
+                            _token: '{{ csrf_token() }}'
+                        },
+                        success: function (response) {
+                            if (response.success) {
+                                button.closest('tr').remove();
+                                window.location.reload();
+                            }
+                        },
+                        error: function () {
+                            alert('Failed to remove item from cart.');
                         }
-                    },
-                    error: function () {
-                        alert('Failed to remove item from cart.');
-                    }
-                });
+                    });
+                }
             });
 
+
+
+            $(".remove-from-cart").click(function(e) {
+                e.preventDefault();
+
+                var ele = $(this);
+
+                if (confirm("Are you sure want to remove product from the cart.")) {
+                    $.ajax({
+                        url: '{{ url("remove-from-cart") }}',
+                        method: "DELETE",
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                            id: ele.attr("data-id")
+                        },
+                        success: function(response) {
+                            window.location.reload();
+                        }
+                    });
+                }
+            });
 
         });
 

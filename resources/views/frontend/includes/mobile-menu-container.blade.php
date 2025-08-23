@@ -28,30 +28,13 @@
                             <a href="category.html">Shop</a>
                             <ul>
                                 <li><a href="category-list.html">Shop List</a></li>
-                                <li><a href="category-2cols.html">Shop Grid 2 Columns</a></li>
-                                <li><a href="category.html">Shop Grid 3 Columns</a></li>
-                                <li><a href="category-4cols.html">Shop Grid 4 Columns</a></li>
-                                <li><a href="category-boxed.html"><span>Shop Boxed No Sidebar<span class="tip tip-hot">Hot</span></span></a></li>
-                                <li><a href="category-fullwidth.html">Shop Fullwidth No Sidebar</a></li>
-                                <li><a href="product-category-boxed.html">Product Category Boxed</a></li>
-                                <li><a href="product-category-fullwidth.html"><span>Product Category Fullwidth<span class="tip tip-new">New</span></span></a></li>
-                                <li><a href="cart.html">Cart</a></li>
-                                <li><a href="checkout.html">Checkout</a></li>
-                                <li><a href="wishlist.html">Wishlist</a></li>
-                                <li><a href="#">Lookbook</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="product.html" class="sf-with-ul">Product</a>
                             <ul>
                                 <li><a href="product.html">Default</a></li>
-                                <li><a href="product-centered.html">Centered</a></li>
-                                <li><a href="product-extended.html"><span>Extended Info<span class="tip tip-new">New</span></span></a></li>
-                                <li><a href="product-gallery.html">Gallery</a></li>
-                                <li><a href="product-sticky.html">Sticky Info</a></li>
-                                <li><a href="product-sidebar.html">Boxed With Sidebar</a></li>
-                                <li><a href="product-fullwidth.html">Full Width</a></li>
-                                <li><a href="product-masonry.html">Masonry Sticky Info</a></li>
+
                             </ul>
                         </li>
                         <li>
@@ -72,10 +55,9 @@
                                         <li><a href="#">Contact 02</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="login.html">Login</a></li>
+                                <li><a href="{{route('login')}}">Login</a></li>
                                 <li><a href="faq.html">FAQs</a></li>
                                 <li><a href="404.html">Error 404</a></li>
-                                <li><a href="coming-soon.html">Coming Soon</a></li>
                             </ul>
                         </li>
 
@@ -88,15 +70,7 @@
                     <ul class="mobile-cats-menu">
                         <li><a class="mobile-cats-lead" href="#">Daily offers</a></li>
                         <li><a class="mobile-cats-lead" href="#">Gift Ideas</a></li>
-                        <li><a href="#">Beds</a></li>
-                        <li><a href="#">Lighting</a></li>
-                        <li><a href="#">Sofas & Sleeper sofas</a></li>
-                        <li><a href="#">Storage</a></li>
-                        <li><a href="#">Armchairs & Chaises</a></li>
-                        <li><a href="#">Decoration </a></li>
-                        <li><a href="#">Kitchen Cabinets</a></li>
-                        <li><a href="#">Coffee & Tables</a></li>
-                        <li><a href="#">Outdoor Furniture </a></li>
+
                     </ul><!-- End .mobile-cats-menu -->
                 </nav><!-- End .mobile-cats-nav -->
             </div><!-- .End .tab-pane -->
