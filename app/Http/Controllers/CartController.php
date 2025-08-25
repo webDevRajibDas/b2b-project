@@ -27,7 +27,7 @@ class CartController extends Controller
             return response()->json(['success' => false, 'message' => 'Product not found'], 404);
         }
 
-        $userId = auth()->id() ?? 2; // Use 2 as fallback for testing
+        $userId = auth()->id() ?? \App\Models\User::value('id');
         $existingItem = \Cart::session($userId)->get($productId);
         if ($existingItem) {
             \Cart::session($userId)->update($productId, [

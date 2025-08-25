@@ -43,7 +43,6 @@ class HomepageController extends Controller
 
         $widget = \App\Models\HomeWidget::first();
 
-        // --- Return data to the view ---
         return view('homepage', [
             'products' => $latestProducts,
             'sliders' => $sliders,
@@ -144,7 +143,9 @@ class HomepageController extends Controller
     public function aboutUs()
     {
         return view('frontend.about');
-    }public function contactUs()
+    }
+    
+    public function contactUs()
     {
         return view('frontend.contact');
     }
