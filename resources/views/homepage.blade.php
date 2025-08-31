@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-9 col-xxl-8 offset-lg-3 offset-xxl-2">
-                <div class="intro-slider-container slider-container-ratio mb-2">
+                <div class="mb-2 intro-slider-container slider-container-ratio">
                     <div class="intro-slider owl-carousel owl-simple owl-nav-inside" data-toggle="owl" data-owl-options='{
                                     "nav": false,
                                     "dots": true
@@ -24,7 +24,7 @@
 
                                 <div class="intro-content">
                                     <h3 class="intro-subtitle">New Arrivals</h3><!-- End .h3 intro-subtitle -->
-                                    <h1 class="intro-title text-white">
+                                    <h1 class="text-white intro-title">
                                         {{$slider->title}}
                                     </h1><!-- End .intro-title -->
                                 </div><!-- End .intro-content -->
@@ -38,12 +38,12 @@
                 </div><!-- End .intro-slider-container -->
             </div><!-- End .col-xl-9 col-xxl-10 -->
             <div class="col-xl-3 col-xxl-2 d-none d-xxl-block">
-                <div class="banner banner-overlay  banner-content-stretch ">
+                <div class="banner banner-overlay banner-content-stretch ">
                     <a href="#">
                         <img src="assets/images/demos/demo-14/banners/banner-1.png" alt="Banner img desc">
                     </a>
-                    <div class="banner-content text-right">
-                        <div class="price text-center">
+                    <div class="text-right banner-content">
+                        <div class="text-center price">
                             <sup class="text-white">from</sup>
                             <span class="text-white">
                                         <strong>  ৳&nbsp;</strong><sup class="text-white">,99</sup>
@@ -116,7 +116,7 @@
                 <div class="mb-5"></div><!-- End .mb-5 -->
 
                 <div class="bg-lighter trending-products">
-                    <div class="heading heading-flex mb-3">
+                    <div class="mb-3 heading heading-flex">
                         <div class="heading-left">
                             <h2 class="title">Trending Today</h2><!-- End .title -->
                         </div><!-- End .heading-left -->
@@ -131,11 +131,8 @@
                                 @foreach($productCat  ?? [] as $category)
                                     <li class="nav-item">
                                         <a class="nav-link"
-                                           id="trending-{{ $category->title }}-link"
-                                           data-toggle="tab"
-                                           href="#trending-{{ $category->title }}-tab"
-                                           role="tab"
-                                           aria-controls="trending-{{ $category->title }}-tab"
+                                           id="trending-{{ $category->slug }}-link"data-toggle="tab"href="#trending-{{ $category->slug }}-tab"role="tab"
+                                           aria-controls="trending-{{ $category->slug }}-tab"
                                            aria-selected="false">
                                             {{ $category->title }}
                                         </a>
@@ -147,7 +144,7 @@
 
                     <div class="tab-content tab-content-carousel">
                         <!-- All Products Tab -->
-                        <div class="tab-pane p-0 fade show active" id="trending-all-tab" role="tabpanel"
+                        <div class="p-0 tab-pane fade show active" id="trending-all-tab" role="tabpanel"
                              aria-labelledby="trending-all-link">
                             <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow"
                                  data-toggle="owl"
@@ -166,7 +163,7 @@
                         }
                     }'>
                                 @foreach($products as $product)
-                                    <div class="product text-center">
+                                    <div class="text-center product">
                                         <figure class="product-media">
                                             @if($product->on_sale)
                                                 <span class="product-label label-sale">Sale</span>
@@ -218,7 +215,7 @@
 
                         <!-- Category Tabs -->
                         @foreach($productCat  ?? [] as $category)
-                            <div class="tab-pane p-0 fade" id="trending-{{ $category->slug }}-tab" role="tabpanel"
+                            <div class="p-0 tab-pane fade" id="trending-{{ $category->slug }}-tab" role="tabpanel"
                                  aria-labelledby="trending-{{ $category->slug }}-link">
                                 <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow"
                                      data-toggle="owl"
@@ -237,7 +234,7 @@
                             }
                         }'>
                                     @forelse($category->products ?? [] as $product)
-                                        <div class="product text-center">
+                                        <div class="text-center product">
                                             <figure class="product-media">
                                                 @if($product->on_sale)
                                                     <span class="product-label label-sale">Sale</span>
@@ -299,12 +296,12 @@
 
                 <div class="mb-5"></div><!-- End .mb-5 -->
                 <div class="row cat-banner-row ict">
-                    <div class="section-header p-3 mb-3"
+                    <div class="p-3 mb-3 section-header"
                          style="background: linear-gradient(135deg, #6e8efb, #a777e3); border-radius: 8px;">
-                        <h4 class="section-title text-white m-0">
+                        <h4 class="m-0 text-white section-title">
                             <i class="fas fa-laptop-code me-2"></i>
                             <span class="d-inline-block animate__animated animate__fadeIn">ICT Products</span>
-                            <small class="d-block text-white-50 mt-1">Cutting-edge technology for your digital
+                            <small class="mt-1 d-block text-white-50">Cutting-edge technology for your digital
                                 life</small>
                         </h4>
                     </div>
@@ -338,7 +335,7 @@
                                     }'>
 
                             @forelse($ictProducts  ?? [] as $ictProduct)
-                                <div class="product text-center">
+                                <div class="text-center product">
                                     <figure class="product-media">
                                         <a href="{{ route('product.show', $ictProduct->slug) }}">
                                             <img src="{{ asset('storage/'.$ictProduct->image) }}"
@@ -380,15 +377,15 @@
                 </div><!-- End .row cat-banner-row -->
 
                 <div class="row cat-banner-row clothing">
-                    <div class="section-header p-3 mb-3"
+                    <div class="p-3 mb-3 section-header"
                          style="background: linear-gradient(135deg, #6e8efb, #a777e3); border-radius: 8px;">
-                        <h4 class="section-title text-white m-0 position-relative">
+                        <h4 class="m-0 text-white section-title position-relative">
                             <i class="fa fa-tshirt me-2"></i>
                             <span class="d-inline-block animate__animated animate__fadeIn">Fashions & Clothing</span>
-                            <small class="d-block text-white-50 mt-1">Trendy styles for every occasion</small>
+                            <small class="mt-1 d-block text-white-50">Trendy styles for every occasion</small>
 
                             <!-- Decorative fashion elements -->
-                            <span class="position-absolute top-0 end-0 me-3" style="opacity: 0.2;">
+                            <span class="top-0 position-absolute end-0 me-3" style="opacity: 0.2;">
         <i class="fas fa-ribbon fa-2x"></i>
     </span>
                         </h4>
@@ -424,7 +421,7 @@
                                     }'>
 
                             @forelse($fashionProducts as $fashionProduct)
-                                <div class="product text-center">
+                                <div class="text-center product">
                                     <figure class="product-media">
                                         <a href="{{ route('product.show', $fashionProduct->slug) }}">
                                             <img style="height: 250px"
@@ -475,18 +472,18 @@
 
                 <div class="mb-3"></div><!-- End .mb-3 -->
                 <div class="row cat-banner-row electronics">
-                    <div class="section-header p-3 mb-3"
+                    <div class="p-3 mb-3 section-header"
                          style="background: linear-gradient(135deg, #6e8efb, #a777e3); border-radius: 8px;">
-                        <h4 class="section-title text-white m-0 position-relative">
+                        <h4 class="m-0 text-white section-title position-relative">
                             <i class="fas fa-microchip me-2"></i>
                             <span class="d-inline-block animate__animated animate__fadeIn">Electronics</span>
-                            <small class="d-block text-white-50 mt-1">Innovative tech for modern living</small>
+                            <small class="mt-1 d-block text-white-50">Innovative tech for modern living</small>
 
                             <!-- Decorative tech elements -->
-                            <span class="position-absolute top-0 end-0 me-3" style="opacity: 0.2;">
+                            <span class="top-0 position-absolute end-0 me-3" style="opacity: 0.2;">
         <i class="fas fa-bolt fa-2x"></i>
     </span>
-                            <span class="position-absolute bottom-0 start-0 ms-3" style="opacity: 0.2;">
+                            <span class="bottom-0 position-absolute start-0 ms-3" style="opacity: 0.2;">
         <i class="fas fa-satellite-dish fa-2x"></i>
     </span>
                         </h4>
@@ -522,7 +519,7 @@
                                     }'>
 
                             @forelse($electronicsProducts as $electronicsProduct)
-                                <div class="product text-center">
+                                <div class="text-center product">
                                     <figure class="product-media">
                                         @if($electronicsProduct->on_sale)
                                             <span class="product-label label-sale">Sale</span>
@@ -580,16 +577,16 @@
 
 
                 <div class="row cat-banner-row footwear">
-                    <div class="section-header p-3 mb-3"
+                    <div class="p-3 mb-3 section-header"
                          style="background: linear-gradient(135deg, #6e8efb, #a777e3); border-radius: 8px;">
-                        <h4 class="section-title text-white m-0 position-relative">
+                        <h4 class="m-0 text-white section-title position-relative">
                             <i class="fa fa-bag-shopping me-2"></i>
                             <span class="d-inline-block animate__animated animate__fadeIn">Footwear</span>
                             <!-- Decorative tech elements -->
-                            <span class="position-absolute top-0 end-0 me-3" style="opacity: 0.2;">
+                            <span class="top-0 position-absolute end-0 me-3" style="opacity: 0.2;">
         <i class="fas fa-bolt fa-2x"></i>
     </span>
-                            <span class="position-absolute bottom-0 start-0 ms-3" style="opacity: 0.2;">
+                            <span class="bottom-0 position-absolute start-0 ms-3" style="opacity: 0.2;">
         <i class="fas fa-satellite-dish fa-2x"></i>
     </span>
                         </h4>
@@ -626,7 +623,7 @@
 
 
                             @forelse($footwearProducts as $footwearProduct)
-                                <div class="product text-center">
+                                <div class="text-center product">
                                     <figure class="product-media">
                                         @if($footwearProduct->on_sale)
                                             <span class="product-label label-sale">Sale</span>
@@ -684,9 +681,9 @@
                             </a>
 
                             <div class="banner-content">
-                                <h4 class="banner-subtitle text-white d-none d-sm-block"><a href="#">Spring Sale is
+                                <h4 class="text-white banner-subtitle d-none d-sm-block"><a href="#">Spring Sale is
                                         Coming</a></h4><!-- End .banner-subtitle -->
-                                <h3 class="banner-title text-white"><a href="#">Floral T-shirts and Vests <br><span>Spring Sale</span></a>
+                                <h3 class="text-white banner-title"><a href="#">Floral T-shirts and Vests <br><span>Spring Sale</span></a>
                                 </h3><!-- End .banner-title -->
                                 <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
                             </div><!-- End .banner-content -->
@@ -700,9 +697,9 @@
                             </a>
 
                             <div class="banner-content">
-                                <h4 class="banner-subtitle text-white d-none d-sm-block"><a href="#">Amazing Value</a>
+                                <h4 class="text-white banner-subtitle d-none d-sm-block"><a href="#">Amazing Value</a>
                                 </h4><!-- End .banner-subtitle -->
-                                <h3 class="banner-title text-white"><a href="#">Upgrade and Save <br><span>On The Latest Apple Devices</span></a>
+                                <h3 class="text-white banner-title"><a href="#">Upgrade and Save <br><span>On The Latest Apple Devices</span></a>
                                 </h3><!-- End .banner-title -->
                                 <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
                             </div><!-- End .banner-content -->
@@ -764,7 +761,7 @@
 
                         </div><!-- End .col-sm-6 col-xl-12 -->
 
-                        <div class="col-sm-6 col-xl-12 mb-2">
+                        <div class="mb-2 col-sm-6 col-xl-12">
                             <div class="widget widget-products">
                                 <h4 class="widget-title"><span>Bestsellers</span></h4><!-- End .widget-title -->
 
@@ -800,7 +797,7 @@
 
                                 <div class="row">
                                     <div class="col-sm-6 col-xl-12">
-                                        <div class="product text-center">
+                                        <div class="text-center product">
                                             <figure class="product-media">
                                                 @if(optional($widget)->short_2)
                                                     {!! $widget->short_2 !!}
@@ -816,7 +813,7 @@
                                     </div><!-- End .col-sm-6 col-xl-12 -->
 
                                     <div class="col-sm-6 col-xl-12">
-                                        <div class="product text-center">
+                                        <div class="text-center product">
                                             <figure class="product-media">
                                                 <span class="product-label label-sale">Deal of the week</span>
                                                 @if(optional($widget)->short_1)
@@ -839,7 +836,7 @@
                                     </a>
 
                                     <div class="banner-content banner-content-top">
-                                        <h3 class="banner-title text-white"><a href="#">Take Better Photos <br><span>With</span>
+                                        <h3 class="text-white banner-title"><a href="#">Take Better Photos <br><span>With</span>
                                                 Canon EOS <br><span>Up To 20% Off</span></a></h3>
                                         <!-- End .banner-title -->
                                         <a href="#" class="banner-link">Shop Now <i
@@ -921,13 +918,13 @@
                                             </div><!-- End .entry-meta -->
 
                                             <h5 class="entry-title">
-                                                <a href="single.html">Praesent placerat risus.</a>
+                                                <a href="#">Praesent placerat risus.</a>
                                             </h5><!-- End .entry-title -->
 
                                             <div class="entry-content">
                                                 <p>Sed pretium, ligula sollicitudin laoreet viverra, tortor libero
                                                     sodales leo, eget blandit nunc ...</p>
-                                                <a href="single.html" class="read-more">Read More</a>
+                                                <a href="#" class="read-more">Read More</a>
                                             </div><!-- End .entry-content -->
                                         </div><!-- End .entry-body -->
                                     </article><!-- End .entry -->
@@ -939,5 +936,7 @@
             </aside><!-- End .col-lg-3 col-xxl-2 -->
         </div><!-- End .row -->
     </div><!-- End .container-fluid -->
+
+    @include('frontend.products.partials.quickView')
 
 @endsection

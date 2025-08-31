@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 
-    <div class="page-header text-center" style="background-image: url({{asset('assets/images/page-header-bg.jpg')}})">
+    <div class="text-center page-header" style="background-image: url({{asset('assets/images/page-header-bg.jpg')}})">
         <div class="container">
             <h1 class="page-title">Shopping Cart<span>Shop</span></h1>
         </div><!-- End .container -->
@@ -124,7 +124,7 @@
                         </div><!-- End .summary -->
 
                         <a href="#"
-                           class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE SHOPPING</span><i
+                           class="mb-3 btn btn-outline-dark-2 btn-block"><span>CONTINUE SHOPPING</span><i
                                     class="icon-refresh"></i></a>
                     </aside><!-- End .col-lg-3 -->
                 </div><!-- End .row -->
@@ -255,17 +255,7 @@
             });
         });
 
-        {{--document.addEventListener('DOMContentLoaded', function () {--}}
-        {{--    const checkoutBtn = document.getElementById('proceedToCheckout');--}}
-        {{--    checkoutBtn.addEventListener('click', function (e) {--}}
-        {{--        e.preventDefault();--}}
-        {{--        @auth--}}
-        {{--            window.location.href = "{{ route('cart.checkout') }}";--}}
-        {{--        @else--}}
-        {{--        $('#loginRequiredModal').modal('show');--}}
-        {{--        @endauth--}}
-        {{--    });--}}
-        {{--});--}}
+        
 
         $(document).on('click', '.removeFromCart', function(e) {
             e.preventDefault();
@@ -316,6 +306,9 @@
                 }
             });
         });
+
+
+        
 
     </script>
 @endpush
