@@ -28,8 +28,8 @@ Route::fallback(ProductsCategoriesProxyController::class.'@index')
  * Store front home.
  */
 Route::get('/', [HomeController::class, 'index'])
-    ->name('shop.home.index')
-    ->middleware('cache.response');
+    ->name('shop.home.index');
+    //->middleware('cache.response');
 
 Route::get('contact-us', [HomeController::class, 'contactUs'])
     ->name('shop.home.contact_us')
